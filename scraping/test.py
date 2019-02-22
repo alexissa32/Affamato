@@ -6,18 +6,26 @@ Created on Feb 20, 2019
 number = "2";
 tags = "";
 filename = "test.txt"
+excelFileName = "testWB.xlsx"
+apiKey = "b738ce18bfmsh4e6a7c2d8aff98cp11356cjsn35dc321ea326"
 
 
-import requests;
-import json;
+import requests
+import json
+import xlsxwriter
+from xlsxwriter import Workbook
 
+excel = Workbook(excelFileName)
+excelWorksheet = excel.add_worksheet()
+row = 0
+column = 0
 baseurl = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes"
 
 findIDurl = baseurl + "/random?"
 
 
 if(number == ""):
-    number = "10"
+    number = "1"
 number = "number=" + number 
 if(tags != ""):
     tags = "&tags=" + tags
@@ -30,7 +38,7 @@ recipes = []
 
 responseList = requests.get(findIDurl,
     headers={
-    "X-RapidAPI-Key": "b738ce18bfmsh4e6a7c2d8aff98cp11356cjsn35dc321ea326"
+    "X-RapidAPI-Key": apiKey
   }
  )
 
@@ -75,7 +83,7 @@ for recipe in recipes:
     print(findURL)
     response = requests.get(findURL,
         headers={
-            "X-RapidAPI-Key": "b738ce18bfmsh4e6a7c2d8aff98cp11356cjsn35dc321ea326"
+            "X-RapidAPI-Key": apiKey
             }
     )
     print(response)
@@ -95,18 +103,43 @@ for recipe in recipes:
 
     for item in recipe:
         file.write(str(item) + ",")
+        excelWorksheet.write(row, column, str(item))
+        column += 1
     file.write("\n")
+    row += 1
+    column = 0
     for item in extendedIngredients:
         #print(item['name'] + " " + str(item['amount']) + " " + item['unit'])
         file.write(item['name'] + "," + str(item['amount']) + "," + item['unit'] + ",")
+        excelWorksheet.write(row, column, item['name'])
+        column += 1
+        excelWorksheet.write(row, column, str(item['amount']))
+        column += 1
+        excelWorksheet.write(row, column, item['unit'])
+        column += 1
+    row += 1
+    column = 0
     file.write("\n")
     for step in instructions:
         #print(step['step'])
         file.write("{" + str(step['step'])  + "}"+ ",")
-        
+        excelWorksheet.write(row, column, str(step['step']))
+        column += 1
+    row += 1
+    column = 0
     file.write("\n")
     file.write("vegetarian" + "," + str(vegetarian) + "," + "vegan" + "," + str(vegan) + "," + "dairyFree" + "," + str(dairyFree) + "," + "glutenFree" + "," + str(glutenFree) + "," + "ketogenic" + "," + str(keto))
+    excelWorksheet.write(row, column, "vegetarian," + str(vegetarian)); column += 1
+    excelWorksheet.write(row, column, "vegan," + str(vegan)); column += 1
+    excelWorksheet.write(row, column, "dairyFree," + str(dairyFree)); column += 1
+    excelWorksheet.write(row, column, "glutenFree," + str(glutenFree)); column += 1
+    excelWorksheet.write(row, column, "ketogenic," + str(keto))
+    row += 2
+    column = 0
     file.write("\n\n")
+    
+file.close()
+excel.close()    
 
 
 

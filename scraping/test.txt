@@ -1,0 +1,10 @@
+405425,Hearty Beef and Cheese Enchiladas,50,7,
+canola oil,7.0,servings,chili beans,16.0,ounces,enchilada sauce,10.0,ounces,flour tortillas,7.0,8-inch,olives,2.0,tablespoons,onion,1.0,medium,salsa,0.5,cup,shredded cheddar cheese,4.0,ounces,
+{In a large saucepan, cook beef and onion over medium heat until meat is no longer pink; drain. Stir in the beans, 2/3 cup enchilada sauce and 2 tablespoons salsa; set aside.},{In a small skillet, heat 1/4 in. of oil. Dip each tortilla in hot oil for 3 seconds on each side or just until limp; drain on paper towels.},{Top each tortilla with 2/3 cup beef mixture.},{Roll up and place seam side down in an 11-in. x 7-in. baking dish.},{Drizzle with remaining enchilada sauce and salsa. Sprinkle with cheese and olives.},{Bake, uncovered, at 350° for 20-25 minutes or until bubbly.},
+vegetarian,True,vegan,False,dairyFree,False,glutenFree,False,ketogenic,False
+
+178916,Slow-Cooker Bourbon Chicken,375,4,
+bourbon,0.5,cup,garlic,2.0,cloves,gingerroot,1.0,teaspoon,green onions,0.5,cup,honey,0.25,cup,instant white rice,1.0,cup,ketchup,1.0,tablespoon,onion,0.5,cup,rice vinegar,2.0,tablespoons,skinless boneless chicken breasts,2.0,lb,soy sauce,0.25,cup,water,1.0,cup,
+{Spray 3 1/2- to 4-quart slow cooker with cooking spray. In slow cooker, mix bourbon, soy sauce, honey, vinegar, ketchup, onion, garlic and gingerroot.},{Add chicken.},{Cover; cook on Low heat setting 6 to 8 hours.},{Remove chicken from slow cooker to plate; shred with 2 forks or break into bite-size pieces with spoon. Return chicken to slow cooker.},{Cook rice in water as directed on package.},{Serve chicken over rice; sprinkle with green onions.},
+vegetarian,False,vegan,False,dairyFree,True,glutenFree,False,ketogenic,False
+
