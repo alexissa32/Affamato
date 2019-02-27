@@ -7,7 +7,7 @@ import Home from './components/home';
 import Dashboard from './components/dashboard'
 import 'bootstrap/dist/css/bootstrap.css';
 
-ReactDOM.render(<Dashboard />, document.getElementById('root'));
+ReactDOM.render(<Home />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
