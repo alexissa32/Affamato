@@ -13,6 +13,7 @@ apiKey = "db59991420msh5663a602972f8cbp111839jsn1f773f6d4213"
 import requests
 import json
 import xlsxwriter
+import os
 from xlsxwriter import Workbook
 
 excel = Workbook(excelFileName)
@@ -48,11 +49,14 @@ recipeJson = responseList.json();
 
 
 print(recipeJson)
-
+cwd = os.getcwd()
+dumpDir = cwd + "\\recipeJSONs"
 recipeResults = recipeJson['recipes']
 i = 0
 for recipe in recipeResults:
     newfile = str(i) + ".json"
-    with open(newfile, 'w') as outfile:
-        json.dump(recipeJson, outfile)
+    with open(os.path.join(dumpDir,newfile), "w") as file1:
+        json.dump(recipe, file1)        
     i = i + 1
+    
+ 
