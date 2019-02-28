@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <script>
+
+        const userAction = async () => {
+
+            await fetch('https://api.github.com/repos/alexissa32/Affamato/commits')
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(myJson) {
+                    console.log(JSON.stringify(myJson));
+                    document.getElementById("status").innerHTML = JSON.stringify(myJson);
+                });
+
+        }
+
+        userAction()
+
+    </script>
+    <title>Affamato by Team Falcon</title>
+</head>
+<body>
+
+<div style="display: flex; justify-content: center;">
+    <img src="logo.png"  alt=""/>
+</div>
+
+<div id="status"></div>
+</body>
+</html>
