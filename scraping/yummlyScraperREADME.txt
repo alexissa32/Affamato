@@ -5,3 +5,4 @@ type is /recipes? by default
 you must input unique params
 
 outputs files from 0 to 9 in .json files
+will output in the current directory\yummlyrecipeJSONs
