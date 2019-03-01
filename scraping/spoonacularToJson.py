@@ -11,8 +11,8 @@ def main():
     import os
     from xlsxwriter import Workbook
     
-    apiKey = "b250001dfdmsh3c8933b091aeb47p192fd9jsn276af239edcb" #alex's
-    option = "food/ingredients"
+    apiKey = "db59991420msh5663a602972f8cbp111839jsn1f773f6d4213" #Justin's
+    option = "recipes"
     '''
     options are:
     'recipes'
@@ -20,7 +20,7 @@ def main():
     '''
         
     #if doing recipes, modify the next 3
-    number = "5"
+    number = "2"
     tags = ""
     random = True #random = False not tested
     ingredientPull = True
@@ -186,7 +186,7 @@ def requesting(findIDurl, ingredient, cwd, apiKey, ingredientPull, ingredientID,
     if not ingredient:
         i = 0
         for recipe in recipeResults:
-            newfile = str(i) + ".json"
+            newfile = recipe['id'] + ".json"
             with open(os.path.join(dumpDir,newfile), "w") as file1:
                 json.dump(recipe, file1)  
             if ingredientPull:
