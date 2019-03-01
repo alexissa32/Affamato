@@ -5,7 +5,7 @@ Created on Feb 22, 2019
 '''
 import requests
 import json
-from builtins import object
+import os
 
 baseurl = "https://api.yummly.com/v1/api"
 appId = "6a989a19"
@@ -19,38 +19,29 @@ apiPrefix = "_app_key="
 
 requestUrl = baseurl + type + appIdPrefix + appId + "&" + apiPrefix + apiKey + "&" + params
 
+print(requestUrl
+)
 
-
-print(requestUrl)
-'''    headers={
-    "X-Yummly-App-ID" : appId,
-    "X-Yummly-App-Key" : apiKey
-    }
-'''
 yum = requests.get(requestUrl
 )
 
-print(yum)
+print("yum" + str(yum))
+
+recipeJSON = yum.json()
 
 
-yumJson = yum.json()
 
-print(yumJson)
+recipes = recipeJSON['matches']
 
-print(yum.raw)
+cwd = os.getcwd()
+dumpDir = cwd + "\\yummlyrecipeJSONs"
 
-print(yum.text)
+if not os.path.isdir(dumpDir):
+    os.mkdir(dumpDir)
 
-print("here")
-
-print(yum.raw.read())
-
-string = yum.raw.read().decode("utf-8")
-print(string)
-json_obj = json.loads(string)
-
-print(json_obj)
-
-'''
-Not sure why I can't convert the yum response to a string or json object
-'''
+i = 0
+for recipe in recipes:
+    newfile = str(i) + ".json"
+    with open(os.path.join(dumpDir,newfile), "w") as outfile:
+        json.dump(recipe, outfile)
+    i = i + 1
