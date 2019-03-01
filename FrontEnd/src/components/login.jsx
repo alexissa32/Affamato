@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Nav from 'react-bootstrap/Nav'
 import NavBar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button'
-import Jumbotron from 'react-bootstrap/Jumbotron'
+import Form from 'react-bootstrap/Form'
 class Home extends Component {
     state = {
         imageURL: 'https://i.imgur.com/YDa25F4.png',
@@ -37,27 +37,33 @@ class Home extends Component {
                     </li>
                 </ul>
                 <ul className="nav navbar-nav ml-auto w-100 justify-content-end">
-                    <li className="nav-item"><button type="button" className="btn btn-outline-danger m-1" style={{color: 'red', borderColor: 'red'}}>Login</button>
-                    </li>
+                    {/*<li className="nav-item">*/}
+                        {/*<button type="button" className="btn btn-outline-danger m-1" style={{color: 'red', borderColor: 'red'}}>Login</button>*/}
+                    {/*</li>*/}
                     <li className="nav-item">
                         <button type="button" className="btn btn-danger m-1 float-right" style={{borderColor: 'red', backgroundColor:'red'}}>Sign Up</button>
                     </li>
                 </ul>
             </NavBar>
-            <div style={{display: 'flex', justifyContent: 'flex-begin'}} className="pl-3">
-            <Jumbotron style={{width: 800}}>
-                <h1>Manage your pantry</h1>
-                <h1>Discover new Recipes</h1>
-                <h1>Save money</h1>
-                {/*<p>*/}
-                    {/*This is a simple hero unit, a simple jumbotron-style component for calling*/}
-                    {/*extra attention to featured content or information.*/}
-                {/*</p>*/}
-                <p className="pt-3">
-                    <button type="button" className="btn btn-danger" style={{borderColor: 'red', backgroundColor:'red'}}>Learn More</button>
-                </p>
-            </Jumbotron>
-                <img src={this.state.fullLogo} alt="" className=""/>
+            <div style={{display: 'flex', justifyContent: 'center'}} className="pt-5">
+                <Form>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicChecbox">
+                        <Form.Check type="checkbox" label="Remember me" />
+                    </Form.Group>
+                    <button type="button" className="btn btn-outline-danger" style={{color: 'red', borderColor: 'red'}}>Log In</button>
+                </Form>
             </div>
         </React.Fragment>
     }
@@ -65,8 +71,8 @@ class Home extends Component {
 
 //for searching:
 {/*<Form inline>*/}
-    {/*<FormControl type="text" placeholder="Search" className="mr-sm-2" />*/}
-    {/*<Button variant="outline-success">Search</Button>*/}
+{/*<FormControl type="text" placeholder="Search" className="mr-sm-2" />*/}
+{/*<Button variant="outline-success">Search</Button>*/}
 {/*</Form>*/}
 
 export default Home;

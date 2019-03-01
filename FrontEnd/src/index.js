@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Home from './components/home';
-import Dashboard from './components/dashboard'
+import Home from './components/dashboard';
+import Dash from './components/dash'
 import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(<Home />, document.getElementById('root'));
