@@ -5,7 +5,6 @@
     <script>
         const userAction = async () => {
 
-            //await fetch('https://api.github.com/repos/alexissa32/Affamato/commits')
             await fetch('https://api.github.com/repos/alexissa32/Affamato/stats/contributors')
                 .then(function(response) {
                     return response.json();
@@ -25,11 +24,6 @@
                         "Samir has  <strong>" + myJson[4].total + "</strong> commits";
                     document.getElementById("rooshiCommits").innerHTML =
                         "Rooshi has  <strong>" + myJson[3].total + "</strong> commits";
-                    //for (let i = 0; i < myJson.length; i++) {
-                       // var newCommit = document.createElement("div");
-                        //newCommit.innerText = JSON.stringify(myJson[i]);
-                        //document.body.appendChild(newCommit);
-                    //}
                 });
         };
         userAction();
@@ -55,16 +49,19 @@ Link to the GitHub repo
 <h2>By Team Falcon</h2>
 
 <h3>Cameron Clark:</h3>
-<img class="two" src="cameron.jpg"  alt=""/>
+<img class="two" src="cameron.jpg"  width = "250" height = "300" lt=""/>
 <p><strong>Major:</strong> ECE major with Software Engineering and Computer Architecture Cores <br />
+    <strong>Responsibilities:</strong> scraping APIs to database <br />
     <strong>Bio:</strong> Cameron enjoys taking selfies at the EER.</p>
     <h2 align="left" id="cameronCommits"></h2>
-    <strong>Number of Commits:</strong> </p>
-    <strong>Number of Issues:</strong> </p>
 <br>
 
 <h3>Justin Henry:</h3>
-<h2 align="left" id="justinCommits"></h2>
+<img class="two" src="justin.png"  lt=""/>
+<p><strong>Major:</strong> Electrical and Computer Engineering - Software Engineering and Design + Energy Systems and Renewable Energy <br />
+    <strong>Responsibilities:</strong> scraping APIs to database <br />
+    <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.</p>
+    <h2 align="left" id="justinCommits"></h2>
 <br>
 
 <h3>Alex Issa:</h3>
@@ -72,13 +69,11 @@ Link to the GitHub repo
 <br>
 
 <h3>Julia Rebello:</h3>
-<img class="two" src="julia.jpg"  alt=""/>
+<img class="two" src="julia.jpg" alt=""/>
 <p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
     <strong>Responsibilities:</strong> front end, database <br />
     <strong>Bio:</strong> Born in Rio de Janeiro, Julia loves beaches and warm weather.</p>
     <h2 align="left" id="juliaCommits"></h2>
-    <strong>Number of Commits:</strong></p>
-    <strong>Number of Issues:</strong> </p>
 <br>
 
 <h3>Samir Riad:</h3>
@@ -87,8 +82,6 @@ Link to the GitHub repo
     <strong>Responsibilities:</strong> lead front end <br />
     <strong>Bio:</strong> Samir likes to party responsibly.</p>
     <h2 align="left" id="samirCommits"></h2>
-    <strong>Number of Commits:</strong> </p>
-    <strong>Number of Issues:</strong> </p>
 <br>
 
 <h3>Rooshi Patidar:</h3>
@@ -97,8 +90,6 @@ Link to the GitHub repo
     <strong>Responsibilities:</strong> back end, database <br />
     <strong>Bio:</strong> Rooshi is a black belt in Android Studio.</p>
     <h2 align="left" id="rooshiCommits"></h2>
-    <strong>Number of Commits:</strong> </p>
-    <strong>Number of Issues:</strong> </p>
 
 <br>
 
