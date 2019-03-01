@@ -1,5 +1,6 @@
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="about.css">
     <script>
 
         const userAction = async () => {
@@ -9,22 +10,76 @@
                     return response.json();
                 })
                 .then(function(myJson) {
-                    console.log(JSON.stringify(myJson));
-                    document.getElementById("status").innerHTML = JSON.stringify(myJson);
+                    //console.log(JSON.stringify(myJson));
+
+                    //var jsonObj = myJson;
+                    //var numOfCommits = jsonObj;
+
+                    document.getElementById("numCommits").innerHTML =
+                        "The Affamato repository has a total of <strong>" + myJson.length + "</strong> commits!";
+
+                    for (let i = 0; i < myJson.length; i++) {
+                        var newCommit = document.createElement("div");
+                        //newCommit.setAttribute("color", "red");
+                        newCommit.innerText = JSON.stringify(myJson[i]);
+                        document.body.appendChild(newCommit);
+
+                    }
+
+                    //document.getElementById("status").innerHTML = JSON.stringify(myJson);
                 });
 
-        }
+        };
 
-        userAction()
+        userAction();
 
     </script>
+
+    <!-- Description of the site, its purpose, its intended users
+Group name
+Group members
+For each member: name, photo, bio, major, responsibilities, number of commits, number of issues, number of unit tests
+Stats: total number of commits, total number of unit tests, total number of issues
+Data: links to the data sources, description of how each was scraped
+Tools: tools used, describe their use
+Link to the GitHub repo
+-->
+
     <title>Affamato by Team Falcon</title>
 </head>
-<body>
+<body bgcolor="#ec644b">
 
 <div style="display: flex; justify-content: center;">
     <img src="logo.png"  alt=""/>
 </div>
+<h1>About Affamato:</h1>
+<h2>By Team Falcon</h2>
+
+<h3>Cameron Clark:</h3>
+<br>
+
+<h3>Justin Henry:</h3>
+<br>
+
+<h3>Alex Issa:</h3>
+<br>
+
+<h3>Julia Rebello:</h3>
+<img class="two" src="julia.jpg"  alt=""/>
+<p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
+    <strong>Responsibilities:</strong> front end, database <br />
+    <strong>Bio:</strong> Born in Rio de Janeiro, Julia loves beaches and warm weather.</p>
+<br>
+
+<h3>Samir Riad:</h3>
+<br>
+
+<h3>Rooshi Patidar:</h3>
+<img class="two" src="rooshi.jpg"  alt=""/>
+
+<br>
+
+<h2 align="middle" id="numCommits"></h2>
 
 <div id="status"></div>
 </body>
