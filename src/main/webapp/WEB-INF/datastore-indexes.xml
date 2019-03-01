@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <datastore-indexes autoGenerate="false">
-     <datastore-index kind="Greeting" ancestor="true" source="manual">
+    <datastore-index kind="Recipe" ancestor="true" source="manual">
+        <property name="user" direction="desc" />
+        <property name="date" direction="desc" />
+    </datastore-index>
+    <datastore-index kind="Ingredient" ancestor="true" source="manual">
         <property name="user" direction="desc" />
         <property name="date" direction="desc" />
     </datastore-index>

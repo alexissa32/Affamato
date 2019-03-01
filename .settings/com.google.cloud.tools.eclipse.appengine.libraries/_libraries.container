@@ -1,3 +1,4 @@
 [
-  "appengine-api"
+  "appengine-api",
+  "objectify"
 ]

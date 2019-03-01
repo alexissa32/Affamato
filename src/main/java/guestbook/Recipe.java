@@ -1,5 +1,5 @@
 package guestbook;
-
+/**
 import java.util.Date;
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
@@ -9,7 +9,7 @@ import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Parent;
 
 @Entity
-public class Recipe implements Comparable<Greeting> 
+public class Recipe implements Comparable<Recipe> 
 {
 	@Parent Key<Guestbook> guestbookName;
 	@Id Long id;
@@ -39,4 +39,4 @@ public class Recipe implements Comparable<Greeting>
         }
         return 0;
      }
-}
+} */
