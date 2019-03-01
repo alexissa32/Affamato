@@ -11,10 +11,16 @@ For Recipe requests:
 
 For Ingredient requests:
 	make sure option is set to "food/ingredients"
-	ingredientID is the spoonacular ID for the ingredient you are looking up
-	amount is the amount
-	unit is the unit of the amount
+	ingredientID is the spoonacular ID for the ingredient you are looking up IF you aren't reading from file
+	amount is the amount (default 10)
+	unit is the unit of the amount (default ounce)
 	(amount and unit are required)
+	maxRequests is the maximum number of ingredient requests the script will run
+	ingredientFromFile is True if you are reading ingredient ID's from files, false if you are setting ingredientID yourself
+	readSpecificFile is false if you want to iterate through the directory
+	specificFilePath is the FULL path if you want to read a specific file
+	useDefaultDir is if you want to use the current directory as your path
+	if not, set dirToUseGen
 
 Usage:
 Each api key gets a MAX of 50 requests and 500 results
