@@ -1,40 +1,39 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="about.css">
-    <script>
 
+    <script>
         const userAction = async () => {
 
-            await fetch('https://api.github.com/repos/alexissa32/Affamato/commits')
+            //await fetch('https://api.github.com/repos/alexissa32/Affamato/commits')
+            await fetch('https://api.github.com/repos/alexissa32/Affamato/stats/contributors')
                 .then(function(response) {
                     return response.json();
                 })
                 .then(function(myJson) {
-                    //console.log(JSON.stringify(myJson));
-
-                    //var jsonObj = myJson;
-                    //var numOfCommits = jsonObj;
-
                     document.getElementById("numCommits").innerHTML =
-                        "The Affamato repository has a total of <strong>" + myJson.length + "</strong> commits!";
-
-                    for (let i = 0; i < myJson.length; i++) {
-                        var newCommit = document.createElement("div");
-                        //newCommit.setAttribute("color", "red");
-                        newCommit.innerText = JSON.stringify(myJson[i]);
-                        document.body.appendChild(newCommit);
-
-                    }
-
-                    //document.getElementById("status").innerHTML = JSON.stringify(myJson);
+                        "The Affamato repository has a total of <strong>" + (myJson[0].total+myJson[1].total+myJson[2].total+myJson[3].total+myJson[4].total+myJson[5].total) + "</strong> user commits!";
+                    document.getElementById("cameronCommits").innerHTML =
+                        "Cameron has  <strong>" + myJson[5].total + "</strong> commits";
+                    document.getElementById("justinCommits").innerHTML =
+                        "Justin has  <strong>" + myJson[1].total + "</strong> commits";
+                    document.getElementById("juliaCommits").innerHTML =
+                        "Julia has  <strong>" + myJson[0].total + "</strong> commits";
+                    document.getElementById("alexCommits").innerHTML =
+                        "Alex has  <strong>" + myJson[2].total + "</strong> commits";
+                    document.getElementById("samirCommits").innerHTML =
+                        "Samir has  <strong>" + myJson[4].total + "</strong> commits";
+                    document.getElementById("rooshiCommits").innerHTML =
+                        "Rooshi has  <strong>" + myJson[3].total + "</strong> commits";
+                    //for (let i = 0; i < myJson.length; i++) {
+                       // var newCommit = document.createElement("div");
+                        //newCommit.innerText = JSON.stringify(myJson[i]);
+                        //document.body.appendChild(newCommit);
+                    //}
                 });
-
         };
-
         userAction();
-
     </script>
-
     <!-- Description of the site, its purpose, its intended users
 Group name
 Group members
@@ -56,12 +55,20 @@ Link to the GitHub repo
 <h2>By Team Falcon</h2>
 
 <h3>Cameron Clark:</h3>
+<img class="two" src="cameron.jpg"  alt=""/>
+<p><strong>Major:</strong> ECE major with Software Engineering and Computer Architecture Cores <br />
+    <strong>Bio:</strong> Cameron enjoys taking selfies at the EER.</p>
+    <h2 align="left" id="cameronCommits"></h2>
+    <strong>Number of Commits:</strong> </p>
+    <strong>Number of Issues:</strong> </p>
 <br>
 
 <h3>Justin Henry:</h3>
+<h2 align="left" id="justinCommits"></h2>
 <br>
 
 <h3>Alex Issa:</h3>
+<h2 align="left" id="alexCommits"></h2>
 <br>
 
 <h3>Julia Rebello:</h3>
@@ -69,13 +76,29 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
     <strong>Responsibilities:</strong> front end, database <br />
     <strong>Bio:</strong> Born in Rio de Janeiro, Julia loves beaches and warm weather.</p>
+    <h2 align="left" id="juliaCommits"></h2>
+    <strong>Number of Commits:</strong></p>
+    <strong>Number of Issues:</strong> </p>
 <br>
 
 <h3>Samir Riad:</h3>
+<img class="two" src="samir.jpg"  alt=""/>
+<p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
+    <strong>Responsibilities:</strong> lead front end <br />
+    <strong>Bio:</strong> Samir likes to party responsibly.</p>
+    <h2 align="left" id="samirCommits"></h2>
+    <strong>Number of Commits:</strong> </p>
+    <strong>Number of Issues:</strong> </p>
 <br>
 
 <h3>Rooshi Patidar:</h3>
 <img class="two" src="rooshi.jpg"  alt=""/>
+<p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
+    <strong>Responsibilities:</strong> back end, database <br />
+    <strong>Bio:</strong> Rooshi is a black belt in Android Studio.</p>
+    <h2 align="left" id="rooshiCommits"></h2>
+    <strong>Number of Commits:</strong> </p>
+    <strong>Number of Issues:</strong> </p>
 
 <br>
 
