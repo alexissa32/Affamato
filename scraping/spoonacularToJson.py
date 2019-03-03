@@ -11,8 +11,8 @@ def main():
     import os
     from xlsxwriter import Workbook
     
-    apiKey = "db59991420msh5663a602972f8cbp111839jsn1f773f6d4213" #Justin's
-    option = "recipes"
+    apiKey = "a6da50dbe9msh9a99c92c4bfc5bcp1d3bf4jsn6b4ee8425896" #Rooshi's
+    option = "food/ingredients"
     '''
     options are:
     'recipes'
@@ -20,7 +20,7 @@ def main():
     '''
         
     #if doing recipes, modify the next 3
-    number = "2"
+    number = "37"
     tags = ""
     random = True #random = False not tested
     ingredientPull = True
@@ -29,7 +29,7 @@ def main():
     ingredientID = "11215"
     amount = "10"
     unit = "ounce"
-    maxRequests = 49 #set number of max requests when reading from files
+    maxRequests = 50 #set number of max requests when reading from files
     ingredientFromFile = True
     readSpecificFile = False #if false will read every file in the directory
     specificFilePath = "" #if readSpecificFile is False, this needs to be a file. don't include \'s
@@ -67,25 +67,9 @@ def main():
     
     myDir = cwd;
     
-    if ingredientFromFile:
-        if readSpecificFile:
-            if useDefaultDir:
-                singleFile = cwd + "\\" + specificFilePath
-            else:
-                singleFile = specificFilePath    
-        else:
-            if useDefaultDir:
-                myDir = cwd + "\\ingredientPull"
-            else:
-                myDir = dirToUseGen  
-            listOfFiles = os.listdir(myDir) 
                 
     
     listOfValidFiles = []
-    for file in listOfFiles:
-        if "ing.txt" in file:
-            listOfValidFiles.append(file)
-    print(listOfValidFiles)
     
     if random and option == "recipes":
         findIDurl = baseOption + "/random?"
@@ -94,7 +78,25 @@ def main():
         ingredient = True
         if amount == "" or unit == "":
             amount = "10"; unit = "oz"
-        findIDurl = findIDurl + "?" + "amount=" + amount + "&" + "unit=" + unit    
+        findIDurl = findIDurl + "?" + "amount=" + amount + "&" + "unit=" + unit   
+        
+    if ingredient:
+        if ingredientFromFile:
+            if readSpecificFile:
+                if useDefaultDir:
+                    singleFile = cwd + "\\" + specificFilePath
+                else:
+                    singleFile = specificFilePath    
+            else:
+                if useDefaultDir:
+                    myDir = cwd + "\\ingredientPull"
+                else:
+                    myDir = dirToUseGen  
+                listOfFiles = os.listdir(myDir)  
+        for file in listOfFiles:
+            if "ing.txt" in file:
+                listOfValidFiles.append(file)
+        print(listOfValidFiles)
     
     if not ingredient:
         if(number == ""):
@@ -150,7 +152,7 @@ def requesting(findIDurl, ingredient, cwd, apiKey, ingredientPull, ingredientID,
     import os
     from xlsxwriter import Workbook
     
-    if str(ingredientID) + ".json" in existingIng:
+    if str(ingredientID) + ".json" in existingIng and ingredient:
         print("repeat")
         return False
     
@@ -161,6 +163,9 @@ def requesting(findIDurl, ingredient, cwd, apiKey, ingredientPull, ingredientID,
     )
         
     print(responseList)
+    
+    if ingredient:
+        existingIng.append(str(ingredientID) + ".json")
         
     recipeJson = responseList.json();
         
@@ -186,12 +191,12 @@ def requesting(findIDurl, ingredient, cwd, apiKey, ingredientPull, ingredientID,
     if not ingredient:
         i = 0
         for recipe in recipeResults:
-            newfile = recipe['id'] + ".json"
+            newfile = str(recipe['id']) + ".json"
             with open(os.path.join(dumpDir,newfile), "w") as file1:
                 json.dump(recipe, file1)  
             if ingredientPull:
                 extendedIngredients = recipe['extendedIngredients']
-                ingFile = str(i) + "ing.txt"
+                ingFile = str(recipe['id']) + "ing.txt"
                 file2 = open(ingDir + "\\" + ingFile, "w")
                 for ingredient in extendedIngredients:
                     file2.write(str(ingredient['id']) + ",")
