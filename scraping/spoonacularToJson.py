@@ -11,7 +11,7 @@ def main():
     import os
     from xlsxwriter import Workbook
     
-    apiKey = "a6da50dbe9msh9a99c92c4bfc5bcp1d3bf4jsn6b4ee8425896" #Rooshi's
+    apiKey = "b738ce18bfmsh4e6a7c2d8aff98cp11356cjsn35dc321ea326" #Cameron's
     option = "food/ingredients"
     '''
     options are:
@@ -20,7 +20,7 @@ def main():
     '''
         
     #if doing recipes, modify the next 3
-    number = "37"
+    number = "49"
     tags = ""
     random = True #random = False not tested
     ingredientPull = True
@@ -29,7 +29,7 @@ def main():
     ingredientID = "11215"
     amount = "10"
     unit = "ounce"
-    maxRequests = 50 #set number of max requests when reading from files
+    maxRequests = 3 #set number of max requests when reading from files
     ingredientFromFile = True
     readSpecificFile = False #if false will read every file in the directory
     specificFilePath = "" #if readSpecificFile is False, this needs to be a file. don't include \'s
