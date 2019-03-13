@@ -11,7 +11,7 @@ def main():
     import os
     from xlsxwriter import Workbook
     
-    apiKey = "a6da50dbe9msh9a99c92c4bfc5bcp1d3bf4jsn6b4ee8425896" #rooshi's
+    apiKey = "f431abb110msh6e51979d5f81a69p1e98c5jsn02a2c056b8a6" #julia's
     option = "food/ingredients"
     '''
     options are:
