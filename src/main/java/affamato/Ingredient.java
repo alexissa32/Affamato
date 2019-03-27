@@ -3,6 +3,7 @@ package affamato;
 
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,7 +21,7 @@ public class Ingredient implements Comparable<Ingredient>
     @Index String jsonString;
     @Index Long spoonId;
     @Index String ingredient;
-    @Index Float amount;
+    @Index Long amount;
     @Index String unit;
     @Index String unitShort;
     @Index Map<String,Tuple> nutrition;
@@ -28,8 +29,29 @@ public class Ingredient implements Comparable<Ingredient>
     //private Ingredient() {}
     public Ingredient(String json) 
     {
-    	jsonString = json;
+    	try {
+    	this.jsonString = json;
+    	JSONObject data = new JSONObject(json);
+    	this.spoonId = data.getLong("id");
+    	this.ingredient = data.getString("name");
+    	this.amount = data.getLong("amount");
+    	this.unit = data.getString("unit");
+    	this.unitShort = data.getString("unitShort");
+    	JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
+    	for(int i = 0; i < nutrients.length(); i ++) {
+    		JSONObject nutrient = nutrients.getJSONObject(i);
+    		Tuple amount = new Tuple(nutrient.getLong("amount"), nutrient.getString("unit"));
+        	String title = nutrient.getString("title");
+    		this.nutrition.put(title, amount);
+    	}
+    		
     	
+    	
+    	}
+    	
+    	catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -39,6 +61,13 @@ public class Ingredient implements Comparable<Ingredient>
     }
     
     public static class Tuple{
+    	@Index Long amount;
+    	@Index String unit;
+		public Tuple(Long amount, String unit) {
+			this.amount = amount;
+			this.unit = unit;
+		}
+
     	
     }
 } 
