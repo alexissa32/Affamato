@@ -1,6 +1,7 @@
 //@Author Alex Issa
 package affamato;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -38,7 +39,7 @@ public class Ingredient implements Comparable<Ingredient>
     	this.unit = data.getString("unit");
     	this.unitShort = data.getString("unitShort");
     	JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
-    	nutrition = new Map<String,Tuple>();
+    	this.nutrition = new HashMap<String,Tuple>();
     	for(int i = 0; i < nutrients.length(); i ++) {
     		JSONObject nutrient = nutrients.getJSONObject(i);
     		Tuple amount = new Tuple(nutrient.getLong("amount"), nutrient.getString("unit"));
