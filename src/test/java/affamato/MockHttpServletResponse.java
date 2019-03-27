@@ -11,7 +11,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
-import affamato.AppEngine;
+//import affamato.AppEngine;
 
 /**
  * This mock class is created to enable basic unit testing of the
