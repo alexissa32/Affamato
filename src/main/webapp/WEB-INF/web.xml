@@ -24,6 +24,36 @@
     <servlet-name>default</servlet-name>
     <url-pattern>*.png</url-pattern>
 </servlet-mapping>
+
+<servlet>
+
+		<servlet-name>CookHolder</servlet-name>
+
+		<servlet-class>affamato.NewCookServlet</servlet-class>
+
+	</servlet>
+
+	<servlet-mapping>
+
+		<servlet-name>CookHolder</servlet-name>
+
+		<url-pattern>/CookHolder</url-pattern>
+
+	</servlet-mapping>
+	  
+	  	<servlet>
+		<servlet-name>cook</servlet-name>
+
+		<servlet-class>affamato.NewCookServlet</servlet-class>
+
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>cook</servlet-name>
+
+		<url-pattern>/cook</url-pattern>
+
+	</servlet-mapping>
   <security-constraint>
     <web-resource-collection>
         <web-resource-name>Affamato</web-resource-name>
