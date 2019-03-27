@@ -22,7 +22,7 @@ public class Ingredient implements Comparable<Ingredient>
     @Index String jsonString;
     @Index Long spoonId;
     @Index String ingredient;
-    @Index Long amount;
+    @Index Float amount;
     @Index String unit;
     @Index String unitShort;
     @Index Map<String,Tuple> nutrition;
@@ -35,14 +35,15 @@ public class Ingredient implements Comparable<Ingredient>
     	JSONObject data = new JSONObject(json);
     	this.spoonId = data.getLong("id");
     	this.ingredient = data.getString("name");
-    	this.amount = data.getLong("amount");
+    	String amt= data.getString("amount");
+    	this.amount = Float.valueOf(amt);
     	this.unit = data.getString("unit");
     	this.unitShort = data.getString("unitShort");
     	JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
     	this.nutrition = new HashMap<String,Tuple>();
     	for(int i = 0; i < nutrients.length(); i ++) {
     		JSONObject nutrient = nutrients.getJSONObject(i);
-    		Tuple amount = new Tuple(nutrient.getLong("amount"), nutrient.getString("unit"));
+    		Tuple amount = new Tuple(nutrient.getString("amount"), nutrient.getString("unit"));
         	String title = nutrient.getString("title");
     		this.nutrition.put(title, amount);
     	}
@@ -55,7 +56,13 @@ public class Ingredient implements Comparable<Ingredient>
             e.printStackTrace();
         }
     }
+    
+    public String getName() {return this.ingredient;}
+    
+    
 
+    
+    
     @Override
     public int compareTo(Ingredient other) 
     {
@@ -63,10 +70,10 @@ public class Ingredient implements Comparable<Ingredient>
     }
     
     public static class Tuple{
-    	@Index Long amount;
+    	@Index Float amount;
     	@Index String unit;
-		public Tuple(Long amount, String unit) {
-			this.amount = amount;
+		public Tuple(String amount, String unit) {
+			this.amount = Float.valueOf(amount);
 			this.unit = unit;
 		}
 
