@@ -22,10 +22,9 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.ObjectifyService;
 import affamato.Recipe;
-import affamato.Ingredient;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
-
+@SuppressWarnings("serial")
 public class SearchServlet extends HttpServlet {
 	
 	static 
@@ -39,7 +38,7 @@ public class SearchServlet extends HttpServlet {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		
-		List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).filter("jsonString contains", "cheese").list();
+		List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 		StringBuilder sb = new StringBuilder();
 		for (Recipe r : recipes) {
 			sb.append(r.jsonString);
