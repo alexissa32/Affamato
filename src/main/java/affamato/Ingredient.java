@@ -61,8 +61,12 @@ public class Ingredient implements Comparable<Ingredient>
     
     
     //pass the name of the nutrient
-    public Tuple getNutritionInfo(String name) {
+    public Tuple getNutrient(String name) {
     	return nutrition.get(name);
+    }
+    
+    public Map<String, Tuple> getNutritionInfo(){
+    	return nutrition;
     }
     
     
