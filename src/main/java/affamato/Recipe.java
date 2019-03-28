@@ -34,7 +34,8 @@ public class Recipe implements Comparable<Recipe>
     public Recipe(String json) 
     {
     	jsonString = json;
-    	try {
+    	try 
+    	{
 			JSONObject jo = new JSONObject(json);
 			Object titleJSON = jo.get("title");
 			title = titleJSON.toString();
@@ -48,13 +49,14 @@ public class Recipe implements Comparable<Recipe>
 			this.instructions = jo.getString("instructions");
 			JSONArray extIngredients = jo.getJSONArray("extendedIngredients");
 			this.IngredientIDArray = new ArrayList<Integer>();
-			for(int i = 0; i < extIngredients.length(); i++) {
+			for(int i = 0; i < extIngredients.length(); i++) 
+			{
 				IngredientIDArray.add(extIngredients.getInt(0));
 			}
 			
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			//title = "null";
+		} 
+    	catch (JSONException e) 
+    	{
 			e.printStackTrace();
 		}
     }

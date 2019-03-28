@@ -2,8 +2,24 @@
 <datastore-indexes autoGenerate="false">
     <datastore-index kind="Recipe" ancestor="true" source="manual">
         <property name="json" direction="desc" />
+        <property name="title" direction="desc" />
+        <property name="vegetarian" direction="desc" />
+        <property name="glutenFree" direction="desc" />
+        <property name="dairyFree" direction="desc" />
+        <property name="ketogenic" direction="desc" />
+        <property name="vegan" direction="desc" />
+        <property name="cookMinutes" direction="desc" />
+        <property name="prepMinutes" direction="desc" />
+        <property name="ingredientIDArray" direction="desc" />
+        <property name="instructions" direction="desc" />
     </datastore-index>
     <datastore-index kind="Ingredient" ancestor="true" source="manual">
         <property name="json" direction="desc" />
+        <property name="spoonId" direction="desc" />
+        <property name="ingredient" direction="desc" />
+        <property name="amount" direction="desc" />
+        <property name="unit" direction="desc" />
+        <property name="unitShort" direction="desc" />
+        <property name="nutrition" direction="desc" />
     </datastore-index>
 </datastore-indexes>
