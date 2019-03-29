@@ -26,7 +26,7 @@ public class Ingredient implements Comparable<Ingredient>
     @Index String unitShort;
     @Index ArrayList<ArrayList<String>> nutrition;
     
-    //private Ingredient() {}
+    private Ingredient() {}
     public Ingredient(String json) 
     {
     	try 
@@ -44,8 +44,9 @@ public class Ingredient implements Comparable<Ingredient>
     		this.nutrition = new ArrayList<ArrayList<String>>();
     		for(int i = 0; i < nutrients.length(); i ++) 
     		{
+    			ArrayList<String> curList = new ArrayList<String>();
     			JSONObject nutrient = nutrients.getJSONObject(i);
-    			ArrayList<String> curList = nutrition.get(i);
+    			this.nutrition.add(curList);
     			curList.add(nutrient.getString("title"));
     			curList.add(String.valueOf(nutrient.getFloat("amount")));
     			curList.add(nutrient.getString("unit"));
