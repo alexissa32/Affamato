@@ -1,8 +1,7 @@
 //@Author Alex Issa
 package affamato;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +24,7 @@ public class Ingredient implements Comparable<Ingredient>
     @Index Float amount;
     @Index String unit;
     @Index String unitShort;
-    @Index Map<String,Tuple> nutrition;
+    @Index ArrayList<ArrayList<String>> nutrition;
     
     //private Ingredient() {}
     public Ingredient(String json) 
@@ -36,18 +35,19 @@ public class Ingredient implements Comparable<Ingredient>
     		JSONObject data = new JSONObject(json);
     		this.spoonId = data.getLong("id");
     		this.ingredient = data.getString("name");
-    		String amt= data.getString("amount");
-    		this.amount = Float.valueOf(amt);
+    		//String amt= data.getString("amount");
+    		//this.amount = Float.valueOf(amt);
     		this.unit = data.getString("unit");
     		this.unitShort = data.getString("unitShort");
+    		this.amount = data.getLong("amount");
     		JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
-    		this.nutrition = new HashMap<String,Tuple>();
+    		this.nutrition = new ArrayList<ArrayList<String>>();
     		for(int i = 0; i < nutrients.length(); i ++) 
     		{
     			JSONObject nutrient = nutrients.getJSONObject(i);
-    			Tuple amount = new Tuple(nutrient.getString("amount"), nutrient.getString("unit"));
-    			String title = nutrient.getString("title");
-    			this.nutrition.put(title, amount);
+    			nutrient.add(nutrient.getString("title"));
+    			nutrient.add(nutrient.getLong("amount").toString());
+    			nutrient.add(nutrient.getString("unit"));
     		}
     	}
     	catch (JSONException e)
@@ -62,6 +62,7 @@ public class Ingredient implements Comparable<Ingredient>
     }
     
     //pass the name of the nutrient
+    /*
     public Tuple getNutrient(String name) 
     {
     	return nutrition.get(name);
@@ -71,14 +72,14 @@ public class Ingredient implements Comparable<Ingredient>
     {
     	return nutrition;
     }
-    
+    */
     @Override
     public int compareTo(Ingredient other) 
     {
         return 0;
     }
     
-    public static class Tuple
+   /* public static class Tuple
     {
     	@Index Float amount;
     	@Index String unit;
@@ -88,4 +89,5 @@ public class Ingredient implements Comparable<Ingredient>
 			this.unit = unit;
 		}  	
     }
+*/
 } 
