@@ -45,21 +45,13 @@ public class Recipe implements Comparable<Recipe>
 			this.dairyFree = jo.getBoolean("dairyFree");
 			this.ketogenic = jo.getBoolean("ketogenic");
 			this.vegan = jo.getBoolean("vegan");
-    	} catch(JSONException e) 
-    	{
-    			e.printStackTrace();
-    	}
-    	try
-    	{
-			this.cookMinutes = jo.getInt("cookingMinutes");
-    	} catch(JSONException e)
-    	{
-    		this.cookMinutes = 0;
-    	}
-    	try
-    	{
-			this.prepMinutes = jo.getInt("preparationMinutes");
-			this.instructions = jo.getString("instructions");
+    		if(jo.has("cookingMinutes")) this.cookMinutes = jo.getInt("cookingMinutes");
+    		else this.cookMinutes = 0;
+			if(jo.has("preparationMinutes")) this.prepMinutes = jo.getInt("preparationMinutes");
+			else this.prepMinutes = 0;
+			if(jo.has("instructions")) this.instructions = jo.getString("instructions");
+			else this.instructions = "";
+			
 			JSONArray extIngredients = jo.getJSONArray("extendedIngredients");
 			this.IngredientIDArray = new ArrayList<Integer>();
 			for(int i = 0; i < extIngredients.length(); i++) 
