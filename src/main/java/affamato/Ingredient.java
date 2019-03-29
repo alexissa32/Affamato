@@ -25,7 +25,7 @@ public class Ingredient implements Comparable<Ingredient>
     @Index Float amount;
     @Index String unit;
     @Index String unitShort;
-    @Index Map<String,Tuple> nutrition;
+    @Index String nutrientString;
     
     //private Ingredient() {}
     public Ingredient(String json) 
@@ -39,16 +39,17 @@ public class Ingredient implements Comparable<Ingredient>
     	this.unit = data.getString("unit");
     	this.unitShort = data.getString("unitShort");
     	JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
-    	this.nutrition = new HashMap<String,Tuple>();
-    	for(int i = 0; i < nutrients.length(); i ++) {
-    		JSONObject nutrient = nutrients.getJSONObject(i);
-    		Tuple amount = new Tuple(nutrient.getString("amount"), nutrient.getString("unit"));
-        	String title = nutrient.getString("title");
-    		this.nutrition.put(title, amount);
+    	String building = "";
+    	for(int i = 0; i < nutrients.length(); i++) {
+    		JSONObject nutrient = (JSONObject) nutrients.get(i);
+    		building = building + nutrient.getString("title");
+    		building = building + ",";
+    		building = building + nutrient.getFloat("amount");
+    		building = building + ",";
+    		building = building + nutrient.getString("unit");
+    		building = building + ";";
     	}
-    		
-    	
-    	
+    	this.nutrientString = building;
     	}
     	
     	catch (JSONException e) {
@@ -57,20 +58,6 @@ public class Ingredient implements Comparable<Ingredient>
     }
     
     public String getName() {return this.ingredient;}
-    
-    
-    //pass the name of the nutrient
-    public Tuple getNutrient(String name) {
-    	return nutrition.get(name);
-    }
-    
-    public Map<String, Tuple> getNutritionInfo(){
-    	return nutrition;
-    }
-    
-    
-
-    
     
     @Override
     public int compareTo(Ingredient other) 
