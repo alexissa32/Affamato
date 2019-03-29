@@ -39,15 +39,16 @@ public class Ingredient implements Comparable<Ingredient>
     		//this.amount = Float.valueOf(amt);
     		this.unit = data.getString("unit");
     		this.unitShort = data.getString("unitShort");
-    		this.amount = data.getLong("amount");
+    		this.amount = data.getFloat("amount");
     		JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
     		this.nutrition = new ArrayList<ArrayList<String>>();
     		for(int i = 0; i < nutrients.length(); i ++) 
     		{
     			JSONObject nutrient = nutrients.getJSONObject(i);
-    			nutrient.add(nutrient.getString("title"));
-    			nutrient.add(nutrient.getLong("amount").toString());
-    			nutrient.add(nutrient.getString("unit"));
+    			ArrayList<String> curList = nutrition.get(i);
+    			curList.add(nutrient.getString("title"));
+    			curList.add(String.valueOf(nutrient.getFloat("amount")));
+    			curList.add(nutrient.getString("unit"));
     		}
     	}
     	catch (JSONException e)
