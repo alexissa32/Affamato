@@ -11,7 +11,8 @@ import com.googlecode.objectify.annotation.Parent;
 
 
 @Entity
-public class Cook {
+public class Cook 
+{
     @Parent Key<Cook> CookHolder;
     @Id Long id;
     @Index User user;
@@ -23,7 +24,8 @@ public class Cook {
      
 
     private Cook() {}
-    public Cook(User user, String CookHolder) {
+    public Cook(User user, String CookHolder) 
+    {
         this.user = user;
         this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = new ArrayList<Recipe>();
@@ -31,7 +33,9 @@ public class Cook {
         this.GroceryList = new ArrayList<Ingredient>();
       
     }
-    public User getCook() {
+    
+    public User getCook() 
+    {
         return user;
     }   
 }

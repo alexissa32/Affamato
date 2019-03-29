@@ -22,7 +22,7 @@ public class Ingredient implements Comparable<Ingredient>
     @Index String jsonString;
     @Index Long spoonId;
     @Index String ingredient;
-    @Index Long amount;
+    @Index Float amount;
     @Index String unit;
     @Index String unitShort;
     @Index Map<String,Tuple> nutrition;
@@ -30,46 +30,62 @@ public class Ingredient implements Comparable<Ingredient>
     //private Ingredient() {}
     public Ingredient(String json) 
     {
-    	try {
-    	this.jsonString = json;
-    	JSONObject data = new JSONObject(json);
-    	this.spoonId = data.getLong("id");
-    	this.ingredient = data.getString("name");
-    	this.amount = data.getLong("amount");
-    	this.unit = data.getString("unit");
-    	this.unitShort = data.getString("unitShort");
-    	JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
-    	this.nutrition = new HashMap<String,Tuple>();
-    	for(int i = 0; i < nutrients.length(); i ++) {
-    		JSONObject nutrient = nutrients.getJSONObject(i);
-    		Tuple amount = new Tuple(nutrient.getLong("amount"), nutrient.getString("unit"));
-        	String title = nutrient.getString("title");
-    		this.nutrition.put(title, amount);
+    	try 
+    	{
+    		this.jsonString = json;
+    		JSONObject data = new JSONObject(json);
+    		this.spoonId = data.getLong("id");
+    		this.ingredient = data.getString("name");
+    		String amt= data.getString("amount");
+    		this.amount = Float.valueOf(amt);
+    		this.unit = data.getString("unit");
+    		this.unitShort = data.getString("unitShort");
+    		JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
+    		this.nutrition = new HashMap<String,Tuple>();
+    		for(int i = 0; i < nutrients.length(); i ++) 
+    		{
+    			JSONObject nutrient = nutrients.getJSONObject(i);
+    			Tuple amount = new Tuple(nutrient.getString("amount"), nutrient.getString("unit"));
+    			String title = nutrient.getString("title");
+    			this.nutrition.put(title, amount);
+    		}
     	}
-    		
-    	
-    	
-    	}
-    	
-    	catch (JSONException e) {
+    	catch (JSONException e)
+    	{
             e.printStackTrace();
         }
     }
-
+    
+    public String getName() 
+    {
+    	return this.ingredient;
+    }
+    
+    //pass the name of the nutrient
+    public Tuple getNutrient(String name) 
+    {
+    	return nutrition.get(name);
+    }
+    
+    public Map<String, Tuple> getNutritionInfo()
+    {
+    	return nutrition;
+    }
+    
     @Override
     public int compareTo(Ingredient other) 
     {
         return 0;
     }
     
-    public static class Tuple{
-    	@Index Long amount;
+    public static class Tuple
+    {
+    	@Index Float amount;
     	@Index String unit;
-		public Tuple(Long amount, String unit) {
-			this.amount = amount;
+		public Tuple(String amount, String unit) 
+		{
+			this.amount = Float.valueOf(amount);
 			this.unit = unit;
-		}
-
-    	
+		}  	
     }
 } 

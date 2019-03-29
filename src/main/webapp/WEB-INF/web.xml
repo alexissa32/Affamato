@@ -26,46 +26,29 @@
 </servlet-mapping>
 
 <servlet>
-
-		<servlet-name>CookHolder</servlet-name>
-
-		<servlet-class>affamato.NewCookServlet</servlet-class>
-
-	</servlet>
-
-	<servlet-mapping>
-
-		<servlet-name>CookHolder</servlet-name>
-
-		<url-pattern>/CookHolder</url-pattern>
-
-	</servlet-mapping>
-	  
-	  	<servlet>
-		<servlet-name>cook</servlet-name>
-
-		<servlet-class>affamato.NewCookServlet</servlet-class>
-
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>cook</servlet-name>
-
-		<url-pattern>/cook</url-pattern>
-
-	</servlet-mapping>
-	
-	
-	<servlet>
-		<servlet-name>SearchServlet</servlet-name>
-		<servlet-class>affamato.SearchServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>SearchServlet</servlet-name>
-		<url-pattern>/search</url-pattern>
-	</servlet-mapping>
-	
+	<servlet-name>CookHolder</servlet-name>
+	<servlet-class>affamato.NewCookServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>CookHolder</servlet-name>
+	<url-pattern>/CookHolder</url-pattern>
+</servlet-mapping> 
+<servlet>
+	<servlet-name>cook</servlet-name>
+	<servlet-class>affamato.NewCookServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>cook</servlet-name>
+	<url-pattern>/cook</url-pattern>
+</servlet-mapping>
+<servlet>
+	<servlet-name>SearchServlet</servlet-name>
+	<servlet-class>affamato.SearchServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>SearchServlet</servlet-name>
+	<url-pattern>/search</url-pattern>
+</servlet-mapping>
 	
   <security-constraint>
     <web-resource-collection>
