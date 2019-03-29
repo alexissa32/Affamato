@@ -40,6 +40,8 @@ public class Ingredient implements Comparable<Ingredient>
     	this.unitShort = data.getString("unitShort");
     	JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
     	String building = "";
+    	this.nutrientString = nutrients.toString();
+    	/*
     	for(int i = 0; i < nutrients.length(); i++) {
     		JSONObject nutrient = (JSONObject) nutrients.get(i);
     		building = building + nutrient.getString("title");
@@ -50,6 +52,7 @@ public class Ingredient implements Comparable<Ingredient>
     		building = building + ";";
     	}
     	this.nutrientString = building;
+    	*/
     	}
     	
     	catch (JSONException e) {
