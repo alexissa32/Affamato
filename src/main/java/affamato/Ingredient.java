@@ -35,8 +35,7 @@ public class Ingredient implements Comparable<Ingredient>
     	JSONObject data = new JSONObject(json);
     	this.spoonId = data.getLong("id");
     	this.ingredient = data.getString("name");
-    	String amt= data.getString("amount");
-    	this.amount = Float.valueOf(amt);
+    	this.amount = data.getFloat("amount");
     	this.unit = data.getString("unit");
     	this.unitShort = data.getString("unitShort");
     	JSONArray nutrients = data.getJSONObject("nutrition").getJSONArray("nutrients");
