@@ -30,7 +30,7 @@ public class Recipe implements Comparable<Recipe>
     @Index ArrayList<Integer> IngredientIDArray;
     @Index String instructions;
     
-    //private Recipe() {}
+    private Recipe() {}
     public Recipe(String json) 
     {
     	jsonString = json;

@@ -37,8 +37,10 @@ public class SearchServlet extends HttpServlet
 		StringBuilder sb = new StringBuilder();
 		for (Recipe r : recipes) 
 		{
-			sb.append(r.jsonString);
+			if (r.title.contains("cheese")) {
+			sb.append(r.title);
 			sb.append("\n\n");
+			}
 		}
 		resp.setContentType("text/plain");
 		resp.getWriter().println(sb.toString());
