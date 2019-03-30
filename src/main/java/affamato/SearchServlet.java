@@ -40,7 +40,7 @@ public class SearchServlet extends HttpServlet
 		StringBuilder sb = new StringBuilder();
 		for (Recipe r : recipes) 
 		{
-			if (r.title.contains(parameter)) {
+			if (r.title.toLowerCase().contains(parameter.toLowerCase())) {
 			sb.append(r.title);
 			sb.append("\n\n");
 			}
