@@ -62,6 +62,7 @@ public class Ingredient implements Comparable<Ingredient>
     
     public String getName() {return this.ingredient;}
     
+    //UNTESTED METHOD
     @Override public boolean equals(Object o) {
     	if(o instanceof Ingredient) {
     		Ingredient i = (Ingredient) o;

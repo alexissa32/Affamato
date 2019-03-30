@@ -52,12 +52,6 @@ public class Recipe implements Comparable<Recipe>
 			else this.instructions = "";
 			
 			JSONArray extIngredients = jo.getJSONArray("extendedIngredients");
-			/*this.IngredientIDArray = new ArrayList<Integer>();
-			for(int i = 0; i < extIngredients.length(); i++) 
-			{
-				IngredientIDArray.add(extIngredients.getInt(0));
-			}
-			*/
 			
 		} 
     	catch (JSONException e) 
@@ -72,6 +66,7 @@ public class Recipe implements Comparable<Recipe>
     	return 0;
     }
     
+    //UNTESTED METHOD
     @Override public boolean equals(Object o) {
     	if(o instanceof Recipe) {
     		Recipe r = (Recipe) o;

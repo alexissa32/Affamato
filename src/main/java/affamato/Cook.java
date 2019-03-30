@@ -45,6 +45,7 @@ public class Cook
     	this.GroceryList = this.GroceryList + ID + ",";
     }
     
+    //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
     public void removeFromGroceryList(String ID) {
     	String[] tokens = this.GroceryList.split(",");
     	String newGroceryList = "";
@@ -60,6 +61,7 @@ public class Cook
     	this.Pantry = this.Pantry + ID + ",";
     }
     
+    //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(String ID) {
     	String[] tokens = this.Pantry.split(",");
     	String newPantry = "";
@@ -75,6 +77,7 @@ public class Cook
     	this.RecipeList = this.RecipeList + RecipeName + ";";
     }
     
+    //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(String RecipeName) {
     	String[] tokens = this.RecipeList.split(";");
     	String newRecipeList = "";
@@ -87,12 +90,9 @@ public class Cook
     }
     
     
-    //UNTESTED METHOD
+    //UNTESTED METHOD correlated failures: getRecipeList(), getGroceryList()
     public List<Ingredient> getPantry() {
     	ArrayList<Ingredient> pantryList = new ArrayList<Ingredient>();
-    	
-    	
-    	//String s = "prefix/dir1/dir2/dir3/dir4";
     	String s = this.Pantry;
     	String[] tokens = s.split(",");
     	List<Ingredient> ingredients = ObjectifyService.ofy().load().type(Ingredient.class).list();
@@ -105,21 +105,14 @@ public class Cook
     				pantryList.add(ing);
     			}
     		}
-    	  //System.out.println(t);
     	}
-    	//need to search each ingredient and add to list in this loop:
-    	//get ingredient by some string
-    	//pantryList.add(Ingredient)
-    	/*(output:
-prefix
-dir1
-dir2
-dir3
-dir4 )*/
+
     		
     	return pantryList;
     }
     
+    
+    //UNTESTED METHOD correlated failures: getPantry(), getGroceryList()
     public List<Recipe> getRecipeList(){
     	ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     	
@@ -136,12 +129,12 @@ dir4 )*/
     				recipeList.add(rec);
     			}
     		}
-    	  //System.out.println(t);
     	}
     	
     	return recipeList;
     }
     
+    //UNTESTED METHOD correlated failures: getPantry(), getRecipeList()
     public List<Ingredient> getGroceryList(){
     	ArrayList<Ingredient> groceryList = new ArrayList<Ingredient>();
     	
@@ -158,7 +151,6 @@ dir4 )*/
     				groceryList.add(ing);
     			}
     		}
-    	  //System.out.println(t);
     	}
     	
     	return groceryList;
