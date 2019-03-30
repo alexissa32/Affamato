@@ -34,9 +34,10 @@ public class Recipe implements Comparable<Recipe>
     public Recipe(String json) 
     {
     	jsonString = json;
+    	JSONObject jo = null;
     	try 
     	{
-			JSONObject jo = new JSONObject(json);
+			jo = new JSONObject(json);
 			Object titleJSON = jo.get("title");
 			title = titleJSON.toString();
 			this.vegetarian = jo.getBoolean("vegetarian");
@@ -44,9 +45,13 @@ public class Recipe implements Comparable<Recipe>
 			this.dairyFree = jo.getBoolean("dairyFree");
 			this.ketogenic = jo.getBoolean("ketogenic");
 			this.vegan = jo.getBoolean("vegan");
-			this.cookMinutes = jo.getInt("cookingMinutes");
-			this.prepMinutes = jo.getInt("preparationMinutes");
-			this.instructions = jo.getString("instructions");
+    		if(jo.has("cookingMinutes")) this.cookMinutes = jo.getInt("cookingMinutes");
+    		else this.cookMinutes = 0;
+			if(jo.has("preparationMinutes")) this.prepMinutes = jo.getInt("preparationMinutes");
+			else this.prepMinutes = 0;
+			if(jo.has("instructions")) this.instructions = jo.getString("instructions");
+			else this.instructions = "";
+			
 			JSONArray extIngredients = jo.getJSONArray("extendedIngredients");
 			this.IngredientIDArray = new ArrayList<Integer>();
 			for(int i = 0; i < extIngredients.length(); i++) 
