@@ -18,9 +18,9 @@ public class Cook
     @Index User user;
     //May have to use new fields that are organized
     //if ingredient and recipe end up just containing jsons
-    @Index ArrayList<Ingredient> Inventory;
-    @Index ArrayList<Ingredient> GroceryList;
-    @Index ArrayList<Recipe> RecipeList;
+    @Index String Pantry;
+    @Index String GroceryList;
+    @Index String RecipeList;
      
 
     private Cook() {}
@@ -28,9 +28,9 @@ public class Cook
     {
         this.user = user;
         this.CookHolder = Key.create(Cook.class, CookHolder);
-        this.RecipeList = new ArrayList<Recipe>();
-        this.Inventory = new ArrayList<Ingredient>();
-        this.GroceryList = new ArrayList<Ingredient>();
+        this.RecipeList = "";
+        this.Pantry = "";
+        this.GroceryList = "";
       
     }
     
@@ -38,4 +38,33 @@ public class Cook
     {
         return user;
     }   
+    
+    public void addToGroceryList(String ID) {
+    	this.GroceryList = this.GroceryList + ID + ",";
+    }
+    
+    
+    //ignore this method for now - just theoretical
+    public ArrayList<Ingredient> getPantry() {
+    	ArrayList<Ingredient> pantryList = new ArrayList<Ingredient>();
+    	
+    	
+    	String s = "prefix/dir1/dir2/dir3/dir4";
+    	String[] tokens = s.split("/");
+    	
+    	for (String t : tokens)
+    	  System.out.println(t);
+    	//need to search each ingredient and add to list in this loop:
+    	//get ingredient by some string
+    	//pantryList.add(Ingredient)
+    	/*(output:
+prefix
+dir1
+dir2
+dir3
+dir4 )*/
+    		
+    return pantryList;
+    	
+    }
 }
