@@ -71,4 +71,28 @@ public class Recipe implements Comparable<Recipe>
     {
     	return 0;
     }
+    
+    @Override public boolean equals(Object o) {
+    	if(o instanceof Recipe) {
+    		Recipe r = (Recipe) o;
+    		if(r.title.equals(this.title)) 
+    		{
+    			return true;
+    		}
+    		else {
+    			return false;
+    		}
+    	} else if(o instanceof String) {
+    		String r = (String) o;
+    		if(r.equals(this.title)) {
+    			return true;
+    		}
+    		else {
+    			return false;
+    		}
+    	}
+    	else {
+    		return false;
+    	}
+    }
 } 

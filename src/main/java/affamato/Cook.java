@@ -1,9 +1,11 @@
 package affamato;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
@@ -52,16 +54,26 @@ public class Cook
     }
     
     
-    //ignore this method for now - just theoretical
+    //UNTESTED METHOD
     public ArrayList<Ingredient> getPantry() {
     	ArrayList<Ingredient> pantryList = new ArrayList<Ingredient>();
     	
     	
-    	String s = "prefix/dir1/dir2/dir3/dir4";
-    	String[] tokens = s.split("/");
-    	
-    	for (String t : tokens)
-    	  System.out.println(t);
+    	//String s = "prefix/dir1/dir2/dir3/dir4";
+    	String s = this.Pantry;
+    	String[] tokens = s.split(",");
+    	List<Ingredient> ingredients = ObjectifyService.ofy().load().type(Ingredient.class).list();
+    	for (String token : tokens)
+    	{
+    		if(! token.equals("")){
+    			int index = ingredients.indexOf(token);
+    			if(index != -1) {
+    				Ingredient ing = ingredients.get(index);
+    				pantryList.add(ing);
+    			}
+    		}
+    	  //System.out.println(t);
+    	}
     	//need to search each ingredient and add to list in this loop:
     	//get ingredient by some string
     	//pantryList.add(Ingredient)
@@ -72,7 +84,7 @@ dir2
 dir3
 dir4 )*/
     		
-    return pantryList;
+    	return pantryList;
     	
     }
 }

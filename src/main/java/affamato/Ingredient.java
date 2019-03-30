@@ -62,6 +62,30 @@ public class Ingredient implements Comparable<Ingredient>
     
     public String getName() {return this.ingredient;}
     
+    @Override public boolean equals(Object o) {
+    	if(o instanceof Ingredient) {
+    		Ingredient i = (Ingredient) o;
+    		if(i.spoonId == this.spoonId) 
+    		{
+    			return true;
+    		}
+    		else {
+    			return false;
+    		}
+    	} else if(o instanceof String) {
+    		String i = (String) o;
+    		if(Long.parseLong(i) == this.spoonId) {
+    			return true;
+    		}
+    		else {
+    			return false;
+    		}
+    	}
+    	else {
+    		return false;
+    	}
+    }
+    
     @Override
     public int compareTo(Ingredient other) 
     {
