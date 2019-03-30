@@ -55,7 +55,7 @@ public class Cook
     
     
     //UNTESTED METHOD
-    public ArrayList<Ingredient> getPantry() {
+    public List<Ingredient> getPantry() {
     	ArrayList<Ingredient> pantryList = new ArrayList<Ingredient>();
     	
     	
@@ -85,6 +85,52 @@ dir3
 dir4 )*/
     		
     	return pantryList;
-    	
     }
+    
+    public List<Recipe> getRecipeList(){
+    	ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
+    	
+    	String s = this.Pantry;
+    	String[] tokens = s.split(";");
+    	
+    	List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
+    	for (String token : tokens)
+    	{
+    		if(! token.equals("")){
+    			int index = recipes.indexOf(token);
+    			if(index != -1) {
+    				Recipe rec = recipes.get(index);
+    				recipeList.add(rec);
+    			}
+    		}
+    	  //System.out.println(t);
+    	}
+    	
+    	return recipeList;
+    }
+    
+    public List<Ingredient> getGroceryList(){
+    	ArrayList<Ingredient> groceryList = new ArrayList<Ingredient>();
+    	
+    	String s = this.Pantry;
+    	String[] tokens = s.split(",");
+    	
+    	List<Ingredient> ingredients = ObjectifyService.ofy().load().type(Ingredient.class).list();
+    	for (String token : tokens)
+    	{
+    		if(! token.equals("")){
+    			int index = ingredients.indexOf(token);
+    			if(index != -1) {
+    				Ingredient ing = ingredients.get(index);
+    				groceryList.add(ing);
+    			}
+    		}
+    	  //System.out.println(t);
+    	}
+    	
+    	return groceryList;
+    }
+    
+    
+    
 }
