@@ -90,7 +90,7 @@ dir4 )*/
     public List<Recipe> getRecipeList(){
     	ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     	
-    	String s = this.Pantry;
+    	String s = this.RecipeList;
     	String[] tokens = s.split(";");
     	
     	List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
@@ -112,7 +112,7 @@ dir4 )*/
     public List<Ingredient> getGroceryList(){
     	ArrayList<Ingredient> groceryList = new ArrayList<Ingredient>();
     	
-    	String s = this.Pantry;
+    	String s = this.GroceryList;
     	String[] tokens = s.split(",");
     	
     	List<Ingredient> ingredients = ObjectifyService.ofy().load().type(Ingredient.class).list();
