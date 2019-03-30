@@ -45,12 +45,45 @@ public class Cook
     	this.GroceryList = this.GroceryList + ID + ",";
     }
     
+    public void removeFromGroceryList(String ID) {
+    	String[] tokens = this.GroceryList.split(",");
+    	String newGroceryList = "";
+    	for(int i = 0; i < tokens.length; i++){
+    		if(!ID.equals(tokens[i])) {
+    			newGroceryList = newGroceryList + tokens[i];
+    		}
+    	}
+    	this.GroceryList = newGroceryList;
+    }
+    
     public void addToPantry(String ID) {
     	this.Pantry = this.Pantry + ID + ",";
     }
     
+    public void removeFromPantry(String ID) {
+    	String[] tokens = this.Pantry.split(",");
+    	String newPantry = "";
+    	for(int i = 0; i < tokens.length; i++){
+    		if(!ID.equals(tokens[i])) {
+    			newPantry = newPantry + tokens[i];
+    		}
+    	}
+    	this.Pantry = newPantry;
+    }
+    
     public void addToRecipeList(String RecipeName) {
     	this.RecipeList = this.RecipeList + RecipeName + ";";
+    }
+    
+    public void removeFromRecipeList(String RecipeName) {
+    	String[] tokens = this.RecipeList.split(";");
+    	String newRecipeList = "";
+    	for(int i = 0; i < tokens.length; i++){
+    		if(!RecipeName.equals(tokens[i])) {
+    			newRecipeList = newRecipeList + tokens[i];
+    		}
+    	}
+    	this.RecipeList = newRecipeList;
     }
     
     
