@@ -72,7 +72,7 @@ public class DBCron extends HttpServlet
 				    ofy().save().entity(ing).now();
 				    ofy().load().entity(ing);
 				    br.close();			    
-				}
+				} 
 				
 				List<com.googlecode.objectify.Key<Recipe>> keys2 = ofy().load().type(Recipe.class).keys().list();
 				ofy().delete().keys(keys2).now();
@@ -94,7 +94,7 @@ public class DBCron extends HttpServlet
 				    ofy().save().entity(rec).now();
 				    ofy().load().entity(rec);
 				    br.close();			    
-				}
+				} 
 			}
 		}
 		catch(Exception e)

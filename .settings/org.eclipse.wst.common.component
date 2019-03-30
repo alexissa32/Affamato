@@ -1,43 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
     <wb-module deploy-name="Guestbook">
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/java-json.jar"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <dependent-module archiveName="org.json.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/roosh/Documents/school/Spring2019/EE461L/Affamato/jar_files/org.json.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/java-json.jar"/>
         <property name="context-root" value="Guestbook"/>
         <property name="java-output-path" value="/Guestbook/build/classes"/>
     </wb-module>
-=======
-            
-    
-    <wb-module deploy-name="Guestbook">
-                        
-        
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                        
-        
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                        
-        
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/java-json.jar"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <dependent-module archiveName="org.json.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Justin Henry/eclipse-workspace/Affamato/jar_files/org.json.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-                        
-        
-        <property name="context-root" value="Guestbook"/>
-                        
-        
-        <property name="java-output-path" value="/Guestbook/build/classes"/>
-                    
-    
-    </wb-module>
-        
-
->>>>>>> fe93bea1c8f859bec371adebfb3fc9fd550f76f1
 </project-modules>
