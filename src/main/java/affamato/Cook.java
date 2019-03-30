@@ -43,6 +43,14 @@ public class Cook
     	this.GroceryList = this.GroceryList + ID + ",";
     }
     
+    public void addToPantry(String ID) {
+    	this.Pantry = this.Pantry + ID + ",";
+    }
+    
+    public void addToRecipeList(String RecipeName) {
+    	this.RecipeList = this.RecipeList + RecipeName + ";";
+    }
+    
     
     //ignore this method for now - just theoretical
     public ArrayList<Ingredient> getPantry() {

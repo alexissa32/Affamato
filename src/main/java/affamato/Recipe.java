@@ -27,7 +27,6 @@ public class Recipe implements Comparable<Recipe>
     @Index Boolean vegan;
     @Index Integer cookMinutes;
     @Index Integer prepMinutes;
-    @Index ArrayList<Integer> IngredientIDArray;
     @Index String instructions;
     
     //private Recipe() {}
@@ -53,11 +52,12 @@ public class Recipe implements Comparable<Recipe>
 			else this.instructions = "";
 			
 			JSONArray extIngredients = jo.getJSONArray("extendedIngredients");
-			this.IngredientIDArray = new ArrayList<Integer>();
+			/*this.IngredientIDArray = new ArrayList<Integer>();
 			for(int i = 0; i < extIngredients.length(); i++) 
 			{
 				IngredientIDArray.add(extIngredients.getInt(0));
 			}
+			*/
 			
 		} 
     	catch (JSONException e) 
