@@ -29,7 +29,7 @@ public class Recipe implements Comparable<Recipe>
     @Index Integer prepMinutes;
     @Index String instructions;
     
-    //private Recipe() {}
+    private Recipe() {}
     public Recipe(String json) 
     {
     	jsonString = json;

@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONStringer;
-
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -37,14 +33,20 @@ public class SearchServlet extends HttpServlet
 	{		
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
+		
+		String parameter = req.getParameter("q");
+		
 		List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 		StringBuilder sb = new StringBuilder();
 		for (Recipe r : recipes) 
 		{
-			sb.append(r.jsonString);
+			if (r.title.contains(parameter)) {
+			sb.append(r.title);
 			sb.append("\n\n");
+			}
 		}
 		resp.setContentType("text/plain");
+		resp.getWriter().println("Parameter: " + parameter);
 		resp.getWriter().println(sb.toString());
 		if (user != null) 
 		{
