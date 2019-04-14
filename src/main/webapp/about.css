@@ -5,18 +5,21 @@ body{
     background-attachment: fixed;
     background-size: cover;
 }
+
 #aboutbody{
     background-image: url("images/background2.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
+
 #dashboardbody{
     background-image: url("images/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
 }
+
 #pane{
 	font-family: TimesNewRoman;
 	color: white;
@@ -83,6 +86,7 @@ body{
   font-size: 17px;
   border: none;
 }
+
 .topnav .search-container button {
   float: right;
   padding: 6px 10px;
@@ -98,8 +102,8 @@ body{
   background: #ccc;
 }
 
-
 .vertnav {
+  font-size: 12pt;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -142,6 +146,7 @@ body{
   padding: 5px 50px 5px 10px;
   border: 1px solid #ccc;
 }
+
 .dropdown-check-list .anchor:after {
   position: absolute;
   content: "";

@@ -9,13 +9,14 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title> Welcome to Affamato</title>
 </head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link type="text/css" rel="stylesheet" href="about.css" />
 <body>
 <%
@@ -26,45 +27,18 @@
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>
   <a href="aboutPage.jsp">About</a>
-  
   <a style="float:right" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
-  
-
-  
 </div>
 <br>
 <br>
-<div id="pane" 	style="height:300px; width:400px; float: right; padding-top: 50px; padding-bottom: 80px; padding-right: 60px">
+<div id="pane" 	style="height:300px; width:500px; float: right; padding-top: 100px; padding-bottom: 80px; padding-right: 60px">
 <h1>Manage Your Pantry</h1>
 <h1>Discover New Recipes</h1>
 <h1>Optimize Your Savings</h1>
 </div>
 <%
     } else {
-    	Cookie cookie = null;
-    	Cookie[] cookies = null;
-        
-        // Get an array of Cookies associated with the this domain
-        cookies = request.getCookies();
-        if( cookies != null ) {            
-            for (int i = 0; i < cookies.length; i++) {
-               if(cookies[i].getName().equals("user")){
-            	   if(cookies[i].getValue().equals(user.toString())){
-            	   		cookie = cookies[i];
-            	   }
-               }
-            }
-         }
-        
-        if(cookie == null){
-        	//response.setHeader("CookHolderName", "${fn:escapeXml(CookHolderName)}");
-        	//response.setHeader("CookFlag" , "Cook");
-        	response.sendRedirect("/cook?CookFlag=Cook");
-        }
-        
-   	
 %>
-
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>
   <a href="aboutPage.jsp">About</a>
@@ -73,12 +47,14 @@
 </div>
 <br>
 <br>
-<div id="pane" 	style="height:300px; width:400px; float: right; padding-top: 50px; padding-bottom: 80px; padding-right: 60px">
+<div id="pane" 	style="height:300px; width:500px; float: right; padding-top: 100px; padding-bottom: 80px; padding-right: 60px">
 <h1>Manage Your Pantry</h1>
 <h1>Discover New Recipes</h1>
 <h1>Optimize Your Savings</h1>
 </div>
-<%} %>
 
+<%
+    } 
+%>
 </body>
 </html>

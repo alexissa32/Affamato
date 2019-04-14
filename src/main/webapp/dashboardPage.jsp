@@ -104,8 +104,8 @@ String[] tips = new String[numTips];
 <title>User Dashboard</title>
 </head>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link type="text/css" rel="stylesheet" href="about.css" />
   
 <body id="dashboardbody">
@@ -138,7 +138,8 @@ String[] tips = new String[numTips];
 	<div class="panel panel-info">
 	  <div class="panel-heading">Tip of the Day</div>
 	  <div class="panel-body"><%out.print("<p>" + tips[rando] + "</p>");%></div>
-    </div>
+
+	</div>
 </div>
 <%
     } else {

@@ -51,6 +51,8 @@ Link to the GitHub repo
 
     <title>Affamato by Team Falcon</title>
 </head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link type="text/css" rel="stylesheet" href="about.css" />
 <body id="aboutbody" background="white">
 <%
