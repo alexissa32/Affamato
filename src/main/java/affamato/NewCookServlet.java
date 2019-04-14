@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,16 +32,12 @@ public class NewCookServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException 
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
 	{
 		ObjectifyService.register(Cook.class);
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
-        if(user == null) {
-        userService.createLoginURL(req.getRequestURI());
-        user = userService.getCurrentUser();
-        }
-        String CookHolderName = req.getParameter("CookHolderName");
+        String CookHolderName = req.getParameter(user.toString());
         String CookFlag = req.getParameter("CookFlag");
         List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
         Cook Cook = null;
@@ -58,6 +55,8 @@ public class NewCookServlet extends HttpServlet {
         {
         	Cook newCook = new Cook(user, CookHolderName);
         	ofy().save().entity(newCook).now();
+        	Cookie cookie = new Cookie("user", "value");
+        	resp.addCookie(cookie);
         }
         else if(CookFlag.equals("unCook")) 
         {
