@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,6 +49,7 @@ public class SearchServlet extends HttpServlet
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Parameter: " + parameter);
 		resp.getWriter().println(sb.toString());
+		resp.addCookie(new Cookie("searchRecipeResult", sb.toString()));
 		if (user != null) 
 		{
 			//---------------------USER-BASED SEARCH aka filtering---------------------\\
