@@ -36,6 +36,7 @@ public class NewCookServlet extends HttpServlet {
 		ObjectifyService.register(Cook.class);
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
+        userService.createLoginURL(req.getRequestURI());
         String CookHolderName = req.getParameter("CookHolderName");
         String CookFlag = req.getParameter("CookFlag");
         List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
@@ -58,6 +59,6 @@ public class NewCookServlet extends HttpServlet {
         {
         	ofy().delete().entity(Cook).now();
         }
-        resp.sendRedirect("/landing.jsp?CookHolderName=\" + CookHolderName");
+        resp.sendRedirect("/landingPage.jsp?CookHolderName=\" + CookHolderName");
     }
 }

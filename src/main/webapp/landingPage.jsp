@@ -9,6 +9,7 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,19 @@
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>
   <a href="aboutPage.jsp">About</a>
-  <a style="float:right" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
+  <!-- 
+  <a style="float:right" href="<%//= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
+   -->
+  <form style="float:right" action="/cook" method="post">
+
+      <div><input type="submit" name="submit" value="Log In" /></div>
+
+      <input type="hidden" name="CookHolderName" value="${fn:escapeXml(CookHolderName)}"/>
+
+	  <input type="hidden" name="CookFlag" value= "Cook"/>
+	
+  </form>
+  
 </div>
 <br>
 <br>
@@ -36,6 +49,7 @@
 </div>
 <%
     } else {
+    	
 %>
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>
