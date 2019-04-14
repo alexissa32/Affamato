@@ -36,7 +36,10 @@ public class NewCookServlet extends HttpServlet {
 		ObjectifyService.register(Cook.class);
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
+        if(user == null) {
         userService.createLoginURL(req.getRequestURI());
+        user = userService.getCurrentUser();
+        }
         String CookHolderName = req.getParameter("CookHolderName");
         String CookFlag = req.getParameter("CookFlag");
         List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
