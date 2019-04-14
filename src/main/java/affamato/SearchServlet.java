@@ -35,7 +35,8 @@ public class SearchServlet extends HttpServlet
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
 	{		
-		resp.addCookie(new Cookie("test", "test2sdasdgq"));
+		Cookie cookie = new Cookie("test", "hereItIs");
+		resp.addCookie(cookie);
 		
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
@@ -67,7 +68,7 @@ public class SearchServlet extends HttpServlet
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Parameter: " + parameter);
 		resp.getWriter().println(sb.toString());
-		resp.addCookie(new Cookie("searchRecipeResult", mainObject.toString().replace('"', '\'')));
+		//resp.addCookie(new Cookie("searchRecipeResult", mainObject.toString().replace('"', '\'')));
 		
 		
 		if (user != null) 
