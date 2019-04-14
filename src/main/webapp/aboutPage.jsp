@@ -75,18 +75,20 @@ Link to the GitHub repo
 <%
 	}
 %>
-
 <br>
-<br>
-<h1 style="font-family:TimesNewRoman; color: white; text-shadow: 1px 1px darkRed;">About Affamato:</h1>
+<h1 style="font-family:TimesNewRoman; color: white; text-shadow: 3px 4px black;">About Affamato:</h1>
 <div id="pane2" 	style="height:150px;">
 <p>Affamato is a pantry/fridge assistant web application that helps users do a multitude of food related tasks.
-    It allows users to create grocery lists, track what items are in their pantry, track perish-ability of items,
+    It allows users to create grocery lists, track what items are in their pantry, track perishability of items,
     and recommend recipes based on what's in the pantry, different cuisine types, and different health choices.
     Our goal is to help users save money, reduce their food waste/go green, and broaden their palates.</p>
 </div>
+<div style="float: center">
+  <img src="images/roundLogo.png" height="300px" width="410px" alt=""/>
+</div> 
 <br>
-<h1 style="font-family:TimesNewRoman; color: white; text-shadow: 1px 1px darkRed;">Team Falcon Members:</h1>
+<br>
+<h1 style="font-family:TimesNewRoman; color: white; text-shadow: 3px 4px black;">Team Falcon Members:</h1>
 <div id="pane2" style="height:400px;">
 <h3>Cameron Clark:</h3>
 <img class="two" src="images/cameron.jpg"  width = "210" height = "275" hspace = "20px" lt=""/>
@@ -96,7 +98,7 @@ Link to the GitHub repo
     <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
-<br>
+
 <div id="pane2" style="height:250px;">
 <h3>Justin Henry:</h3>
 <img class="two" src="images/justin.png"  hspace = "20px" lt=""/>
@@ -106,7 +108,7 @@ Link to the GitHub repo
     <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
-<br>
+
 <div id="pane2" style="height:350px;">
 <h3>Alex Issa:</h3>
 <img class="two" src="images/alex.jpg"  width = "275" height = "250" hspace = "20px" lt=""/>
@@ -116,7 +118,7 @@ Link to the GitHub repo
     <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>    
-<br>
+
 <div id="pane2" style="height:300px;">
 <h3>Julia Rebello:</h3>
 <img class="two" src="images/julia.jpg" hspace = "20px" alt=""/>
@@ -126,7 +128,7 @@ Link to the GitHub repo
     <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div> 
-<br>
+
 <div id="pane2" style="height:265px;">
 <h3>Samir Riad:</h3>
 <img class="two" src="images/samir.jpg"  hspace = "20px" alt=""/>
@@ -136,7 +138,7 @@ Link to the GitHub repo
     <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
-<br>
+
 <div id="pane2" style="height:350px;">
 <h3>Rooshi Patidar:</h3>
 <img class="two" src="images/rooshi.jpg"  width = "275" height = "250" hspace = "20px" alt=""/>
@@ -146,7 +148,7 @@ Link to the GitHub repo
     <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
-<br>
+
 <div id="pane2" style="height:450px;">
 <h3>Commits:</h3>
 <h4 align="left" id="0Commits"></h4>
@@ -160,19 +162,19 @@ Link to the GitHub repo
 <h2 align="center">Total Number of Issues: 0</h2>
 <h2 align="center">Total Number of Unit Tests: 0</h2>
 </div>
-<br>
+
 <div id="pane2" style="height:175px;">
 <h3>Data:</h3>
 <p><a href="https://developer.yummly.com">Yummly API</a></p>
 <p><a href="https://spoonacular.com/food-api">Spoonacular API</a></p>
 <p>Yummly and Spoonacular were scraped using Python scripts written by Team Falcon</p>
 </div>
-<br>
+
 <div id="pane2" style="height:120px;">
 <h3>Github Repository:</h3>
 <p><a href="https://github.com/alexissa32/Affamato">Github</a></p>
 </div>
-<br>
+
 <div id="pane2" style="height:200px;">
 <h3>Tools:</h3>
 <p>In this phase, we obtained a URL for Affamato from Namecheap and set up team 
@@ -182,10 +184,7 @@ developed with DHTML, CSS, reactjs and bootstrap. Our database is set up as a Go
 Datastore. We have implemented scraping with Python scripts from Spoonacular and Yummly APIs. 
 So far we have scraped over 900 ingredients and 600 recipes.</p>
 </div>
-<br>
-<div style="float: center">
-  <img src="images/logo2.png" height="200px" width="320px" alt=""/>
-</div> 
+
 <div id="status"></div>
 </body>
 </html>
