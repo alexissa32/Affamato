@@ -53,6 +53,7 @@ public class NewCookServlet extends HttpServlet {
       	}
         //pass the string "Cook" to create a new cook
         //pass the string "unCook" to delete the cook that exists
+        try {
         if(CookFlag.equals("Cook") && (Cook==null)) 
         {
         	Cook newCook = new Cook(user, CookHolderName);
@@ -62,6 +63,11 @@ public class NewCookServlet extends HttpServlet {
         {
         	ofy().delete().entity(Cook).now();
         }
+        }
+        catch(Exception e) {
+        	e.printStackTrace();
+        }
+        
         resp.sendRedirect("/landingPage.jsp?CookHolderName=\" + CookHolderName");
     }
 }
