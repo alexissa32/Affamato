@@ -26,18 +26,10 @@
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>
   <a href="aboutPage.jsp">About</a>
-  <!-- 
-  <a style="float:right" href="<%//= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
-   -->
-  <form style="float:right" action="/cook" method="post">
+  
+  <a style="float:right" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
+  
 
-      <div><input type="submit" name="submit" value="Log In" /></div>
-
-      <input type="hidden" name="CookHolderName" value="${fn:escapeXml(CookHolderName)}"/>
-
-	  <input type="hidden" name="CookFlag" value= "Cook"/>
-	
-  </form>
   
 </div>
 <br>
@@ -48,8 +40,31 @@
 <h1>Optimize Your Savings</h1>
 </div>
 <%
-    } else {   	
+    } else {
+    	Cookie cookie = null;
+    	Cookie[] cookies = null;
+        
+        // Get an array of Cookies associated with the this domain
+        cookies = request.getCookies();
+        if( cookies != null ) {            
+            for (int i = 0; i < cookies.length; i++) {
+               if(cookies[i].getName().equals("user")){
+            	   if(cookies[i].getValue().equals(user.toString())){
+            	   		cookie = cookies[i];
+            	   }
+               }
+            }
+         }
+        
+        if(cookie == null){
+        	//response.setHeader("CookHolderName", "${fn:escapeXml(CookHolderName)}");
+        	//response.setHeader("CookFlag" , "Cook");
+        	response.sendRedirect("/cook?CookFlag=Cook");
+        }
+        
+   	
 %>
+
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>
   <a href="aboutPage.jsp">About</a>
@@ -63,9 +78,7 @@
 <h1>Discover New Recipes</h1>
 <h1>Optimize Your Savings</h1>
 </div>
+<%} %>
 
-<%
-    } 
-%>
 </body>
 </html>
