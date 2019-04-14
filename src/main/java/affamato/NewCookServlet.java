@@ -37,7 +37,7 @@ public class NewCookServlet extends HttpServlet {
 		ObjectifyService.register(Cook.class);
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
-        String CookHolderName = req.getParameter(user.toString());
+        String CookHolderName = user.toString();
         String CookFlag = req.getParameter("CookFlag");
         List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
         Cook Cook = null;
@@ -51,10 +51,13 @@ public class NewCookServlet extends HttpServlet {
         //pass the string "Cook" to create a new cook
         //pass the string "unCook" to delete the cook that exists
         try {
-        if(CookFlag.equals("Cook") && (Cook==null)) 
+        if(CookFlag.equals("Cook")) 
         {
-        	Cook newCook = new Cook(user, CookHolderName);
-        	ofy().save().entity(newCook).now();
+        	if(Cook == null)
+        	{
+	        	Cook newCook = new Cook(user, CookHolderName);
+	        	ofy().save().entity(newCook).now();
+        	}
         	Cookie cookie = new Cookie("user", "value");
         	resp.addCookie(cookie);
         }
@@ -67,6 +70,6 @@ public class NewCookServlet extends HttpServlet {
         	e.printStackTrace();
         }
         
-        resp.sendRedirect("/landingPage.jsp?CookHolderName=\" + CookHolderName");
+        resp.sendRedirect("/landingPage.jsp");
     }
 }
