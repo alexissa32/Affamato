@@ -35,6 +35,8 @@ public class SearchServlet extends HttpServlet
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
 	{		
+		resp.addCookie(new Cookie("test", "test2sdasdgq"));
+		
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		
@@ -49,7 +51,8 @@ public class SearchServlet extends HttpServlet
 		for (Recipe r : recipes) 
 		{
 			if (r.title.toLowerCase().contains(parameter.toLowerCase())) {
-				
+				sb.append(r.title);
+				sb.append("\n\n");
 				recipesJSONArray.put(new JSONObject().put("title", r.title)
 						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
