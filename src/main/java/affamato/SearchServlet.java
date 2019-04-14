@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -39,17 +42,31 @@ public class SearchServlet extends HttpServlet
 		
 		List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 		StringBuilder sb = new StringBuilder();
+		
+		JSONObject mainObject = new JSONObject();
+		JSONArray recipesJSONArray = new JSONArray();
+		
 		for (Recipe r : recipes) 
 		{
 			if (r.title.toLowerCase().contains(parameter.toLowerCase())) {
-			sb.append(r.title);
-			sb.append("\n\n");
+				
+				recipesJSONArray.put(new JSONObject().put("title", r.title)
+						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
+						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
+						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
+						.put("prepMinutes", r.prepMinutes));
+				
 			}
 		}
+		
+		mainObject.put("recipes", recipesJSONArray);
+		
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Parameter: " + parameter);
 		resp.getWriter().println(sb.toString());
-		resp.addCookie(new Cookie("searchRecipeResult", sb.toString()));
+		resp.addCookie(new Cookie("searchRecipeResult", mainObject.toString()));
+		
+		
 		if (user != null) 
 		{
 			//---------------------USER-BASED SEARCH aka filtering---------------------\\
