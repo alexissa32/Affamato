@@ -48,8 +48,7 @@
 <h1>Optimize Your Savings</h1>
 </div>
 <%
-    } else {
-    	
+    } else {   	
 %>
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>
