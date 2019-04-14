@@ -69,7 +69,9 @@ public class SearchServlet extends HttpServlet
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Parameter: " + parameter);
 		resp.getWriter().println(sb.toString());
-		resp.addCookie(new Cookie("searchRecipeResult", mainObject.toString().replace('"', '\'')).setPath("/"););
+		Cookie cookie2 = new Cookie("searchRecipeResult", mainObject.toString().replace('"', '\''));
+		cookie2.setPath("/");
+		//resp.addCookie(cookie2);
 		
 		
 		if (user != null) 
