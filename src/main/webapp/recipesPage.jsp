@@ -15,8 +15,10 @@
 <meta charset="UTF-8">
 <title>User Dashboard Recipes</title>
 </head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link type="text/css" rel="stylesheet" href="about.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body id="dashboardbody">
 <%
@@ -34,9 +36,9 @@
 	    <form action="/recipes" method="post">
 	      <input type="text" placeholder="Search..." name="search">
 	      <button type="submit"><i class="fa fa-search"></i></button>
-		    <div style="float:right; color:white; padding-top:10px" id="list1" class="dropdown-check-list" tabindex="100">
+		    <div style="float:right; color:black; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
 		        <span class="anchor">Select Filters</span>
-		        <ul class="items">
+		        <ul class="items" style="position: absolute;">
 		            <li><input type="checkbox" name="veggie"/>Vegetarian </li>
 		            <li><input type="checkbox" name="vegan"/>Vegan</li>
 		            <li><input type="checkbox" name="glutenf"/>Gluten-Free </li>
@@ -51,7 +53,6 @@
   	</div>
 
     <script type="text/javascript">
-
         var checkList = document.getElementById('list1');
         checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
             if (checkList.classList.contains('visible'))
@@ -79,6 +80,5 @@
     	response.sendRedirect("/landingPage.jsp");
     }
 %>
-
 </body>
 </html>

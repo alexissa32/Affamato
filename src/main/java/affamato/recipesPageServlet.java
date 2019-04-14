@@ -17,14 +17,23 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-@SuppressWarnings("serial")
 public class recipesPageServlet extends HttpServlet{
+	
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         UserService userService = UserServiceFactory.getUserService();
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         User user = userService.getCurrentUser();
     	String query = req.getParameter("search"); //this is working.
     	URL url = new URL("https://www.affamato.xyz/search?q="+query);
+    	String vegetarian = req.getParameter("veggie"); //these will either be on or null
+    	String vegan = req.getParameter("vegan");
+    	String glutenFree = req.getParameter("glutenf");
+    	String ketogenic = req.getParameter("keto");
+    	String dairyFree = req.getParameter("dairyf");
+    	String quick = req.getParameter("quickr");
+    	String useInventory = req.getParameter("useinv");
+    	String useExpiring = req.getParameter("useexp");
+    	
         // Get the input stream through URL Connection
     	
         //URLConnection con = url.openConnection();
