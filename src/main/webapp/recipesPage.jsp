@@ -36,9 +36,9 @@
 	    <form action="/recipes" method="post">
 	      <input type="text" placeholder="Search..." name="search">
 	      <button type="submit"><i class="fa fa-search"></i></button>
-		    <div style="float:right; color:black; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
+		    <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
 		        <span class="anchor">Select Filters</span>
-		        <ul class="items" style="position: absolute;">
+		        <ul class="items" style="position: absolute; color: black; background-color: white">
 		            <li><input type="checkbox" name="veggie"/>Vegetarian </li>
 		            <li><input type="checkbox" name="vegan"/>Vegan</li>
 		            <li><input type="checkbox" name="glutenf"/>Gluten-Free </li>
