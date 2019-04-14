@@ -46,9 +46,7 @@
         
         // Get an array of Cookies associated with the this domain
         cookies = request.getCookies();
-        if( cookies != null ) {
-            out.println("<h2> Found Cookies Name and Value</h2>");
-            
+        if( cookies != null ) {            
             for (int i = 0; i < cookies.length; i++) {
                if(cookies[i].getName().equals("user")){
             	   cookie = cookies[i];
