@@ -34,10 +34,10 @@ public class SearchServlet extends HttpServlet
     }
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
-	{		
-		Cookie cookie = new Cookie("test", "hereItIs");
-		cookie.setPath("/");
-		resp.addCookie(cookie);
+	{				
+		//Cookie cookie = new Cookie("test", "hereItIs");
+		//cookie.setPath("/");
+		//resp.addCookie(cookie);
 		
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
@@ -71,7 +71,7 @@ public class SearchServlet extends HttpServlet
 		resp.getWriter().println(sb.toString());
 		Cookie cookie2 = new Cookie("searchRecipeResult", mainObject.toString().replace('"', '\''));
 		cookie2.setPath("/");
-		//resp.addCookie(cookie2);
+		resp.addCookie(cookie2);
 		
 		
 		if (user != null) 
