@@ -18,6 +18,8 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link type="text/css" rel="stylesheet" href="about.css" />
 
 <body id="dashboardbody">
@@ -75,6 +77,56 @@
   <li><a class="active" href="recipesPage.jsp">My Recipes</a></li>
 </l>
 </div>
+<div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
+    <div class="panel panel-default">
+        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
+
+             <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body"> Get JSON</div>
+        </div>
+    </div>
+    <div class="panel panel-default template">
+        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
+
+             <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Collapsible Group Item #2 (template panel)
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">Get JSON</div>
+        </div>
+    </div>
+</div>
+<br />
+<button class="btn btn-lg btn-primary btn-add-panel" style="float: right"> <i class="glyphicon glyphicon-plus"></i> Add New Recipe?</button>
+
+<script>
+var $template = $(".template");
+
+var hash = 2;
+$(".btn-add-panel").on("click", function () {
+    var $newPanel = $template.clone();
+    $newPanel.find(".collapse").removeClass("in");
+    $newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
+        .text("Recipe #" + hash);
+    $newPanel.find(".panel-collapse").attr("id", hash);
+    $("#accordion").append($newPanel.fadeIn());
+});
+
+$(document).on('click', '.glyphicon-remove-circle', function () {
+    $(this).parents('.panel').get(0).remove();
+});
+</script> 
 <%
     } else {
     	response.sendRedirect("/landingPage.jsp");
