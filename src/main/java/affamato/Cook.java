@@ -3,9 +3,6 @@ package affamato;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
@@ -23,9 +20,10 @@ public class Cook
     @Index User user;
     //May have to use new fields that are organized
     //if ingredient and recipe end up just containing jsons
-    @Index JSONArray Pantry;
-    @Index JSONArray GroceryList;
-    @Index JSONArray RecipeList;
+    @Index String Pantry;
+    @Index String GroceryList;
+    @Index String RecipeList;
+
      
 
     private Cook() {}
@@ -33,9 +31,10 @@ public class Cook
     {
         this.user = user;
         this.CookHolder = Key.create(Cook.class, CookHolder);
-        this.RecipeList = new JSONArray();
-        this.Pantry = new JSONArray();
-        this.GroceryList = new JSONArray();
+        this.RecipeList = "";
+        this.Pantry = "";
+        this.GroceryList = "";
+
       
     }
     
@@ -44,7 +43,7 @@ public class Cook
         return user;
     }   
     
-    /*public void addToGroceryList(String ID) {
+    public void addToGroceryList(String ID) {
     	this.GroceryList = this.GroceryList + ID + ",";
     	
     }
@@ -159,7 +158,7 @@ public class Cook
     	
     	return groceryList;
     }
-    */
+    
     
     
     
