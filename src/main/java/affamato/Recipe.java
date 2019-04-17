@@ -69,6 +69,10 @@ public class Recipe implements Comparable<Recipe>
     	return 0;
     }
     
+    public JSONObject getJSON() {
+    	return JSON.getJSONObject(0);
+    }
+    
     //UNTESTED METHOD
     @Override public boolean equals(Object o) {
     	if(o instanceof Recipe) {
