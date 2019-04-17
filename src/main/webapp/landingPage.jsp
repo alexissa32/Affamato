@@ -9,6 +9,7 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,12 +55,27 @@
                }
             }
          }
-        
-        if(cookie == null){
+    	
+	
+    	
+    	Object lists = session.getAttribute("ListObject");
+    	
+        if(cookie == null || lists == null){
         	//response.setHeader("CookHolderName", "${fn:escapeXml(CookHolderName)}");
         	//response.setHeader("CookFlag" , "Cook");
         	response.sendRedirect("/cook?CookFlag=Cook");
-        }	
+        }
+        
+       	lists = session.getAttribute("ListObject");
+       	String str = lists.toString();
+
+       	
+
+
+    
+        
+       
+        
 %>
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>

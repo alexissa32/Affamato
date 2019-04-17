@@ -57,6 +57,7 @@ public class NewCookServlet extends HttpServlet {
         	{
 	        	Cook newCook = new Cook(user, CookHolderName);
 	        	ofy().save().entity(newCook).now();
+	        	Cook = newCook;
         	}
         	Cookie cookie = new Cookie("user", user.toString());
         	Cookie[] cookies = req.getCookies();
@@ -68,6 +69,9 @@ public class NewCookServlet extends HttpServlet {
         		}
         	}
         	resp.addCookie(cookie);
+        	//is this the best place to do this
+        	//instantiate the object first
+        	
         }
         else if(CookFlag.equals("unCook")) 
         {
@@ -78,6 +82,10 @@ public class NewCookServlet extends HttpServlet {
         	e.printStackTrace();
         }
         
+        listHolder listholder = new listHolder(Cook);
+        req.setAttribute("ListObject", Cook);
+    	req.getSession().setAttribute("ListObject", Cook);
+    	this.getServletConfig().getServletContext().setAttribute("ListObject", Cook);
         resp.sendRedirect("/landingPage.jsp");
     }
 }

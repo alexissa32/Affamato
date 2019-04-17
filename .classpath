@@ -20,6 +20,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="C:/Users/roosh/Documents/school/Spring2019/EE461L/Affamato/jar_files/org.json.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Justin Henry/eclipse-workspace/Affamato/jar_files/org.json.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
