@@ -15,11 +15,13 @@
 <meta charset="UTF-8">
 <title>User Dashboard Inventory</title>
 </head>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link type="text/css" rel="stylesheet" href="about.css" />
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body id="dashboardbody">
 <%
@@ -40,7 +42,7 @@
 	    </form>
   	</div>
 </div>
-<div class="vertnav"> 
+<div class="vertnav">
 <br>
 <l>
   <li><a href="dashboardPage.jsp">Welcome</a></li>
@@ -54,6 +56,41 @@
     	response.sendRedirect("/landingPage.jsp");
     }
 %>
+
+<div class="container" style="padding-left: 250px; width: 800px; float: left">
+  <h2>Inventory</h2>                           
+  <table class="table table-hover" style="background-color: #eff2f7; width: 800px">
+    <thead>
+      <tr>
+        <th style="width: 300px">Ingredient</th>
+        <th>Quantity</th>
+        <th style="width: 200px">Expiration Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Anna</td>
+        <td>hi</td>
+        <td style="width: 10px"><i class="fa fa-times-circle" aria-hidden="true"></i></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Debbie</td>
+        <td>boi</td>
+        <td style="width: 10px"><i class="fa fa-times-circle" aria-hidden="true"></i></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>John</td>
+        <td>hoi</td>
+        <td style="width: 10px"><i class="fa fa-times-circle" aria-hidden="true"></i></td>	
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-danger">Add</button>
+</div>
 
 </body>
 </html>
