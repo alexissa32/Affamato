@@ -28,6 +28,7 @@ public class Recipe implements Comparable<Recipe>
     @Index Integer cookMinutes;
     @Index Integer prepMinutes;
     @Index String instructions;
+    @Index JSONArray JSON;
     
     private Recipe() {}
     public Recipe(String json) 
@@ -37,6 +38,8 @@ public class Recipe implements Comparable<Recipe>
     	try 
     	{
 			jo = new JSONObject(json);
+			JSON = new JSONArray();
+			JSON.put(jo);
 			Object titleJSON = jo.get("title");
 			title = titleJSON.toString();
 			this.vegetarian = jo.getBoolean("vegetarian");

@@ -26,6 +26,7 @@ public class Ingredient implements Comparable<Ingredient>
     @Index String unit;
     @Index String unitShort;
     @Index String nutrientString;
+    @Index JSONArray JSON;
     
     //private Ingredient() {}
     public Ingredient(String json) 
@@ -33,6 +34,8 @@ public class Ingredient implements Comparable<Ingredient>
     	try {
     	this.jsonString = json;
     	JSONObject data = new JSONObject(json);
+    	JSON = new JSONArray();
+    	JSON.put(data);
     	this.spoonId = data.getLong("id");
     	this.ingredient = data.getString("name");
     	this.amount = data.getFloat("amount");
@@ -61,6 +64,10 @@ public class Ingredient implements Comparable<Ingredient>
     }
     
     public String getName() {return this.ingredient;}
+    
+    public JSONObject getJSON() {
+    	return JSON.getJSONObject(0);
+    }
     
     //UNTESTED METHOD
     @Override public boolean equals(Object o) {
