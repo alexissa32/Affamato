@@ -32,10 +32,6 @@ import com.google.appengine.api.users.UserServiceFactory;*/
 
 public class aboutPageServlet extends HttpServlet{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    	//UserService userService = UserServiceFactory.getUserService();
-        //DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        
-        
         resp.sendRedirect("/aboutPage.jsp");
     }
 

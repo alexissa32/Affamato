@@ -61,14 +61,12 @@ public class Recipe implements Comparable<Recipe>
 		}
     }
 
+    //Unimplemented
     @Override
-    public int compareTo(Recipe other) 
-    {
+    public int compareTo(Recipe other) {
     	return 0;
     }
-    
-   
-    
+     
     //UNTESTED METHOD
     @Override public boolean equals(Object o) {
     	if(o instanceof Recipe) {

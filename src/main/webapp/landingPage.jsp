@@ -54,24 +54,12 @@
             	   }
                }
             }
-         }
-    	
-
-    	
+        }	   	
         if(cookie == null){
         	//response.setHeader("CookHolderName", "${fn:escapeXml(CookHolderName)}");
         	//response.setHeader("CookFlag" , "Cook");
         	response.sendRedirect("/cook?CookFlag=Cook");
-        }
-        
-
-       	
-
-
-    
-        
-       
-        
+        }       
 %>
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>

@@ -146,6 +146,5 @@ String[] tips = new String[numTips];
     	response.sendRedirect("/landingPage.jsp");
     }
 %>
-
 </body>
 </html>
