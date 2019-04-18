@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import org.apache.http.client.utils.URIBuilder;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,11 +22,12 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class recipesPageServlet extends HttpServlet{
 	
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    	
         UserService userService = UserServiceFactory.getUserService();
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         User user = userService.getCurrentUser();
     	String query = req.getParameter("search"); //this is working.
-    	URL url = new URL("https://www.affamato.xyz/search?q="+query);
+    	//URL url = new URL("https://www.affamato.xyz/search?q="+query);
     	String vegetarian = req.getParameter("veggie"); //these will either be on or null
     	String vegan = req.getParameter("vegan");
     	String glutenFree = req.getParameter("glutenf");
@@ -40,8 +43,27 @@ public class recipesPageServlet extends HttpServlet{
         //InputStream is =con.getInputStream();
         //BufferedReader br = new BufferedReader(new InputStreamReader(is));
         //result = br.readLine();
+    	try {
+    	URIBuilder b = new URIBuilder("http://www.affamato.xyz/search"); 
+    	b.addParameter("q", query);
+    	b.addParameter("vegetarian", vegetarian);
+    	b.addParameter("vegan", vegan);
+    	b.addParameter("glutenFree", glutenFree);
+    	b.addParameter("ketogenic", ketogenic);
+    	b.addParameter("dairyFree", dairyFree);
+    	b.addParameter("quick", quick);
+    	b.addParameter("useInventory", useInventory);
+    	b.addParameter("useExpiring", useExpiring);
+    	
+    	resp.sendRedirect(b.toString());
+    	
+    	} catch (Exception e) {
+    		
+    		e.printStackTrace();
+    		resp.sendRedirect("/recipesPage.jsp");
+    	}
 	
-        resp.sendRedirect("/recipesPage.jsp");
+        
     }
 
 }

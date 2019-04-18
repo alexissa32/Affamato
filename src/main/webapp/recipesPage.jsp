@@ -38,7 +38,7 @@
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
 	    <form action="/recipes" method="post">
-	      <input type="text" placeholder="Search..." name="search">
+	      <input type="text" placeholder="Search Recipes" name="search">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 		    <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
 		        <span class="anchor">Select Filters</span>
