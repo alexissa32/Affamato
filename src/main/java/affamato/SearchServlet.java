@@ -47,12 +47,25 @@ public class SearchServlet extends HttpServlet
 		JSONObject mainObject = new JSONObject();
 		JSONArray recipesJSONArray = new JSONArray();
 		
-		for (Recipe r : recipes) 
+		int recipeCounter = 1;
+		int cookieCounter = 1;
+		
+		for (int i = 0; i < recipes.size(); i++) 
 		{
+			
+			Recipe r = recipes.get(i);
 			if (r.title.toLowerCase().contains(parameter.toLowerCase())) {
+				
+				if (recipeCounter%5 == 1 && recipeCounter != 1) {
+					
+					resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter++));
+					//reset cookie and JSON data
+					mainObject = new JSONObject();
+					recipesJSONArray = new JSONArray();
+				}
+				recipeCounter++;
 				sb.append(r.title);
 				sb.append("\n\n");
-				recipesJSONArray.put(new JSONObject().put("test", "test"));
 				recipesJSONArray.put(new JSONObject().put("title", r.title)
 						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
@@ -62,16 +75,15 @@ public class SearchServlet extends HttpServlet
 			}
 		}
 		
-		mainObject.put("recipes", recipesJSONArray);
-		
+		if (!recipesJSONArray.isEmpty()) {
+			resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
+		}
+				
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Parameter: " + parameter);
 		resp.getWriter().println(sb.toString());
 		
-		Cookie cookie2 = new Cookie("searchRecipeResult", mainObject.toString().replace('"', '\''));
-		cookie2.setPath("/search");
-		resp.addCookie(cookie2);
-		
+				
 		
 		if (user != null) 
 		{
@@ -86,4 +98,17 @@ public class SearchServlet extends HttpServlet
 			resp.getWriter().println("Hello non-user");
 		}	
 	}
+	
+	private Cookie addCookie(JSONObject mainObject, JSONArray recipesJSONArray, int cookieNumber) {
+		
+		//add current data
+		mainObject.put("recipes", recipesJSONArray);
+		Cookie cookie = new Cookie("recipes" + cookieNumber, mainObject.toString().replace('"', '\''));
+		cookie.setPath("/search");
+		
+		return cookie;
+		
+	}
+	
+	
 }
