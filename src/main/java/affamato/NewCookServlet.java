@@ -59,7 +59,7 @@ public class NewCookServlet extends HttpServlet {
 	        	ofy().save().entity(newCook).now();
 	        	Cook = newCook;
         	}
-        	Cookie cookie = new Cookie("user", user.toString());
+        	Cookie cookie = new Cookie("user", Cook.id.toString());
         	Cookie[] cookies = req.getCookies();
         	if(cookies != null) {
         		for(int i = 0; i < cookies.length; i++) {

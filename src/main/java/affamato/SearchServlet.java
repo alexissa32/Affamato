@@ -20,6 +20,7 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.googlecode.objectify.LoadResult;
 import com.googlecode.objectify.ObjectifyService;
 import affamato.Recipe;
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -40,7 +41,7 @@ public class SearchServlet extends HttpServlet
 		User user = userService.getCurrentUser();
 		
 		
-		//TODO: Get all the parameters to filter later
+		/*
 		String parameter = req.getParameter("q");
 		boolean vegetarian = Boolean.parseBoolean(req.getParameter("vegetarian"));
 		boolean glutenFree = Boolean.parseBoolean(req.getParameter("glutenFree"));
@@ -51,51 +52,78 @@ public class SearchServlet extends HttpServlet
 		boolean useInventory = Boolean.parseBoolean(req.getParameter("useInventory"));
 		boolean useExpiring = Boolean.parseBoolean(req.getParameter("useExpiring"));
 		FilterParameters param = new FilterParameters(vegetarian, glutenFree, dairyFree, ketogenic, vegan, quick, useInventory, useExpiring);
-		
-		
-		List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
-		StringBuilder sb = new StringBuilder();
-		
-		JSONObject mainObject = new JSONObject();
-		JSONArray recipesJSONArray = new JSONArray();
-		
-		int recipeCounter = 1;
-		int cookieCounter = 1;
-		
-		for (int i = 0; i < recipes.size(); i++) 
-		{
-			
-			Recipe r = recipes.get(i);
-			
-			//TODO: May need a better way to filter multiple filters
-			if (r.title.toLowerCase().contains(parameter.toLowerCase()) && param.valid(r)) {
-				
-				if (recipeCounter%5 == 1 && recipeCounter != 1) {
-					
-					resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter++));
-					//reset cookie and JSON data
-					mainObject = new JSONObject();
-					recipesJSONArray = new JSONArray();
-				}
-				recipeCounter++;
-				sb.append(r.title);
-				sb.append("\n\n");
-				recipesJSONArray.put(new JSONObject().put("title", r.title)
-						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
-						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
-						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
-						.put("prepMinutes", r.prepMinutes).put("id", r.id));
-				
+		*/
+		//all the parameters directly passed into the constructor
+		FilterParameters param = new FilterParameters(Boolean.parseBoolean(req.getParameter("vegetarian")), 
+				Boolean.parseBoolean(req.getParameter("glutenFree")), 
+				Boolean.parseBoolean(req.getParameter("dairyFree")), 
+				Boolean.parseBoolean(req.getParameter("ketogenic")), 
+				Boolean.parseBoolean(req.getParameter("vegan")), 
+				Boolean.parseBoolean(req.getParameter("quick")), 
+				Boolean.parseBoolean(req.getParameter("useInventory")), 
+				Boolean.parseBoolean(req.getParameter("useExpiring"))
+				);
+		Cookie[] cookies = req.getCookies();
+		Long id = null;
+		for(int i = 0; i < cookies.length; i++) {
+			if(cookies[i].getName().equals("user")) {
+				id = Long.parseLong(cookies[i].getValue());
+				break;
 			}
 		}
-		
-		if (!recipesJSONArray.isEmpty()) {
-			resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
-		}
+		if(id == null) {
+			resp.setContentType("text/plain");
+			resp.getWriter().println("You don't exist in the data store OR your cookie was not properly initialized. Please log out and log back in on the homepage.");
+		} 
+		else {
+			LoadResult<Cook> LRcook = ObjectifyService.ofy().load().type(Cook.class).id(id);
+			Cook cook = LRcook.now();
+			
+			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
+			StringBuilder sb = new StringBuilder();
+			
+			JSONObject mainObject = new JSONObject();
+			JSONArray recipesJSONArray = new JSONArray();
+			
+			int recipeCounter = 1;
+			int cookieCounter = 1;
+			
+			for (int i = 0; i < recipes.size(); i++) 
+			{
 				
-		resp.setContentType("text/plain");
-		resp.getWriter().println("Parameter: " + parameter);
-		resp.getWriter().println(sb.toString());
+				Recipe r = recipes.get(i);
+				
+				//TODO: May need a better way to filter multiple filters
+				if (r.title.toLowerCase().contains(parameter.toLowerCase()) && param.valid(r)) {
+					
+					if (recipeCounter%5 == 1 && recipeCounter != 1) {
+						
+						resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter++));
+						//reset cookie and JSON data
+						mainObject = new JSONObject();
+						recipesJSONArray = new JSONArray();
+					}
+					recipeCounter++;
+					sb.append(r.title);
+					sb.append("\n\n");
+					recipesJSONArray.put(new JSONObject().put("title", r.title)
+							.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
+							.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
+							.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
+							.put("prepMinutes", r.prepMinutes).put("id", r.id));
+					
+				}
+			}
+			
+			if (!recipesJSONArray.isEmpty()) {
+				resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
+			}
+					
+			resp.setContentType("text/plain");
+			resp.getWriter().println("Parameter: " + parameter);
+			resp.getWriter().println(sb.toString());
+			resp.getWriter().println("Your cook is " + cook.user.toString());
+		}
 		
 
 	}
