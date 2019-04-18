@@ -38,8 +38,8 @@
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
 	    <form action="/grocerylist" method="post">
-	      <input type="text" placeholder="Search..." name="search">
-	      <button type="submit"><i class="fa fa-search"></i></button>
+	      <input type="text" placeholder="Search..." name="search"> 
+	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 	    </form>
   	</div>
 </div>
@@ -58,7 +58,7 @@
 
              <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          Collapsible Group Item #1
+          Grocery List #1
         </a>
       </h4>
 
@@ -72,7 +72,7 @@
 
              <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Collapsible Group Item #2 (template panel)
+          Grocery List #2 
         </a>
       </h4>
 

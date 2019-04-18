@@ -13,9 +13,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Dashboard Recipes</title>
+<title>User Dashboard Recipes Page</title>
 </head>
-
+<%//credit to robschmuecker for code related to dynamic accordion panels 
+//http://jsfiddle.net/robschmuecker/m5TMF/163/
+%>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -37,7 +39,7 @@
     <div class="search-container">
 	    <form action="/recipes" method="post">
 	      <input type="text" placeholder="Search..." name="search">
-	      <button type="submit"><i class="fa fa-search"></i></button>
+	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 		    <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
 		        <span class="anchor">Select Filters</span>
 		        <ul class="items" style="position: absolute; color: black; background-color: white">
@@ -83,7 +85,7 @@
 
              <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          Collapsible Group Item #1
+          Recipe #1
         </a>
       </h4>
 
@@ -97,7 +99,7 @@
 
              <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Collapsible Group Item #2 (template panel)
+          Recipe #2 
         </a>
       </h4>
 

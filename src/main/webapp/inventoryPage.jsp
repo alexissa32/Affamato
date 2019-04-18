@@ -41,7 +41,7 @@
     <div class="search-container">
 	    <form action="/inventory" method="post">
 	      <input type="text" placeholder="Search..." name="search">
-	      <button type="submit"><i class="fa fa-search"></i></button>
+	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 	    </form>
   	</div>
 </div>

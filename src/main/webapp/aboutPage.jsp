@@ -36,9 +36,19 @@
                     document.getElementById("5Commits").innerHTML =
                         myJson[5].author.login + " has  <strong>" + myJson[5].total + "</strong> commits";
                 });
+            await fetch('https://api.github.com/repos/alexissa32/Affamato/issues')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(myJson2) {
+                document.getElementById("numIssues").innerHTML =
+                    "The Affamato repository has a total of <strong>" + myJson2[0].number + "</strong> user issues open.";
+
+            });
         };
         userAction();
     </script>
+
     <!-- Description of the site, its purpose, its intended users
 Group name
 Group members
@@ -97,7 +107,6 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering and Computer Architecture Cores <br />
     <strong>Responsibilities:</strong> Phase 2 Lead, Scraping APIs to Database <br />
     <strong>Bio:</strong> Cameron enjoys taking selfies at the EER.<br />
-    <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
 
@@ -107,7 +116,6 @@ Link to the GitHub repo
 <p><strong>Major:</strong> Electrical and Computer Engineering - Software Engineering and Design + Energy Systems and Renewable Energy <br />
     <strong>Responsibilities:</strong> Scraping APIs to Database <br />
     <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.<br />
-    <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
 
@@ -117,7 +125,6 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering Core<br />
     <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support <br />
     <strong>Bio:</strong> Alex enjoys complaining about the White House administration and spamming the group Slack at 3am.<br />
-    <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>    
 
@@ -127,7 +134,6 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
     <strong>Responsibilities:</strong> Front End and General Support <br />
     <strong>Bio:</strong> Born in Rio de Janeiro, Julia loves beaches and warm weather.<br />
-    <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div> 
 
@@ -137,7 +143,6 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
     <strong>Responsibilities:</strong> Front End <br />
     <strong>Bio:</strong> Samir likes to party responsibly.<br />
-    <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
 
@@ -147,12 +152,11 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE Software Engineering and Business Major <br />
     <strong>Responsibilities:</strong> Java Spring Backend <br />
     <strong>Bio:</strong> Rooshi is a black belt in Android Studio.<br />
-    <strong>Issues Raised:</strong> 0<br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
 
 <div id="pane2" style="height:450px;">
-<h3>Commits:</h3>
+<h3>Statistics:</h3>
 <h4 align="left" id="0Commits"></h4>
 <h4 align="left" id="1Commits"></h4>
 <h4 align="left" id="2Commits"></h4>
@@ -160,9 +164,9 @@ Link to the GitHub repo
 <h4 align="left" id="4Commits"></h4>
 <h4 align="left" id="5Commits"></h4>
 
-<h2 align="center" id="numCommits"></h2>
-<h2 align="center">Total Number of Issues: 0</h2>
-<h2 align="center">Total Number of Unit Tests: 0</h2>
+<h3 align="left" id="numCommits"></h3>
+<h3 align="left" id="numIssues"></h3>
+<h3 align="left">Total Number of Unit Tests: 0</h3>
 </div>
 
 <div id="pane2" style="height:175px;">
