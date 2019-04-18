@@ -52,7 +52,8 @@ public class SearchServlet extends HttpServlet
 			if (r.title.toLowerCase().contains(parameter.toLowerCase())) {
 				sb.append(r.title);
 				sb.append("\n\n");
-				recipesJSONArray.put(new JSONObject().put("title", r.title).put("test", "test")
+				recipesJSONArray.put(new JSONObject().put("test", "test"));
+				recipesJSONArray.put(new JSONObject().put("title", r.title)
 						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
