@@ -1,26 +1,26 @@
 @charset "UTF-8";
-body{
+body {
 	background-image: url("images/background8.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-#aboutbody{
+#aboutbody {
     background-image: url("images/background2.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-#dashboardbody{
+#dashboardbody {
     background-image: url("images/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
 }
 
-#pane{
+#pane {
 	font-family: TimesNewRoman;
 	color: white;
 	text-align: left;
@@ -31,11 +31,11 @@ body{
 	text-shadow: 3px 3px black;
 }
 
-#pane img{
+#pane img {
 	float: left;
 }
 
-#pane2{
+#pane2 {
 	font-family: TimesNewRoman;
 	color: white;
 	text-align: left;
@@ -47,10 +47,9 @@ body{
 
 }
 
-#pane2 img{
+#pane2 img {
 	float: left;
 }
-
 
 .topnav {
   overflow: hidden;

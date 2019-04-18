@@ -2,9 +2,8 @@ package affamato;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.json.JSONArray;
-
+import org.json.JSONObject;
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
@@ -12,7 +11,6 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Parent;
-
 
 @Entity
 public class Cook 
@@ -25,9 +23,7 @@ public class Cook
     @Index JSONArray Pantry;
     @Index JSONArray GroceryList;
     @Index JSONArray RecipeList;
-
-     
-
+    
     private Cook() {}
     public Cook(User user, String CookHolder) 
     {
@@ -35,16 +31,111 @@ public class Cook
         this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = new JSONArray();
         this.Pantry = new JSONArray();
-        this.GroceryList = new JSONArray();
-
-      
+        this.GroceryList = new JSONArray();   
     }
     
     public User getCook() 
     {
-        return user;
+        return user; //return this instead? and write a getUser()?
     }   
     
+    public void addToGroceryList(String ID) 
+    {
+    	this.GroceryList.put(new JSONObject(ID));
+    }
+    
+    //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
+    public void removeFromGroceryList(int pos) 
+    {
+    	JSONArray updated = new JSONArray();
+    	try
+    	{
+    		for(int x = 0; x < this.GroceryList.length(); x++)
+    		{
+    			if(x != pos)
+    			{
+    				updated.put(this.GroceryList.get(x));
+    			}
+    		}
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	this.GroceryList = updated;
+    }
+    
+    public void addToPantry(String ID) 
+    {
+    	this.Pantry.put(new JSONObject(ID));
+    }
+    
+    //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
+    public void removeFromPantry(int pos) 
+    {
+    	JSONArray updated = new JSONArray();
+    	try
+    	{
+    		for(int x = 0; x < this.Pantry.length(); x++)
+    		{
+    			if(x != pos)
+    			{
+    				updated.put(this.Pantry.get(x));
+    			}
+    		}
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	this.Pantry = updated;
+    }
+    
+    public void addToRecipeList(String RecipeName) 
+    {
+    	this.RecipeList.put(new JSONObject(RecipeName));
+    }
+    
+    //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
+    public void removeFromRecipeList(int pos) 
+    {
+    	JSONArray updated = new JSONArray();
+    	try
+    	{
+    		for(int x = 0; x < this.RecipeList.length(); x++)
+    		{
+    			if(x != pos)
+    			{
+    				updated.put(this.RecipeList.get(x));
+    			}
+    		}
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	this.RecipeList = updated;
+    }
+    
+    //UNTESTED METHOD correlated failures: getRecipeList(), getGroceryList()
+    public JSONArray getPantry() 
+    {
+    	return this.Pantry;
+    }
+       
+    //UNTESTED METHOD correlated failures: getPantry(), getGroceryList()
+    public JSONArray getRecipeList()
+    {
+    	return this.RecipeList;
+    }
+    
+    //UNTESTED METHOD correlated failures: getPantry(), getRecipeList()
+    public JSONArray getGroceryList()
+    {
+    	return this.GroceryList;
+    }
+}
+    //Old code for when we had strings
     /*
     public void addToGroceryList(String ID) {
     	this.GroceryList = this.GroceryList + ID + ",";
@@ -162,8 +253,3 @@ public class Cook
     	return groceryList;
     }
     */
-    
-    
-    
-    
-}

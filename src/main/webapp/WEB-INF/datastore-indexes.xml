@@ -22,4 +22,9 @@
         <property name="unitShort" direction="desc" />
         <property name="nutrition" direction="desc" />
     </datastore-index>
+    <datastore-index kind="Cook" ancestor="true" source="manual">
+        <property name="Pantry" direction="desc" />
+        <property name="GroceryList" direction="desc" />
+        <property name="RecipeList" direction="desc" />
+    </datastore-index>
 </datastore-indexes>
