@@ -14,6 +14,20 @@
 <head>
 
     <script>
+		var justinCommits = 0;
+		var juliaCommits = 0;
+		var cameronCommits = 0;
+		var alexCommits = 0;
+		var samirCommits = 0;
+		var rooshiCommits = 0;
+		
+    	var justinIssues = 0;
+    	var juliaIssues = 0;
+    	var cameronIssues = 0;
+    	var alexIssues = 0;
+    	var samirIssues = 0;
+    	var rooshiIssues = 0;
+    	
         const userAction = async () => {
 
             await fetch('https://api.github.com/repos/alexissa32/Affamato/stats/contributors')
@@ -23,27 +37,58 @@
                 .then(function(myJson) {
                     document.getElementById("numCommits").innerHTML =
                         "The Affamato repository has a total of <strong>" + (myJson[0].total+myJson[1].total+myJson[2].total+myJson[3].total+myJson[4].total+myJson[5].total) + "</strong> user commits.";
-                    document.getElementById("0Commits").innerHTML =
-                        myJson[0].author.login + " has  <strong>" + myJson[0].total + "</strong> commits";
-                    document.getElementById("1Commits").innerHTML =
-                        myJson[1].author.login + " has  <strong>" + myJson[1].total + "</strong> commits";
-                    document.getElementById("2Commits").innerHTML =
-                        myJson[2].author.login + " has  <strong>" + myJson[2].total + "</strong> commits";
-                    document.getElementById("3Commits").innerHTML =
-                        myJson[3].author.login + " has  <strong>" + myJson[3].total + "</strong> commits";
-                    document.getElementById("4Commits").innerHTML =
-                        myJson[4].author.login + " has  <strong>" + myJson[4].total + "</strong> commits";
-                    document.getElementById("5Commits").innerHTML =
-                        myJson[5].author.login + " has  <strong>" + myJson[5].total + "</strong> commits";
+                    
+      				 for( i = 0; i < 6 ; i++){
+ 						if(myJson[i].author.login == "JLRebello"){
+ 							juliaCommits = myJson[i].total;
+ 						} else if (myJson[i].author.login == "sriad123"){
+ 							samirCommits = myJson[i].total;
+ 						} else if (myJson[i].author.login == "justinhenry"){
+ 							justinCommits = myJson[i].total;
+ 						} else if (myJson[i].author.login == "cameronclark0821"){
+ 							cameronCommits = myJson[i].total;
+ 						} else if (myJson[i].author.login == "rooshimadethis"){
+ 							rooshiCommits = myJson[i].total;
+ 						} else if (myJson[i].author.login == "alexissa32"){
+ 							alexCommits = myJson[i].total;
+ 						}
+ 					}    
+ 				 document.getElementById("juliaCommits").innerHTML = "Commits: " + juliaCommits;
+ 				 document.getElementById("rooshiCommits").innerHTML = "Commits: " + rooshiCommits;
+ 				 document.getElementById("cameronCommits").innerHTML = "Commits: " + cameronCommits;
+ 				 document.getElementById("samirCommits").innerHTML = "Commits: " + samirCommits;
+ 				 document.getElementById("alexCommits").innerHTML = "Commits: " + alexCommits;
+ 				 document.getElementById("justinCommits").innerHTML = "Commits: " + justinCommits; 
                 });
+            
             await fetch('https://api.github.com/repos/alexissa32/Affamato/issues')
             .then(function(response) {
                 return response.json();
             })
             .then(function(myJson2) {
                 document.getElementById("numIssues").innerHTML =
-                    "The Affamato repository has a total of <strong>" + myJson2[0].number + "</strong> user issues open.";
-
+                 "The Affamato repository has a total of <strong>" + myJson2.length + "</strong> user issues open.";
+				 for( i = 0; i < myJson2.length ; i++){
+						if(myJson2[i].user.login == "JLRebello"){
+							juliaIssues++;
+						} else if (myJson2[i].user.login == "sriad123"){
+							samirIssues++;
+						} else if (myJson2[i].user.login == "justinhenry"){
+							justinIssues++;
+						} else if (myJson2[i].user.login == "cameronclark0821"){
+							cameronIssues++;
+						} else if (myJson2[i].user.login == "rooshimadethis"){
+							rooshiIssues++;
+						} else if (myJson2[i].user.login == "alexissa32"){
+							alexIssues++;
+						}
+					}
+				 document.getElementById("juliaIssues").innerHTML = "Issues Raised: " + juliaIssues;
+				 document.getElementById("rooshiIssues").innerHTML = "Issues Raised: " + rooshiIssues;
+				 document.getElementById("cameronIssues").innerHTML = "Issues Raised: " + cameronIssues;
+				 document.getElementById("samirIssues").innerHTML = "Issues Raised: " + samirIssues;
+				 document.getElementById("alexIssues").innerHTML = "Issues Raised: " + alexIssues;
+				 document.getElementById("justinIssues").innerHTML = "Issues Raised: " + justinIssues;
             });
         };
         userAction();
@@ -107,6 +152,8 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering and Computer Architecture Cores <br />
     <strong>Responsibilities:</strong> Phase 2 Lead, Scraping APIs to Database <br />
     <strong>Bio:</strong> Cameron enjoys taking selfies at the EER.<br />
+	<strong id="cameronIssues"></strong><br />
+	<strong id="cameronCommits"></strong><br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
 
@@ -116,6 +163,8 @@ Link to the GitHub repo
 <p><strong>Major:</strong> Electrical and Computer Engineering - Software Engineering and Design + Energy Systems and Renewable Energy <br />
     <strong>Responsibilities:</strong> Scraping APIs to Database <br />
     <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.<br />
+	<strong id="justinIssues"></strong><br />
+    <strong id="justinCommits"></strong><br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
 
@@ -125,6 +174,8 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering Core<br />
     <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support <br />
     <strong>Bio:</strong> Alex enjoys complaining about the White House administration and spamming the group Slack at 3am.<br />
+	<strong id="alexIssues"></strong><br />
+	<strong id="alexCommits"></strong><br />
     <strong>Unit Tests:</strong> 0</p>
 </div>    
 
@@ -134,6 +185,8 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
     <strong>Responsibilities:</strong> Front End and General Support <br />
     <strong>Bio:</strong> Born in Rio de Janeiro, Julia loves beaches and warm weather.<br />
+	<strong id="juliaIssues"></strong><br />
+	<strong id="juliaCommits"></strong><br />
     <strong>Unit Tests:</strong> 0</p>
 </div> 
 
@@ -143,6 +196,8 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
     <strong>Responsibilities:</strong> Front End <br />
     <strong>Bio:</strong> Samir likes to party responsibly.<br />
+	<strong id="samirIssues"></strong><br />
+	<strong id="samirCommits"></strong><br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
 
@@ -152,21 +207,17 @@ Link to the GitHub repo
 <p><strong>Major:</strong> ECE Software Engineering and Business Major <br />
     <strong>Responsibilities:</strong> Java Spring Backend <br />
     <strong>Bio:</strong> Rooshi is a black belt in Android Studio.<br />
+	<strong id="rooshiIssues"></strong><br />
+	<strong id="rooshiCommits"></strong><br />
     <strong>Unit Tests:</strong> 0</p>
 </div>
 
-<div id="pane2" style="height:450px;">
+<div id="pane2" style="height:180px;">
 <h3>Statistics:</h3>
-<h4 align="left" id="0Commits"></h4>
-<h4 align="left" id="1Commits"></h4>
-<h4 align="left" id="2Commits"></h4>
-<h4 align="left" id="3Commits"></h4>
-<h4 align="left" id="4Commits"></h4>
-<h4 align="left" id="5Commits"></h4>
 
-<h3 align="left" id="numCommits"></h3>
-<h3 align="left" id="numIssues"></h3>
-<h3 align="left">Total Number of Unit Tests: 0</h3>
+<h4 align="left" id="numCommits"></h4>
+<h4 align="left" id="numIssues"></h4>
+<h4 align="left">Total Number of Unit Tests: 0</h4>
 </div>
 
 <div id="pane2" style="height:175px;">
