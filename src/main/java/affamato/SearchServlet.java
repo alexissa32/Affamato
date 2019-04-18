@@ -42,6 +42,16 @@ public class SearchServlet extends HttpServlet
 		
 		//TODO: Get all the parameters to filter later
 		String parameter = req.getParameter("q");
+		boolean vegetarian = Boolean.parseBoolean(req.getParameter("vegetarian"));
+		boolean glutenFree = Boolean.parseBoolean(req.getParameter("glutenFree"));
+		boolean dairyFree = Boolean.parseBoolean(req.getParameter("dairyFree"));
+		boolean ketogenic = Boolean.parseBoolean(req.getParameter("ketogenic"));
+		boolean vegan = Boolean.parseBoolean(req.getParameter("vegan"));
+		boolean quick = Boolean.parseBoolean(req.getParameter("quick"));
+		boolean useInventory = Boolean.parseBoolean(req.getParameter("useInventory"));
+		boolean useExpiring = Boolean.parseBoolean(req.getParameter("useExpiring"));
+		FilterParameters param = new FilterParameters(vegetarian, glutenFree, dairyFree, ketogenic, vegan, quick, useInventory, useExpiring);
+		
 		
 		List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 		StringBuilder sb = new StringBuilder();
@@ -58,7 +68,7 @@ public class SearchServlet extends HttpServlet
 			Recipe r = recipes.get(i);
 			
 			//TODO: May need a better way to filter multiple filters
-			if (r.title.toLowerCase().contains(parameter.toLowerCase())) {
+			if (r.title.toLowerCase().contains(parameter.toLowerCase()) && param.valid(r)) {
 				
 				if (recipeCounter%5 == 1 && recipeCounter != 1) {
 					
