@@ -82,7 +82,7 @@ public class NewCookServlet extends HttpServlet {
         	e.printStackTrace();
         }
         
-        listHolder listholder = new listHolder(Cook);
+        //ListHolder listholder = new listHolder(Cook);
         req.setAttribute("ListObject", Cook);
     	req.getSession().setAttribute("ListObject", Cook);
     	this.getServletConfig().getServletContext().setAttribute("ListObject", Cook);

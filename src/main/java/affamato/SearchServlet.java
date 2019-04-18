@@ -35,9 +35,6 @@ public class SearchServlet extends HttpServlet
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
 	{				
-		//Cookie cookie = new Cookie("test", "hereItIs");
-		//cookie.setPath("/");
-		//resp.addCookie(cookie);
 		
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
@@ -55,7 +52,7 @@ public class SearchServlet extends HttpServlet
 			if (r.title.toLowerCase().contains(parameter.toLowerCase())) {
 				sb.append(r.title);
 				sb.append("\n\n");
-				recipesJSONArray.put(new JSONObject().put("title", r.title)
+				recipesJSONArray.put(new JSONObject().put("title", r.title).put("test", "test")
 						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
@@ -69,8 +66,9 @@ public class SearchServlet extends HttpServlet
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Parameter: " + parameter);
 		resp.getWriter().println(sb.toString());
+		
 		Cookie cookie2 = new Cookie("searchRecipeResult", mainObject.toString().replace('"', '\''));
-		cookie2.setPath("/");
+		cookie2.setPath("/search");
 		resp.addCookie(cookie2);
 		
 		
