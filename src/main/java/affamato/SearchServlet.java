@@ -70,14 +70,6 @@ public class SearchServlet extends HttpServlet
 			//TODO: May need a better way to filter multiple filters
 			if (r.title.toLowerCase().contains(parameter.toLowerCase()) && param.valid(r)) {
 				
-				if (recipeCounter%5 == 1 && recipeCounter != 1) {
-					
-					resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter++));
-					
-					//reset cookie and JSON data
-					mainObject = new JSONObject();
-					recipesJSONArray = new JSONArray();
-				}
 				recipeCounter++;
 				sb.append(r.title);
 				sb.append("\n\n");
@@ -86,6 +78,15 @@ public class SearchServlet extends HttpServlet
 						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
 						.put("prepMinutes", r.prepMinutes).put("id", r.id));
+				
+				//if (recipeCounter%1 == 1 && recipeCounter != 1) {
+					
+					resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter++));
+					
+					//reset cookie and JSON data
+					mainObject = new JSONObject();
+					recipesJSONArray = new JSONArray();
+				//}
 				
 			}
 		}
