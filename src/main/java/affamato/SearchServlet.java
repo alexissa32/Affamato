@@ -39,6 +39,8 @@ public class SearchServlet extends HttpServlet
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		
+		
+		//TODO: Get all the parameters to filter later
 		String parameter = req.getParameter("q");
 		
 		List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
@@ -54,6 +56,8 @@ public class SearchServlet extends HttpServlet
 		{
 			
 			Recipe r = recipes.get(i);
+			
+			//TODO: May need a better way to filter multiple filters
 			if (r.title.toLowerCase().contains(parameter.toLowerCase())) {
 				
 				if (recipeCounter%5 == 1 && recipeCounter != 1) {
@@ -70,7 +74,7 @@ public class SearchServlet extends HttpServlet
 						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
-						.put("prepMinutes", r.prepMinutes));
+						.put("prepMinutes", r.prepMinutes).put("id", r.id));
 				
 			}
 		}
@@ -83,27 +87,14 @@ public class SearchServlet extends HttpServlet
 		resp.getWriter().println("Parameter: " + parameter);
 		resp.getWriter().println(sb.toString());
 		
-				
-		
-		if (user != null) 
-		{
-			//---------------------USER-BASED SEARCH aka filtering---------------------\\
 
-			resp.getWriter().println("Hello," + user.getNickname());	
-		}
-		else 
-		{
-			//---------------------GENERIC SEARCH---------------------\\
-		
-			resp.getWriter().println("Hello non-user");
-		}	
 	}
 	
 	private Cookie addCookie(JSONObject mainObject, JSONArray recipesJSONArray, int cookieNumber) {
 		
 		//add current data
 		mainObject.put("recipes", recipesJSONArray);
-		Cookie cookie = new Cookie("recipes" + cookieNumber, mainObject.toString().replace('"', '\''));
+		Cookie cookie = new Cookie("recipes" + cookieNumber, mainObject.toString().replace('"', '^'));
 		cookie.setPath("/search");
 		
 		return cookie;
