@@ -46,14 +46,14 @@ public class recipesPageServlet extends HttpServlet{
     	try {
     	URIBuilder b = new URIBuilder("http://www.affamato.xyz/search"); 
     	b.addParameter("q", query);
-    	b.addParameter("vegetarian", vegetarian);
-    	b.addParameter("vegan", vegan);
-    	b.addParameter("glutenFree", glutenFree);
-    	b.addParameter("ketogenic", ketogenic);
-    	b.addParameter("dairyFree", dairyFree);
-    	b.addParameter("quick", quick);
-    	b.addParameter("useInventory", useInventory);
-    	b.addParameter("useExpiring", useExpiring);
+    	b.addParameter("vegetarian", vegetarian == null ? "false" : "true");
+    	b.addParameter("vegan", vegan == null ? "false" : "true");
+    	b.addParameter("glutenFree", glutenFree == null ? "false" : "true");
+    	b.addParameter("ketogenic", ketogenic == null ? "false" : "true");
+    	b.addParameter("dairyFree", dairyFree == null ? "false" : "true");
+    	b.addParameter("quick", quick == null ? "false" : "true");
+    	b.addParameter("useInventory", useInventory == null ? "false" : "true");
+    	b.addParameter("useExpiring", useExpiring == null ? "false" : "true");
     	
     	resp.sendRedirect(b.toString());
     	

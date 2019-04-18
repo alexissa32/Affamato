@@ -21,5 +21,16 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="jar_files/org.json.jar"/>
+	<classpathentry kind="lib" path="jar_files/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="jar_files/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="jar_files/fluent-hc-4.5.8.jar"/>
+	<classpathentry kind="lib" path="jar_files/httpclient-4.5.8.jar"/>
+	<classpathentry kind="lib" path="jar_files/httpclient-cache-4.5.8.jar"/>
+	<classpathentry kind="lib" path="jar_files/httpclient-osgi-4.5.8.jar"/>
+	<classpathentry kind="lib" path="jar_files/httpclient-win-4.5.8.jar"/>
+	<classpathentry kind="lib" path="jar_files/httpcore-4.4.11.jar"/>
+	<classpathentry kind="lib" path="jar_files/httpmime-4.5.8.jar"/>
+	<classpathentry kind="lib" path="jar_files/jna-4.5.2.jar"/>
+	<classpathentry kind="lib" path="jar_files/jna-platform-4.5.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

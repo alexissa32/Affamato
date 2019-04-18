@@ -12,6 +12,39 @@
         <dependent-module archiveName="org.json.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/org.json.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="httpclient-cache-4.5.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/httpclient-cache-4.5.8.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpcore-4.4.11.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/httpcore-4.4.11.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpclient-win-4.5.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/httpclient-win-4.5.8.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpclient-4.5.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/httpclient-4.5.8.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/commons-logging-1.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-codec-1.11.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/commons-codec-1.11.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fluent-hc-4.5.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/fluent-hc-4.5.8.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpmime-4.5.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/httpmime-4.5.8.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpclient-osgi-4.5.8.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/httpclient-osgi-4.5.8.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jna-platform-4.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/jna-platform-4.5.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jna-4.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/jna-4.5.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
                 
         <property name="context-root" value="Guestbook"/>
                 
