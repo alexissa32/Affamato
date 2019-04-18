@@ -56,18 +56,14 @@
             }
          }
     	
-	
+
     	
-    	Object lists = session.getAttribute("ListObject");
-    	
-        if(cookie == null || lists == null){
+        if(cookie == null){
         	//response.setHeader("CookHolderName", "${fn:escapeXml(CookHolderName)}");
         	//response.setHeader("CookFlag" , "Cook");
         	response.sendRedirect("/cook?CookFlag=Cook");
         }
         
-       	lists = session.getAttribute("ListObject");
-       	String str = lists.toString();
 
        	
 
