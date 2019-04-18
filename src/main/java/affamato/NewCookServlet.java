@@ -83,8 +83,8 @@ public class NewCookServlet extends HttpServlet {
         }
         
         //ListHolder listholder = new listHolder(Cook);
-        req.setAttribute("ListObject", Cook);
-    	req.getSession().setAttribute("ListObject", Cook);
+        //req.setAttribute("ListObject", Cook);
+    	//req.getSession().setAttribute("ListObject", Cook);
     	this.getServletConfig().getServletContext().setAttribute("ListObject", Cook);
         resp.sendRedirect("/landingPage.jsp");
     }
