@@ -63,6 +63,7 @@ public class SearchServlet extends HttpServlet
 				if (recipeCounter%5 == 1 && recipeCounter != 1) {
 					
 					resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter++));
+					
 					//reset cookie and JSON data
 					mainObject = new JSONObject();
 					recipesJSONArray = new JSONArray();
