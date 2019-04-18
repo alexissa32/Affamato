@@ -15,6 +15,9 @@
 <meta charset="UTF-8">
 <title>User Dashboard Inventory</title>
 </head>
+<%//credit to robschmuecker for code related to making the x button delete a row
+//http://jsfiddle.net/robschmuecker/m5TMF/163/
+%>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -51,20 +54,18 @@
   <li><a href="recipesPage.jsp">My Recipes</a></li>
 </l>
 </div>
-<%
-    } else {
-    	response.sendRedirect("/landingPage.jsp");
-    }
-%>
 
-<div class="container" style="padding-left: 250px; width: 800px; float: left">
-  <h2>Inventory</h2>                           
-  <table class="table table-hover" style="background-color: #eff2f7; width: 800px">
+<div class="container" style="padding-left: 250px; width: 1165px; float: left">
+  <h2 style="text-align:left;float:left;">Inventory</h2>
+  
+  <button type="button" class="btn btn-danger" style="margin-bottom: 10px; margin-top: 20px; text-align:right;float:right;" onclick="add()">Add Ingredient +</button>	
+  
+  <table id ="inventory_table" class="table table-hover" style="background-color: #eff2f7; width: 900px">
     <thead>
       <tr>
-        <th style="width: 300px">Ingredient</th>
+        <th style="width: 330px">Ingredient</th>
         <th>Quantity</th>
-        <th style="width: 200px">Expiration Date</th>
+        <th style="width: 250px">Expiration Date</th>
         <th></th>
       </tr>
     </thead>
@@ -85,12 +86,47 @@
         <td>3</td>
         <td>John</td>
         <td>hoi</td>
-        <td style="width: 10px"><i class="fa fa-times-circle" aria-hidden="true"></i></td>	
+        <td style="width: 10px"><i id="hi" class="fa fa-times-circle" aria-hidden="true"></i></td>
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-danger">Add</button>
+  <script type="text/javascript">
+  
+  	function add() {
+  		var table = document.getElementById("inventory_table");
+  		// Create an empty <tr> element and add it to the 1st position of the table:
+  		var row = table.insertRow(-1);
+
+  		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+  		var cell1 = row.insertCell(0);
+  		var cell2 = row.insertCell(1);
+  		var cell3 = row.insertCell(2);
+  		var cell4 = row.insertCell(3);
+  		var exitButton = document.getElementById("hi").cloneNode(true);
+
+  		// Add some text to the new cells:
+  		cell1.innerHTML = "NEW CELL1";
+  		cell2.innerHTML = "NEW CELL2";
+  		cell3.innerHTML = "bleh";
+  		cell4.appendChild(exitButton);
+  	}
+  </script>
 </div>
 
+<script>
+$(document).on('click', '.fa-times-circle', function () {
+	   $(this).closest('tr').remove()
+});
+</script> 
+
+
+<%
+    } else {
+    	response.sendRedirect("/landingPage.jsp");
+    }
+%>
+
+
+
 </body>
-</html>
+</html>;
