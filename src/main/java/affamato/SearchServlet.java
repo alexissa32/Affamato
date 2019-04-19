@@ -72,7 +72,7 @@ public class SearchServlet extends HttpServlet
 		Key<Cook> k = null;
 		for(int i = 0; i < cookies.length; i++) {
 			if(cookies[i].getName().equals("userKey")) {
-				k = Key.valueOf(cookies[i].getValue());
+				k = Key.create(cookies[i].getValue());
 				break;
 			}
 		}
@@ -84,6 +84,7 @@ public class SearchServlet extends HttpServlet
 			//Key k = Key.valueOf(parentKey);
 			//Cook cook = ObjectifyService.ofy().load().type(Cook.class).id(id).now();
 			Cook cook = ObjectifyService.ofy().load().key(k).now();
+			
 			
 			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 			StringBuilder sb = new StringBuilder();
