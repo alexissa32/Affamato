@@ -23,6 +23,10 @@ public class Cook
     @Index JSONArray Pantry;
     @Index JSONArray GroceryList;
     @Index JSONArray RecipeList;
+    @Index JSONArray PantrySearchResults;
+    @Index JSONArray GrocerySearchResults;
+    @Index JSONArray RecipeSearchResults;
+    
     
     private Cook() {}
     public Cook(User user, String CookHolder) 
@@ -31,23 +35,31 @@ public class Cook
         this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = new JSONArray();
         this.Pantry = new JSONArray();
-        this.GroceryList = new JSONArray();  
+        this.GroceryList = new JSONArray(); 
+        this.GrocerySearchResults = new JSONArray();
+        this.PantrySearchResults = new JSONArray();
+        this.RecipeSearchResults = new JSONArray();
     }
     
     public User getCook() 
     {
         return user; //return this instead? and write a getUser()?
     }   
+    private void saveCook() {
+    	ObjectifyService.ofy().save().entity(this).now();
+    }
     
     public void addToGroceryList(String ID) 
     {
     	this.GroceryList.put(new JSONObject(ID));
+    	this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
     public void removeFromGroceryList(int pos) 
     {
     	this.GroceryList.remove(pos);
+    	this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -70,12 +82,14 @@ public class Cook
     public void addToPantry(String ID) 
     {
     	this.Pantry.put(new JSONObject(ID));
+    	this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
     	this.Pantry.remove(pos);
+    	this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -98,12 +112,14 @@ public class Cook
     public void addToRecipeList(String RecipeName) 
     {
     	this.RecipeList.put(new JSONObject(RecipeName));
+    	this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
     	this.RecipeList.remove(pos);
+    	this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -141,12 +157,42 @@ public class Cook
     	return this.GroceryList;
     }
     
+    public JSONArray getPantrySearchResults() {
+    	return this.PantrySearchResults;
+    }
+
+    public JSONArray getGrocerySearchResults() {
+    	return this.GrocerySearchResults;
+    }
+
+    public JSONArray getRecipeSearchResults() {
+    	return this.RecipeSearchResults;
+    }
+
+    public void setPantrySearchResults(JSONArray results) {
+    	this.PantrySearchResults = results;
+    	this.saveCook();
+    }
+
+    public void setGrocerySearchResults(JSONArray results) {
+    	this.GrocerySearchResults = results;
+    	this.saveCook();
+    }
+
+    public void setRecipeSearchResults(JSONArray results) {
+    	this.RecipeSearchResults = results;
+    	this.saveCook();
+    }
+    
     //returns a Cook given the user
     //returns null if Cook does not exist
     public static Cook getCook(User user) {
     	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
         for(Cook cook : Cooks) {
-        	if(cook.equals(user)) return cook;
+        	if(cook.equals(user)) {
+        		ObjectifyService.ofy().load().entity(cook);
+        		return cook;
+        	}
         }
         return null;
         
