@@ -41,8 +41,9 @@ public class SearchServlet extends HttpServlet
 		User user = userService.getCurrentUser();
 		
 		
-		/*
+		
 		String parameter = req.getParameter("q");
+		/*
 		boolean vegetarian = Boolean.parseBoolean(req.getParameter("vegetarian"));
 		boolean glutenFree = Boolean.parseBoolean(req.getParameter("glutenFree"));
 		boolean dairyFree = Boolean.parseBoolean(req.getParameter("dairyFree"));
