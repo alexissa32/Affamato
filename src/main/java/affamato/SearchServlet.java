@@ -77,8 +77,8 @@ public class SearchServlet extends HttpServlet
 			resp.getWriter().println("You don't exist in the data store OR your cookie was not properly initialized. Please log out and log back in on the homepage.");
 		} 
 		else {
-			LoadResult<Cook> LRcook = ObjectifyService.ofy().load().type(Cook.class).id(id);
-			Cook cook = LRcook.now();
+			Cook cook = ObjectifyService.ofy().load().type(Cook.class).id(id).now();
+			//Cook cook = LRcook.now();
 			
 			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 			StringBuilder sb = new StringBuilder();
@@ -123,7 +123,15 @@ public class SearchServlet extends HttpServlet
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());
-			resp.getWriter().println("Your cook is " + cook.user.toString());
+			if(cook != null) {
+				resp.getWriter().println("null cook");
+			}
+			else if(cook.user == null) {
+				resp.getWriter().println("null user");
+			}
+			else {
+				resp.getWriter().println("Your cook is " + cook.user.toString());
+			}
 		}
 		
 
