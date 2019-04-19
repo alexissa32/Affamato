@@ -100,7 +100,7 @@
       </h4>
 
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
+        <div id="collapseOne" class="panel-collapse collapse ">
             <div class="panel-body"> Get JSON</div>
         </div>
     </div>
@@ -120,7 +120,6 @@
     </div>
 </div>
 <br />
-<button class="btn btn-lg btn-primary btn-add-panel" style="float: right"> <i class="glyphicon glyphicon-plus"></i> Add New Recipe?</button>
 
 <script>
 var $template = $(".template");
