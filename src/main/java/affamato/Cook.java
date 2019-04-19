@@ -138,7 +138,8 @@ public class Cook
     public static Cook getCook(User user) {
     	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
         int index = Cooks.indexOf(user);
-        return Cooks.get(index);
+        if(index != -1) return Cooks.get(index);
+        else return null;
         
     }
     
