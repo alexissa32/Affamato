@@ -40,23 +40,6 @@ public class NewCookServlet extends HttpServlet {
         String CookHolderName = user.toString();
         String CookFlag = req.getParameter("CookFlag");
         Cook cook = Cook.getCook(user);
-        /*
-        List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
-        int index = Cooks.indexOf(user);
-        Cook cook = Cooks.get(index);
-        */
-        /*
-        Cook Cook = null;
-        for(int i = 0; i < Cooks.size(); i++)
-        {
-      		if(Cooks.get(i).getCook().equals(user))
-      		{
-      			Cook = Cooks.get(i);
-      		}
-      	}
-        //pass the string "Cook" to create a new cook
-        //pass the string "unCook" to delete the cook that exists
-         */
         try {
         if(CookFlag.equals("Cook")) 
         {
@@ -66,26 +49,16 @@ public class NewCookServlet extends HttpServlet {
 	        	ofy().save().entity(newCook).now();
 	        	cook = newCook;
         	}
-        	Cookie cookieID = new Cookie("userID", cook.id.toString());
         	Cookie cookieName = new Cookie("user", user.toString());
-        	Cookie cookieKey = new Cookie("userKey", cook.CookHolder.getString());
         	Cookie[] cookies = req.getCookies();
         	if(cookies != null) {
         		for(int i = 0; i < cookies.length; i++) {
         			if(cookies[i].getName().equals("user")) {
         				cookies[i].setMaxAge(0);
         			}
-        			else if(cookies[i].getName().equals("userID")) {
-        				cookies[i].setMaxAge(0);
-        			}
-        			else if(cookies[i].getName().equals("userKey")) {
-        				cookies[i].setMaxAge(0);
-        			}
         		}
         	}
-        	resp.addCookie(cookieID);
         	resp.addCookie(cookieName);
-        	resp.addCookie(cookieKey);
         	
         	//is this the best place to do this
         	//instantiate the object first
@@ -100,10 +73,7 @@ public class NewCookServlet extends HttpServlet {
         	e.printStackTrace();
         }
         
-        //ListHolder listholder = new listHolder(Cook);
-        //req.setAttribute("ListObject", Cook);
-    	//req.getSession().setAttribute("ListObject", Cook);
-    	this.getServletConfig().getServletContext().setAttribute("ListObject", cook);
+
         resp.sendRedirect("/landingPage.jsp");
     }
 }
