@@ -61,6 +61,7 @@ public class NewCookServlet extends HttpServlet {
         	}
         	Cookie cookieID = new Cookie("userID", Cook.id.toString());
         	Cookie cookieName = new Cookie("user", user.toString());
+        	Cookie cookieKey = new Cookie("userKey", Cook.CookHolder.toString());
         	Cookie[] cookies = req.getCookies();
         	if(cookies != null) {
         		for(int i = 0; i < cookies.length; i++) {
@@ -70,10 +71,15 @@ public class NewCookServlet extends HttpServlet {
         			else if(cookies[i].getName().equals("userID")) {
         				cookies[i].setMaxAge(0);
         			}
+        			else if(cookies[i].getName().equals("userKey")) {
+        				cookies[i].setMaxAge(0);
+        			}
         		}
         	}
         	resp.addCookie(cookieID);
         	resp.addCookie(cookieName);
+        	resp.addCookie(cookieKey);
+        	
         	//is this the best place to do this
         	//instantiate the object first
         	
