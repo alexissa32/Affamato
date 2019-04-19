@@ -60,7 +60,7 @@ public class NewCookServlet extends HttpServlet {
 	        	Cook = newCook;
         	}
         	Cookie cookieID = new Cookie("userID", Cook.id.toString());
-        	Cookie cookieName = new Cookie("user", Cook.toString());
+        	Cookie cookieName = new Cookie("user", user.toString());
         	Cookie[] cookies = req.getCookies();
         	if(cookies != null) {
         		for(int i = 0; i < cookies.length; i++) {
