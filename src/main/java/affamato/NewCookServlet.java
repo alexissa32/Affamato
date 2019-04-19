@@ -61,7 +61,7 @@ public class NewCookServlet extends HttpServlet {
         	}
         	Cookie cookieID = new Cookie("userID", Cook.id.toString());
         	Cookie cookieName = new Cookie("user", user.toString());
-        	Cookie cookieKey = new Cookie("userKey", Cook.CookHolder.toString());
+        	Cookie cookieKey = new Cookie("userKey", Cook.CookHolder.getString());
         	Cookie[] cookies = req.getCookies();
         	if(cookies != null) {
         		for(int i = 0; i < cookies.length; i++) {
