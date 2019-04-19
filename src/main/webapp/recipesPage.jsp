@@ -39,24 +39,9 @@
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
 	    <form action="/recipes" method="post">
-	      <input type="text" placeholder="Search..." name="search">
+	      <input type="text" placeholder="Search for Recipes..." name="search">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
-	      <!--
-		     <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
-		        <span class="anchor">Select Filters</span>
-		        <ul class="items" style="position: absolute; color: black; background-color: white">
-		            <li><input type="checkbox" name="veggie"/>Vegetarian </li>
-		            <li><input type="checkbox" name="vegan"/>Vegan</li>
-		            <li><input type="checkbox" name="glutenf"/>Gluten-Free </li>
-		            <li><input type="checkbox" name="keto"/>Ketogenic </li>
-		            <li><input type="checkbox" name="dairyf"/>Dairy-Free </li>
-		            <li><input type="checkbox" name="quickr"/>Quick Recipe </li>
-		            <li><input type="checkbox" name="useinv"/>Use Inventory </li>
-		            <li><input type="checkbox" name="useexp"/>Use Expiring Items </li>
-		        </ul>
-	        </div> 
-	        -->
-	        
+        
 	        <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
         		<span class="anchor">Select Filter</span>
         		<ul id="items" class="items" style="position: absolute; color: black; background-color: white">
@@ -75,19 +60,6 @@
   	</div>
 
     <script type="text/javascript">
-       /* var checkList = document.getElementById('list1');
-        checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-            if (checkList.classList.contains('visible'))
-                checkList.classList.remove('visible');
-            else
-                checkList.classList.add('visible');
-        }
-
-        checkList.onblur = function(evt) {
-            checkList.classList.remove('visible');
-        }*/
-
-        //ATTEMPT 2
         
         var checkList = document.getElementById('list1');
 		var items = document.getElementById('items');
