@@ -15,6 +15,11 @@ import com.googlecode.objectify.annotation.Parent;
 @Entity
 public class Cook 
 {
+	static 
+	{
+	   ObjectifyService.register(Cook.class);
+	}
+	
     @Parent Key<Cook> CookHolder;
     @Id Long id;
     @Index User user;

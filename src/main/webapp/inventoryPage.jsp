@@ -14,7 +14,18 @@
 <head>
 <meta charset="UTF-8">
 <title>User Dashboard Inventory</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+
+</style>
+
 </head>
+
+  <link type="text/css" rel="stylesheet" href="inv.css" />
+
 <%//credit to robschmuecker for code related to making the x button delete a row
 //http://jsfiddle.net/robschmuecker/m5TMF/163/
 %>
@@ -58,7 +69,9 @@
 <div class="container" style="padding-left: 250px; width: 1165px; float: left">
   <h2 style="text-align:left;float:left;">Inventory</h2>
   
-  <button type="button" class="btn btn-danger" style="margin-bottom: 10px; margin-top: 20px; text-align:right;float:right;" onclick="add()">Add Ingredient +</button>	
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#id01" style="margin-bottom: 10px; margin-top: 20px; text-align:right;float:right;" 
+  	>Add Ingredient +</button>	
+  	
   
   <table id ="inventory_table" class="table table-hover" style="background-color: #eff2f7; width: 900px">
     <thead>
@@ -66,43 +79,26 @@
         <th style="width: 330px">Ingredient</th>
         <th>Quantity</th>
         <th style="width: 250px">Expiration Date</th>
-        <th></th>
+        <th><p hidden><i class="fa fa-times-circle" id="exitbutton" aria-hidden="true"></i></p></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Anna</td>
-        <td>hi</td>
-        <td style="width: 10px"><i class="fa fa-times-circle" aria-hidden="true"></i></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Debbie</td>
-        <td>boi</td>
-        <td style="width: 10px"><i class="fa fa-times-circle" aria-hidden="true"></i></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>John</td>
-        <td>hoi</td>
-        <td style="width: 10px"><i id="hi" class="fa fa-times-circle" aria-hidden="true"></i></td>
-      </tr>
     </tbody>
   </table>
   <script type="text/javascript">
   
   	function add() {
-  		var table = document.getElementById("inventory_table");
-  		// Create an empty <tr> element and add it to the 1st position of the table:
-  		var row = table.insertRow(-1);
 
+        modal.style.display = "none";
+  		 var table = document.getElementById("inventory_table");
+  		 var row = table.insertRow(-1);
+  		
   		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
   		var cell1 = row.insertCell(0);
   		var cell2 = row.insertCell(1);
   		var cell3 = row.insertCell(2);
   		var cell4 = row.insertCell(3);
-  		var exitButton = document.getElementById("hi").cloneNode(true);
+  		var exitButton = document.getElementById("exitbutton").cloneNode(true);
 
   		// Add some text to the new cells:
   		cell1.innerHTML = "NEW CELL1";
@@ -118,6 +114,67 @@ $(document).on('click', '.fa-times-circle', function () {
 	   $(this).closest('tr').remove()
 });
 </script> 
+
+<!-- Modal -->
+<div class="modal fade" id="id01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+       		<div class="form-group">
+        		<label for="IngredientInput">Ingredient</label>
+    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">
+    		</div>
+    		
+    	
+       		<div class="form-group">
+        		<div><label for="QuantityInput">Quantity</label></div>
+    			<input class="form-control" id="QuantityInput" placeholder="Enter quantity and units"  style="width: 355px; float:left; display: inline">
+    		                                      
+			  <div class="dropdown" style="display: inline; float:right">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">units
+			    <span class="caret"></span></button>
+			    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" >
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">oz</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">lb</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">g</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">kg</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">cups</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">gallons</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">liters</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">fl oz</a></li>
+			    </ul>
+			  </div>
+    		</div>
+    		
+       		<div class="form-group" style="padding-top: 35px">
+        		<label for="ExpirationInput">Expiration Date</label>
+    			<input class="form-control" id="ExpirationInput" placeholder="MM/DD/YYYY">
+    		</div>
+    		    		
+        </form>
+        <div>
+        <button type="button" class="btn btn-danger" style="margin-left: 397px; margin-top: 5px" onClick="add()" >Add</button>
+
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
 
 
 <%
