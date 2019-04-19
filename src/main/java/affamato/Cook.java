@@ -23,9 +23,6 @@ public class Cook
     @Index JSONArray Pantry;
     @Index JSONArray GroceryList;
     @Index JSONArray RecipeList;
-    @Index JSONArray PantrySearchResults;
-    @Index JSONArray GrocerySearchResults;
-    @Index JSONArray RecipeSearchResults;
     
     private Cook() {}
     public Cook(User user, String CookHolder) 
@@ -50,8 +47,6 @@ public class Cook
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
     public void removeFromGroceryList(int pos) 
     {
-    	this.GroceryList.remove(pos);
-    	/**
     	JSONArray updated = new JSONArray();
     	try
     	{
@@ -67,7 +62,7 @@ public class Cook
     	{
     		e.printStackTrace();
     	}
-    	this.GroceryList = updated; */
+    	this.GroceryList = updated;
     }
     
     public void addToPantry(String ID) 
@@ -78,8 +73,6 @@ public class Cook
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
-    	this.Pantry.remove(pos);
-    	/**
     	JSONArray updated = new JSONArray();
     	try
     	{
@@ -95,7 +88,7 @@ public class Cook
     	{
     		e.printStackTrace();
     	}
-    	this.Pantry = updated; */
+    	this.Pantry = updated;
     }
     
     public void addToRecipeList(String RecipeName) 
@@ -106,8 +99,6 @@ public class Cook
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
-    	this.RecipeList.remove(pos);
-    	/**
     	JSONArray updated = new JSONArray();
     	try
     	{
@@ -123,7 +114,7 @@ public class Cook
     	{
     		e.printStackTrace();
     	}
-    	this.RecipeList = updated; */
+    	this.RecipeList = updated;
     }
     
     //UNTESTED METHOD correlated failures: getRecipeList(), getGroceryList()
@@ -142,30 +133,6 @@ public class Cook
     public JSONArray getGroceryList()
     {
     	return this.GroceryList;
-    }
-    
-    public JSONArray getPantrySearchResults() {
-    	return this.PantrySearchResults;
-    }
-    
-    public JSONArray getGrocerySearchResults() {
-    	return this.GrocerySearchResults;
-    }
-    
-    public JSONArray getRecipeSearchResults() {
-    	return this.RecipeSearchResults;
-    }
-    
-    public void setPantrySearchResults(JSONArray results) {
-    	this.PantrySearchResults = results;
-    }
-    
-    public void setGrocerySearchResults(JSONArray results) {
-    	this.GrocerySearchResults = results;
-    }
-    
-    public void setRecipeSearchResults(JSONArray results) {
-    	this.RecipeSearchResults = results;
     }
     
     //returns a Cook given the user
