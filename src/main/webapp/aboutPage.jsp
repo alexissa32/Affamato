@@ -36,7 +36,7 @@
                 })
                 .then(function(myJson) {
                     document.getElementById("numCommits").innerHTML =
-                        "The Affamato repository has a total of <strong>" + (myJson[0].total+myJson[1].total+myJson[2].total+myJson[3].total+myJson[4].total+myJson[5].total) + "</strong> user commits.";
+                        "Total Number of Commits: <strong>" + (myJson[0].total+myJson[1].total+myJson[2].total+myJson[3].total+myJson[4].total+myJson[5].total)+ "</strong>";
                     
       				 for( i = 0; i < 6 ; i++){
  						if(myJson[i].author.login == "JLRebello"){
@@ -67,7 +67,7 @@
             })
             .then(function(myJson2) {
                 document.getElementById("numIssues").innerHTML =
-                 "The Affamato repository has a total of <strong>" + myJson2.length + "</strong> user issues open.";
+                 "Total Number of Issues: <strong>" + myJson2[0].number + "</strong>";
 				 for( i = 0; i < myJson2.length ; i++){
 						if(myJson2[i].user.login == "JLRebello"){
 							juliaIssues++;
@@ -213,7 +213,7 @@ Link to the GitHub repo
 </div>
 
 <div id="pane2" style="height:180px;">
-<h3>Statistics:</h3>
+<h3>Repository Statistics:</h3>
 
 <h4 align="left" id="numCommits"></h4>
 <h4 align="left" id="numIssues"></h4>
