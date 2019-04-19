@@ -17,12 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.googlecode.objectify.LoadResult;
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+import com.googlecode.objectify.annotation.Parent;
 import affamato.Recipe;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -66,28 +69,25 @@ public class SearchServlet extends HttpServlet
 				Boolean.parseBoolean(req.getParameter("useExpiring"))
 				);
 		Cookie[] cookies = req.getCookies();
-		Long id = null;
+		Key<Cook> k = null;
 		for(int i = 0; i < cookies.length; i++) {
-			if(cookies[i].getName().equals("userID")) {
-				id = Long.parseLong(cookies[i].getValue());
+			if(cookies[i].getName().equals("userKey")) {
+				k = Key.valueOf(cookies[i].getValue());
 				break;
 			}
 		}
-		if(id == null) {
+		if(k == null) {
 			resp.setContentType("text/plain");
 			resp.getWriter().println("You don't exist in the data store OR your cookie was not properly initialized. Please log out and log back in on the homepage.");
 		} 
 		else {
-			if(id != null) resp.getWriter().println("Your id is " + id.toString() + "before loading");
-			else resp.getWriter().println("id is null before loading");
-			Cook cook = ObjectifyService.ofy().load().type(Cook.class).id(id).now();
-			//Cook cook = LRcook.now();
-			if(id != null) resp.getWriter().println("Your id is " + id.toString() + "after loading");
-			else resp.getWriter().println("id is null after loading");
+			//Key k = Key.valueOf(parentKey);
+			//Cook cook = ObjectifyService.ofy().load().type(Cook.class).id(id).now();
+			Cook cook = ObjectifyService.ofy().load().key(k).now();
 			
 			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 			StringBuilder sb = new StringBuilder();
-			//Map<Recipe, Integer> 
+			
 			
 			JSONObject mainObject = new JSONObject();
 			JSONArray recipesJSONArray = new JSONArray();
@@ -100,7 +100,7 @@ public class SearchServlet extends HttpServlet
 				
 				Recipe r = recipes.get(i);
 				
-				//TODO: May need a better way to filter multiple filters
+				
 				if (r.title.toLowerCase().contains(parameter.toLowerCase()) && param.valid(r)) {
 					
 					if (recipeCounter%5 == 1 && recipeCounter != 1) {
@@ -129,8 +129,8 @@ public class SearchServlet extends HttpServlet
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());
-			if(id != null) resp.getWriter().println("Your id is " + id.toString() + "at the end");
-			else resp.getWriter().println("id is null at the end");
+			if(k != null) resp.getWriter().println("Your id is " + k.toString());
+			else resp.getWriter().println("key is null at the end");
 			if(cook == null) {
 				resp.getWriter().println("null cook");
 			}
