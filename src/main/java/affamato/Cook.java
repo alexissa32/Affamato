@@ -50,6 +50,8 @@ public class Cook
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
     public void removeFromGroceryList(int pos) 
     {
+    	this.GroceryList.remove(pos);
+    	/**
     	JSONArray updated = new JSONArray();
     	try
     	{
@@ -65,7 +67,7 @@ public class Cook
     	{
     		e.printStackTrace();
     	}
-    	this.GroceryList = updated;
+    	this.GroceryList = updated; */
     }
     
     public void addToPantry(String ID) 
@@ -76,6 +78,8 @@ public class Cook
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
+    	this.Pantry.remove(pos);
+    	/**
     	JSONArray updated = new JSONArray();
     	try
     	{
@@ -91,7 +95,7 @@ public class Cook
     	{
     		e.printStackTrace();
     	}
-    	this.Pantry = updated;
+    	this.Pantry = updated; */
     }
     
     public void addToRecipeList(String RecipeName) 
@@ -102,6 +106,8 @@ public class Cook
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
+    	this.RecipeList.remove(pos);
+    	/**
     	JSONArray updated = new JSONArray();
     	try
     	{
@@ -117,7 +123,7 @@ public class Cook
     	{
     		e.printStackTrace();
     	}
-    	this.RecipeList = updated;
+    	this.RecipeList = updated; */
     }
     
     //UNTESTED METHOD correlated failures: getRecipeList(), getGroceryList()
