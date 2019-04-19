@@ -149,7 +149,7 @@ Link to the GitHub repo
 <div id="pane2" style="height:400px;">
 <h3>Cameron Clark:</h3>
 <img class="two" src="images/cameron.jpg"  width = "210" height = "275" hspace = "20px" lt=""/>
-<p><strong>Major:</strong> ECE major with Software Engineering and Computer Architecture Cores <br />
+<p><strong>Major:</strong> ECE Major focusing on Software Engineering and Computer Architecture<br />
     <strong>Responsibilities:</strong> Phase 2 Lead, Scraping APIs to Database <br />
     <strong>Bio:</strong> Cameron enjoys taking selfies at the EER.<br />
 	<strong id="cameronIssues"></strong><br />
@@ -160,7 +160,7 @@ Link to the GitHub repo
 <div id="pane2" style="height:250px;">
 <h3>Justin Henry:</h3>
 <img class="two" src="images/justin.png"  hspace = "20px" lt=""/>
-<p><strong>Major:</strong> Electrical and Computer Engineering - Software Engineering and Design + Energy Systems and Renewable Energy <br />
+<p><strong>Major:</strong> ECE Major focusing on Software Engineering, Design and Energy Systems and Renewable Energy<br />
     <strong>Responsibilities:</strong> Scraping APIs to Database <br />
     <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.<br />
 	<strong id="justinIssues"></strong><br />
@@ -171,7 +171,7 @@ Link to the GitHub repo
 <div id="pane2" style="height:350px;">
 <h3>Alex Issa:</h3>
 <img class="two" src="images/alex.jpg"  width = "275" height = "250" hspace = "20px" lt=""/>
-<p><strong>Major:</strong> ECE major with Software Engineering Core<br />
+<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
     <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support <br />
     <strong>Bio:</strong> Alex enjoys complaining about the White House administration and spamming the group Slack at 3am.<br />
 	<strong id="alexIssues"></strong><br />
@@ -182,7 +182,7 @@ Link to the GitHub repo
 <div id="pane2" style="height:300px;">
 <h3>Julia Rebello:</h3>
 <img class="two" src="images/julia.jpg" hspace = "20px" alt=""/>
-<p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
+<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
     <strong>Responsibilities:</strong> Front End and General Support <br />
     <strong>Bio:</strong> Born in Rio de Janeiro, Julia loves beaches and warm weather.<br />
 	<strong id="juliaIssues"></strong><br />
@@ -193,7 +193,7 @@ Link to the GitHub repo
 <div id="pane2" style="height:265px;">
 <h3>Samir Riad:</h3>
 <img class="two" src="images/samir.jpg"  hspace = "20px" alt=""/>
-<p><strong>Major:</strong> ECE major with Software Engineering primary tech core <br />
+<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
     <strong>Responsibilities:</strong> Front End <br />
     <strong>Bio:</strong> Samir likes to party responsibly.<br />
 	<strong id="samirIssues"></strong><br />
@@ -204,7 +204,7 @@ Link to the GitHub repo
 <div id="pane2" style="height:350px;">
 <h3>Rooshi Patidar:</h3>
 <img class="two" src="images/rooshi.jpg"  width = "275" height = "250" hspace = "20px" alt=""/>
-<p><strong>Major:</strong> ECE Software Engineering and Business Major <br />
+<p><strong>Major:</strong> Business and ECE Major focusing on Software Engineering <br />
     <strong>Responsibilities:</strong> Java Spring Backend <br />
     <strong>Bio:</strong> Rooshi is a black belt in Android Studio.<br />
 	<strong id="rooshiIssues"></strong><br />
