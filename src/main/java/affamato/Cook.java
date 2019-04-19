@@ -45,16 +45,21 @@ public class Cook
     {
         return user; //return this instead? and write a getUser()?
     }   
+    private void saveCook() {
+    	ObjectifyService.ofy().save().entity(this).now();
+    }
     
     public void addToGroceryList(String ID) 
     {
     	this.GroceryList.put(new JSONObject(ID));
+    	this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
     public void removeFromGroceryList(int pos) 
     {
     	this.GroceryList.remove(pos);
+    	this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -77,12 +82,14 @@ public class Cook
     public void addToPantry(String ID) 
     {
     	this.Pantry.put(new JSONObject(ID));
+    	this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
     	this.Pantry.remove(pos);
+    	this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -105,12 +112,14 @@ public class Cook
     public void addToRecipeList(String RecipeName) 
     {
     	this.RecipeList.put(new JSONObject(RecipeName));
+    	this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
     	this.RecipeList.remove(pos);
+    	this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -162,14 +171,17 @@ public class Cook
 
     public void setPantrySearchResults(JSONArray results) {
     	this.PantrySearchResults = results;
+    	this.saveCook();
     }
 
     public void setGrocerySearchResults(JSONArray results) {
     	this.GrocerySearchResults = results;
+    	this.saveCook();
     }
 
     public void setRecipeSearchResults(JSONArray results) {
     	this.RecipeSearchResults = results;
+    	this.saveCook();
     }
     
     //returns a Cook given the user
