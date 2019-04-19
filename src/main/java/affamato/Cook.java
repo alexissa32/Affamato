@@ -31,7 +31,7 @@ public class Cook
         this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = new JSONArray();
         this.Pantry = new JSONArray();
-        this.GroceryList = new JSONArray();   
+        this.GroceryList = new JSONArray();  
     }
     
     public User getCook() 
@@ -133,6 +133,27 @@ public class Cook
     public JSONArray getGroceryList()
     {
     	return this.GroceryList;
+    }
+    
+    public static Cook getCook(User user) {
+    	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
+        int index = Cooks.indexOf(user);
+        return Cooks.get(index);
+        
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if(this == o) return true;
+    	if(o instanceof User) {
+    		User u = (User) o;
+    		if(this.user.toString().equals(u.toString())) return true;
+    	}
+    	else if(o instanceof Cook) {
+    		Cook c = (Cook) o;
+    		if(this.user.toString().equals(c.user.toString())) return true;
+    	}
+    	return false;
     }
 }
     //Old code for when we had strings

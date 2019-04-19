@@ -68,6 +68,7 @@ public class SearchServlet extends HttpServlet
 				Boolean.parseBoolean(req.getParameter("useInventory")), 
 				Boolean.parseBoolean(req.getParameter("useExpiring"))
 				);
+		/*
 		Cookie[] cookies = req.getCookies();
 		Key<Cook> k = null;
 		for(int i = 0; i < cookies.length; i++) {
@@ -76,14 +77,15 @@ public class SearchServlet extends HttpServlet
 				break;
 			}
 		}
-		if(k == null) {
+		*/
+		Cook cook = Cook.getCook(user);
+		if(cook == null) {
 			resp.setContentType("text/plain");
 			resp.getWriter().println("You don't exist in the data store OR your cookie was not properly initialized. Please log out and log back in on the homepage.");
 		} 
 		else {
 			//Key k = Key.valueOf(parentKey);
 			//Cook cook = ObjectifyService.ofy().load().type(Cook.class).id(id).now();
-			Cook cook = ObjectifyService.ofy().load().key(k).now();
 			
 			
 			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
@@ -130,8 +132,6 @@ public class SearchServlet extends HttpServlet
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());
-			if(k != null) resp.getWriter().println("Your id is " + k.toString());
-			else resp.getWriter().println("key is null at the end");
 			if(cook == null) {
 				resp.getWriter().println("null cook");
 			}
