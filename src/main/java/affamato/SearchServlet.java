@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -77,12 +78,16 @@ public class SearchServlet extends HttpServlet
 			resp.getWriter().println("You don't exist in the data store OR your cookie was not properly initialized. Please log out and log back in on the homepage.");
 		} 
 		else {
+			if(id != null) resp.getWriter().println("Your id is " + id.toString() + "before loading");
+			else resp.getWriter().println("id is null before loading");
 			Cook cook = ObjectifyService.ofy().load().type(Cook.class).id(id).now();
 			//Cook cook = LRcook.now();
-			
+			if(id != null) resp.getWriter().println("Your id is " + id.toString() + "after loading");
+			else resp.getWriter().println("id is null after loading");
 			
 			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 			StringBuilder sb = new StringBuilder();
+			//Map<Recipe, Integer> 
 			
 			JSONObject mainObject = new JSONObject();
 			JSONArray recipesJSONArray = new JSONArray();
@@ -124,7 +129,8 @@ public class SearchServlet extends HttpServlet
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());
-			if(id != null) resp.getWriter().println("Your id is " + id.toString());
+			if(id != null) resp.getWriter().println("Your id is " + id.toString() + "at the end");
+			else resp.getWriter().println("id is null at the end");
 			if(cook == null) {
 				resp.getWriter().println("null cook");
 			}
