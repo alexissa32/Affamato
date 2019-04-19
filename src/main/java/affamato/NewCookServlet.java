@@ -59,16 +59,21 @@ public class NewCookServlet extends HttpServlet {
 	        	ofy().save().entity(newCook).now();
 	        	Cook = newCook;
         	}
-        	Cookie cookie = new Cookie("user", Cook.id.toString());
+        	Cookie cookieID = new Cookie("userID", Cook.id.toString());
+        	Cookie cookieName = new Cookie("user", Cook.toString());
         	Cookie[] cookies = req.getCookies();
         	if(cookies != null) {
         		for(int i = 0; i < cookies.length; i++) {
         			if(cookies[i].getName().equals("user")) {
         				cookies[i].setMaxAge(0);
         			}
+        			else if(cookies[i].getName().equals("userID")) {
+        				cookies[i].setMaxAge(0);
+        			}
         		}
         	}
-        	resp.addCookie(cookie);
+        	resp.addCookie(cookieID);
+        	resp.addCookie(cookieName);
         	//is this the best place to do this
         	//instantiate the object first
         	
