@@ -68,27 +68,42 @@ public class Recipe implements Comparable<Recipe>
     }
      
     //UNTESTED METHOD
-    @Override public boolean equals(Object o) {
-    	if(o instanceof Recipe) {
+    @Override 
+    public boolean equals(Object o) 
+    {
+    	if(o instanceof Recipe) 
+    	{
     		Recipe r = (Recipe) o;
     		if(r.title.equals(this.title)) 
     		{
     			return true;
     		}
-    		else {
+    		else 
+    		{
     			return false;
     		}
-    	} else if(o instanceof String) {
+    	} 
+    	else if(o instanceof String) 
+    	{
     		String r = (String) o;
-    		if(r.equals(this.title)) {
+    		if(r.equals(this.title)) 
+    		{
     			return true;
     		}
-    		else {
+    		else 
+    		{
     			return false;
     		}
     	}
-    	else {
+    	else 
+    	{
     		return false;
     	}
+    }
+    
+    @Override
+    public int hashCode()
+    {
+    	return jsonString.hashCode();
     }
 } 

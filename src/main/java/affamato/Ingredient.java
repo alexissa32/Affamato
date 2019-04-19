@@ -89,6 +89,12 @@ public class Ingredient implements Comparable<Ingredient>
     }
     
     @Override
+    public int hashCode()
+    {
+    	return jsonString.hashCode();
+    }
+    
+    @Override
     public int compareTo(Ingredient other) 
     {
         return 0;
