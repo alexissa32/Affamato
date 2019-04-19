@@ -1,5 +1,6 @@
 package affamato;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -89,21 +90,26 @@ public class FilterParameters {
 		
 	}
 
+	final int DATE = 1;
 	public void calculateExpiring(Recipe r, Cook c) {
 		JSONArray ingredientArrays = new JSONObject(r.jsonString).getJSONArray("extendedIngredients");
 		JSONArray pantryArray = c.Pantry;
 		int pantryTotal = 0;
 		int matching = 0;
+		long today = Date.parse(new Date().toString());
 		for(int i = 0; i < pantryArray.length(); i++) {
 			pantryTotal++;
 			JSONArray pantry = pantryArray.getJSONArray(i);
 			String panName = pantry.getString(0);
-			for(int j = 0 ; j < ingredientArrays.length(); j++) {
-				JSONObject recipeIngredient = ingredientArrays.getJSONObject(j);
-				String ingName = recipeIngredient.getString("name");
-				if(panName.equals(ingName)) {
-					matching++;
-					break;
+			long exp = Date.parse(pantryArray.getString(DATE));
+			if( ( (exp - today) / 86400000 ) <= 3) {
+				for(int j = 0 ; j < ingredientArrays.length(); j++) {
+					JSONObject recipeIngredient = ingredientArrays.getJSONObject(j);
+					String ingName = recipeIngredient.getString("name");
+					if(panName.equals(ingName)) {
+						matching++;
+						break;
+					}
 				}
 			}
 		}
