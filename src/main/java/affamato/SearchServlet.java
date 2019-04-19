@@ -80,6 +80,7 @@ public class SearchServlet extends HttpServlet
 			Cook cook = ObjectifyService.ofy().load().type(Cook.class).id(id).now();
 			//Cook cook = LRcook.now();
 			
+			
 			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 			StringBuilder sb = new StringBuilder();
 			
@@ -123,7 +124,7 @@ public class SearchServlet extends HttpServlet
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());
-			if(cook != null) {
+			if(cook == null) {
 				resp.getWriter().println("null cook");
 			}
 			else if(cook.user == null) {
