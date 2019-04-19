@@ -94,6 +94,7 @@ public class SearchServlet extends HttpServlet
 			
 			JSONObject mainObject = new JSONObject();
 			JSONArray recipesJSONArray = new JSONArray();
+			JSONArray returnArray = new JSONArray();
 			
 			int recipeCounter = 1;
 			int cookieCounter = 1;
@@ -108,12 +109,13 @@ public class SearchServlet extends HttpServlet
 					
 					if (recipeCounter%5 == 1 && recipeCounter != 1) {
 						
-						resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter++));
+						//resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter++));
 						//reset cookie and JSON data
 						mainObject = new JSONObject();
 						recipesJSONArray = new JSONArray();
 					}
-					recipeCounter++;
+					recipeCounter++;				
+					returnArray.put(new JSONObject(r.jsonString));
 					sb.append(r.title);
 					sb.append("\n\n");
 					recipesJSONArray.put(new JSONObject().put("title", r.title)
@@ -128,7 +130,7 @@ public class SearchServlet extends HttpServlet
 			if (!recipesJSONArray.isEmpty()) {
 				resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
 			}
-					
+			cook.setRecipeSearchResults(returnArray);		
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());

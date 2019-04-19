@@ -23,6 +23,10 @@ public class Cook
     @Index JSONArray Pantry;
     @Index JSONArray GroceryList;
     @Index JSONArray RecipeList;
+    @Index JSONArray PantrySearchResults;
+    @Index JSONArray GrocerySearchResults;
+    @Index JSONArray RecipeSearchResults;
+    
     
     private Cook() {}
     public Cook(User user, String CookHolder) 
@@ -31,7 +35,10 @@ public class Cook
         this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = new JSONArray();
         this.Pantry = new JSONArray();
-        this.GroceryList = new JSONArray();  
+        this.GroceryList = new JSONArray(); 
+        this.GrocerySearchResults = new JSONArray();
+        this.PantrySearchResults = new JSONArray();
+        this.RecipeSearchResults = new JSONArray();
     }
     
     public User getCook() 
@@ -139,6 +146,30 @@ public class Cook
     public JSONArray getGroceryList()
     {
     	return this.GroceryList;
+    }
+    
+    public JSONArray getPantrySearchResults() {
+    	return this.PantrySearchResults;
+    }
+
+    public JSONArray getGrocerySearchResults() {
+    	return this.GrocerySearchResults;
+    }
+
+    public JSONArray getRecipeSearchResults() {
+    	return this.RecipeSearchResults;
+    }
+
+    public void setPantrySearchResults(JSONArray results) {
+    	this.PantrySearchResults = results;
+    }
+
+    public void setGrocerySearchResults(JSONArray results) {
+    	this.GrocerySearchResults = results;
+    }
+
+    public void setRecipeSearchResults(JSONArray results) {
+    	this.RecipeSearchResults = results;
     }
     
     //returns a Cook given the user
