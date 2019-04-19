@@ -189,7 +189,10 @@ public class Cook
     public static Cook getCook(User user) {
     	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
         for(Cook cook : Cooks) {
-        	if(cook.equals(user)) return cook;
+        	if(cook.equals(user)) {
+        		ObjectifyService.ofy().load().entity(cook);
+        		return cook;
+        	}
         }
         return null;
         
