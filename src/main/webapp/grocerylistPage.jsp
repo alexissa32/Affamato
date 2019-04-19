@@ -90,7 +90,7 @@
 <br />
 
 <div class="container">
-<button style="float: right" type="button"  class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i>Add New Grocery List</button>
+<button style="float: right" type="button"  class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i> Add New Grocery List</button>
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
