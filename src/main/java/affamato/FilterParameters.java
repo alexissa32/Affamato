@@ -1,4 +1,4 @@
-
+package affamato;
 public class FilterParameters {
 
 	boolean vegetarian;

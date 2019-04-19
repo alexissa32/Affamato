@@ -10,8 +10,11 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <%@ page import="java.util.*" %>
-
+<%@ page import = "java.util.Date" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
 <%
+SimpleDateFormat sdf = new SimpleDateFormat("EEEEEEEEE, MMMMMMMMM dd, yyyy");
+String date = sdf.format(new Date());
 int numTips = 80;
 Random rand = new Random();
 int rando = rand.nextInt(numTips);
@@ -110,6 +113,7 @@ String[] tips = new String[numTips];
   
 <body id="dashboardbody">
 <%
+
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     if (user != null) {
@@ -129,8 +133,10 @@ String[] tips = new String[numTips];
   <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
   <li><a href="recipesPage.jsp">My Recipes</a></li>
 </l>
-</div>
-<div class="container" style="width: 50%; float: right">
+</div> 
+
+<div class="container" style="width: 75%; float: right">
+  <p style="float: middle; font-size: 30px; padding-top: 25pt"><%=date%></p>
 	<div class="panel panel-danger">
 	  <div class="panel-heading">Expiration Alerts!</div>
 	  <div class="panel-body">List soon-to-be expiring ingredients and relevant dates here</div>
@@ -146,5 +152,6 @@ String[] tips = new String[numTips];
     	response.sendRedirect("/landingPage.jsp");
     }
 %>
+
 </body>
 </html>
