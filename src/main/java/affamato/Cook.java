@@ -135,14 +135,19 @@ public class Cook
     	return this.GroceryList;
     }
     
+    //returns a Cook given the user
+    //returns null if Cook does not exist
     public static Cook getCook(User user) {
     	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
-        int index = Cooks.indexOf(user);
-        if(index != -1) return Cooks.get(index);
-        else return null;
+        for(Cook cook : Cooks) {
+        	if(cook.equals(user)) return cook;
+        }
+        return null;
         
     }
     
+    //Cooks are equal if their users are equal
+    //accepts a user too
     @Override
     public boolean equals(Object o) {
     	if(this == o) return true;
