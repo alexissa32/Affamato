@@ -67,7 +67,7 @@ public class SearchServlet extends HttpServlet
 		Cookie[] cookies = req.getCookies();
 		Long id = null;
 		for(int i = 0; i < cookies.length; i++) {
-			if(cookies[i].getName().equals("user")) {
+			if(cookies[i].getName().equals("userID")) {
 				id = Long.parseLong(cookies[i].getValue());
 				break;
 			}
