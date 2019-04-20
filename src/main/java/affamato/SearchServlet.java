@@ -132,6 +132,7 @@ public class SearchServlet extends HttpServlet
 				resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
 			}
 			cook.setRecipeSearchResults(returnArray);
+			cook.GrocerySearchResults = cook.GrocerySearchResults.put(100);
 			ObjectifyService.ofy().save().entity(cook).now();
 			
 			resp.setContentType("text/plain");
