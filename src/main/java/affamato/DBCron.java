@@ -24,13 +24,13 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 
 @SuppressWarnings("serial")
 public class DBCron extends HttpServlet
-{
-	static 
-	{
-       ObjectifyService.register(Recipe.class);
-       ObjectifyService.register(Ingredient.class);
-       ObjectifyService.register(Cook.class);
-    }
+{	
+	//static 
+	//{
+    //   ObjectifyService.register(Recipe.class);
+    //   ObjectifyService.register(Ingredient.class);
+    //   ObjectifyService.register(Cook.class);
+    //}
 	
 	//private static final Logger _logger = Logger.getLogger(DBCron.class.getName()); //Debug
 	
