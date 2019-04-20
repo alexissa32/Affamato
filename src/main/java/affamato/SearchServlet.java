@@ -42,12 +42,9 @@ public class SearchServlet extends HttpServlet
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
 	{				
-		
+		ObjectifyService.register(Cook.class);
 		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
-		
-		
-		
+		User user = userService.getCurrentUser();	
 		String parameter = req.getParameter("q");
 		/*
 		boolean vegetarian = Boolean.parseBoolean(req.getParameter("vegetarian"));
