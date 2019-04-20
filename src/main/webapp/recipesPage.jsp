@@ -121,19 +121,18 @@
 </div>
 <br />
 
-<button style="float: right" type="button"  class="btn btn-lg btn-primary btn-add-panel" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i> Discover!</button>
-
+<button style="float:right" class="btn btn-lg btn-primary btn-add-panel"> <i class="glyphicon glyphicon-plus"></i>Discover!</button>
 
 <script>
 var $template = $(".template");
 
 var hash = 2;
-var surHash = 0;
 $(".btn-add-panel").on("click", function () {
     var $newPanel = $template.clone();
-    $newPanel.find(".collapse").removeClass("in");
-    $newPanel.find(".accordion-toggle").attr("href", "#" + (++surHash))
-        .text("Surprise Recipe #" + surHash);
+    $newPanel.find(".collapse").removeClass("in"); 
+    $newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
+    .text("Surprise Recipe #" + hash); 
+    
     $newPanel.find(".panel-collapse").attr("id", hash);
     $("#accordion").append($newPanel.fadeIn());
 });
