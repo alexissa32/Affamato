@@ -195,7 +195,7 @@ public class Cook
     	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
         for(Cook cook : Cooks) {
         	if(cook.equals(user)) {
-        		ObjectifyService.ofy().load().entity(cook);
+        		cook = ObjectifyService.ofy().load().entity(cook).now();
         		return cook;
         	}
         }
