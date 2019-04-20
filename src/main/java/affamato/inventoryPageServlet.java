@@ -33,6 +33,7 @@ public class inventoryPageServlet extends HttpServlet{
         //BufferedReader br = new BufferedReader(new InputStreamReader(is));
         //result = br.readLine();
 	
+    	//perhaps this needs to be in the JSP?
         Cook thisCook = Cook.getCook(user);
         JSONArray thisPantry = thisCook.getPantry();
         
