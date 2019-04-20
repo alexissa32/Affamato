@@ -208,24 +208,17 @@ public class Cook
     //returns null if Cook does not exist
     public static Cook getCook(User user) {
     	
-    	
-    	List<Cook> cooks = ObjectifyService.ofy().load().type(Cook.class).filter("user ==", user.toString()).list();
-    	if(cooks != null) {
-    		log.info("loaded cooks");
-    		return cooks.get(0);
-    	}
-    	log.info("cooks is null");
-    	return null;
-    	/*
     	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
         for(Cook cook : Cooks) {
         	if(cook.equals(user)) {
-        		cook = ObjectifyService.ofy().load().entity(cook).now();
+        		log.info("loaded cooks");
+        		//cook = ObjectifyService.ofy().load().entity(cook).now();
         		return cook;
         	}
         }
+        log.info("cooks is null");
         return null;
-        */
+        
         
     }
     
