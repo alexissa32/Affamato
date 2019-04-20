@@ -45,6 +45,7 @@ public class NewCookServlet extends HttpServlet {
         {
         	if(cook == null)
         	{
+        		resp.addCookie(new Cookie("createdNew", "new"));
 	        	Cook newCook = new Cook(user, CookHolderName);
 	        	ofy().save().entity(newCook).now();
 	        	cook = newCook;
@@ -54,6 +55,9 @@ public class NewCookServlet extends HttpServlet {
         	if(cookies != null) {
         		for(int i = 0; i < cookies.length; i++) {
         			if(cookies[i].getName().equals("user")) {
+        				cookies[i].setMaxAge(0);
+        			}
+        			else if(cookies[i].getName().equals("createdNew")) {
         				cookies[i].setMaxAge(0);
         			}
         		}
