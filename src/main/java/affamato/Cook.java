@@ -222,6 +222,24 @@ public class Cook
         
     }
     
+    //returns a Cook given the user
+    //returns null if Cook does not exist
+    public static Cook getCook(String user) {
+    	
+    	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
+        for(Cook cook : Cooks) {
+        	if(cook.equals(user)) {
+        		log.info("loaded cooks");
+        		//cook = ObjectifyService.ofy().load().entity(cook).now();
+        		return cook;
+        	}
+        }
+        log.info("cooks is null");
+        return null;
+        
+        
+    }
+    
     //Cooks are equal if their users are equal
     //accepts a user too
     @Override
@@ -234,6 +252,10 @@ public class Cook
     	else if(o instanceof Cook) {
     		Cook c = (Cook) o;
     		if(this.user.toString().equals(c.user.toString())) return true;
+    	}
+    	else if(o instanceof String) {
+    		String s = (String) o;
+    		if(this.user.toString().equals(s)) return true;
     	}
     	return false;
     }
