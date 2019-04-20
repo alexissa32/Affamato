@@ -25,16 +25,16 @@ import javax.servlet.http.HttpServletResponse;
  
 public class NewCookServlet extends HttpServlet {
 
-	static 
-	{
-		 ObjectifyService.register(Cook.class);
-	 }
+	//static 
+	//{
+	//	 ObjectifyService.register(Cook.class);
+	 //}
 
 	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
 	{
-		ObjectifyService.register(Cook.class);
+		//ObjectifyService.register(Cook.class);
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         String CookHolderName = user.toString();

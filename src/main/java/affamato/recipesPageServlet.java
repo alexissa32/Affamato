@@ -36,6 +36,7 @@ public class recipesPageServlet extends HttpServlet{
     	String quick = req.getParameter("quickr");
     	String useInventory = req.getParameter("useinv");
     	String useExpiring = req.getParameter("useexp");
+    	//String user = req.getParameter("user");
     	
         // Get the input stream through URL Connection
     	
@@ -45,6 +46,7 @@ public class recipesPageServlet extends HttpServlet{
         //result = br.readLine();
     	try {
     	URIBuilder b = new URIBuilder("http://www.affamato.xyz/search"); 
+    	b.addParameter("user", user.toString());
     	b.addParameter("q", query);
     	b.addParameter("vegetarian", vegetarian == null ? "false" : "true");
     	b.addParameter("vegan", vegan == null ? "false" : "true");

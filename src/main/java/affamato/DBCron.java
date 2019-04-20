@@ -29,6 +29,7 @@ public class DBCron extends HttpServlet
 	{
        ObjectifyService.register(Recipe.class);
        ObjectifyService.register(Ingredient.class);
+       ObjectifyService.register(Cook.class);
     }
 	
 	//private static final Logger _logger = Logger.getLogger(DBCron.class.getName()); //Debug

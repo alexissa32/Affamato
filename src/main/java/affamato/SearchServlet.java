@@ -33,16 +33,16 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 @SuppressWarnings("serial")
 public class SearchServlet extends HttpServlet 
 {
-	static 
-	{
-	ObjectifyService.register(Cook.class);
-       ObjectifyService.register(Recipe.class);
+	//static 
+	//{
+	//ObjectifyService.register(Cook.class);
+    //   ObjectifyService.register(Recipe.class);
        //ObjectifyService.register(Ingredient.class);
-    }
+    //}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
 	{				
-		ObjectifyService.register(Cook.class);
+		//ObjectifyService.register(Cook.class);
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();	
 		String parameter = req.getParameter("q");
@@ -70,13 +70,13 @@ public class SearchServlet extends HttpServlet
 		
 		//Cook cook = Cook.getCook(user);
 		Cookie[] cookies = req.getCookies();
-		String userString = null;
-		for(int i = 0 ; i < cookies.length ; i++) {
-			if(cookies[i].getName().equals("user")) {
-				userString = cookies[i].getValue();
-				break;
-			}
-		}
+		String userString = req.getParameter("user");
+		//for(int i = 0 ; i < cookies.length ; i++) {
+		//	if(cookies[i].getName().equals("user")) {
+		//		userString = cookies[i].getValue();
+		//		break;
+		//	}
+		//}
 		Cook cook = null;
 		if(userString != null) {
 			cook = Cook.getCook(userString);
@@ -131,8 +131,9 @@ public class SearchServlet extends HttpServlet
 			if (!recipesJSONArray.isEmpty()) {
 				resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
 			}
-			cook.RecipeSearchResults = returnArray;
+			cook.setRecipeSearchResults(returnArray);
 			ObjectifyService.ofy().save().entity(cook).now();
+			
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());

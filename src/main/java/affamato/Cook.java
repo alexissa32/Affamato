@@ -17,11 +17,6 @@ import com.googlecode.objectify.annotation.Parent;
 @Entity
 public class Cook 
 {
-	static 
-	{
-	   ObjectifyService.register(Cook.class);
-	}
-	
     @Parent Key<Cook> CookHolder;
     @Id Long id;
     @Index User user;
@@ -33,7 +28,6 @@ public class Cook
     @Index JSONArray PantrySearchResults;
     @Index JSONArray GrocerySearchResults;
     @Index JSONArray RecipeSearchResults;
-    
     
     private Cook() {}
     public Cook(User user, String CookHolder) 
@@ -52,14 +46,14 @@ public class Cook
     {
         return user; //return this instead? and write a getUser()?
     }   
-    private void saveCook() {
-    	ObjectifyService.ofy().save().entity(this).now();
-    }
+    //private void saveCook() {
+    //	ObjectifyService.ofy().save().entity(this).now();
+    //}
     
     public void addToGroceryList(String ID, int index) 
     {
     	this.GroceryLists.getJSONArray(index).put(new JSONObject(ID));
-    	this.saveCook();
+    	//this.saveCook();
     }
     
     public void newGroceryList() {
@@ -70,7 +64,7 @@ public class Cook
     public void removeGroceryList(int pos) 
     {
     	this.GroceryLists.remove(pos);
-    	this.saveCook();
+    	//this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -97,14 +91,14 @@ public class Cook
     public void addToPantry(String ID) 
     {
     	this.Pantry.put(new JSONObject(ID));
-    	this.saveCook();
+    	//this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
     	this.Pantry.remove(pos);
-    	this.saveCook();
+    	//this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -127,14 +121,14 @@ public class Cook
     public void addToRecipeList(String RecipeName) 
     {
     	this.RecipeList.put(new JSONObject(RecipeName));
-    	this.saveCook();
+    	//this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
     	this.RecipeList.remove(pos);
-    	this.saveCook();
+    	//this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -190,12 +184,12 @@ public class Cook
 
     public void setPantrySearchResults(JSONArray results) {
     	this.PantrySearchResults = results;
-    	this.saveCook();
+    	//this.saveCook();
     }
 
     public void setGrocerySearchResults(JSONArray results) {
     	this.GrocerySearchResults = results;
-    	this.saveCook();
+    	//this.saveCook();
     }
 
     public void setRecipeSearchResults(JSONArray results) {
