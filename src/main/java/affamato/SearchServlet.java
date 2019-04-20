@@ -68,7 +68,19 @@ public class SearchServlet extends HttpServlet
 				Boolean.parseBoolean(req.getParameter("useExpiring"))
 				);
 		
-		Cook cook = Cook.getCook(user);
+		//Cook cook = Cook.getCook(user);
+		Cookie[] cookies = req.getCookies();
+		String userString = null;
+		for(int i = 0 ; i < cookies.length ; i++) {
+			if(cookies[i].getName().equals("user")) {
+				userString = cookies[i].getValue();
+				break;
+			}
+		}
+		Cook cook = null;
+		if(userString != null) {
+			cook = Cook.getCook(userString);
+		}
 		if(cook == null) {
 			resp.setContentType("text/plain");
 			if(user == null) resp.getWriter().println("user is null");
