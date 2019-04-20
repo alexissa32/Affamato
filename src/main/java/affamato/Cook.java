@@ -56,7 +56,7 @@ public class Cook
     
     public void addToGroceryList(String ID, int index) 
     {
-    	((JSONArray) this.GroceryLists.get(index)).put(new JSONObject(ID));
+    	this.GroceryLists.getJSONArray(index).put(new JSONObject(ID));
     	this.saveCook();
     }
     
@@ -89,7 +89,7 @@ public class Cook
     }
     
     public void removeFromGroceryList(int pos, int index) {
-    	((JSONArray) this.GroceryLists.get(index)).remove(pos);
+    	this.GroceryLists.getJSONArray(index).remove(pos);
     }
     
     public void addToPantry(String ID) 
@@ -165,9 +165,13 @@ public class Cook
     }
     
     //UNTESTED METHOD correlated failures: getPantry(), getRecipeList()
-    public JSONArray getGroceryList()
+    public JSONArray getGroceryLists()
     {
-    	return this.GroceryList;
+    	return this.GroceryLists;
+    }
+    
+    public JSONArray getGroceryList(int pos) {
+    	return this.GroceryLists.getJSONArray(pos);
     }
     
     public JSONArray getPantrySearchResults() {
