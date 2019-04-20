@@ -71,6 +71,8 @@ public class SearchServlet extends HttpServlet
 		Cook cook = Cook.getCook(user);
 		if(cook == null) {
 			resp.setContentType("text/plain");
+			if(user == null) resp.getWriter().println("user is null");
+			else resp.getWriter().println("user is " + user.toString());
 			resp.getWriter().println("You don't exist in the data store OR your cookie was not properly initialized. Please log out and log back in on the homepage.");
 		} 
 		else {
