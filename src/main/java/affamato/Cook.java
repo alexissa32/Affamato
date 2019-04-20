@@ -26,7 +26,7 @@ public class Cook
     //May have to use new fields that are organized
     //if ingredient and recipe end up just containing jsons
     @Index JSONArray Pantry;
-    @Index JSONArray GroceryList;
+    @Index JSONArray GroceryLists;
     @Index JSONArray RecipeList;
     @Index JSONArray PantrySearchResults;
     @Index JSONArray GrocerySearchResults;
@@ -40,7 +40,7 @@ public class Cook
         this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = new JSONArray();
         this.Pantry = new JSONArray();
-        this.GroceryList = new JSONArray(); 
+        this.GroceryLists = new JSONArray(); 
         this.GrocerySearchResults = new JSONArray();
         this.PantrySearchResults = new JSONArray();
         this.RecipeSearchResults = new JSONArray();
@@ -54,16 +54,20 @@ public class Cook
     	ObjectifyService.ofy().save().entity(this).now();
     }
     
-    public void addToGroceryList(String ID) 
+    public void addToGroceryList(String ID, int index) 
     {
-    	this.GroceryList.put(new JSONObject(ID));
+    	((JSONArray) this.GroceryLists.get(index)).put(new JSONObject(ID));
     	this.saveCook();
     }
     
+    public void newGroceryList() {
+    	this.GroceryLists.put(new JSONArray());
+    }
+    
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
-    public void removeFromGroceryList(int pos) 
+    public void removeGroceryList(int pos) 
     {
-    	this.GroceryList.remove(pos);
+    	this.GroceryLists.remove(pos);
     	this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
@@ -82,6 +86,10 @@ public class Cook
     		e.printStackTrace();
     	}
     	this.GroceryList = updated; */
+    }
+    
+    public void removeFromGroceryList(int pos, int index) {
+    	((JSONArray) this.GroceryLists.get(index)).remove(pos);
     }
     
     public void addToPantry(String ID) 

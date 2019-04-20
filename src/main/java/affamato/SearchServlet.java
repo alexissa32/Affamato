@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -119,7 +120,7 @@ public class SearchServlet extends HttpServlet
 			if (!recipesJSONArray.isEmpty()) {
 				resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
 			}
-			cook.setRecipeSearchResults(returnArray);
+			cook.RecipeSearchResults = returnArray;
 			ObjectifyService.ofy().save().entity(cook).now();
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
