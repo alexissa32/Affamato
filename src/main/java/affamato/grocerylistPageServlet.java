@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.users.User;
@@ -33,7 +35,10 @@ public class grocerylistPageServlet extends HttpServlet{
         //BufferedReader br = new BufferedReader(new InputStreamReader(is));
         //result = br.readLine();
     	
-        
+    	//perhaps this needs to be in the JSP
+        Cook thisCook = Cook.getCook(user);
+        JSONArray thisLists = thisCook.getGroceryLists(); //returns a JSONArray of JSONArrays
+
         resp.sendRedirect("/grocerylistPage.jsp");
     }
 
