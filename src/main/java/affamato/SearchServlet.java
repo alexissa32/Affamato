@@ -34,6 +34,7 @@ public class SearchServlet extends HttpServlet
 {
 	static 
 	{
+	ObjectifyService.register(Cook.class);
        ObjectifyService.register(Recipe.class);
        //ObjectifyService.register(Ingredient.class);
     }
@@ -68,6 +69,7 @@ public class SearchServlet extends HttpServlet
 				Boolean.parseBoolean(req.getParameter("useInventory")), 
 				Boolean.parseBoolean(req.getParameter("useExpiring"))
 				);
+		
 		Cook cook = Cook.getCook(user);
 		if(cook == null) {
 			resp.setContentType("text/plain");
@@ -117,7 +119,8 @@ public class SearchServlet extends HttpServlet
 			if (!recipesJSONArray.isEmpty()) {
 				resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
 			}
-			cook.setRecipeSearchResults(returnArray);		
+			cook.setRecipeSearchResults(returnArray);
+			ObjectifyService.ofy().save().entity(cook).now();
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());
@@ -131,8 +134,6 @@ public class SearchServlet extends HttpServlet
 				resp.getWriter().println("Your cook is " + cook.user.toString());
 			}
 		}
-		
-
 	}
 	
 	private Cookie addCookie(JSONObject mainObject, JSONArray recipesJSONArray, int cookieNumber) {
@@ -141,7 +142,6 @@ public class SearchServlet extends HttpServlet
 		mainObject.put("recipes", recipesJSONArray);
 		Cookie cookie = new Cookie("recipes" + cookieNumber, mainObject.toString().replace('"', '^'));
 		cookie.setPath("/search");
-		
 		return cookie;
 		
 	}

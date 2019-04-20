@@ -186,7 +186,7 @@ public class Cook
 
     public void setRecipeSearchResults(JSONArray results) {
     	this.RecipeSearchResults = results;
-    	this.saveCook();
+    	//this.saveCook();
     }
     
     //returns a Cook given the user
