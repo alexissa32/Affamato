@@ -2,6 +2,8 @@ package affamato;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import com.google.appengine.api.users.User;
@@ -201,9 +203,20 @@ public class Cook
     	//this.saveCook();
     }
     
+    private static final Logger log = Logger.getLogger(Cook.class.getName());
     //returns a Cook given the user
     //returns null if Cook does not exist
     public static Cook getCook(User user) {
+    	
+    	
+    	List<Cook> cooks = ObjectifyService.ofy().load().type(Cook.class).filter("user ==", user.toString()).list();
+    	if(cooks != null) {
+    		log.info("loaded cooks");
+    		return cooks.get(0);
+    	}
+    	log.info("cooks is null");
+    	return null;
+    	/*
     	List<Cook> Cooks = ObjectifyService.ofy().load().type(Cook.class).list();
         for(Cook cook : Cooks) {
         	if(cook.equals(user)) {
@@ -212,6 +225,7 @@ public class Cook
         	}
         }
         return null;
+        */
         
     }
     
