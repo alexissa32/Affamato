@@ -13,7 +13,8 @@
 <%@ page import = "java.util.Date" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%
-SimpleDateFormat sdf = new SimpleDateFormat("EEEEEEEEE, MMMMMMMMM dd, yyyy");
+SimpleDateFormat sdf = new SimpleDateFormat("EEEEEEEEE, MMMMMMMMM dd, yyyy", Locale.getDefault());
+sdf.format(new Date());
 String date = sdf.format(new Date());
 int numTips = 80;
 Random rand = new Random();
