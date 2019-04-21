@@ -42,6 +42,27 @@ public class Cook
         this.RecipeSearchResults = new JSONArray();
     }
     
+    public Cook(Cook old, JSONArray newResults, String resultsType) {
+    	this.user = old.user;
+    	this.CookHolder = old.CookHolder;
+    	this.RecipeList = old.RecipeList;
+    	this.Pantry = old.Pantry;
+    	this.GroceryLists = old.GroceryLists;
+    	this.RecipeList = old.RecipeList;
+    	this.PantrySearchResults = old.PantrySearchResults;
+    	this.GrocerySearchResults = old.GrocerySearchResults;
+    	this.RecipeSearchResults = old.RecipeSearchResults;
+    	if(resultsType.equals("pantry")) {
+    		this.PantrySearchResults = newResults;
+    	}
+    	else if(resultsType.equals("grocery")) {
+    		this.GrocerySearchResults = newResults;
+    	}
+    	else if(resultsType.equals("recipe")) {
+    		this.RecipeSearchResults = newResults;
+    	}
+    }
+    
     public User getCook() 
     {
         return user; //return this instead? and write a getUser()?
