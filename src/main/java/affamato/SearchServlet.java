@@ -134,7 +134,9 @@ public class SearchServlet extends HttpServlet
 			cook.setRecipeSearchResults(returnArray);
 			cook.GrocerySearchResults = cook.GrocerySearchResults.put(100);
 			ObjectifyService.ofy().save().entity(cook).now();
-			
+			Cook newCook = new Cook(cook, returnArray, "recipe");
+			ObjectifyService.ofy().save().entity(newCook).now();
+			ObjectifyService.ofy().delete().entity(cook).now();
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());
