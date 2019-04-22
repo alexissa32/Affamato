@@ -3,6 +3,7 @@ package affamato;
 import org.apache.http.client.utils.URIBuilder;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,21 +17,25 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class ingredientsPageServlet extends HttpServlet{
 
+	private static final Logger log = Logger.getLogger(Cook.class.getName());
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         User user = userService.getCurrentUser();
         String query = req.getParameter("search");
-        
-        
+
         try {
         	URIBuilder b = new URIBuilder("http://www.affamato.xyz/search"); 
         	b.addParameter("type", "ingredient");
         	b.addParameter("user", user.toString());
         	b.addParameter("q", query);
-        	
+        	String redirectPage = req.getParameter("redirect");
+        	if(query == null) log.info("query is null");
         	resp.sendRedirect(b.toString());
-        	if(query == null) resp.getWriter().println("query is null");
+        	resp.sendRedirect("/landingPage.jsp");
+        
+        	
         	} catch (Exception e) {
         		
         		e.printStackTrace();

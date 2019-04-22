@@ -39,6 +39,7 @@ public class SearchServlet extends HttpServlet
     //   ObjectifyService.register(Recipe.class);
        //ObjectifyService.register(Ingredient.class);
     //}
+	private static final Logger log = Logger.getLogger(Cook.class.getName());
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException 
 	{				
@@ -60,8 +61,12 @@ public class SearchServlet extends HttpServlet
 		*/
 		//all the parameters directly passed into the constructor
 		FilterParameters param = null;
-		if(type == null) return;
+		if(type == null) {
+			log.info("invalid request. Set type parameter");
+			return;
+		}
 		if(type.equals("recipe")) {
+			log.info("recipe");
 			param = new FilterParameters(Boolean.parseBoolean(req.getParameter("vegetarian")), 
 					Boolean.parseBoolean(req.getParameter("glutenFree")), 
 					Boolean.parseBoolean(req.getParameter("dairyFree")), 
@@ -73,6 +78,7 @@ public class SearchServlet extends HttpServlet
 					);
 		}
 		else if(type.equals("ingredient")) {
+			log.info("ingredient");
 			//if any initialization for ingredient is required
 		}
 		else {
@@ -147,12 +153,15 @@ public class SearchServlet extends HttpServlet
 			if(type.equals("recipe")) {
 				ja = Recipe.searchRecipe(parameter, param, cook);
 				cook.setRecipeSearchResults(ja);
+				ObjectifyService.ofy().save().entity(cook).now();
+				resp.sendRedirect("/recipesPage.jsp");
 			}
 			else {
 				ja = Ingredient.searchIngredient(parameter);
 				cook.setPantrySearchResults(ja);
+				ObjectifyService.ofy().save().entity(cook).now();
 			}
-			ObjectifyService.ofy().save().entity(cook).now();
+			/*
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(ja.toString());
@@ -166,6 +175,7 @@ public class SearchServlet extends HttpServlet
 			else {
 				resp.getWriter().println("Your cook is " + cook.user.toString());
 			}
+			*/
 		}
 	}
 	
