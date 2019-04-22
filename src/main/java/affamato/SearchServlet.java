@@ -156,6 +156,7 @@ public class SearchServlet extends HttpServlet
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(ja.toString());
+			if(parameter == null) resp.getWriter().println("search parameter null");
 			if(cook == null) {
 				resp.getWriter().println("null cook");
 			}

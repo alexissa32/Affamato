@@ -115,6 +115,7 @@ public class Ingredient implements Comparable<Ingredient>
     
     public static JSONArray searchIngredient(String search) {
     	JSONArray returner = new JSONArray();
+    	if(search == null) return returner;
     	List<Ingredient> ingredients = ObjectifyService.ofy().load().type(Ingredient.class).list();
     	for(Ingredient ing : ingredients) {
     		if(search.toLowerCase().contains(ing.getName().toLowerCase())) {
