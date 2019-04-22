@@ -60,7 +60,10 @@ public class SearchServlet extends HttpServlet
 		FilterParameters param = new FilterParameters(vegetarian, glutenFree, dairyFree, ketogenic, vegan, quick, useInventory, useExpiring);
 		*/
 		//all the parameters directly passed into the constructor
-    	
+    	if(parameter == null) {
+    		resp.getWriter().println("search box passed null?");
+    		return;
+    	}
 		FilterParameters param = null;
 		if(type == null) {
 			log.info("invalid request. Set type parameter");
@@ -77,6 +80,10 @@ public class SearchServlet extends HttpServlet
 					Boolean.parseBoolean(req.getParameter("useinv")), 
 					Boolean.parseBoolean(req.getParameter("useexp"))
 					);
+			
+			if(param == null) {
+				resp.getWriter().println("param not initialized properly");
+			}
 		}
 		else if(type.equals("ingredient")) {
 			log.info("ingredient");

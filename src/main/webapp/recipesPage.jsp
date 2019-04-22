@@ -38,8 +38,9 @@
   <a href="aboutPage.jsp">About</a>
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
-	    <form action="/recipes" method="post">
+	    <form action="/search" method="get">
 	      <input type="text" placeholder="Search for Recipes..." name="search">
+	      <input type="hidden" name = "type" value = "recipe">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
         
 	        <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">

@@ -128,9 +128,9 @@
 	        <!--  
 			    <form action="/grocerylist" method="post"> //changing to route to ingredients page servlet upon search
 			    -->
-			    <form action="/ingredients" method="post">
+			    <form action="/search" method="get">
 			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
-			      <input type="hidden" name="redirect" value="/grocerylistPage.jsp">
+			      <input type="hidden" name="type" value="ingredient">
 			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
 			      <textarea id="results" style="display:block;"></textarea>
 			    </form>
@@ -148,8 +148,10 @@
 
 <script>
 function displayResults() {
-	JSONArray dRes = cook.getPantrySearchResults();
-	document.getElementById("results").innerHTML = dRes.toString();	
+	sleep(2000).then(() => {
+		JSONArray dRes = cook.getPantrySearchResults();
+		document.getElementById("results").innerHTML = dRes.toString();	
+	})
 }
 </script>
 
