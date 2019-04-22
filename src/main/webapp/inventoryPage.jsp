@@ -18,11 +18,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-.modal-dialog {
-    transform: translate(0, -50%);
-    top: 15%;
-    margin: 0 auto;
-}
+
+
 </style>
 
 </head>
@@ -52,12 +49,16 @@
   <a href="landingPage.jsp">Home</a>
   <a href="aboutPage.jsp">About</a>
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
+  <!--  
     <div class="search-container">
 	    <form action="/inventory" method="post">
 	      <input type="text" placeholder="Search..." name="search">
-	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
+	      <input type="hidden" name="redirect" value="/inventoryPage.jsp">
+		  <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
+		  <textarea id="results" style="display:block;"></textarea>
 	    </form>
   	</div>
+  	-->
 </div>
 <div class="vertnav">
 <br>
@@ -92,6 +93,7 @@
   
   	function add() {
 
+        modal.style.display = "none";
   		 var table = document.getElementById("inventory_table");
   		 var row = table.insertRow(-1);
   		
@@ -103,15 +105,10 @@
   		var exitButton = document.getElementById("exitbutton").cloneNode(true);
 
   		// Add some text to the new cells:
-  		cell1.innerHTML = document.getElementById("IngredientInput").value;
-  		cell2.innerHTML = document.getElementById("QuantityInput").value + " " + document.getElementById('dropdowntext').textContent;
-  		cell3.innerHTML = document.getElementById("ExpirationInput").value;
+  		cell1.innerHTML = "NEW CELL1";
+  		cell2.innerHTML = "NEW CELL2";
+  		cell3.innerHTML = "bleh";
   		cell4.appendChild(exitButton);
-  		
-  		document.getElementById("IngredientInput").value = "";
-  		document.getElementById("QuantityInput").value = "";
-  		document.getElementById('dropdowntext').textContent = "units";
-  		document.getElementById("ExpirationInput").value = "";
   	}
   </script>
 </div>
@@ -121,6 +118,60 @@ $(document).on('click', '.fa-times-circle', function () {
 	   $(this).closest('tr').remove()
 });
 </script> 
+
+<!-- Modal -->
+<div class="modal fade" id="id01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+       		<div class="form-group">
+        		<!--   <label for="IngredientInput">Ingredient</label>-->
+        		
+        		<form action="/ingredients" method="post">
+			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
+			      <input type="hidden" name="redirect" value="/grocerylistPage.jsp">
+			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
+			      <textarea id="results" style="display:block;"></textarea>
+			    </form>
+			    
+    		<!--  <input class="form-control" id="IngredientInput" placeholder="Enter ingredient"> -->	
+    		</div>
+    		
+    	
+       		<div class="form-group">
+        		<div><label for="QuantityInput">Quantity</label></div>
+    			<input class="form-control" id="QuantityInput" placeholder="Enter quantity and units"  style="width: 355px; float:left; display: inline">
+    		                                      
+			  <div class="dropdown" style="display: inline; float:right">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">units
+			    <span class="caret"></span></button>
+			    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" >
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">oz</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">lb</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">g</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">kg</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">cups</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">gallons</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">liters</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">fl oz</a></li>
+			    </ul>
+			  </div>
+    		</div>
+    		
+       		<div class="form-group" style="padding-top: 35px">
+        		<label for="ExpirationInput">Expiration Date</label>
+    			<input class="form-control" id="ExpirationInput" placeholder="MM/DD/YYYY">
+    		</div>
+    		    		
+        </form>
+        <div>
+        <button type="button" class="btn btn-danger" style="margin-left: 397px; margin-top: 5px" data-dismiss="modal" onClick="add()" >Add</button>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 // Get the modal
@@ -133,11 +184,8 @@ window.onclick = function(event) {
     }
 }
 </script>
-    		<script>
-    			function units(unit) {
-    				document.getElementById('dropdowntext').innerHTML = unit;
-    			}
-    		</script>
+
+
 
 <%
     } else {
@@ -148,54 +196,4 @@ window.onclick = function(event) {
 
 
 </body>
-
-<!-- Modal -->
-<div class="modal fade" id="id01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <form>
-       		<div class="form-group">
-        		<label for="IngredientInput">Ingredient</label>
-    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">
-    		</div>
-    		
-    	
-       		<div class="form-group">
-        		<div><label for="QuantityInput">Quantity</label></div>
-    			<input class="form-control" id="QuantityInput" placeholder="Enter quantity and units"  style="width: 495px; float:left; display: inline">
-    		                                      
-			  <div class="dropdown" style="display: inline; float:right">
-			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="width: 70px">
-			    		<div id="dropdowntext" style="height: 10px ; display: inline">units</div>
-			    		<div class="caret" style="position: relative"></div>
-			    </button>
-			    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" >
-			      <li role="presentation"><a role="menuitem" tabindex="-1" onClick="units('units')">units</a></li>
-			      <li role="presentation"><a role="menuitem" tabindex="-1" onClick="units('oz')">oz</a></li>
-			      <li role="presentation"><a role="menuitem" tabindex="-1" onClick="units('lb')">lb</a></li>
-			      <li role="presentation"><a role="menuitem" tabindex="-1" onClick="units('g')">g</a></li>
-			      <li role="presentation"><a role="menuitem" tabindex="-1" onClick="units('kg')">kg</a></li>
-			      <li role="presentation"><a role="menuitem" tabindex="-1" onClick="units('cups')">cups</a></li>
-			      <li role="presentation"><a role="menuitem" tabindex="-1" onClick="units('liters')">liters</a></li>
-			      <li role="presentation"><a role="menuitem" tabindex="-1" onClick="units('fl oz')">fl oz</a></li>
-			    </ul>
-			  </div>
-    		</div>
-    		
-       		<div class="form-group" style="padding-top: 35px">
-        		<label for="ExpirationInput">Expiration Date</label>
-    			<input class="form-control" id="ExpirationInput" placeholder="MM/DD/YYYY">
-    		</div>
-    		    		
-        </form>
-        <div>
-        
-        </div>
-      </div>
-    </div>
-    <button type="button" id="boi" class="btn btn-danger" data-dismiss="modal" 
-    style="margin-left: 548px; margin-top: 10px" onClick="add()">Add</button>
-  </div>
-</div>
 </html>;
