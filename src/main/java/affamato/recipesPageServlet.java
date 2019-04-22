@@ -60,6 +60,8 @@ public class recipesPageServlet extends HttpServlet{
     	
     	resp.sendRedirect(b.toString());
     	
+    	resp.sendRedirect("/recipesPage.jsp");
+    	
     	} catch (Exception e) {
     		
     		e.printStackTrace();
