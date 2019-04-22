@@ -113,13 +113,17 @@ public class Ingredient implements Comparable<Ingredient>
 		}    	
     }
     
+    static final int MAX = 30;
     public static JSONArray searchIngredient(String search) {
     	JSONArray returner = new JSONArray();
     	if(search == null) return returner;
     	List<Ingredient> ingredients = ObjectifyService.ofy().load().type(Ingredient.class).list();
+    	int numOfIngredients = 0;
     	for(Ingredient ing : ingredients) {
+    		if(numOfIngredients > MAX) break;
     		if(ing != null) {
 	    		if(ing.getName().toLowerCase().contains(search.toLowerCase())) {
+	    			numOfIngredients++;
 	    			returner.put(new JSONObject().put("name", ing.ingredient).put("nutrients", ing.nutrientString)
 	    					.put("unit", ing.unit).put("unitShort", ing.unitShort).put("amount", ing.amount)
 	    					);
