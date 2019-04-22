@@ -2,12 +2,14 @@
 package affamato;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
@@ -107,5 +109,16 @@ public class Ingredient implements Comparable<Ingredient>
 			this.amount = Float.valueOf(amount);
 			this.unit = unit;
 		}    	
+    }
+    
+    public static JSONArray searchIngredient(String search) {
+    	JSONArray returner = new JSONArray();
+    	List<Ingredient> ingredients = ObjectifyService.ofy().load().type(Ingredient.class).list();
+    	for(Ingredient ing : ingredients) {
+    		if(search.toLowerCase().contains(ing.getName().toLowerCase())) {
+    			returner.put(new JSONObject().put(ing.ingredient, ing.spoonId));
+    		}
+    	}
+    	return returner;
     }
 } 

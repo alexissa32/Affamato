@@ -88,7 +88,7 @@ public class SearchServlet extends HttpServlet
 			resp.getWriter().println("You don't exist in the data store OR your cookie was not properly initialized. Please log out and log back in on the homepage.");
 		} 
 		else {
-			
+			/*
 			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 			StringBuilder sb = new StringBuilder();
 			
@@ -132,9 +132,13 @@ public class SearchServlet extends HttpServlet
 			}
 			cook.setRecipeSearchResults(returnArray);
 			ObjectifyService.ofy().save().entity(cook).now();
+			*/
+			JSONArray ja = Recipe.searchRecipe(parameter, param, cook);
+			cook.setRecipeSearchResults(ja);
+			ObjectifyService.ofy().save().entity(cook).now();
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
-			resp.getWriter().println(sb.toString());
+			resp.getWriter().println(ja.toString());
 			if(cook == null) {
 				resp.getWriter().println("null cook");
 			}

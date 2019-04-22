@@ -2,11 +2,15 @@
 package affamato;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
@@ -105,5 +109,57 @@ public class Recipe implements Comparable<Recipe>
     public int hashCode()
     {
     	return jsonString.hashCode();
+    }
+    
+    public static JSONObject randomRecipe() {
+    	List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
+    	int size = recipes.size();
+    	Recipe r = recipes.get(new Random().nextInt(size -1) + 1);
+    	return new JSONObject().put("title", r.title).put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
+							.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
+							.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
+							.put("prepMinutes", r.prepMinutes).put("id", r.id).put("instructions", r.instructions);
+    }
+    
+    public static JSONArray searchRecipe(String search, FilterParameters param, Cook c) {
+    	JSONArray returner = new JSONArray();
+    	List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
+    	for (int i = 0; i < recipes.size(); i++) 
+		{
+			
+			Recipe r = recipes.get(i);
+			
+			
+			if (r.title.toLowerCase().contains(search.toLowerCase()) && param.valid(r)) {
+			
+				if(param.isUsingStuff()) {
+					if(param.useExpiring) {
+						param.calculateExpiring(r, c);
+					}
+					if(param.useInventory) {
+						param.calculateInventories(r, c);
+					}
+				}
+				else {
+					returner.put(new JSONObject().put("title", r.title)
+							.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
+							.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
+							.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
+							.put("prepMinutes", r.prepMinutes).put("id", r.id));
+				}
+				
+			}
+		}
+    	if(param.isUsingStuff()) {
+    		Map<Recipe, Float> recipeValue = param.sortAndReturn();
+    		for(Recipe r : recipeValue.keySet()) {
+    			returner.put(new JSONObject().put("title", r.title)
+						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
+						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
+						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
+						.put("prepMinutes", r.prepMinutes).put("id", r.id));
+    		}
+    	}
+    	return returner;
     }
 } 
