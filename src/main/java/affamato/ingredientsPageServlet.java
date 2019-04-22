@@ -35,7 +35,7 @@ public class ingredientsPageServlet extends HttpServlet{
         	b.addParameter("q", query);
         	
         	resp.sendRedirect(b.toString());
-        	
+        	if(query == null) resp.getWriter().println("query is null");
         	} catch (Exception e) {
         		
         		e.printStackTrace();
