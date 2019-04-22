@@ -160,6 +160,9 @@ if(cook.getPantrySearchResults().length != 0){
 	document.getElementById("results").value = cook.getPantrySearchResults().toString();
 }
 </script>
+<script>
+document.getElementById("results").value = "i'm not a regular box, im a cool box";
+</script>
 
 <script>
 var $template = $(".template");
