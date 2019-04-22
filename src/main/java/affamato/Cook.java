@@ -128,18 +128,31 @@ public class Cook
     //pass a json string
     public void addToPantry(String ID) 
     {
+    	JSONArray editor;
+    	if(this.Pantry.equals("")) {
+    		JSONArray edit = new JSONArray();
+    		editor = edit;
+    	}
+    	else {
     	JSONArray edit = new JSONArray(this.Pantry);
+    	editor = edit;
+    	}
     	JSONObject ingredient = new JSONObject(ID);
-    	edit.put(ingredient);
-    	this.Pantry = edit.toString();
+    	editor.put(ingredient);
+    	this.Pantry = editor.toString();
+    	
     }
     
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
-    	JSONArray pantry = new JSONArray(this.Pantry);
-    	pantry.remove(pos);	//UNCAUGHT EXCEPTION IF POS IS OUT OF BOUNDS
-    	this.Pantry = pantry.toString();
+    	if(this.Pantry.equals("")) {}
+    	else {
+    		JSONArray pantry = new JSONArray(this.Pantry);
+    		if(pantry.length() > pos) {
+    		pantry.remove(pos);	//UNCAUGHT EXCEPTION IF POS IS OUT OF BOUNDS
+    		this.Pantry = pantry.toString();
+    	}}
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -162,19 +175,26 @@ public class Cook
     //pass a recipe json string
     public void addToRecipeList(String RecipeString) 
     {
+    	if(this.RecipeList.equals("")) {}
+    	else {
     	JSONArray edit = new JSONArray(this.RecipeList);
     	JSONObject recipe = new JSONObject(RecipeString);
     	edit.put(recipe);
     	this.RecipeList = edit.toString();
     	//this.saveCook();
+    	}
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
+    	if(this.RecipeList.equals("")) {}
+    	else {
     	JSONArray recipes = new JSONArray(this.RecipeList);
+    	if(recipes.length()>pos) {
     	recipes.remove(pos);
     	this.RecipeList = recipes.toString();
+    	}}
     	/**
     	JSONArray updated = new JSONArray();
     	try
