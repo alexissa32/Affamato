@@ -156,12 +156,10 @@ function displayResults() {
 		box.value = "you got here yay!";
 	})
 }
-if(cook.getPantrySearchResults().length != 0){
+if(cook.getPantrySearchResults().length() != 0){
 	document.getElementById("results").value = cook.getPantrySearchResults().toString();
 }
-</script>
-<script>
-document.getElementById("results").value = "i'm not a regular box, im a cool box";
+//document.getElementById("results").value = "i'm not a regular box, im a cool box";
 </script>
 
 <script>
