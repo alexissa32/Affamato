@@ -46,6 +46,7 @@ public class SearchServlet extends HttpServlet
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();	
 		String parameter = req.getParameter("q");
+		String type = req.getParameter("type");
 		/*
 		boolean vegetarian = Boolean.parseBoolean(req.getParameter("vegetarian"));
 		boolean glutenFree = Boolean.parseBoolean(req.getParameter("glutenFree"));
@@ -58,16 +59,24 @@ public class SearchServlet extends HttpServlet
 		FilterParameters param = new FilterParameters(vegetarian, glutenFree, dairyFree, ketogenic, vegan, quick, useInventory, useExpiring);
 		*/
 		//all the parameters directly passed into the constructor
-		FilterParameters param = new FilterParameters(Boolean.parseBoolean(req.getParameter("vegetarian")), 
-				Boolean.parseBoolean(req.getParameter("glutenFree")), 
-				Boolean.parseBoolean(req.getParameter("dairyFree")), 
-				Boolean.parseBoolean(req.getParameter("ketogenic")), 
-				Boolean.parseBoolean(req.getParameter("vegan")), 
-				Boolean.parseBoolean(req.getParameter("quick")), 
-				Boolean.parseBoolean(req.getParameter("useInventory")), 
-				Boolean.parseBoolean(req.getParameter("useExpiring"))
-				);
-		
+		FilterParameters param = null;
+		if(type.equals("recipe")) {
+			param = new FilterParameters(Boolean.parseBoolean(req.getParameter("vegetarian")), 
+					Boolean.parseBoolean(req.getParameter("glutenFree")), 
+					Boolean.parseBoolean(req.getParameter("dairyFree")), 
+					Boolean.parseBoolean(req.getParameter("ketogenic")), 
+					Boolean.parseBoolean(req.getParameter("vegan")), 
+					Boolean.parseBoolean(req.getParameter("quick")), 
+					Boolean.parseBoolean(req.getParameter("useInventory")), 
+					Boolean.parseBoolean(req.getParameter("useExpiring"))
+					);
+		}
+		else if(type.equals("ingredient")) {
+			//if any initialization for ingredient is required
+		}
+		else {
+			return;
+		}
 		//Cook cook = Cook.getCook(user);
 		Cookie[] cookies = req.getCookies();
 		String userString = req.getParameter("user");
@@ -133,8 +142,15 @@ public class SearchServlet extends HttpServlet
 			cook.setRecipeSearchResults(returnArray);
 			ObjectifyService.ofy().save().entity(cook).now();
 			*/
-			JSONArray ja = Recipe.searchRecipe(parameter, param, cook);
-			cook.setRecipeSearchResults(ja);
+			JSONArray ja = null;
+			if(type.equals("recipe")) {
+				ja = Recipe.searchRecipe(parameter, param, cook);
+				cook.setRecipeSearchResults(ja);
+			}
+			else {
+				ja = Ingredient.searchIngredient(parameter);
+				cook.setPantrySearchResults(ja);
+			}
 			ObjectifyService.ofy().save().entity(cook).now();
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
