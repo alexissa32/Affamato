@@ -160,6 +160,8 @@ public class SearchServlet extends HttpServlet
 				ja = Ingredient.searchIngredient(parameter);
 				cook.setPantrySearchResults(ja);
 				ObjectifyService.ofy().save().entity(cook).now();
+				String redirectPage = req.getParameter("redirect");
+				resp.sendRedirect(redirectPage);
 			}
 			/*
 			resp.setContentType("text/plain");

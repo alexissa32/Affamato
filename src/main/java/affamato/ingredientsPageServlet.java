@@ -31,6 +31,11 @@ public class ingredientsPageServlet extends HttpServlet{
         	b.addParameter("user", user.toString());
         	b.addParameter("q", query);
         	String redirectPage = req.getParameter("redirect");
+        	if(redirectPage == null) {
+        		log.info("redirect is null");
+        		redirectPage = "/grocerylistPage.jsp";
+        	}
+        	b.addParameter("redirect", redirectPage);
         	if(query == null) log.info("query is null");
         	resp.sendRedirect(b.toString());
         	resp.sendRedirect("/landingPage.jsp");
