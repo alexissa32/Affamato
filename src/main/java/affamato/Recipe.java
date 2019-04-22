@@ -145,7 +145,7 @@ public class Recipe implements Comparable<Recipe>
 							.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 							.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 							.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
-							.put("prepMinutes", r.prepMinutes).put("id", r.id));
+							.put("prepMinutes", r.prepMinutes).put("id", r.id).put("instructions", r.instructions));
 				}
 				
 			}
@@ -157,7 +157,8 @@ public class Recipe implements Comparable<Recipe>
 						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
-						.put("prepMinutes", r.prepMinutes).put("id", r.id));
+						.put("prepMinutes", r.prepMinutes).put("id", r.id).put("instructions", r.instructions));
+
     		}
     	}
     	return returner;
