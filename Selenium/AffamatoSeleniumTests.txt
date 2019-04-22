@@ -102,14 +102,296 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "cff006ec-795f-42c6-8566-63c5ad67cdae",
+    "name": "access_dashboard_test",
+    "commands": [{
+      "id": "a7633bff-6006-4082-b528-080ca6f5afef",
+      "comment": "",
+      "command": "open",
+      "target": "/dashboardPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6bfcc624-2f3c-4fac-a875-9355de702cd6",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "linkText=My Dashboard",
+      "targets": [
+        ["linkText=My Dashboard", "linkText"],
+        ["css=.topnav > .active", "css:finder"],
+        ["xpath=//a[contains(text(),'My Dashboard')]", "xpath:link"],
+        ["xpath=//body[@id='dashboardbody']/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'dashboardPage.jsp')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Dashboard')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "d3e4ceef-9dd4-4c2c-837d-7532748c2f24",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=My Dashboard",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "64ae898e-7266-4dd6-bb99-89d715591cb6",
+    "name": "dashboard_to_inventory",
+    "commands": [{
+      "id": "cf5bdf54-6487-41c4-a197-ce2682ea064c",
+      "comment": "",
+      "command": "open",
+      "target": "/dashboardPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2b4fcb12-8859-410e-bbae-b40f3acbcda7",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "linkText=My Dashboard",
+      "targets": [
+        ["linkText=My Dashboard", "linkText"],
+        ["css=.topnav > .active", "css:finder"],
+        ["xpath=//a[contains(text(),'My Dashboard')]", "xpath:link"],
+        ["xpath=//body[@id='dashboardbody']/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'dashboardPage.jsp')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Dashboard')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "37e2704f-05c7-42c5-99a7-e927d0df3c72",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=My Dashboard",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a48ce234-e865-4554-b1e8-b140cbda20f0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=My Inventory",
+      "targets": [
+        ["linkText=My Grocery Lists", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'My Grocery Lists')]", "xpath:link"],
+        ["xpath=//body[@id='dashboardbody']/div[4]/l/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'grocerylistPage.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Grocery Lists')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "513a6a24-b061-4f91-b727-5ea8ec12ad25",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.container > .btn",
+      "targets": [
+        ["css=.container > .btn", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//body[@id='dashboardbody']/div[7]/button", "xpath:idRelative"],
+        ["xpath=//div[7]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Add Ingredient +')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "9d2949da-c5b4-4b37-be23-9248bad09212",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.container > .btn",
+      "targets": [
+        ["css=.container > .btn", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//body[@id='dashboardbody']/div[8]/button", "xpath:idRelative"],
+        ["xpath=//div[8]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Add Ingredient +')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "da9eb65c-baf5-4d39-a697-d1c38d3dc50e",
+    "name": "dashboard_to_grocerylists",
+    "commands": [{
+      "id": "2034063a-5417-48f4-b8d8-f26460ec1e23",
+      "comment": "",
+      "command": "open",
+      "target": "/dashboardPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "57bbd741-7588-465e-8d7b-c70c30d89931",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "linkText=My Dashboard",
+      "targets": [
+        ["linkText=My Dashboard", "linkText"],
+        ["css=.topnav > .active", "css:finder"],
+        ["xpath=//a[contains(text(),'My Dashboard')]", "xpath:link"],
+        ["xpath=//body[@id='dashboardbody']/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'dashboardPage.jsp')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Dashboard')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "5296c9c9-4c3c-426d-b4df-12c8c510d05e",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=My Dashboard",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f95a1ee7-4734-4b95-9358-58f84bb06e9a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=My Grocery Lists",
+      "targets": [
+        ["linkText=My Grocery Lists", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'My Grocery Lists')]", "xpath:link"],
+        ["xpath=//body[@id='dashboardbody']/div[4]/l/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'grocerylistPage.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Grocery Lists')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c1f4c09b-0712-42e3-ad52-2beafee816c4",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.container > .btn",
+      "targets": [],
+      "value": "100"
+    }, {
+      "id": "132caed0-ed2e-4ee0-9566-cde274d45bee",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.container > .btn",
+      "targets": [
+        ["css=.container > .btn", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//body[@id='dashboardbody']/div[6]/button", "xpath:idRelative"],
+        ["xpath=//div[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,' Add New Grocery List')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "87e07dea-b01d-49fa-8d96-2474c0b6522e",
+    "name": "dashboard_to_recipes",
+    "commands": [{
+      "id": "942a99c9-5de3-4ef4-8325-d27fa9b17218",
+      "comment": "",
+      "command": "open",
+      "target": "/dashboardPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ab3af40-d623-456f-a3f1-6d40d43db2fd",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "linkText=My Dashboard",
+      "targets": [
+        ["linkText=My Dashboard", "linkText"],
+        ["css=.topnav > .active", "css:finder"],
+        ["xpath=//a[contains(text(),'My Dashboard')]", "xpath:link"],
+        ["xpath=//body[@id='dashboardbody']/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'dashboardPage.jsp')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Dashboard')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "6aa46285-98f6-43d5-984a-2ff15ec06c13",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=My Dashboard",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a94e831-2dbf-4fd5-b98a-10353b6934cd",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=My Recipes",
+      "targets": [
+        ["linkText=My Grocery Lists", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'My Grocery Lists')]", "xpath:link"],
+        ["xpath=//body[@id='dashboardbody']/div[4]/l/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'grocerylistPage.jsp')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Grocery Lists')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "45668ccc-56dd-4ebd-9d10-b19d0c72dde1",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//body[@id='dashboardbody']/button", "xpath:idRelative"],
+        ["xpath=//body/button", "xpath:position"],
+        ["xpath=//button[contains(.,' Discover!')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "85273650-548f-4fe0-b8e0-0023299ad01b",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//body[@id='dashboardbody']/button", "xpath:idRelative"],
+        ["xpath=//body/button", "xpath:position"],
+        ["xpath=//button[contains(.,' Discover!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "03432c6e-a8e1-4186-b12f-837a5e845ebd",
-    "name": "Default Suite",
+    "name": "HomePageTests",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
     "tests": ["eb445536-34ae-4997-9ff6-9d57d6df13db"]
+  }, {
+    "id": "e68200b7-211d-4b89-9f7c-bf832ba066e0",
+    "name": "AboutPageTests",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["7cd8a4bf-3a7c-49a5-b5e5-deabc02e49c6"]
+  }, {
+    "id": "b90f58bf-d5ca-448f-89dd-84cae5e02175",
+    "name": "DashboardTests",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["cff006ec-795f-42c6-8566-63c5ad67cdae", "da9eb65c-baf5-4d39-a697-d1c38d3dc50e", "64ae898e-7266-4dd6-bb99-89d715591cb6", "87e07dea-b01d-49fa-8d96-2474c0b6522e"]
+  }, {
+    "id": "61d463cb-8d88-4d9e-af1b-e7488607359c",
+    "name": "InventoryTests",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }, {
+    "id": "307e7149-6ea3-45a9-a076-1a4e016a6508",
+    "name": "GroceryListsTests",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }, {
+    "id": "66686b2f-f56a-4d95-badb-d6c20e978b55",
+    "name": "RecipeTests",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
   }],
   "urls": ["https://www.affamato.xyz/"],
   "plugins": []

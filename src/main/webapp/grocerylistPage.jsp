@@ -161,8 +161,8 @@ function displayResults() {
 		var box = document.getElementById("results");
 		box.value = "you got here yay!";
 	})
-	*/
-}
+*/}
+
 
 	var v = document.getAttribute("resulting");
 	document.getElementById("results").value = v;
