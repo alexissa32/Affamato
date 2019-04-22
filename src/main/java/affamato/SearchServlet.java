@@ -60,6 +60,7 @@ public class SearchServlet extends HttpServlet
 		*/
 		//all the parameters directly passed into the constructor
 		FilterParameters param = null;
+		if(type == null) return;
 		if(type.equals("recipe")) {
 			param = new FilterParameters(Boolean.parseBoolean(req.getParameter("vegetarian")), 
 					Boolean.parseBoolean(req.getParameter("glutenFree")), 

@@ -46,6 +46,7 @@ public class recipesPageServlet extends HttpServlet{
         //result = br.readLine();
     	try {
     	URIBuilder b = new URIBuilder("http://www.affamato.xyz/search"); 
+    	b.addParameter("type", "recipe");
     	b.addParameter("user", user.toString());
     	b.addParameter("q", query);
     	b.addParameter("vegetarian", vegetarian == null ? "false" : "true");

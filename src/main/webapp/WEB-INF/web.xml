@@ -61,6 +61,15 @@
 	<servlet-name>recipes</servlet-name>
 	<url-pattern>/recipes</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>ingredients</servlet-name>
+	<servlet-class>affamato.ingredientsPageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>ingredients</servlet-name>
+	<url-pattern>/ingredients</url-pattern>
+</servlet-mapping>
   
 <welcome-file-list>
     <welcome-file>landingPage.jsp</welcome-file>
