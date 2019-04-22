@@ -71,7 +71,7 @@ public class Cook
     public void removeGroceryList(int index) 
     {
     	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	gLists.remove(index);
+    	gLists.remove(index);	//UNCAUGHT EXCEPTION FOR INDEX OUT OF BOUNDS
     	this.GroceryLists = gLists.toString();
     	
     	/**
@@ -97,7 +97,7 @@ public class Cook
     public void removeFromGroceryList(int pos, int index) { 	
     	JSONArray gLists = new JSONArray(this.GroceryLists);
     	JSONArray gList = gLists.getJSONArray(index);
-    	gList.remove(pos);//does this update glists?
+    	gList.remove(pos);//UNCAUGHT EXCEPTIONS FOR INDEX OUT OF BOUNDS
     	this.GroceryLists = gLists.toString();
     }
     
@@ -114,7 +114,7 @@ public class Cook
     public void removeFromPantry(int pos) 
     {
     	JSONArray pantry = new JSONArray(this.Pantry);
-    	pantry.remove(pos);
+    	pantry.remove(pos);	//UNCAUGHT EXCEPTION IF POS IS OUT OF BOUNDS
     	this.Pantry = pantry.toString();
     	/**
     	JSONArray updated = new JSONArray();
@@ -190,7 +190,7 @@ public class Cook
     //UNTESTED METHOD correlated failures: getPantry(), getRecipeList()
     public JSONArray getGroceryLists()
     {
-    	if(this.RecipeList.equals("")) return new JSONArray();
+    	if(this.GroceryLists.equals("")) return new JSONArray();
     	JSONArray groceryLists = new JSONArray(this.GroceryLists);
     	return groceryLists;
     }

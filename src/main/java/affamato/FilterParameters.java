@@ -125,10 +125,10 @@ public class FilterParameters {
 		}
 		
 		if(pantryTotal > 0) {
-			inventoryMap.put(r, new Float(matching/pantryTotal));
+			expiringMap.put(r, new Float(matching/pantryTotal));
 		}
 		else {
-			inventoryMap.put(r, new Float(0));
+			expiringMap.put(r, new Float(0));
 		}
 		
 	}
