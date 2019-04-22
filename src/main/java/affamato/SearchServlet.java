@@ -73,6 +73,16 @@ public class SearchServlet extends HttpServlet
 		}
 		if(type.equals("recipe")) {
 			log.info("recipe");
+			param = new FilterParameters( req.getParameter("veggie") == null ? false : true,
+					req.getParameter("glutenf") == null ? false : true,
+					req.getParameter("dairyf") == null ? false : true,		
+					req.getParameter("keto") == null ? false : true,
+					req.getParameter("vegan") == null ? false : true,
+					req.getParameter("quickr") == null ? false : true,
+					req.getParameter("useinv") == null ? false : true,
+					req.getParameter("useexp") == null ? false : true
+					);
+			/*
 			param = new FilterParameters(Boolean.parseBoolean(req.getParameter("veggie")), 
 					Boolean.parseBoolean(req.getParameter("glutenf")), 
 					Boolean.parseBoolean(req.getParameter("dairyf")), 
@@ -82,6 +92,7 @@ public class SearchServlet extends HttpServlet
 					Boolean.parseBoolean(req.getParameter("useinv")), 
 					Boolean.parseBoolean(req.getParameter("useexp"))
 					);
+					*/
 			
 			if(param == null) {
 				resp.getWriter().println("param not initialized properly");
