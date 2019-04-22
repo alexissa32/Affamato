@@ -9,6 +9,7 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="org.json.JSONArray" %>
 <%@ page import="affamato.Cook" %>
 <!DOCTYPE html>
 <html>
@@ -139,7 +140,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-lg btn-primary " data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-lg btn-primary " data-dismiss="modal">CLOSE</button>
         </div>
       </div>
       
@@ -151,8 +152,12 @@
 function displayResults() {
 	sleep(2000).then(() => {
 		JSONArray dRes = cook.getPantrySearchResults();
-		document.getElementById("results").innerHTML = dRes.toString();	
+		//document.getElementById("results").innerHTML = dRes.toString();
+		document.getElementById("results").innerHTML = "you got here yay!";
 	})
+}
+if(cook.getPantrySearchResults().length != 0){
+	document.getElementById("results").innerHTML = cook.getPantrySearchResults().toString();
 }
 </script>
 

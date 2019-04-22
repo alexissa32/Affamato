@@ -1,0 +1,116 @@
+{
+  "id": "3acf7eff-fa5e-41c3-8902-b99621b4ad79",
+  "version": "2.0",
+  "name": "Affamato",
+  "url": "https://www.affamato.xyz",
+  "tests": [{
+    "id": "eb445536-34ae-4997-9ff6-9d57d6df13db",
+    "name": "login_test",
+    "commands": [{
+      "id": "9394efc5-6735-454c-8564-37b48dfac5d3",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "63a5f66a-ec97-4890-ba0c-529a3c43e2b7",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "linkText=Log In",
+      "targets": [
+        ["linkText=Log In", "linkText"],
+        ["css=a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Log In')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'https://accounts.google.com/ServiceLogin?service=ah&passive=true&continue=https://appengine.google.com/_ah/conflogin%3Fcontinue%3Dhttps://www.affamato.xyz/landingPage.jsp')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Log In')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "b3c24695-cd75-47da-907a-b90f1e108400",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "link=Log In",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "21a98438-f7f3-4e10-be29-52e6b21e7985",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log In",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "7cd8a4bf-3a7c-49a5-b5e5-deabc02e49c6",
+    "name": "about_test",
+    "commands": [{
+      "id": "04a14a65-4777-4090-bf3b-d51311f54a49",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c693b0d6-7d8a-4029-aa22-9124d3bddeea",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "linkText=About",
+      "targets": [],
+      "value": "100"
+    }, {
+      "id": "9b7c26fb-9b98-4991-8a8c-9c3c9d74834d",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=About",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7430b1fa-811d-4f78-99e0-56e2e226a0ba",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "70171846-9d3a-496f-9c7f-669279886aac",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "id=numCommits",
+      "targets": [
+        ["id=numCommits", "id"],
+        ["css=#numCommits", "css:finder"],
+        ["xpath=//h4[@id='numCommits']", "xpath:attributes"],
+        ["xpath=//div[@id='pane2']/h4", "xpath:idRelative"],
+        ["xpath=//h4", "xpath:position"],
+        ["xpath=//h4[contains(.,'Total Number of Commits: 246')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "b32d5c6b-a7c9-415f-9a38-f57e3e353e97",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=numCommits",
+      "targets": [
+        ["id=numCommits", "id"],
+        ["css=#numCommits", "css:finder"],
+        ["xpath=//h4[@id='numCommits']", "xpath:attributes"],
+        ["xpath=//div[@id='pane2']/h4", "xpath:idRelative"],
+        ["xpath=//h4", "xpath:position"],
+        ["xpath=//h4[contains(.,'Total Number of Commits: 246')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "03432c6e-a8e1-4186-b12f-837a5e845ebd",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["eb445536-34ae-4997-9ff6-9d57d6df13db"]
+  }],
+  "urls": ["https://www.affamato.xyz/"],
+  "plugins": []
+}
