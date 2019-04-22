@@ -64,7 +64,7 @@ public class FilterParameters {
 
 	public void calculateInventories(Recipe r, Cook c) {
 		JSONArray ingredientArrays = new JSONObject(r.jsonString).getJSONArray("extendedIngredients");
-		JSONArray pantryArray = c.Pantry;
+		JSONArray pantryArray = c.getPantry();
 		int pantryTotal = 0;
 		int matching = 0;
 		for(int i = 0; i < pantryArray.length(); i++) {
@@ -89,11 +89,12 @@ public class FilterParameters {
 		}
 		
 	}
+	
 
 	final int DATE = 1;
 	public void calculateExpiring(Recipe r, Cook c) {
 		JSONArray ingredientArrays = new JSONObject(r.jsonString).getJSONArray("extendedIngredients");
-		JSONArray pantryArray = c.Pantry;
+		JSONArray pantryArray = c.getPantry();
 		int pantryTotal = 0;
 		int matching = 0;
 		long today = Date.parse(new Date().toString());

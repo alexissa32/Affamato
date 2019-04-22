@@ -92,7 +92,6 @@ public class SearchServlet extends HttpServlet
 			List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
 			StringBuilder sb = new StringBuilder();
 			
-			
 			JSONObject mainObject = new JSONObject();
 			JSONArray recipesJSONArray = new JSONArray();
 			JSONArray returnArray = new JSONArray();
@@ -132,11 +131,7 @@ public class SearchServlet extends HttpServlet
 				resp.addCookie(addCookie(mainObject, recipesJSONArray, cookieCounter));
 			}
 			cook.setRecipeSearchResults(returnArray);
-			cook.GrocerySearchResults = cook.GrocerySearchResults.put(100);
 			ObjectifyService.ofy().save().entity(cook).now();
-			Cook newCook = new Cook(cook, returnArray, "recipe");
-			ObjectifyService.ofy().save().entity(newCook).now();
-			ObjectifyService.ofy().delete().entity(cook).now();
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
 			resp.getWriter().println(sb.toString());

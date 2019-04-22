@@ -22,26 +22,26 @@ public class Cook
     @Index User user;
     //May have to use new fields that are organized
     //if ingredient and recipe end up just containing jsons
-    @Index JSONArray Pantry;
-    @Index JSONArray GroceryLists;
-    @Index JSONArray RecipeList;
-    @Index JSONArray PantrySearchResults;
-    @Index JSONArray GrocerySearchResults;
-    @Index JSONArray RecipeSearchResults;
+    @Index String Pantry;
+    @Index String GroceryLists;
+    @Index String RecipeList;
+    @Index String PantrySearchResults;
+    @Index String GrocerySearchResults;
+    @Index String RecipeSearchResults;
     
     private Cook() {}
     public Cook(User user, String CookHolder) 
     {
         this.user = user;
         this.CookHolder = Key.create(Cook.class, CookHolder);
-        this.RecipeList = new JSONArray();
-        this.Pantry = new JSONArray();
-        this.GroceryLists = new JSONArray(); 
-        this.GrocerySearchResults = new JSONArray();
-        this.PantrySearchResults = new JSONArray();
-        this.RecipeSearchResults = new JSONArray();
+        this.RecipeList = "";
+        this.Pantry = "";
+        this.GroceryLists = ""; 
+        this.GrocerySearchResults = "";
+        this.PantrySearchResults = "";
+        this.RecipeSearchResults = "";
     }
-    
+    /*
     public Cook(Cook old, JSONArray newResults, String resultsType) {
     	this.user = old.user;
     	this.CookHolder = old.CookHolder;
@@ -62,6 +62,7 @@ public class Cook
     		this.RecipeSearchResults = newResults;
     	}
     }
+    */
     
     public User getCook() 
     {
@@ -73,18 +74,18 @@ public class Cook
     
     public void addToGroceryList(String ID, int index) 
     {
-    	this.GroceryLists.getJSONArray(index).put(new JSONObject(ID));
+    	//this.GroceryLists.getJSONArray(index).put(new JSONObject(ID));
     	//this.saveCook();
     }
     
     public void newGroceryList() {
-    	this.GroceryLists.put(new JSONArray());
+    	//this.GroceryLists.put(new JSONArray());
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
     public void removeGroceryList(int pos) 
     {
-    	this.GroceryLists.remove(pos);
+    	//this.GroceryLists.remove(pos);
     	//this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
@@ -104,7 +105,7 @@ public class Cook
     	}
     	this.GroceryList = updated; */
     }
-    
+    /*
     public void removeFromGroceryList(int pos, int index) {
     	this.GroceryLists.getJSONArray(index).remove(pos);
     }
@@ -114,11 +115,11 @@ public class Cook
     	this.Pantry.put(new JSONObject(ID));
     	//this.saveCook();
     }
-    
+    */
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
-    	this.Pantry.remove(pos);
+    	//this.Pantry.remove(pos);
     	//this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
@@ -141,14 +142,14 @@ public class Cook
     
     public void addToRecipeList(String RecipeName) 
     {
-    	this.RecipeList.put(new JSONObject(RecipeName));
+    	//this.RecipeList.put(new JSONObject(RecipeName));
     	//this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
-    	this.RecipeList.remove(pos);
+    	//this.RecipeList.remove(pos);
     	//this.saveCook();
     	/**
     	JSONArray updated = new JSONArray();
@@ -172,49 +173,56 @@ public class Cook
     //UNTESTED METHOD correlated failures: getRecipeList(), getGroceryList()
     public JSONArray getPantry() 
     {
-    	return this.Pantry;
+    	JSONArray pantry = new JSONArray(this.Pantry);
+    	return pantry;
     }
        
     //UNTESTED METHOD correlated failures: getPantry(), getGroceryList()
     public JSONArray getRecipeList()
     {
-    	return this.RecipeList;
+    	JSONArray recipeList = new JSONArray(this.RecipeList);
+    	return recipeList;
     }
     
     //UNTESTED METHOD correlated failures: getPantry(), getRecipeList()
     public JSONArray getGroceryLists()
     {
-    	return this.GroceryLists;
+    	JSONArray groceryLists = new JSONArray(this.GroceryLists);
+    	return groceryLists;
     }
     
     public JSONArray getGroceryList(int pos) {
-    	return this.GroceryLists.getJSONArray(pos);
+    	JSONArray groceryLists = new JSONArray(this.GroceryLists);
+    	return groceryLists.getJSONArray(pos);
     }
     
     public JSONArray getPantrySearchResults() {
-    	return this.PantrySearchResults;
+    	JSONArray results = new JSONArray(this.PantrySearchResults);
+    	return results;
     }
 
     public JSONArray getGrocerySearchResults() {
-    	return this.GrocerySearchResults;
+    	JSONArray results = new JSONArray(this.GrocerySearchResults);
+    	return results;
     }
 
     public JSONArray getRecipeSearchResults() {
-    	return this.RecipeSearchResults;
+    	JSONArray results = new JSONArray(this.RecipeSearchResults);
+    	return results;
     }
 
     public void setPantrySearchResults(JSONArray results) {
-    	this.PantrySearchResults = results;
+    	this.PantrySearchResults = results.toString();
     	//this.saveCook();
     }
 
     public void setGrocerySearchResults(JSONArray results) {
-    	this.GrocerySearchResults = results;
+    	this.GrocerySearchResults = results.toString();
     	//this.saveCook();
     }
 
     public void setRecipeSearchResults(JSONArray results) {
-    	this.RecipeSearchResults = results;
+    	this.RecipeSearchResults = results.toString();
     	//this.saveCook();
     }
     
