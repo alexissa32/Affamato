@@ -153,8 +153,17 @@ window.onclick = function(event) {
       <div class="modal-body">
         <form>
        		<div class="form-group">
-        		<label for="IngredientInput">Ingredient</label>
-    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">
+        		<!--  <label for="IngredientInput">Ingredient</label>
+    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">-->
+    			        		<!--   <label for="IngredientInput">Ingredient</label>-->
+        		<form action="/ingredients" method="post">
+			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
+			      <input type="hidden" name="redirect" value="/grocerylistPage.jsp">
+			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
+			      <textarea id="results" style="display:block;"></textarea>
+			    </form>
+			    
+    		<!--  <input class="form-control" id="IngredientInput" placeholder="Enter ingredient"> -->	
     		</div>
     		
     	
@@ -187,8 +196,6 @@ window.onclick = function(event) {
     		    		
         </form>
         <div>
-
-        <button type="button" class="btn btn-danger" style="margin-left: 397px; margin-top: 5px" onClick="add()" >Add</button>
         
         </div>
       </div>
