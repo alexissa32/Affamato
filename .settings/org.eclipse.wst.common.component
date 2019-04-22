@@ -45,6 +45,27 @@
         <dependent-module archiveName="jna-4.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/jna-4.5.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="okhttp-3.11.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/selenium/okhttp-3.11.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-exec-1.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/selenium/commons-exec-1.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="client-combined-3.141.59.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/selenium/client-combined-3.141.59.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="byte-buddy-1.8.15.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/selenium/byte-buddy-1.8.15.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="guava-25.0-jre.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/selenium/guava-25.0-jre.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="client-combined-3.141.59-sources.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/selenium/client-combined-3.141.59-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="okio-1.14.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Affamato/jar_files/selenium/okio-1.14.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
                 
         <property name="context-root" value="Guestbook"/>
                 
