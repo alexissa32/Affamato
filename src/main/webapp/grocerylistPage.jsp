@@ -149,7 +149,7 @@
 <script>
 function displayResults() {
 	JSONArray dRes = cook.getPantrySearchResults();
-	document.getElementById("results").innerHTML = dRes;	
+	document.getElementById("results").innerHTML = dRes.toString();	
 }
 </script>
 
