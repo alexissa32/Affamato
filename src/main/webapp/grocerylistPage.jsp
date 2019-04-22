@@ -155,7 +155,7 @@ function displayResults() {
 		var box = document.getElementById("results");
 		box.value = "you got here yay!";
 	})
-}*/
+*/}
 
 if(cook.getPantrySearchResults().length() != 0){
 	document.getElementById("results").value = cook.getPantrySearchResults().toString();
