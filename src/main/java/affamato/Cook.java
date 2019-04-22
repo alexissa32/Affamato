@@ -139,8 +139,21 @@ public class Cook
     	}
     	JSONObject ingredient = new JSONObject(ID);
     	editor.put(ingredient);
+    	this.Pantry = editor.toString();	
+    }
+    
+    public void addToPantry(JSONObject ingredient) {
+    	JSONArray editor;
+    	if(this.Pantry.equals("")) {
+    		JSONArray edit = new JSONArray();
+    		editor = edit;
+    	}
+    	else {
+    	JSONArray edit = new JSONArray(this.Pantry);
+    	editor = edit;
+    	}
+    	editor.put(ingredient);
     	this.Pantry = editor.toString();
-    	
     }
     
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
