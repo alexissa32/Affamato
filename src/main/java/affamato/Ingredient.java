@@ -120,7 +120,9 @@ public class Ingredient implements Comparable<Ingredient>
     	for(Ingredient ing : ingredients) {
     		if(ing != null) {
 	    		if(ing.getName().toLowerCase().contains(search.toLowerCase())) {
-	    			returner.put(new JSONObject().put(ing.ingredient, ing.jsonString));
+	    			returner.put(new JSONObject().put("name", ing.ingredient).put("nutrients", ing.nutrientString)
+	    					.put("unit", ing.unit).put("unitShort", ing.unitShort).put("amount", ing.amount)
+	    					);
 	    		}
     		}
     	}

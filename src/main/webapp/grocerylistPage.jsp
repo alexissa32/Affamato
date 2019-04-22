@@ -128,8 +128,8 @@
 	        <!--  
 			    <form action="/grocerylist" method="post"> //changing to route to ingredients page servlet upon search
 			    -->
-			    <form action="/ingredients" method="post">
-			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
+			    <form action="/search" method="get">
+			      <input type="text" placeholder="Search for Ingredients..." name="search">
 			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
 			      <textarea id="results" style="display:block;"></textarea>
 			    </form>
