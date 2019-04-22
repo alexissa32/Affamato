@@ -38,9 +38,8 @@
   <a href="aboutPage.jsp">About</a>
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
-	    <form action="/search" method="get">
+	    <form action="/recipes" method="post">
 	      <input type="text" placeholder="Search for Recipes..." name="search">
-	      <input type="hidden" name="type" value="recipe">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
         
 	        <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
@@ -122,7 +121,7 @@
 </div>
 <br />
 
-<button style="float:right" class="btn btn-lg btn-primary btn-add-panel"> <i class="glyphicon glyphicon-plus"></i>Discover!</button>
+<button style="float:right" class="btn btn-lg btn-primary btn-add-panel"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
 
 <script>
 var $template = $(".template");
