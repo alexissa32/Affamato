@@ -9,6 +9,7 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="affamato.Cook" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +30,7 @@
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     if (user != null) {
+        Cook cook = Cook.getCook(user); //get cook here   
         pageContext.setAttribute("user", user);
 %>
 <div class="topnav">
@@ -124,11 +126,12 @@
         
 	        <div class="search-container">
 	        <!--  
-			    <form action="/grocerylist" method="post"> //INGREDIENTSPAGESERVLETHERE
+			    <form action="/grocerylist" method="post"> //changing to route to ingredients page servlet upon search
 			    -->
 			    <form action="/ingredients" method="post">
 			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
-			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
+			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
+			      <textarea id="results" style="display:block;"></textarea>
 			    </form>
 	  	    </div>
 
@@ -141,6 +144,13 @@
     </div>
   </div>
 </div>
+
+<script>
+function displayResults() {
+	JSONArray dRes = cook.getPantrySearchResults();
+	document.getElementById("results").innerHTML = dRes;	
+}
+</script>
 
 <script>
 var $template = $(".template");
