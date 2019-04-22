@@ -152,12 +152,12 @@
 function displayResults() {
 	sleep(2000).then(() => {
 		JSONArray dRes = cook.getPantrySearchResults();
-		//document.getElementById("results").innerHTML = dRes.toString();
-		document.getElementById("results").innerHTML = "you got here yay!";
+		var box = document.getElementById("results");
+		box.value = "you got here yay!";
 	})
 }
 if(cook.getPantrySearchResults().length != 0){
-	document.getElementById("results").innerHTML = cook.getPantrySearchResults().toString();
+	document.getElementById("results").value = cook.getPantrySearchResults().toString();
 }
 </script>
 
