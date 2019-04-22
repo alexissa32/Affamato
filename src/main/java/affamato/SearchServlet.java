@@ -46,7 +46,7 @@ public class SearchServlet extends HttpServlet
 		//ObjectifyService.register(Cook.class);
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();	
-		String parameter = req.getParameter("q");
+		String parameter = req.getParameter("search");
 		String type = req.getParameter("type");
 		/*
 		boolean vegetarian = Boolean.parseBoolean(req.getParameter("vegetarian"));
@@ -60,6 +60,7 @@ public class SearchServlet extends HttpServlet
 		FilterParameters param = new FilterParameters(vegetarian, glutenFree, dairyFree, ketogenic, vegan, quick, useInventory, useExpiring);
 		*/
 		//all the parameters directly passed into the constructor
+    	
 		FilterParameters param = null;
 		if(type == null) {
 			log.info("invalid request. Set type parameter");
@@ -67,14 +68,14 @@ public class SearchServlet extends HttpServlet
 		}
 		if(type.equals("recipe")) {
 			log.info("recipe");
-			param = new FilterParameters(Boolean.parseBoolean(req.getParameter("vegetarian")), 
-					Boolean.parseBoolean(req.getParameter("glutenFree")), 
-					Boolean.parseBoolean(req.getParameter("dairyFree")), 
-					Boolean.parseBoolean(req.getParameter("ketogenic")), 
+			param = new FilterParameters(Boolean.parseBoolean(req.getParameter("veggie")), 
+					Boolean.parseBoolean(req.getParameter("glutenf")), 
+					Boolean.parseBoolean(req.getParameter("dairyf")), 
+					Boolean.parseBoolean(req.getParameter("keto")), 
 					Boolean.parseBoolean(req.getParameter("vegan")), 
-					Boolean.parseBoolean(req.getParameter("quick")), 
-					Boolean.parseBoolean(req.getParameter("useInventory")), 
-					Boolean.parseBoolean(req.getParameter("useExpiring"))
+					Boolean.parseBoolean(req.getParameter("quickr")), 
+					Boolean.parseBoolean(req.getParameter("useinv")), 
+					Boolean.parseBoolean(req.getParameter("useexp"))
 					);
 		}
 		else if(type.equals("ingredient")) {
@@ -154,14 +155,14 @@ public class SearchServlet extends HttpServlet
 				ja = Recipe.searchRecipe(parameter, param, cook);
 				cook.setRecipeSearchResults(ja);
 				ObjectifyService.ofy().save().entity(cook).now();
-				resp.sendRedirect("/recipesPage.jsp");
+				//resp.sendRedirect("/recipesPage.jsp");
 			}
 			else {
 				ja = Ingredient.searchIngredient(parameter);
 				cook.setPantrySearchResults(ja);
 				ObjectifyService.ofy().save().entity(cook).now();
-				String redirectPage = req.getParameter("redirect");
-				resp.sendRedirect(redirectPage);
+				//String redirectPage = req.getParameter("redirect");
+				//resp.sendRedirect(redirectPage);
 			}
 			/*
 			resp.setContentType("text/plain");
