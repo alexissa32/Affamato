@@ -48,6 +48,8 @@ public class SearchServlet extends HttpServlet
 		User user = userService.getCurrentUser();	
 		String parameter = req.getParameter("search");
 		String type = req.getParameter("type");
+		String redirect = req.getParameter("redirect");
+		if(redirect == null) redirect = "/landingPage.jsp";
 		/*
 		boolean vegetarian = Boolean.parseBoolean(req.getParameter("vegetarian"));
 		boolean glutenFree = Boolean.parseBoolean(req.getParameter("glutenFree"));
@@ -163,16 +165,14 @@ public class SearchServlet extends HttpServlet
 			if(type.equals("recipe")) {
 				ja = Recipe.searchRecipe(parameter, param, cook);
 				cook.setRecipeSearchResults(ja);
-				ObjectifyService.ofy().save().entity(cook).now();
-				//resp.sendRedirect("/recipesPage.jsp");
 			}
 			else {
 				ja = Ingredient.searchIngredient(parameter);
 				cook.setPantrySearchResults(ja);
-				ObjectifyService.ofy().save().entity(cook).now();
-				//String redirectPage = req.getParameter("redirect");
 				//resp.sendRedirect(redirectPage);
 			}
+			ObjectifyService.ofy().save().entity(cook).now();
+			resp.sendRedirect(redirect);
 			/*
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Parameter: " + parameter);
