@@ -41,28 +41,6 @@ public class Cook
         this.PantrySearchResults = "";
         this.RecipeSearchResults = "";
     }
-    /*
-    public Cook(Cook old, JSONArray newResults, String resultsType) {
-    	this.user = old.user;
-    	this.CookHolder = old.CookHolder;
-    	this.RecipeList = old.RecipeList;
-    	this.Pantry = old.Pantry;
-    	this.GroceryLists = old.GroceryLists;
-    	this.RecipeList = old.RecipeList;
-    	this.PantrySearchResults = old.PantrySearchResults;
-    	this.GrocerySearchResults = old.GrocerySearchResults;
-    	this.RecipeSearchResults = old.RecipeSearchResults;
-    	if(resultsType.equals("pantry")) {
-    		this.PantrySearchResults = newResults;
-    	}
-    	else if(resultsType.equals("grocery")) {
-    		this.GrocerySearchResults = newResults;
-    	}
-    	else if(resultsType.equals("recipe")) {
-    		this.RecipeSearchResults = newResults;
-    	}
-    }
-    */
     
     public User getCook() 
     {
@@ -72,21 +50,30 @@ public class Cook
     //	ObjectifyService.ofy().save().entity(this).now();
     //}
     
+    //pass an ingredient JSONstring and the index of the grocery list
     public void addToGroceryList(String ID, int index) 
     {
-    	//this.GroceryLists.getJSONArray(index).put(new JSONObject(ID));
-    	//this.saveCook();
+    	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	JSONArray gList = gLists.getJSONArray(index);
+    	JSONObject ingredient = new JSONObject(ID);
+    	gList.put(ingredient); //does this update gLists?
+    	this.GroceryLists = gLists.toString();
     }
     
+    //makes empty grocery list
     public void newGroceryList() {
-    	//this.GroceryLists.put(new JSONArray());
+    	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	gLists.put(new JSONArray());
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
-    public void removeGroceryList(int pos) 
+    //removes the grocery list from the specified index
+    public void removeGroceryList(int index) 
     {
-    	//this.GroceryLists.remove(pos);
-    	//this.saveCook();
+    	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	gLists.remove(index);
+    	this.GroceryLists = gLists.toString();
+    	
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -105,22 +92,30 @@ public class Cook
     	}
     	this.GroceryList = updated; */
     }
-    /*
-    public void removeFromGroceryList(int pos, int index) {
-    	this.GroceryLists.getJSONArray(index).remove(pos);
+    
+    //removes the ingredient at position pos in the grocery list with index "index"
+    public void removeFromGroceryList(int pos, int index) { 	
+    	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	JSONArray gList = gLists.getJSONArray(index);
+    	gList.remove(pos);//does this update glists?
+    	this.GroceryLists = gLists.toString();
     }
     
+    //pass a json string
     public void addToPantry(String ID) 
     {
-    	this.Pantry.put(new JSONObject(ID));
-    	//this.saveCook();
+    	JSONArray edit = new JSONArray(this.Pantry);
+    	JSONObject ingredient = new JSONObject(ID);
+    	edit.put(ingredient);
+    	this.Pantry = edit.toString();
     }
-    */
+    
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
-    	//this.Pantry.remove(pos);
-    	//this.saveCook();
+    	JSONArray pantry = new JSONArray(this.Pantry);
+    	pantry.remove(pos);
+    	this.Pantry = pantry.toString();
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -140,17 +135,22 @@ public class Cook
     	this.Pantry = updated; */
     }
     
-    public void addToRecipeList(String RecipeName) 
+    //pass a recipe json string
+    public void addToRecipeList(String RecipeString) 
     {
-    	//this.RecipeList.put(new JSONObject(RecipeName));
+    	JSONArray edit = new JSONArray(this.RecipeList);
+    	JSONObject recipe = new JSONObject(RecipeString);
+    	edit.put(recipe);
+    	this.RecipeList = edit.toString();
     	//this.saveCook();
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
-    	//this.RecipeList.remove(pos);
-    	//this.saveCook();
+    	JSONArray recipes = new JSONArray(this.RecipeList);
+    	recipes.remove(pos);
+    	this.RecipeList = recipes.toString();
     	/**
     	JSONArray updated = new JSONArray();
     	try
