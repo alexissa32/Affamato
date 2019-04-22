@@ -49,7 +49,7 @@ public class CookServlet extends HttpServlet{
         	}
         
         	else if(Param.equals("addToPatry")) {
-        		//Cook.addToPantry(jsonString);
+        		Cook.addToPantry(jsonString);
         	}
         
         	else if(Param.equals("addToGroceryList")) {
