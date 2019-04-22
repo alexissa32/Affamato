@@ -123,7 +123,10 @@
         <div class="modal-body">
         
 	        <div class="search-container">
-			    <form action="/grocerylist" method="post">
+	        <!--  
+			    <form action="/grocerylist" method="post"> //INGREDIENTSPAGESERVLETHERE
+			    -->
+			    <form action="/ingredients" method="post">
 			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
 			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 			    </form>
