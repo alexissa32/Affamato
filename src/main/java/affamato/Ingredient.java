@@ -119,7 +119,7 @@ public class Ingredient implements Comparable<Ingredient>
     	List<Ingredient> ingredients = ObjectifyService.ofy().load().type(Ingredient.class).list();
     	for(Ingredient ing : ingredients) {
     		if(ing != null) {
-	    		if(search.toLowerCase().contains(ing.getName().toLowerCase())) {
+	    		if(ing.getName().toLowerCase().contains(search.toLowerCase())) {
 	    			returner.put(new JSONObject().put(ing.ingredient, ing.spoonId));
 	    		}
     		}
