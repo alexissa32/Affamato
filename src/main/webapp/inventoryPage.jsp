@@ -166,7 +166,13 @@ $(document).on('click', '.fa-times-circle', function () {
     		    		
         </form>
         <div>
+<<<<<<< HEAD
         <button type="button" class="btn btn-danger" style="margin-left: 397px; margin-top: 5px" data-dismiss="modal" onClick="add()" >Add</button>  
+=======
+        <button type="button" class="btn btn-danger" style="margin-left: 397px; margin-top: 5px" onClick="add()" >Add</button>
+
+        
+>>>>>>> parent of e241901... Working Inventory Table
         </div>
       </div>
     </div>
