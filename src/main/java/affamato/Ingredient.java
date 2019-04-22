@@ -29,6 +29,8 @@ public class Ingredient implements Comparable<Ingredient>
     @Index String unitShort;
     @Index String nutrientString;
     
+    private Ingredient() {}
+    
     public Ingredient(String json) 
     {
     	try {
