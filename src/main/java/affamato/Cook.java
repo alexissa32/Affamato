@@ -175,19 +175,26 @@ public class Cook
     //pass a recipe json string
     public void addToRecipeList(String RecipeString) 
     {
+    	if(this.RecipeList.equals("")) {}
+    	else {
     	JSONArray edit = new JSONArray(this.RecipeList);
     	JSONObject recipe = new JSONObject(RecipeString);
     	edit.put(recipe);
     	this.RecipeList = edit.toString();
     	//this.saveCook();
+    	}
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
     public void removeFromRecipeList(int pos) 
     {
+    	if(this.RecipeList.equals("")) {}
+    	else {
     	JSONArray recipes = new JSONArray(this.RecipeList);
+    	if(recipes.length()>pos) {
     	recipes.remove(pos);
     	this.RecipeList = recipes.toString();
+    	}}
     	/**
     	JSONArray updated = new JSONArray();
     	try
