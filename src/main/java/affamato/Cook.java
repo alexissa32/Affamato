@@ -53,27 +53,46 @@ public class Cook
     //pass an ingredient JSONstring and the index of the grocery list
     public void addToGroceryList(String ID, int index) 
     {
+    	if(this.GroceryLists.equals("")) {
+    		newGroceryList();
+    	}
     	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	if(gLists.length() > index) {
     	JSONArray gList = gLists.getJSONArray(index);
     	JSONObject ingredient = new JSONObject(ID);
     	gList.put(ingredient); //does this update gLists?
     	this.GroceryLists = gLists.toString();
+    	}
     }
     
     //makes empty grocery list
     public void newGroceryList() {
-    	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	gLists.put(new JSONArray());
+    	JSONArray newList= new JSONArray();
+    	if(this.GroceryLists.equals("")) {
+    		JSONArray Lists = new JSONArray();
+    		Lists.put(newList);
+    		this.GroceryLists = Lists.toString();
+    	}
+    	else {
+    		JSONArray gList = new JSONArray(this.GroceryLists);
+    		gList.put(new JSONArray());
+    		this.GroceryLists = gList.toString();
+    	}
+    	
+    	
     }
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
     //removes the grocery list from the specified index
     public void removeGroceryList(int index) 
     {
+    	if(this.GroceryLists.equals("")) {}
+    	else {
     	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	if(gLists.length()>index) {
     	gLists.remove(index);	//UNCAUGHT EXCEPTION FOR INDEX OUT OF BOUNDS
     	this.GroceryLists = gLists.toString();
-    	
+    	}}
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -94,11 +113,16 @@ public class Cook
     }
     
     //removes the ingredient at position pos in the grocery list with index "index"
-    public void removeFromGroceryList(int pos, int index) { 	
+    public void removeFromGroceryList(int pos, int index) {
+    	if(this.GroceryLists.equals("")) {}
+    	else {
     	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	if(gLists.length() > index) {
     	JSONArray gList = gLists.getJSONArray(index);
+    	if(gList.length() > pos) {
     	gList.remove(pos);//UNCAUGHT EXCEPTIONS FOR INDEX OUT OF BOUNDS
     	this.GroceryLists = gLists.toString();
+    	}}}
     }
     
     //pass a json string
