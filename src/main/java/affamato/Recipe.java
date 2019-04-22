@@ -114,7 +114,7 @@ public class Recipe implements Comparable<Recipe>
     public static JSONObject randomRecipe() {
     	List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
     	int size = recipes.size();
-    	Recipe r = recipes.get(new Random().nextInt(size -1) + 1);
+    	Recipe r = recipes.get(new Random().nextInt(size));
     	return new JSONObject().put("title", r.title).put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 							.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 							.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
