@@ -46,17 +46,39 @@ public class CookTesting{
 	
 	@Test
 	public void removeFromGroceryListTest() {
-		
+		User me = new User("me@gmail.com", "pizza.com");
+		Cook c = new Cook(me, "Cookholder");
+		c.newGroceryList();
+		c.addToGroceryList(ingredientString1, 0);
+		c.newGroceryList();
+		c.addToGroceryList(ingredientString2, 1);
+		c.addToGroceryList(ingredientString1, 1);
+		c.removeFromGroceryList(0, 1);
+		JSONArray list = c.getGroceryList(0);
+		JSONObject o = list.getJSONObject(0);
+		assertEquals(o.getString("name"), "butter");
 	}
 	
 	@Test
 	public void addToPantryTest(){
-		
+		User me = new User("me@gmail.com", "pizza.com");
+		Cook c = new Cook(me, "Cookholder");
+		c.addToPantry(ingredientString1);
+		JSONArray pantry = c.getPantry();
+		JSONObject o = (JSONObject) pantry.get(0);
+		assertEquals(o.get("name"), "butter");
 	}
 	
 	@Test
 	public void removeFromPantryTest() {
-		
+		User me = new User("me@gmail.com", "pizza.com");
+		Cook c = new Cook(me, "Cookholder");
+		c.addToPantry(ingredientString1);
+		c.addToPantry(ingredientString2);
+		c.removeFromPantry(0);
+		JSONArray pantry = c.getPantry();
+		JSONObject o = (JSONObject) pantry.get(0);
+		assertEquals(o.get("name"), "colbycheese");
 	}
 	
 	@Test
