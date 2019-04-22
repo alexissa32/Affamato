@@ -147,7 +147,13 @@
     </div>
   </div>
 </div>
-
+<%
+if(cook.getPantrySearchResults().length() != 0){
+	//document.getElementById("results").value = cook.getPantrySearchResults().toString();
+	String ja = cook.getPantrySearchResults().toString();
+	pageContext.setAttribute("resulting", ja);
+}
+%>
 <script>
 function displayResults() {
 	/*sleep(2000).then(() -> {
@@ -155,11 +161,14 @@ function displayResults() {
 		var box = document.getElementById("results");
 		box.value = "you got here yay!";
 	})
-}*/
-
-if(cook.getPantrySearchResults().length() != 0){
-	document.getElementById("results").value = cook.getPantrySearchResults().toString();
+	*/
 }
+
+	var v = document.getAttribute("resulting");
+	document.getElementById("results").value = v;
+	out.print("here");
+	out.print(v);
+
 
 //document.getElementById("results").value = "i'm not a regular box, im a cool box";
 </script>
