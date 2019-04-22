@@ -171,8 +171,10 @@ public class Cook
     }
     
     //UNTESTED METHOD correlated failures: getRecipeList(), getGroceryList()
+    //returns null if DNE yet
     public JSONArray getPantry() 
     {
+    	if(this.Pantry.equals("")) return new JSONArray();
     	JSONArray pantry = new JSONArray(this.Pantry);
     	return pantry;
     }
@@ -180,6 +182,7 @@ public class Cook
     //UNTESTED METHOD correlated failures: getPantry(), getGroceryList()
     public JSONArray getRecipeList()
     {
+    	if(this.RecipeList.equals("")) return new JSONArray();
     	JSONArray recipeList = new JSONArray(this.RecipeList);
     	return recipeList;
     }
@@ -187,26 +190,39 @@ public class Cook
     //UNTESTED METHOD correlated failures: getPantry(), getRecipeList()
     public JSONArray getGroceryLists()
     {
+    	if(this.RecipeList.equals("")) return new JSONArray();
     	JSONArray groceryLists = new JSONArray(this.GroceryLists);
     	return groceryLists;
     }
     
     public JSONArray getGroceryList(int pos) {
-    	JSONArray groceryLists = new JSONArray(this.GroceryLists);
-    	return groceryLists.getJSONArray(pos);
+    	
+    	JSONArray groceryLists;
+    	if(this.GroceryLists.equals("")) groceryLists = new JSONArray();
+    	else groceryLists = new JSONArray(this.GroceryLists);
+    	try {
+    		return groceryLists.getJSONArray(pos);
+    	} catch(Exception e) {
+    		groceryLists.put(pos, new JSONArray());
+    		return groceryLists.getJSONArray(pos);
+    	}
+    	
     }
     
     public JSONArray getPantrySearchResults() {
+    	if(this.PantrySearchResults.equals("")) return new JSONArray();
     	JSONArray results = new JSONArray(this.PantrySearchResults);
     	return results;
     }
 
     public JSONArray getGrocerySearchResults() {
+    	if(this.GrocerySearchResults.equals("")) return new JSONArray();
     	JSONArray results = new JSONArray(this.GrocerySearchResults);
     	return results;
     }
 
     public JSONArray getRecipeSearchResults() {
+    	if(this.RecipeSearchResults.equals("")) return new JSONArray();
     	JSONArray results = new JSONArray(this.RecipeSearchResults);
     	return results;
     }
