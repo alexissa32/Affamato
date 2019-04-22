@@ -2,16 +2,14 @@ package affamato;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
 import org.apache.http.client.utils.URIBuilder;
-=======
 import java.util.logging.Logger;
->>>>>>> 9bd02192b10f34318241c720782f716cd962817e
+
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
