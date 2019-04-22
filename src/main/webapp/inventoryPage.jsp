@@ -187,6 +187,8 @@ window.onclick = function(event) {
     		    		
         </form>
         <div>
+
+        <button type="button" class="btn btn-danger" style="margin-left: 397px; margin-top: 5px" onClick="add()" >Add</button>
         
         </div>
       </div>
