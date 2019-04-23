@@ -95,6 +95,7 @@
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
 	for(Integer i = 0; i < ja.length(); i++){
+		recipes.add(ja.getJSONObject(i).getString("title"));
 
 		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
 		
