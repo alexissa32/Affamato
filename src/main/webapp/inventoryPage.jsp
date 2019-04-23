@@ -121,7 +121,7 @@
   		var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
   		
   		
-  		<% cook.AddToPantry(json); %>
+  		<% cook.addToPantry(json); %>
   		alert("hello");  	    
 
  		//var row2 = table.insertRow(-1);
