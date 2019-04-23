@@ -8,6 +8,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,18 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 public class recipesPageServlet extends HttpServlet{
+	
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		UserService userService = UserServiceFactory.getUserService();
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        User user = userService.getCurrentUser();
+        Cook cook = Cook.getCook(user);
+        JSONObject r = Recipe.randomRecipe();
+        cook.setGrocerySearchResults(new JSONArray().put(r));
+        cook.updateCook();
+        resp.sendRedirect("/recipesPage.jsp");
+	}
 	
 	@Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -91,7 +91,7 @@
         
     </script>
 <%
-    JSONArray ja = cook.getRecipeList();
+    JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
 	for(Integer i = 0; i < ja.length(); i++){
@@ -172,18 +172,9 @@
     
 </div>
 <br />
-
-<button style="float:right" class="btn btn-lg btn-primary btn-add-panel"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
-
-<script>
-
-function updateCook(){
-	<%
-	cook.updateCook();
-	%>
-}
-
-</script>
+<form action="/recipes" method="get">
+<button style="float:right" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
+</form>
 
 
 <script>
@@ -192,29 +183,31 @@ var $template = $(".template");
 
 
 var hash = 2;
-$(".btn-add-panel").on("click", function () {
-	
-	<%
-	JSONObject json = Recipe.randomRecipe();
-	String title = json.getString("title");
-	pageContext.setAttribute("randomTitle", title);
-	pageContext.setAttribute("randomJSON", json.toString());
 
-	%>
+//$(".btn-add-panel").on("click", function () {
+//	
 	
-    var $newPanel = $template.clone();
-    $newPanel.find(".collapse").removeClass("in"); 
-    $newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
+	//JSONObject json = Recipe.randomRecipe();
+	//String title = json.getString("title");
+	//pageContext.setAttribute("randomTitle", title);
+	//pageContext.setAttribute("randomJSON", json.toString());
+
+	
+	
+//    var $newPanel = $template.clone();
+  //  $newPanel.find(".collapse").removeClass("in"); 
+    //$newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
     //.text("test"); 
-    .text(${fn:escapeXml(randomTitle)}); 
+   // .text(${fn:escapeXml(randomTitle)}); 
     
-    $newPanel.find(".panel-body").text(${fn:escapeXml(randomJSON)});
+    //$newPanel.find(".panel-body").text(${fn:escapeXml(randomJSON)});
       //$newPanel.find(".panel-body").attr("href", "#" + (++hash)).text("testbody")
 
     
-    $newPanel.find(".panel-collapse").attr("id", hash);
-    $("#accordion").append($newPanel.fadeIn());
-});
+    //$newPanel.find(".panel-collapse").attr("id", hash);
+    //$("#accordion").append($newPanel.fadeIn());
+//});
+
 
 $(document).on('click', '.glyphicon-remove-circle', function () {
     $(this).parents('.panel').get(0).remove();

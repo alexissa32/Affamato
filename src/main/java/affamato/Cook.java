@@ -69,6 +69,18 @@ public class Cook
     	}
     }
     
+    public void addToGroceryList(String data) {
+    	if(this.GroceryLists.equals("")) {
+    		newGroceryList("Grocery List 1");
+    	}
+    	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	JSONArray gList = gLists.getJSONArray(0);
+    	JSONObject ingredient = new JSONObject(data);
+    	gList.put(ingredient); 
+    	this.GroceryLists = gLists.toString();
+ 
+    }
+    
     public void addToGroceryList(JSONArray ingredient, int index) 
     {
     	if(this.GroceryLists.equals("")) {
@@ -127,6 +139,21 @@ public class Cook
     		e.printStackTrace();
     	}
     	this.GroceryList = updated; */
+    }
+    
+    public void removeFromGroceryList(String data) {
+    	if(this.GroceryLists.equals("")) {}
+    	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	JSONArray gList = gLists.getJSONArray(0);
+    	for(int i = 1 ; i < gList.length() ; i++) {
+    		Object o = gList.get(i);
+    		if(data.equals(o)) {
+    			gList.remove(i);
+    			break;
+    		}
+    	}
+    	this.GroceryLists = gLists.toString();
+    	
     }
     
     //removes the ingredient at position pos in the grocery list with index "index"
