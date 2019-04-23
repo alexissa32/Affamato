@@ -24,19 +24,20 @@ public class inventoryPageServlet extends HttpServlet{
         UserService userService = UserServiceFactory.getUserService();
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         User user = userService.getCurrentUser();
-    	String search = req.getParameter("search"); //this is working.
-    	//URL url = new URL("https://www.affamato.xyz/search?q="+query);
-        // Get the input stream through URL Connection
-    	
-        //URLConnection con = url.openConnection();
-        //InputStream is =con.getInputStream();
-        //BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        //result = br.readLine();
-	
-    	//perhaps this needs to be in the JSP?
-        Cook thisCook = Cook.getCook(user);
-        JSONArray thisPantry = thisCook.getPantry();
-        
+        Cook cook = Cook.getCook(user);
+        String addOrRemove = req.getParameter("ar");
+        if(addOrRemove != null) {
+        	if(addOrRemove.equals("add")) {
+		        String ing = req.getParameter("ing");
+		        cook.addToPantry(ing);
+        	}
+        	else if(addOrRemove.equals("remove")) {
+        		int pos = Integer.parseInt(req.getParameter("pos"));
+        		cook.removeFromPantry(pos);
+        	}
+        }
+        cook.updateCook();
+        	
         resp.sendRedirect("/inventoryPage.jsp");
     }
 

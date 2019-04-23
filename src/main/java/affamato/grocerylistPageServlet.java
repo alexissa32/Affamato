@@ -21,12 +21,42 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class grocerylistPageServlet extends HttpServlet{
 	
+	//get is for updating an existing grocery list
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		 UserService userService = UserServiceFactory.getUserService();
+	     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	     User user = userService.getCurrentUser();
+	     String posString = req.getParameter("pos");
+	     int pos = Integer.parseInt(posString);
+	     String addOrRemove = req.getParameter("ar");
+	     Cook cook = Cook.getCook(user);
+	     if(addOrRemove != null) {
+		     if(addOrRemove != null && addOrRemove.equals("add")) {
+		    	 String data = req.getParameter("data");
+			     cook.addToGroceryList(data, pos);
+		     }
+		     else if(addOrRemove.equals("remove")) {
+		    	 int idx = Integer.parseInt(req.getParameter("index"));
+		    	 cook.removeFromGroceryList(pos, idx);
+		     }
+	     }
+	     cook.updateCook();
+	     
+	     
+	     resp.sendRedirect("/grocerylistPage.jsp");
+	}
+	
+	//post is for creating a new grocery list
+	@Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         UserService userService = UserServiceFactory.getUserService();
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         User user = userService.getCurrentUser();
-    	String search = req.getParameter("search"); //this is working.
-    	
+    	String listName = req.getParameter("name"); //this is working.
+    	Cook cook = Cook.getCook(user);
+    	cook.newGroceryList(listName);
+    	cook.updateCook();
     	//URL url = new URL("https://www.affamato.xyz/search?q="+query);
         // Get the input stream through URL Connection
     	
@@ -36,8 +66,7 @@ public class grocerylistPageServlet extends HttpServlet{
         //result = br.readLine();
     	
     	//perhaps this needs to be in the JSP
-        Cook thisCook = Cook.getCook(user);
-        JSONArray thisLists = thisCook.getGroceryLists(); //returns a JSONArray of JSONArrays
+
 
         resp.sendRedirect("/grocerylistPage.jsp");
     }
