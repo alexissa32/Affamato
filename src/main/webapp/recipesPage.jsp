@@ -90,7 +90,23 @@
         }
         
     </script>
-<%
+
+</div>
+<div class="vertnav">
+<br>
+<l>
+  <li><a href="dashboardPage.jsp">Welcome</a></li>
+  <li><a href="inventoryPage.jsp">My Inventory</a></li>
+  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
+  <li><a class="active" href="recipesPage.jsp">My Recipes</a></li>
+</l>
+</div>
+<div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
+    
+    <%
+
+	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults());
+
     JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
@@ -113,7 +129,7 @@
 
         </div>
         <div id="collapseOne" class="panel-collapse collapse ">
-            <div class="panel-body">You should add this to your list!</div>
+            <div class="panel-body">This is already in your list!</div>
         </div>
     </div>
 		
@@ -124,19 +140,6 @@
 	pageContext.setAttribute("recipeList", recipes);
 	pageContext.setAttribute("size", ja.length());
 %>
-</div>
-<div class="vertnav">
-<br>
-<l>
-  <li><a href="dashboardPage.jsp">Welcome</a></li>
-  <li><a href="inventoryPage.jsp">My Inventory</a></li>
-  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
-  <li><a class="active" href="recipesPage.jsp">My Recipes</a></li>
-</l>
-</div>
-<div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
-    
-    
     <!-- 
     <div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
@@ -160,13 +163,13 @@
 
              <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Recipe #2 
+          Discover!:${fn:escapeXml(discoverTitle)}  
         </a>
       </h4>
 
         </div>
         <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">Get JSON</div>
+            <div class="panel-body">You should add this to your list!</div>
         </div>
     </div>
     
