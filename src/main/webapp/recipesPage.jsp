@@ -11,7 +11,7 @@
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
-<%@ page import="affamato.Cook" %>
+<%@ page import="affamato.*" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
 <%@ page import="java.util.List" %>
@@ -172,17 +172,25 @@ function updateCook(){
 
 <script>
 
-
-
-
 var $template = $(".template");
+
+<%
+	JSONObject json = Recipe.randomRecipe();
+	String title = json.getString("title");
+	pageContext.setAttribute("randomTitle", title);
+
+%>
+
 
 var hash = 2;
 $(".btn-add-panel").on("click", function () {
+	
     var $newPanel = $template.clone();
     $newPanel.find(".collapse").removeClass("in"); 
     $newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
-    .text("Surprise Recipe #" + hash); 
+    .text(${fn:escapeXml(randomTitle)}); 
+    
+  
     
     $newPanel.find(".panel-collapse").attr("id", hash);
     $("#accordion").append($newPanel.fadeIn());
