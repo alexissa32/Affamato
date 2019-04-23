@@ -12,8 +12,11 @@
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ page import="affamato.Cook" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,9 +95,30 @@
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
 	for(Integer i = 0; i < ja.length(); i++){
-		pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
-		pageContext.setAttribute("object" + i.toString(), ja.getJSONObject(i));
-		recipes.add(ja.getJSONObject(i).getString("title"));
+
+		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
+		
+		%>
+		
+		
+		<div class="panel panel-default">
+        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
+
+             <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          ${fn:escapeXml(title)}
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse ">
+            <div class="panel-body">${fn:escapeXml(post_date)}</div>
+        </div>
+    </div>
+		
+		<%
+		//pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
+
 	}
 	pageContext.setAttribute("recipeList", recipes);
 	pageContext.setAttribute("size", ja.length());
@@ -110,6 +134,9 @@
 </l>
 </div>
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
+    
+    
+    <!-- 
     <div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 
@@ -124,20 +151,9 @@
             <div class="panel-body"> Get JSON</div>
         </div>
     </div>
-    <div class="panel panel-default template">
-        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-
-             <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Recipe #2 
-        </a>
-      </h4>
-
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">Get JSON</div>
-        </div>
-    </div>
+    
+     -->
+    
 </div>
 <br />
 
@@ -155,6 +171,10 @@ function updateCook(){
 
 
 <script>
+
+
+
+
 var $template = $(".template");
 
 var hash = 2;

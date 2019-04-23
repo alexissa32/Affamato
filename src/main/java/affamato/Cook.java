@@ -46,9 +46,13 @@ public class Cook
     {
         return user; //return this instead? and write a getUser()?
     }   
-    //private void saveCook() {
-    //	ObjectifyService.ofy().save().entity(this).now();
-    //}
+    
+    public void updateCook() {
+    	this.saveCook();
+    }
+    private void saveCook() {
+    	ObjectifyService.ofy().save().entity(this).now();
+    }
     
     //pass an ingredient JSONstring and the index of the grocery list
     public void addToGroceryList(String ID, int index) 
@@ -317,6 +321,7 @@ public class Cook
     	this.RecipeSearchResults = results.toString();
     	//this.saveCook();
     }
+    
     
     private static final Logger log = Logger.getLogger(Cook.class.getName());
     //returns a Cook given the user
