@@ -9,14 +9,6 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-<%@ page import="org.json.JSONArray" %>
-<%@ page import="org.json.JSONObject" %>
-<%@ page import="affamato.*" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +31,6 @@
     User user = userService.getCurrentUser();
     if (user != null) {
         pageContext.setAttribute("user", user);
-        Cook cook = Cook.getCook(user);
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -47,10 +38,8 @@
   <a href="aboutPage.jsp">About</a>
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
-	    <form action="/search" method="get">
+	    <form action="/recipes" method="post">
 	      <input type="text" placeholder="Search for Recipes..." name="search">
-	      <input type="hidden" name = "type" value = "recipe">
-	      <input type="hidden" name="redirect" value="/recipesPage.jsp">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
         
 	        <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
@@ -90,40 +79,6 @@
         }
         
     </script>
-<%
-    JSONArray ja = cook.getRecipeList();
-	int size = ja.length();
-	List<String> recipes = new ArrayList<String>();
-	for(Integer i = 0; i < ja.length(); i++){
-		recipes.add(ja.getJSONObject(i).getString("title"));
-
-		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
-		pageContext.setAttribute("json", ja.getJSONObject(i).toString());
-		%>
-		
-		
-		<div class="panel panel-default">
-        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-
-             <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          ${fn:escapeXml(title)}
-        </a>
-      </h4>
-
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse ">
-            <div class="panel-body">${fn:escapeXml(json)}</div>
-        </div>
-    </div>
-		
-		<%
-		//pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
-
-	}
-	pageContext.setAttribute("recipeList", recipes);
-	pageContext.setAttribute("size", ja.length());
-%>
 </div>
 <div class="vertnav">
 <br>
@@ -135,9 +90,6 @@
 </l>
 </div>
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
-    
-    
-    <!-- 
     <div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 
@@ -152,10 +104,7 @@
             <div class="panel-body"> Get JSON</div>
         </div>
     </div>
-    
-     -->
-     
-     <div class="panel panel-default template">
+    <div class="panel panel-default template">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 
              <h4 class="panel-title">
@@ -169,48 +118,20 @@
             <div class="panel-body">Get JSON</div>
         </div>
     </div>
-    
 </div>
 <br />
 
 <button style="float:right" class="btn btn-lg btn-primary btn-add-panel"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
 
 <script>
-
-function updateCook(){
-	<%
-	cook.updateCook();
-	%>
-}
-
-</script>
-
-
-<script>
-
 var $template = $(".template");
-
 
 var hash = 2;
 $(".btn-add-panel").on("click", function () {
-	
-	<%
-	JSONObject json = Recipe.randomRecipe();
-	String title = json.getString("title");
-	pageContext.setAttribute("randomTitle", title);
-	pageContext.setAttribute("randomJSON", json.toString());
-
-	%>
-	
     var $newPanel = $template.clone();
     $newPanel.find(".collapse").removeClass("in"); 
     $newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
-    //.text("test"); 
-    .text(${fn:escapeXml(randomTitle)}); 
-    
-    $newPanel.find(".panel-body").text(${fn:escapeXml(randomJSON)});
-      //$newPanel.find(".panel-body").attr("href", "#" + (++hash)).text("testbody")
-
+    .text("Surprise Recipe #" + hash); 
     
     $newPanel.find(".panel-collapse").attr("id", hash);
     $("#accordion").append($newPanel.fadeIn());
