@@ -152,9 +152,13 @@
 <%
 
 JSONArray ja = cook.getPantrySearchResults();
-JSONObject o = ja.getJSONObject(0);
-String name = o.getString("name");
-pageContext.setAttribute("name", name);
+for(Integer i = 0; i < ja.length(); i++){
+	JSONObject o = ja.getJSONObject(i);
+	String name = o.getString("name");
+	pageContext.setAttribute("name" + i.toString(), name);
+}
+pageContext.setAttribute("size", ja.length());
+
 
 
 %>
