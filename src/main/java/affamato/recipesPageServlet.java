@@ -21,52 +21,28 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class recipesPageServlet extends HttpServlet{
 	
+	@Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     	
         UserService userService = UserServiceFactory.getUserService();
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         User user = userService.getCurrentUser();
-    	String query = req.getParameter("search"); //this is working.
-    	//URL url = new URL("https://www.affamato.xyz/search?q="+query);
-    	String vegetarian = req.getParameter("veggie"); //these will either be on or null
-    	String vegan = req.getParameter("vegan");
-    	String glutenFree = req.getParameter("glutenf");
-    	String ketogenic = req.getParameter("keto");
-    	String dairyFree = req.getParameter("dairyf");
-    	String quick = req.getParameter("quickr");
-    	String useInventory = req.getParameter("useinv");
-    	String useExpiring = req.getParameter("useexp");
-    	//String user = req.getParameter("user");
+        Cook cook = Cook.getCook(user);
+    	String addOrRemove = req.getParameter("ar");
+    	if(addOrRemove != null) {
+    		if(addOrRemove.equals("add")) {
+    			String data = req.getParameter("data");
+    			cook.addToRecipeList(data);
+    		}
+    		else if(addOrRemove.equals("remove")) {
+    			int pos = Integer.parseInt(req.getParameter("pos"));
+    			cook.removeFromRecipeList(pos);
+    		}
+    	}
     	
-        // Get the input stream through URL Connection
     	
-        //URLConnection con = url.openConnection();
-        //InputStream is =con.getInputStream();
-        //BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        //result = br.readLine();
-    	try {
-    	URIBuilder b = new URIBuilder("http://www.affamato.xyz/search"); 
-    	b.addParameter("type", "recipe");
-    	b.addParameter("user", user.toString());
-    	b.addParameter("q", query);
-    	b.addParameter("vegetarian", vegetarian == null ? "false" : "true");
-    	b.addParameter("vegan", vegan == null ? "false" : "true");
-    	b.addParameter("glutenFree", glutenFree == null ? "false" : "true");
-    	b.addParameter("ketogenic", ketogenic == null ? "false" : "true");
-    	b.addParameter("dairyFree", dairyFree == null ? "false" : "true");
-    	b.addParameter("quick", quick == null ? "false" : "true");
-    	b.addParameter("useInventory", useInventory == null ? "false" : "true");
-    	b.addParameter("useExpiring", useExpiring == null ? "false" : "true");
-    	
-    	resp.sendRedirect(b.toString());
     	
     	resp.sendRedirect("/recipesPage.jsp");
-    	
-    	} catch (Exception e) {
-    		
-    		e.printStackTrace();
-    		resp.sendRedirect("/recipesPage.jsp");
-    	}
 	
         
     }
