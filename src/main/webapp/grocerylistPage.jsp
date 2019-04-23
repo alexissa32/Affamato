@@ -176,7 +176,7 @@ function updateCook(){
 </script>
 
 
-<div id="results" style="display:block;">
+<div id="results" style="display:block; float:right">
 	<%
 	for(String item: ingredients){
 		pageContext.setAttribute("item", item);
