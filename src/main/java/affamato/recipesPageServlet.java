@@ -39,7 +39,7 @@ public class recipesPageServlet extends HttpServlet{
     			cook.removeFromRecipeList(pos);
     		}
     	}
-    	
+    	cook.updateCook();
     	
     	
     	resp.sendRedirect("/recipesPage.jsp");
