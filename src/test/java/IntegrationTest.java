@@ -1,17 +1,10 @@
-import static org.junit.Assert.*;
 import java.util.concurrent.TimeUnit;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import static org.junit.Assert.assertEquals;
 
  public class IntegrationTest {
 
@@ -22,9 +15,24 @@ import static org.junit.Assert.assertEquals;
 				"C:\\chromedriver.exe");
 
  		WebDriver driver = new ChromeDriver();
-		driver.get("https://www.google.com");
 
+		driver.get("https://www.affamato.xyz");
+		Thread.sleep(2000);
+		
+ 		driver.findElement(By.linkText("Log In")).click();
+ 		System.out.print(driver.getTitle());
+ 		
+		Thread.sleep(2000);
+
+ 		driver.findElement(By.id("identifierId")).sendKeys("affamatotesting@gmail.com");
+ 		driver.findElement(By.id("identifierId")).sendKeys(Keys.ENTER);
+
+		Thread.sleep(2000);
+ 	 	
+ 	 	driver.findElement(By.xpath("//input[@name='password']")).sendKeys("betterthanfunyums");
+ 	 	driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Keys.ENTER);
+
+ 		
  		Thread.sleep(5000);
-
  	}
  }
