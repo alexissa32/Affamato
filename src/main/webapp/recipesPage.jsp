@@ -97,7 +97,7 @@
 	for(Integer i = 0; i < ja.length(); i++){
 
 		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
-		
+		pageContext.setAttribute("json", ja.getJSONObject(i).toString());
 		%>
 		
 		
@@ -112,7 +112,7 @@
 
         </div>
         <div id="collapseOne" class="panel-collapse collapse ">
-            <div class="panel-body">${fn:escapeXml(post_date)}</div>
+            <div class="panel-body">${fn:escapeXml(json)}</div>
         </div>
     </div>
 		
