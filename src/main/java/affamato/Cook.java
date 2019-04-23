@@ -292,18 +292,21 @@ public class Cook
     public JSONArray getPantrySearchResults() {
     	//if(this.PantrySearchResults.equals("")) return new JSONArray();
     	JSONArray results = new JSONArray(this.PantrySearchResults);
+    	this.PantrySearchResults = (new JSONArray()).toString();
     	return results;
     }
 
     public JSONArray getGrocerySearchResults() {
     	if(this.GrocerySearchResults.equals("")) return new JSONArray();
     	JSONArray results = new JSONArray(this.GrocerySearchResults);
+    	this.GrocerySearchResults = (new JSONArray()).toString();
     	return results;
     }
 
     public JSONArray getRecipeSearchResults() {
     	if(this.RecipeSearchResults.equals("")) return new JSONArray();
     	JSONArray results = new JSONArray(this.RecipeSearchResults);
+    	this.RecipeSearchResults = (new JSONArray()).toString();
     	return results;
     }
 
