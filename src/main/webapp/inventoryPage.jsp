@@ -119,11 +119,10 @@
   		document.getElementById("ExpirationInput").value = "";
 
   		var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
-  		alert("hi");
-  		cook.AddToPantry(json);
-  		alert("hello");
   		
-  	    
+  		
+  		<% cook.AddToPantry(json); %>
+  		alert("hello");  	    
 
  		//var row2 = table.insertRow(-1);
   		//var cell1 = row.insertCell(0);
