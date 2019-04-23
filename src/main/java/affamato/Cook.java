@@ -58,7 +58,7 @@ public class Cook
     public void addToGroceryList(String ID, int index) 
     {
     	if(this.GroceryLists.equals("")) {
-    		newGroceryList();
+    		newGroceryList("Grocery List 1");
     	}
     	JSONArray gLists = new JSONArray(this.GroceryLists);
     	if(gLists.length() > index) {
@@ -72,7 +72,7 @@ public class Cook
     public void addToGroceryList(JSONArray ingredient, int index) 
     {
     	if(this.GroceryLists.equals("")) {
-    		newGroceryList();
+    		newGroceryList("Grocery List 1");
     	}
     	JSONArray gLists = new JSONArray(this.GroceryLists);
     	if(gLists.length() > index) {
@@ -83,8 +83,8 @@ public class Cook
     }
     
     //makes empty grocery list
-    public void newGroceryList() {
-    	JSONArray newList= new JSONArray();
+    public void newGroceryList(String name) {
+    	JSONArray newList= new JSONArray().put(new JSONObject().put("name", name));
     	if(this.GroceryLists.equals("")) {
     		JSONArray Lists = new JSONArray();
     		Lists.put(newList);
@@ -92,7 +92,7 @@ public class Cook
     	}
     	else {
     		JSONArray gList = new JSONArray(this.GroceryLists);
-    		gList.put(new JSONArray());
+    		gList.put(newList);
     		this.GroceryLists = gList.toString();
     	}
     	
@@ -290,7 +290,7 @@ public class Cook
     }
     
     public JSONArray getPantrySearchResults() {
-    	//if(this.PantrySearchResults.equals("")) return new JSONArray();
+    	if(this.PantrySearchResults.equals("")) return new JSONArray();
     	JSONArray results = new JSONArray(this.PantrySearchResults);
     	return results;
     }
@@ -304,9 +304,17 @@ public class Cook
     public JSONArray getRecipeSearchResults() {
     	if(this.RecipeSearchResults.equals("")) return new JSONArray();
     	JSONArray results = new JSONArray(this.RecipeSearchResults);
+    	
     	return results;
     }
 
+    public void clearAllSearchResults() {
+    	JSONArray empty = new JSONArray();
+    	this.RecipeSearchResults = empty.toString();
+    	this.GrocerySearchResults = empty.toString();
+    	this.PantrySearchResults = empty.toString();
+    }
+    
     public void setPantrySearchResults(JSONArray results) {
     	this.PantrySearchResults = results.toString();
     	//this.saveCook();

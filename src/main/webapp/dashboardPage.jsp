@@ -13,8 +13,8 @@
 <%@ page import = "java.util.Date" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%
-
-SimpleDateFormat sdf = new SimpleDateFormat("EEEEEEEEE, MMMMMMMMM dd, yyyy");
+//this date is sometimes the next day -- working on a fix. - Julia
+SimpleDateFormat sdf = new SimpleDateFormat("EEEEEEEEE, MMMMMMMMM dd yyyy");
 sdf.format(new Date());
 String date = sdf.format(new Date());
 
@@ -133,7 +133,7 @@ String[] tips = new String[numTips];
 <l>
   <li><a class="active" href="dashboardPage.jsp">Welcome</a></li>
   <li><a href="inventoryPage.jsp">My Inventory</a></li>
-  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
+  <li><a href="grocerylistPage.jsp">My Grocery List</a></li>
   <li><a href="recipesPage.jsp">My Recipes</a></li>
 </l>
 </div> 
