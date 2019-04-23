@@ -12,13 +12,11 @@
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ page import="affamato.Cook" %>
-<<<<<<< HEAD
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
-=======
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
->>>>>>> 6261a6801d538a4da78bfbda1860ac3712fba52d
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +95,7 @@
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
 	for(Integer i = 0; i < ja.length(); i++){
-<<<<<<< HEAD
+
 		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
 		
 		%>
@@ -120,11 +118,7 @@
 		
 		<%
 		//pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
-=======
-		pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
-		pageContext.setAttribute("object" + i.toString(), ja.getJSONObject(i));
-		recipes.add(ja.getJSONObject(i).getString("title"));
->>>>>>> 6261a6801d538a4da78bfbda1860ac3712fba52d
+
 	}
 	pageContext.setAttribute("recipeList", recipes);
 	pageContext.setAttribute("size", ja.length());
