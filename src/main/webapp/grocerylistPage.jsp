@@ -180,7 +180,7 @@ function updateCook(){
 	<%
 	for(String item: ingredients){
 		%>
-        <blockquote> ${fn:escapeXml(item)} + '/n'</blockquote>
+        <blockquote> ${fn:escapeXml(item)}</blockquote>
         <%
 	}
 	%>
