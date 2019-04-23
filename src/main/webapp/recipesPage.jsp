@@ -105,7 +105,25 @@
     
     <%
 
+    if (cook.getGrocerySearchResults().length() > 0) {
 	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
+	%>
+	<div class="panel panel-default template">
+    <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
+
+         <h4 class="panel-title">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+      Discover!:${fn:escapeXml(discoverTitle)}  
+    </a>
+  </h4>
+
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">You should add this to your list!</div>
+    </div>
+</div>
+<%
+    }
 
     JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
@@ -158,20 +176,7 @@
     
      -->
      
-     <div class="panel panel-default template">
-        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-
-             <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Discover!:${fn:escapeXml(discoverTitle)}  
-        </a>
-      </h4>
-
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">You should add this to your list!</div>
-        </div>
-    </div>
+     
     
 </div>
 <br />
