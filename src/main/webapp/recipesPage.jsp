@@ -205,10 +205,12 @@ $(".btn-add-panel").on("click", function () {
     var $newPanel = $template.clone();
     $newPanel.find(".collapse").removeClass("in"); 
     $newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
-    .text(${fn:escapeXml(randomTitle)}); 
+    .text("test"); 
+    //.text(${fn:escapeXml(randomTitle)}); 
     
-    $newPanel.find(".panel_body").text(${fn:escapeXml(randomJSON)})
-  
+    //$newPanel.find(".panel_body").text(${fn:escapeXml(randomJSON)})
+      $newPanel.find(".panel_body").text("testbody")
+
     
     $newPanel.find(".panel-collapse").attr("id", hash);
     $("#accordion").append($newPanel.fadeIn());
