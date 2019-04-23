@@ -217,7 +217,7 @@ Link to the GitHub repo
 
 <h4 align="left" id="numCommits"></h4>
 <h4 align="left" id="numIssues"></h4>
-<h4 align="left">Total Number of Unit Tests: 0</h4>
+<h4 align="left">Total Number of Unit Tests: 22</h4>
 </div>
 
 <div id="pane2" style="height:175px;">
