@@ -161,22 +161,22 @@ Link to the GitHub repo
 <h3>Justin Henry:</h3>
 <img class="two" src="images/justin.png"  hspace = "20px" lt=""/>
 <p><strong>Major:</strong> ECE Major focusing on Software Engineering, Design and Energy Systems and Renewable Energy<br />
-    <strong>Responsibilities:</strong> Scraping APIs to Database <br />
+    <strong>Responsibilities:</strong> Scraping APIs to Database, testing <br />
     <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.<br />
 	<strong id="justinIssues"></strong><br />
     <strong id="justinCommits"></strong><br />
-    <strong>Unit Tests:</strong> 0</p>
+    <strong>Unit Tests:</strong> 11</p>
 </div>
 
 <div id="pane2" style="height:350px;">
 <h3>Alex Issa:</h3>
 <img class="two" src="images/alex.jpg"  width = "275" height = "250" hspace = "20px" lt=""/>
 <p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
-    <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support <br />
+    <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support, testing <br />
     <strong>Bio:</strong> Alex enjoys complaining about the White House administration and spamming the group Slack at 3am.<br />
 	<strong id="alexIssues"></strong><br />
 	<strong id="alexCommits"></strong><br />
-    <strong>Unit Tests:</strong> 0</p>
+    <strong>Unit Tests:</strong> 11</p>
 </div>    
 
 <div id="pane2" style="height:300px;">
@@ -217,7 +217,7 @@ Link to the GitHub repo
 
 <h4 align="left" id="numCommits"></h4>
 <h4 align="left" id="numIssues"></h4>
-<h4 align="left">Total Number of Unit Tests: 0</h4>
+<h4 align="left">Total Number of Unit Tests: 22</h4>
 </div>
 
 <div id="pane2" style="height:175px;">

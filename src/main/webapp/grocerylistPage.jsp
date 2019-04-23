@@ -179,8 +179,9 @@ function updateCook(){
 <div id="results" style="display:block;">
 	<%
 	for(String item: ingredients){
+		pageContext.setAttribute("item", item);
 		%>
-        <blockquote> ${fn:escapeXml(item)} + '/n'</blockquote>
+        <blockquote> ${fn:escapeXml(item)}</blockquote>
         <%
 	}
 	%>
