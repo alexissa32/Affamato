@@ -154,6 +154,21 @@
     </div>
     
      -->
+     
+     <div class="panel panel-default template">
+        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
+
+             <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Recipe #2 
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body">Get JSON</div>
+        </div>
+    </div>
     
 </div>
 <br />
@@ -175,22 +190,24 @@ function updateCook(){
 
 var $template = $(".template");
 
-<%
-	JSONObject json = Recipe.randomRecipe();
-	String title = json.getString("title");
-	pageContext.setAttribute("randomTitle", title);
-
-%>
-
 
 var hash = 2;
 $(".btn-add-panel").on("click", function () {
+	
+	<%
+	JSONObject json = Recipe.randomRecipe();
+	String title = json.getString("title");
+	pageContext.setAttribute("randomTitle", title);
+	pageContext.setAttribute("randomJSON", json.toString());
+
+	%>
 	
     var $newPanel = $template.clone();
     $newPanel.find(".collapse").removeClass("in"); 
     $newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
     .text(${fn:escapeXml(randomTitle)}); 
     
+    $newPanel.find(".panel_body").text(${fn:escapeXml(randomJSON)})
   
     
     $newPanel.find(".panel-collapse").attr("id", hash);
