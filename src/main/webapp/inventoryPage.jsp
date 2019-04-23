@@ -9,6 +9,7 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="affamato.Cook" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +46,7 @@
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     if (user != null) {
+    	Cook cook = Cook.getCook(user);
         pageContext.setAttribute("user", user);
 %>
 <div class="topnav">
@@ -53,7 +55,7 @@
   <a href="aboutPage.jsp">About</a>
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
-	    <form action="/inventory" method="post">
+	    <form action="/ingredients" method="get">
 	      <input type="text" placeholder="Search..." name="search">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 	    </form>
@@ -64,7 +66,7 @@
 <l>
   <li><a href="dashboardPage.jsp">Welcome</a></li>
   <li><a class="active" href="inventoryPage.jsp">My Inventory</a></li>
-  <li><a href="grocerylistPage.jsp">My Grocery List</a></li>
+  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
   <li><a href="recipesPage.jsp">My Recipes</a></li>
 </l>
 </div>
@@ -82,7 +84,7 @@
         <th style="width: 330px">Ingredient</th>
         <th>Quantity</th>
         <th style="width: 250px">Expiration Date</th>
-        <th><p hidden><i class="fa fa-times-circle" id="exitbutton" aria-hidden="true"></i></p></th>
+        <th><p hidden=true><i class="fa fa-times-circle" id="exitbutton" aria-hidden="true"></i></p></th>
       </tr>
     </thead>
     <tbody>
@@ -91,8 +93,9 @@
   <script type="text/javascript">
   
   	function add() {
-  		 var table = document.getElementById("inventory_table");
-  		 var row = table.insertRow(-1);
+  		
+  		var table = document.getElementById("inventory_table");
+  		var row = table.insertRow(-1);
   		
   		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
   		var cell1 = row.insertCell(0);
@@ -100,20 +103,25 @@
   		var cell3 = row.insertCell(2);
   		var cell4 = row.insertCell(3);
   		var exitButton = document.getElementById("exitbutton").cloneNode(true);
-  		// Add some text to the new cells:
-  		cell1.innerHTML = document.getElementById("IngredientInput").value;
-  		cell2.innerHTML = document.getElementById("QuantityInput").value + " " + document.getElementById('dropdowntext').textContent;
-  		cell3.innerHTML = document.getElementById("ExpirationInput").value;
+  		
+  		//String ingredient = document.getElementById("IngredientInput").value;
+  		var quantity = document.getElementById("QuantityInput").value;
+  		var unit = document.getElementById('dropdowntext').textContent;
+  		var expiration = document.getElementById("ExpirationInput").value;
+  		//cell1.innerHTML = quantity;
+  		cell2.innerHTML = quantity + " " + unit;
+  		cell3.innerHTML = expiration;
   		cell4.appendChild(exitButton);
   		
-  		document.getElementById("IngredientInput").value = "";
+  		//document.getElementById("IngredientInput").value = "";
   		document.getElementById("QuantityInput").value = "";
   		document.getElementById('dropdowntext').textContent = "units";
   		document.getElementById("ExpirationInput").value = "";
 
   		var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
   		
-  		cook.AddToPantry(json);
+  		
+  		<% //cook.addToPantry(json); %>
   		alert("hello");  	    
 
  		//var row2 = table.insertRow(-1);
@@ -127,13 +135,13 @@
   </script>
 </div>
 
-<script>
+<script>	// remove button
 $(document).on('click', '.fa-times-circle', function () {
 	   $(this).closest('tr').remove()
 });
 </script> 
 
-<script>
+<script>	// modal close
 // Get the modal
 var modal = document.getElementById('id01');
 // When the user clicks anywhere outside of the modal, close it
@@ -143,13 +151,17 @@ window.onclick = function(event) {
     }
 }
 </script>
-    		<script>
-    			function units(unit) {
-    				document.getElementById('dropdowntext').innerHTML = unit;
-    			}
-    		</script>
+    		
+<script>	// units
+	function units(unit) {
+    	document.getElementById('dropdowntext').innerHTML = unit;
+    }
+</script>
 
 <%
+
+		
+
     } else {
     	response.sendRedirect("/landingPage.jsp");
     }
@@ -166,11 +178,20 @@ window.onclick = function(event) {
       <div class="modal-body">
         <form>
        		<div class="form-group">
-        		<label for="IngredientInput">Ingredient</label>
-    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">
+        		<!--  <label for="IngredientInput">Ingredient</label>
+    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">-->
+    			        		<!--   <label for="IngredientInput">Ingredient</label>-->
+        		<form action="/ingredients" method="post">
+			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
+			      <input type="hidden" name="redirect" value="/grocerylistPage.jsp">
+			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
+			      <textarea id="results" style="display:block;"></textarea>
+			    </form>
+			    
+    		<!--  <input class="form-control" id="IngredientInput" placeholder="Enter ingredient"> -->	
     		</div>
     		
-    		<form method="post">
+    	
        		<div class="form-group">
         		<div><label for="QuantityInput">Quantity</label></div>
     			<input class="form-control" id="QuantityInput" placeholder="Enter quantity and units"  style="width: 495px; float:left; display: inline">
@@ -197,7 +218,6 @@ window.onclick = function(event) {
         		<label for="ExpirationInput">Expiration Date</label>
     			<input class="form-control" id="ExpirationInput" placeholder="MM/DD/YYYY">
     		</div>
-    		</form>
     		    		
         </form>
         <div>

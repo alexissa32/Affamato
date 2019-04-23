@@ -53,7 +53,7 @@
   <a href="aboutPage.jsp">About</a>
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
-	    <form action="/inventory" method="post">
+	    <form action="/ingredients" method="get">
 	      <input type="text" placeholder="Search..." name="search">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 	    </form>

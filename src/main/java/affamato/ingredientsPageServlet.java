@@ -8,6 +8,9 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.logging.Logger;
 
 
@@ -25,6 +28,27 @@ public class ingredientsPageServlet extends HttpServlet{
 
 	private static final Logger log = Logger.getLogger(Cook.class.getName());
 	
+	
+	@Override public void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		UserService userService = UserServiceFactory.getUserService();
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        User user = userService.getCurrentUser();
+        String query = req.getParameter("search");
+        JSONArray s = Ingredient.searchIngredient(query);
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < s.length(); i++) {
+        	JSONObject o = s.getJSONObject(i);
+        	String name = o.getString("name");
+        	if(name != null) sb.append(name);
+        	sb.append("\n\n");
+        }
+        resp.setContentType("text/plain");
+        try {
+        resp.getWriter().println(sb);
+        } catch (Exception e) {
+        	return;
+        }
+	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
