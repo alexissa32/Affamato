@@ -12,6 +12,9 @@
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ page import="affamato.Cook" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,8 +137,7 @@
 			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
 			      <input type="hidden" name="type" value="ingredient">
 			      <input type="hidden" name="redirect" value="/grocerylistPage.jsp">
-			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
-			      <textarea id="results" style="display:block;"></textarea>
+			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 			    </form>
 	  	    </div>
 
@@ -152,29 +154,38 @@
 <%
 
 JSONArray ja = cook.getPantrySearchResults();
+List<String> ingredients = new ArrayList<String>();
 for(Integer i = 0; i < ja.length(); i++){
 	JSONObject o = ja.getJSONObject(i);
 	String name = o.getString("name");
 	pageContext.setAttribute("name" + i.toString(), name);
+	ingredients.add(name);
 }
+pageContext.setAttribute("ingredientList", ingredients);
 pageContext.setAttribute("size", ja.length());
 
 
 
 %>
-
-
 <script>
-function displayResults() {
-	/*sleep(2000).then(() -> {
-		JSONArray dRes = cook.getPantrySearchResults();
-		var box = document.getElementById("results");
-		box.value = "you got here yay!";
-	})
-*/}
-
-//document.getElementById("results").value = "i'm not a regular box, im a cool box";
+function updateCook(){
+	<%
+	cook.updateCook(); 
+	%>
+}
 </script>
+
+
+<div id="results" style="display:block;">
+	<%
+	for(String item: ingredients){
+		%>
+        <blockquote> ${fn:escapeXml(item)} + '/n'</blockquote>
+        <%
+	}
+	%>
+</div>
+
 
 <script>
 var $template = $(".template");
