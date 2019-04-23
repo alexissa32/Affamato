@@ -162,7 +162,13 @@ pageContext.setAttribute("size", ja.length());
 
 
 %>
-
+<script>
+function updateCook(){
+	<%
+	cook.updateCook();
+	%>
+}
+</script>
 
 <script>
 function displayResults() {

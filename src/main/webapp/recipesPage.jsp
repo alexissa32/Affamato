@@ -90,6 +90,7 @@
 	int size = ja.length();
 	for(Integer i = 0; i < ja.length(); i++){
 		pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
+		pageContext.setAttribute("object" + i.toString(), ja.getJSONObject(i));
 	}
 	pageContext.setAttribute("size", ja.length());
 %>
@@ -137,7 +138,15 @@
 
 <button style="float:right" class="btn btn-lg btn-primary btn-add-panel"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
 
+<script>
 
+function updateCook(){
+	<%
+	cook.updateCook();
+	%>
+}
+
+</script>
 
 
 <script>
