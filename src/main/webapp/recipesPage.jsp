@@ -91,6 +91,9 @@
         
     </script>
 <%
+
+	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults());
+
     JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
@@ -113,7 +116,7 @@
 
         </div>
         <div id="collapseOne" class="panel-collapse collapse ">
-            <div class="panel-body">You should add this to your list!</div>
+            <div class="panel-body">This is already in your list!</div>
         </div>
     </div>
 		
@@ -160,13 +163,13 @@
 
              <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Recipe #2 
+          Discover!:${fn:escapeXml(discoverTitle)}  
         </a>
       </h4>
 
         </div>
         <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">Get JSON</div>
+            <div class="panel-body">You should add this to your list!</div>
         </div>
     </div>
     
