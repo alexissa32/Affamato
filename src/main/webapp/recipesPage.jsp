@@ -105,7 +105,7 @@
     
     <%
 
-	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults());
+	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
 
     JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
@@ -129,7 +129,7 @@
 
         </div>
         <div id="collapseOne" class="panel-collapse collapse ">
-            <div class="panel-body">This is already in your list!</div>
+            <div class="panel-body">You should add this to your list!!</div>
         </div>
     </div>
 		
