@@ -90,7 +90,20 @@
         }
         
     </script>
-<%
+
+</div>
+<div class="vertnav">
+<br>
+<l>
+  <li><a href="dashboardPage.jsp">Welcome</a></li>
+  <li><a href="inventoryPage.jsp">My Inventory</a></li>
+  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
+  <li><a class="active" href="recipesPage.jsp">My Recipes</a></li>
+</l>
+</div>
+<div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
+    
+    <%
 
 	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults());
 
@@ -127,19 +140,6 @@
 	pageContext.setAttribute("recipeList", recipes);
 	pageContext.setAttribute("size", ja.length());
 %>
-</div>
-<div class="vertnav">
-<br>
-<l>
-  <li><a href="dashboardPage.jsp">Welcome</a></li>
-  <li><a href="inventoryPage.jsp">My Inventory</a></li>
-  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
-  <li><a class="active" href="recipesPage.jsp">My Recipes</a></li>
-</l>
-</div>
-<div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
-    
-    
     <!-- 
     <div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
