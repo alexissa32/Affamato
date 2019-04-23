@@ -120,8 +120,7 @@
 
   		var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
   		
-  		
-  		<% //cook.addToPantry(json); %>
+  		cook.AddToPantry(json);
   		alert("hello");  	    
 
  		//var row2 = table.insertRow(-1);
@@ -191,7 +190,7 @@ window.onclick = function(event) {
     		<!--  <input class="form-control" id="IngredientInput" placeholder="Enter ingredient"> -->	
     		</div>
     		
-    	
+    		<form method="post">
        		<div class="form-group">
         		<div><label for="QuantityInput">Quantity</label></div>
     			<input class="form-control" id="QuantityInput" placeholder="Enter quantity and units"  style="width: 495px; float:left; display: inline">
@@ -218,6 +217,7 @@ window.onclick = function(event) {
         		<label for="ExpirationInput">Expiration Date</label>
     			<input class="form-control" id="ExpirationInput" placeholder="MM/DD/YYYY">
     		</div>
+    		</form>
     		    		
         </form>
         <div>
