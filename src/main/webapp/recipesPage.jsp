@@ -98,7 +98,7 @@
 		recipes.add(ja.getJSONObject(i).getString("title"));
 
 		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
-		pageContext.setAttribute("json", ja.getJSONObject(i).toString());
+		//pageContext.setAttribute("json", ja.getJSONObject(i).toString());
 		%>
 		
 		
@@ -113,7 +113,7 @@
 
         </div>
         <div id="collapseOne" class="panel-collapse collapse ">
-            <div class="panel-body">${fn:escapeXml(json)}</div>
+            <div class="panel-body">You should add this to your list!</div>
         </div>
     </div>
 		
