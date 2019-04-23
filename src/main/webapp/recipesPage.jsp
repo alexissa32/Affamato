@@ -9,6 +9,11 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="org.json.JSONArray" %>
+<%@ page import="org.json.JSONObject" %>
+<%@ page import="affamato.Cook" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +36,7 @@
     User user = userService.getCurrentUser();
     if (user != null) {
         pageContext.setAttribute("user", user);
+        Cook cook = Cook.getCook(user);
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -81,6 +87,18 @@
         }
         
     </script>
+<%
+    JSONArray ja = cook.getRecipeList();
+	int size = ja.length();
+	List<String> recipes = new ArrayList<String>();
+	for(Integer i = 0; i < ja.length(); i++){
+		pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
+		pageContext.setAttribute("object" + i.toString(), ja.getJSONObject(i));
+		recipes.add(ja.getJSONObject(i).getString("title"));
+	}
+	pageContext.setAttribute("recipeList", recipes);
+	pageContext.setAttribute("size", ja.length());
+%>
 </div>
 <div class="vertnav">
 <br>
@@ -124,6 +142,17 @@
 <br />
 
 <button style="float:right" class="btn btn-lg btn-primary btn-add-panel"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
+
+<script>
+
+function updateCook(){
+	<%
+	cook.updateCook();
+	%>
+}
+
+</script>
+
 
 <script>
 var $template = $(".template");

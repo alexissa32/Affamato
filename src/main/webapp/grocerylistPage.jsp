@@ -12,6 +12,8 @@
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ page import="affamato.Cook" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,17 +154,26 @@
 <%
 
 JSONArray ja = cook.getPantrySearchResults();
+List<String> ingredients = new ArrayList<String>();
 for(Integer i = 0; i < ja.length(); i++){
 	JSONObject o = ja.getJSONObject(i);
 	String name = o.getString("name");
 	pageContext.setAttribute("name" + i.toString(), name);
+	ingredients.add(name);
 }
+pageContext.setAttribute("ingredientList", ingredients);
 pageContext.setAttribute("size", ja.length());
 
 
 
 %>
-
+<script>
+function updateCook(){
+	<%
+	cook.updateCook();
+	%>
+}
+</script>
 
 <script>
 function displayResults() {
