@@ -10,6 +10,7 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <%@ page import="org.json.JSONArray" %>
+<%@ page import="org.json.JSONObject" %>
 <%@ page import="affamato.Cook" %>
 <!DOCTYPE html>
 <html>
@@ -148,17 +149,30 @@
   </div>
 </div>
 
+<%
+
+JSONArray ja = cook.getPantrySearchResults();
+for(Integer i = 0; i < ja.length(); i++){
+	JSONObject o = ja.getJSONObject(i);
+	String name = o.getString("name");
+	pageContext.setAttribute("name" + i.toString(), name);
+}
+pageContext.setAttribute("size", ja.length());
+
+
+
+%>
+
+
 <script>
 function displayResults() {
-	sleep(2000).then(() => {
+	/*sleep(2000).then(() -> {
 		JSONArray dRes = cook.getPantrySearchResults();
 		var box = document.getElementById("results");
 		box.value = "you got here yay!";
 	})
-}
-if(cook.getPantrySearchResults().length() != 0){
-	document.getElementById("results").value = cook.getPantrySearchResults().toString();
-}
+*/}
+
 //document.getElementById("results").value = "i'm not a regular box, im a cool box";
 </script>
 
