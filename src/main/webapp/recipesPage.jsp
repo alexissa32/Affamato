@@ -91,7 +91,7 @@
         
     </script>
 <%
-    JSONArray ja = cook.getRecipeList();
+    JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
 	for(Integer i = 0; i < ja.length(); i++){
@@ -199,7 +199,6 @@ $(".btn-add-panel").on("click", function () {
 	String title = json.getString("title");
 	pageContext.setAttribute("randomTitle", title);
 	pageContext.setAttribute("randomJSON", json.toString());
-
 	%>
 	
     var $newPanel = $template.clone();
