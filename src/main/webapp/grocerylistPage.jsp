@@ -127,7 +127,11 @@ window.onclick = function(event) {
     				document.getElementById('dropdowntext').innerHTML = unit;
     			}
     		</script>
-
+ <script>
+ function process1(showed) {
+    document.getElementById("data").value = showed.value;
+}
+</script>
 <%
     } else {
     	response.sendRedirect("/landingPage.jsp");
@@ -143,10 +147,14 @@ window.onclick = function(event) {
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <form>
+        <form action="/grocerylist" method="get">
        		<div class="form-group">
         		<label for="IngredientInput">Ingredient</label>
-    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">
+    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient" onChange="process1(this)">
+    			<input type="hidden" name="ar" value="add">
+        		<input type="hidden" name="data" value="">
+    			<button type="submit" id="boi" class="btn btn-danger" data-dismiss="modal" 
+    						style="margin-left: 548px; margin-top: 10px" onClick="add()">Add</button>
     		</div>		
         </form>
         <div>
@@ -154,8 +162,10 @@ window.onclick = function(event) {
         </div>
       </div>
     </div>
+    <!--  
     <button type="button" id="boi" class="btn btn-danger" data-dismiss="modal" 
     style="margin-left: 548px; margin-top: 10px" onClick="add()">Add</button>
+    -->
   </div>
 </div>
 </html>
