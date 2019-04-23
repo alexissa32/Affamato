@@ -23,7 +23,7 @@ public class CookTesting{
 	public void addGroceryListTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
-		c.newGroceryList();
+		c.newGroceryList("null");
 		c.addToGroceryList(ingredientString1, 0);
 		JSONArray list = c.getGroceryList(0);
 		JSONObject o = (JSONObject) list.get(0);
@@ -34,9 +34,9 @@ public class CookTesting{
 	public void removeGroceryListTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
-		c.newGroceryList();
+		c.newGroceryList("null");
 		c.addToGroceryList(ingredientString1, 0);
-		c.newGroceryList();
+		c.newGroceryList("null2");
 		c.addToGroceryList(ingredientString2, 1);
 		c.removeGroceryList(0);
 		JSONArray list = c.getGroceryList(0);
@@ -48,9 +48,9 @@ public class CookTesting{
 	public void removeFromGroceryListTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
-		c.newGroceryList();
+		c.newGroceryList("null");
 		c.addToGroceryList(ingredientString1, 0);
-		c.newGroceryList();
+		c.newGroceryList("null2");
 		c.addToGroceryList(ingredientString2, 1);
 		c.addToGroceryList(ingredientString1, 1);
 		c.removeFromGroceryList(0, 1);
