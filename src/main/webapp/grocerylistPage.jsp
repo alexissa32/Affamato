@@ -211,7 +211,7 @@ $(document).on('click', '.glyphicon-remove-circle', function () {
 });
 </script> 
 
-<span class="fa fa-times-circle pull-right" id="exitbutton"></span>
+<p hidden><span class="fa fa-times-circle pull-right" id="exitbutton"></span></p>
 <script >
 
 $(".btn-add-ingredient").on("click", function () {
