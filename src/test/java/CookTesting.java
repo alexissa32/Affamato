@@ -28,7 +28,7 @@ public class CookTesting{
 		JSONArray list = c.getGroceryList(Integer.toString(0)); //Changed just to compile
 		JSONObject o = (JSONObject) list.get(0);
 		assertEquals(o.get("name"), "butter");
-		}
+	}
 	
 	@Test
 	public void removeGroceryListTest() {

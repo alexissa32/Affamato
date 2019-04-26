@@ -82,8 +82,8 @@
 				 	JSONArray inner = outer.getJSONArray(0);
 				 	
 				 	for (int i = 1; i < inner.length(); i++) {
-				 	    //String item = inner.getJSONObject(i).toString();
-				 	    String item = inner.getString(i);
+				 	   String item = inner.getString(i);
+				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
 		                <% 		 	    
