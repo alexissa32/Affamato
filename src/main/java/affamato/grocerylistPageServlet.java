@@ -28,17 +28,18 @@ public class grocerylistPageServlet extends HttpServlet{
 	     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	     User user = userService.getCurrentUser();
 	     String data = req.getParameter("data");
+	     Integer groceryListNum = Integer.parseInt(req.getParameter("listID")) - 1;
 	     //int pos = Integer.parseInt(posString);
 	     String addOrRemove = req.getParameter("ar");
 	     Cook cook = Cook.getCook(user);
 	     if(addOrRemove != null) {
 		     if(addOrRemove.equals("add")) {
 		    	 //String data = req.getParameter("data");
-			     cook.addToGroceryList(data);
+			     cook.addToGroceryList(data, groceryListNum);
 		     }
 		     else if(addOrRemove.equals("remove")) {
 		    	 //int idx = Integer.parseInt(req.getParameter("index"));
-		    	 cook.removeFromGroceryList(data);
+		    	 cook.removeFromGroceryList(data, groceryListNum);
 		     }
 	     }
 	     cook.updateCook();

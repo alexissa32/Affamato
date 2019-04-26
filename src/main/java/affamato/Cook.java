@@ -61,15 +61,21 @@ public class Cook
     		newGroceryList("Grocery List 1");
     	}
     	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	if(gLists.length() > index) {
+    	while(gLists.length() <= index) {
+    		Integer i = gLists.length();
+    		newGroceryList("Grocery List " + i.toString());
+    		gLists = new JSONArray(this.GroceryLists);
+    	}
+
     	JSONArray gList = gLists.getJSONArray(index);
     	JSONObject ingredient = new JSONObject(ID);
     	gList.put(ingredient); //does this update gLists?
     	this.GroceryLists = gLists.toString();
-    	}
     }
     
     public void addToGroceryList(String data) {
+    	addToGroceryList(data, 0);
+    	/*
     	if(this.GroceryLists.equals("")) {
     		newGroceryList("Grocery List 1");
     	}
@@ -78,7 +84,7 @@ public class Cook
     	JSONObject ingredient = new JSONObject(data);
     	gList.put(ingredient); 
     	this.GroceryLists = gLists.toString();
- 
+ 		*/
     }
     
     public void addToGroceryList(JSONArray ingredient, int index) 
@@ -87,11 +93,16 @@ public class Cook
     		newGroceryList("Grocery List 1");
     	}
     	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	if(gLists.length() > index) {
+    	while(gLists.length() <= index) {
+    		Integer i = gLists.length();
+    		newGroceryList("Grocery List " + i.toString());
+    		gLists = new JSONArray(this.GroceryLists);
+    	}
+
     	JSONArray gList = gLists.getJSONArray(index);
     	gList.put(ingredient); //does this update gLists?
     	this.GroceryLists = gLists.toString();
-    	}
+    	
     }
     
     //makes empty grocery list
@@ -142,9 +153,13 @@ public class Cook
     }
     
     public void removeFromGroceryList(String data) {
+    	removeFromGroceryList(data, 0);
+    }
+    
+    public void removeFromGroceryList(String data, int index) {
     	if(this.GroceryLists.equals("")) {}
     	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	JSONArray gList = gLists.getJSONArray(0);
+    	JSONArray gList = gLists.getJSONArray(index);
     	for(int i = 1 ; i < gList.length() ; i++) {
     		Object o = gList.get(i);
     		if(data.equals(o)) {
@@ -153,7 +168,6 @@ public class Cook
     		}
     	}
     	this.GroceryLists = gLists.toString();
-    	
     }
     
     //removes the ingredient at position pos in the grocery list with index "index"
