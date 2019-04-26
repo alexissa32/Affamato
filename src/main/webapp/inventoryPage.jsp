@@ -156,10 +156,6 @@ window.onclick = function(event) {
     }
 </script>
 
-
-
-</body>
-
 <!-- Modal -->
 <div class="modal fade" id="id01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -211,7 +207,10 @@ window.onclick = function(event) {
     style="margin-left: 548px; margin-top: 10px" onClick="add()">Add</button>
   </div>
 </div>
-</html>
+
+</body>
+
+
 
 
 
@@ -220,3 +219,6 @@ window.onclick = function(event) {
     	response.sendRedirect("/landingPage.jsp");
     }
 %>
+
+
+</html>
