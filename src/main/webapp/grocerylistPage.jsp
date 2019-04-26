@@ -81,12 +81,12 @@
 				 	JSONArray list = cook.getGroceryList("1");
 				 	
 				 	for (int i = 0; i < list.length(); i++) {
-				 	    String item = list.getJSONObject(i).toString();
+				 	    //String item = list.getJSONObject(i).toString();
+				 	    String item = list.getString(i);
 				 	    %>
 		                <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
 		                <% 		 	    
 				 	}
-
 				%>
         	
         	<form action="/grocerylist" method="get">
