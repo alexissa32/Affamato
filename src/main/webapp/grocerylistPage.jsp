@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language = "java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -67,9 +68,13 @@
       </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse ">
-        	<ul id="myList" class="list">
-        		<input class="ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="button"  class="btn btn-danger btn-add-ingredient">Add Ingredient +</button>
+        	<ul id="myList1" class="list">
+        	<form action="/grocerylist" method="get">
+        		<input type="hidden" id="listID" name="listID" value="1">
+        		<input type="hidden" id="ar" name="ar" value="add">
+        		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
+        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        	</form>
 			</ul>
         </div>
     </div>
@@ -83,9 +88,13 @@
       </h4>
         </div>
         <div id="collapseTwo" class="panel-collapse collapse">
-        	<ul id="myList" class="list">
-        		<input class="ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="button"  class="btn btn-danger btn-add-ingredient">Add Ingredient +</button>
+        	<ul id="myList2" class="list">
+        	<form action="/grocerylist" method="get">
+        	    <input type="hidden" id="listID" name="listID" value="2">
+        	    <input type="hidden" id="ar" name="ar" value="add">
+        		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
+        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        	</form>
 			</ul>
   				<!-- <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#myModalAdd">Add Ingredient +</button>  -->
         </div>         
@@ -100,9 +109,13 @@
       </h4>
         </div>
         <div id="collapseThree" class="panel-collapse collapse ">
-        	<ul id="myList" class="list">
-        		<input class="ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="button"  class="btn btn-danger btn-add-ingredient">Add Ingredient +</button>
+        	<ul id="myList3" class="list">
+        	<form action="/grocerylist" method="get">
+        		<input type="hidden" id="listID" name="listID" value="3">
+        		<input type="hidden" id="ar" name="ar" value="add">
+        		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
+        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        	</form>
 			</ul>
         </div>
     </div>
@@ -116,9 +129,13 @@
       </h4>
         </div>
         <div id="collapseFour" class="panel-collapse collapse ">
-        	<ul id="myList" class="list">
-        		<input class="ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="button"  class="btn btn-danger btn-add-ingredient">Add Ingredient +</button>
+        	<ul id="myList4" class="list">
+        	<form action="/grocerylist" method="get">
+        		<input type="hidden" id="listID" name="listID" value="4">
+         		<input type="hidden" id="ar" name="ar" value="add">       		
+        		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
+        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        	</form>
 			</ul>
         </div>
     </div>
@@ -132,9 +149,13 @@
       </h4>
         </div>
         <div id="collapseFive" class="panel-collapse collapse ">
-        	<ul id="myList" class="list">
-        		<input class="ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="button"  class="btn btn-danger btn-add-ingredient">Add Ingredient +</button>
+        	<ul id="myList5" class="list">
+        	<form action="/grocerylist" method="get">
+        		<input type="hidden" id="listID" name="listID" value="5">
+        		<input type="hidden" id="ar" name="ar" value="add">        		
+        		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
+        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        	</form>
 			</ul>
         </div>
     </div>
@@ -145,7 +166,7 @@
 
 <!--  <button style="float: right" type="button"  class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i> Add New Grocery List</button> -->
 
-
+<!-- This modal is for the "enter grocery list name" popup -- leave for now-->
 <div class="container">
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -167,6 +188,7 @@
   </div>
 </div>
 
+<!-- This modal is for the "add ingredient" popup -- leave for now-->
 <div class="container">
   <div class="modal fade" id="myModalAdd" role="dialog">
     <div class="modal-dialog">
@@ -188,6 +210,7 @@
   </div>
 </div>
 
+<!-- This script module is for the "add grocery list" button and clones the template of the grocery list accordion -- leave for now-->
 <script>
 var $template = $(".template");
 var hash = 2;
@@ -212,8 +235,9 @@ $(document).on('click', '.glyphicon-remove-circle', function () {
 </script> 
 
 <p hidden><span class="fa fa-times-circle pull-right" id="exitbutton"></span></p>
-<script >
 
+<!-- This script module is for the "add ingredient" button which does not communicate with the datastore -- leave for now -->
+<script >
 $(".btn-add-ingredient").on("click", function () {
      var exitButton = document.getElementById("exitbutton").cloneNode(true);
 	 var node = document.createElement("LI");	 
