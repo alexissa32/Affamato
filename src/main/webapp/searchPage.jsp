@@ -154,9 +154,9 @@
         
         	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
             	<div class="panel-body" >You should add this to your list!!</div>
-            	<h3>Cooking Time: ${fn:escapeXml(cookMins)}</h3>
-            	<h3>Prep Time: ${fn:escapeXml(prepTime)}</h3>
-            	<h3>Instructions: ${fn:escapeXml(instructions)}</h3>
+            	<p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
+            	<p>Prep Time: ${fn:escapeXml(prepMins)}</p>
+            	<p>Instructions: ${fn:escapeXml(instructions)}</p>
         	</div>
     </div>
 		
