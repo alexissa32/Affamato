@@ -10,6 +10,11 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="affamato.Cook" %>
+<%@ page import="org.json.JSONArray" %>
+<%@ page import="org.json.JSONObject" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +74,21 @@
         </div>
         <div id="collapseOne" class="panel-collapse collapse ">
         	<ul id="myList1" class="list">
+        	
+        	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
+				 <%
+				 	Cook cook = Cook.getCook(user);
+				 	JSONArray list = cook.getGroceryList("1");
+				 	
+				 	for (int i = 0; i < list.length(); i++) {
+				 	    String item = list.getJSONObject(i).toString();
+				 	    %>
+		                <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                <% 		 	    
+				 	}
+
+				%>
+        	
         	<form action="/grocerylist" method="get">
         		<input type="hidden" id="listID" name="listID" value="1">
         		<input type="hidden" id="ar" name="ar" value="add">
