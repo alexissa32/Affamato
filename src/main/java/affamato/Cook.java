@@ -36,7 +36,11 @@ public class Cook
         this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = "";
         this.Pantry = "";
-        this.GroceryLists = ""; 
+        JSONArray glist = new JSONArray();
+        for(int i = 0; i < 5; i++) {
+        	glist.put(new JSONArray());
+        }
+        this.GroceryLists = glist.toString();
         this.GrocerySearchResults = "";
         this.PantrySearchResults = (new JSONArray()).toString();
         this.RecipeSearchResults = "";
@@ -338,8 +342,9 @@ public class Cook
     public JSONArray getGroceryList(String ID) {
     	int pos = Integer.parseInt(ID) - 1;
     	JSONArray groceryLists;
-    	if(this.GroceryLists.equals("")) groceryLists = new JSONArray();
-    	else groceryLists = new JSONArray(this.GroceryLists);
+    	if(this.GroceryLists.equals("")) {groceryLists = new JSONArray();
+    	return new JSONArray();}
+    	else {groceryLists = new JSONArray(this.GroceryLists);}
     	try {
     		return groceryLists.getJSONArray(pos);
     	} catch(Exception e) {
