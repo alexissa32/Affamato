@@ -71,22 +71,23 @@
           Grocery List #1
         </a>
       </h4>
-        </div>
+        </div> 
         <div id="collapseOne" class="panel-collapse collapse ">
         	<ul id="myList1" class="list">
         	
         	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
 				 <%
 				 	Cook cook = Cook.getCook(user);
-				 	JSONArray list = cook.getGroceryList("1");
+				 	JSONArray outer = cook.getGroceryList("1");
+				 	JSONArray inner = outer.getJSONArray(0);
 				 	
-				 	for (int i = 1; i < list.length(); i++) {
-				 	    //String item = list.getJSONObject(i).toString();
-				 	    String item = list.getString(i);
+				 	for (int i = 1; i < inner.length(); i++) {
+				 	    //String item = inner.getJSONObject(i).toString();
+				 	    String item = inner.getString(i);
 				 	    %>
-		                <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
 		                <% 		 	    
-				 	}
+				 	//}
 				%>
         	
         	<form action="/grocerylist" method="get">
