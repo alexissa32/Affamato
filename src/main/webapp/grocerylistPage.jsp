@@ -87,7 +87,7 @@
 				 	    %>
 		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
 		                <% 		 	    
-				 	//}
+				 	}
 				%>
         	
         	<form action="/grocerylist" method="get">
