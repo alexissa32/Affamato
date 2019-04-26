@@ -9,7 +9,6 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-<%@ page import="affamato.Cook" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +45,8 @@
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     if (user != null) {
-    	Cook cook = Cook.getCook(user);
         pageContext.setAttribute("user", user);
+        pageContext.setAttribute("title", "test");
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -55,7 +54,7 @@
   <a href="aboutPage.jsp">About</a>
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
-	    <form action="/ingredients" method="get">
+	    <form action="/inventory" method="post">
 	      <input type="text" placeholder="Search..." name="search">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
 	    </form>
@@ -94,6 +93,8 @@
   
   	function add() {
   		
+  		var stringAmount = ${fn:escapeXml(test)};
+  		
   		var table = document.getElementById("inventory_table");
   		var row = table.insertRow(-1);
   		
@@ -103,26 +104,26 @@
   		var cell3 = row.insertCell(2);
   		var cell4 = row.insertCell(3);
   		var exitButton = document.getElementById("exitbutton").cloneNode(true);
-  		
-  		//String ingredient = document.getElementById("IngredientInput").value;
+  		z
+  		var ingredient = document.getElementById("IngredientInput").value;
   		var quantity = document.getElementById("QuantityInput").value;
   		var unit = document.getElementById('dropdowntext').textContent;
   		var expiration = document.getElementById("ExpirationInput").value;
-  		//cell1.innerHTML = quantity;
+  		cell1.innerHTML = quantity + stringAmount;
   		cell2.innerHTML = quantity + " " + unit;
   		cell3.innerHTML = expiration;
   		cell4.appendChild(exitButton);
   		
-  		//document.getElementById("IngredientInput").value = "";
+  		document.getElementById("IngredientInput").value = "";
   		document.getElementById("QuantityInput").value = "";
   		document.getElementById('dropdowntext').textContent = "units";
   		document.getElementById("ExpirationInput").value = "";
 
   		var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
   		
-  		
-  		<% //cook.addToPantry(json); %>
+  		//var cookClass = Java.type("main.java.affamato.Cook.getCook()");
   		alert("hello");  	    
+  		//var cook = cookClass.getCook();
 
  		//var row2 = table.insertRow(-1);
   		//var cell1 = row.insertCell(0);
@@ -159,9 +160,6 @@ window.onclick = function(event) {
 </script>
 
 <%
-
-		
-
     } else {
     	response.sendRedirect("/landingPage.jsp");
     }
@@ -178,15 +176,8 @@ window.onclick = function(event) {
       <div class="modal-body">
         <form>
        		<div class="form-group">
-        		<!--  <label for="IngredientInput">Ingredient</label>
-    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">-->
-    			        		<!--   <label for="IngredientInput">Ingredient</label>-->
-        		<form action="/ingredients" method="post">
-			      <input type="text" placeholder="Search for Ingredients..." name="search"> 
-			      <input type="hidden" name="redirect" value="/grocerylistPage.jsp">
-			      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search" onclick="displayResults()"></i></button>
-			      <textarea id="results" style="display:block;"></textarea>
-			    </form>
+        		<label for="IngredientInput">Ingredient</label>
+    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">
 			    
     		<!--  <input class="form-control" id="IngredientInput" placeholder="Enter ingredient"> -->	
     		</div>
