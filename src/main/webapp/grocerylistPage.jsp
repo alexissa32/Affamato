@@ -80,10 +80,10 @@
         	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
 				 <%
 				 	JSONArray outer1 = cook.getGroceryList("1");
-				 	JSONArray inner1 = outer1.getJSONArray(0);
+				 	//JSONArray inner1 = outer1.getJSONArray(0);
 				 	
-				 	for (int i = 1; i < inner1.length(); i++) {
-				 	   String item = inner1.getString(i);
+				 	for (int i = 1; i < outer1.length(); i++) {
+				 	   String item = outer1.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
