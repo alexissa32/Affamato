@@ -132,7 +132,11 @@
 		recipes.add(ja.getJSONObject(i).getString("title"));
 
 		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
-		//pageContext.setAttribute("json", ja.getJSONObject(i).toString());
+		pageContext.setAttribute("prepMins", ja.getJSONObject(i).getInt("prepMinutes") + "");
+		pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
+		pageContext.setAttribute("instructions", ja.getJSONObject(i).getString("instructions"));
+		pageContext.setAttribute("num", i.toString());
+
 		%>
 		
 		
@@ -140,15 +144,21 @@
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 
              <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>
       </h4>
 
         </div>
-        <div id="collapseOne" class="panel-collapse collapse ">
-            <div class="panel-body">You should add this to your list!!</div>
-        </div>
+        
+        <a href="">
+        	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
+            	<div class="panel-body" >You should add this to your list!!</div>
+            	<h3>Cooking Time: ${fn:escapeXml(cookMins)}</h3>
+            	<h3>Prep Time: ${fn:escapeXml(prepTime)}</h3>
+            	<h3>Instructions: ${fn:escapeXml(instructions)}</h3>
+        	</div>
+        </a>
     </div>
 		
 		<%
