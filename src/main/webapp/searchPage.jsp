@@ -9,14 +9,23 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="org.json.JSONArray" %>
+<%@ page import="org.json.JSONObject" %>
+<%@ page import="affamato.*" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User Dashboard Recipes Page</title>
+<title>User Dashboard Search Page</title>
 </head>
 <%//credit to robschmuecker for code related to dynamic accordion panels 
 //http://jsfiddle.net/robschmuecker/m5TMF/163/
+//credit to http://jsfiddle.net/evfnLn0x/ for dropdown checkbox filter on navigation bar
 %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -30,6 +39,7 @@
     User user = userService.getCurrentUser();
     if (user != null) {
         pageContext.setAttribute("user", user);
+        Cook cook = Cook.getCook(user);
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -37,12 +47,15 @@
   <a href="aboutPage.jsp">About</a>
   <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
-	    <form action="/recipes" method="post">
-	      <input type="text" placeholder="Search Recipes" name="search">
+	    <form action="/search" method="get">
+	      <input type="text" placeholder="Search for Recipes..." name="search">
+	      <input type="hidden" name = "type" value = "recipe">
+	      <input type="hidden" name="redirect" value="/searchPage.jsp">
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
-		    <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
-		        <span class="anchor">Select Filters</span>
-		        <ul class="items" style="position: absolute; color: black; background-color: white">
+        
+	        <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
+        		<span class="anchor">Select Filter</span>
+        		<ul id="items" class="items" style="position: absolute; color: black; background-color: white">
 		            <li><input type="checkbox" name="veggie"/>Vegetarian </li>
 		            <li><input type="checkbox" name="vegan"/>Vegan</li>
 		            <li><input type="checkbox" name="glutenf"/>Gluten-Free </li>
@@ -51,39 +64,110 @@
 		            <li><input type="checkbox" name="quickr"/>Quick Recipe </li>
 		            <li><input type="checkbox" name="useinv"/>Use Inventory </li>
 		            <li><input type="checkbox" name="useexp"/>Use Expiring Items </li>
-		        </ul>
-	        </div>
+        		</ul>
+    	     </div>
+	        
         </form>
   	</div>
 
     <script type="text/javascript">
+        
         var checkList = document.getElementById('list1');
+		var items = document.getElementById('items');
         checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-            if (checkList.classList.contains('visible'))
-                checkList.classList.remove('visible');
-            else
-                checkList.classList.add('visible');
+            if (items.classList.contains('visible')){
+                items.classList.remove('visible');
+                items.style.display = "none";
+            }
+            
+            else{
+                items.classList.add('visible');
+                items.style.display = "block";
+            }
         }
-
-        checkList.onblur = function(evt) {
-            checkList.classList.remove('visible');
+        items.onblur = function(evt) {
+            items.classList.remove('visible');
         }
+        
     </script>
-</div>
 
-<!-- 
+</div>
 <div class="vertnav">
 <br>
 <l>
   <li><a href="dashboardPage.jsp">Welcome</a></li>
   <li><a href="inventoryPage.jsp">My Inventory</a></li>
   <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
-  <li><a class="active" href="recipesPage.jsp">My Recipes</a></li>
+  <li><a href="recipesPage.jsp">My Recipes</a></li>
+  <li><a class="active" href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
--->
- 
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
+    
+    <%
+
+    if (cook.getGrocerySearchResults().length() > 0) {
+	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
+	%>
+	<div class="panel panel-default template">
+    <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
+
+         <h4 class="panel-title">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+      Discover!:${fn:escapeXml(discoverTitle)}  
+    </a>
+  </h4>
+
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">You should add this to your list!</div>
+    </div>
+</div>
+<%
+    }
+
+    JSONArray ja = cook.getRecipeSearchResults();
+	int size = ja.length();
+	List<String> recipes = new ArrayList<String>();
+	for(Integer i = 0; i < ja.length(); i++){
+		recipes.add(ja.getJSONObject(i).getString("title"));
+
+		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
+		pageContext.setAttribute("prepMins", ja.getJSONObject(i).getInt("prepMinutes") + "");
+		pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
+		pageContext.setAttribute("instructions", ja.getJSONObject(i).getString("instructions"));
+		pageContext.setAttribute("num", i.toString());
+
+		%>
+		
+		
+		<div class="panel panel-default">
+        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
+
+             <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
+          ${fn:escapeXml(title)}
+        </a>
+      </h4>
+
+        </div>
+        
+        	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
+            	<div class="panel-body" >You should add this to your list!!</div>
+            	<h3>Cooking Time: ${fn:escapeXml(cookMins)}</h3>
+            	<h3>Prep Time: ${fn:escapeXml(prepTime)}</h3>
+            	<h3>Instructions: ${fn:escapeXml(instructions)}</h3>
+        	</div>
+    </div>
+		
+		<%
+		//pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
+
+	}
+	pageContext.setAttribute("recipeList", recipes);
+	pageContext.setAttribute("size", ja.length());
+%>
+    <!-- 
     <div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 
@@ -94,45 +178,52 @@
       </h4>
 
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
+        <div id="collapseOne" class="panel-collapse collapse ">
             <div class="panel-body"> Get JSON</div>
         </div>
     </div>
-    <div class="panel panel-default template">
-        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-
-             <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Recipe #2 
-        </a>
-      </h4>
-
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">Get JSON</div>
-        </div>
-    </div>
+    
+     -->
+     
+     
+    
 </div>
-
-
 <br />
+<form action="/recipes" method="get">
+<button style="float:right" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
+</form>
 
-<!--
-<button class="btn btn-lg btn-primary btn-add-panel" style="float: right"> <i class="glyphicon glyphicon-plus"></i> Add New Recipe?</button>
--->
 
 <script>
+
 var $template = $(".template");
 
+
 var hash = 2;
-$(".btn-add-panel").on("click", function () {
-    var $newPanel = $template.clone();
-    $newPanel.find(".collapse").removeClass("in");
-    $newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
-        .text("Recipe #" + hash);
-    $newPanel.find(".panel-collapse").attr("id", hash);
-    $("#accordion").append($newPanel.fadeIn());
-});
+
+//$(".btn-add-panel").on("click", function () {
+//	
+	//JSONObject json = Recipe.randomRecipe();
+	//String title = json.getString("title");
+	//pageContext.setAttribute("randomTitle", title);
+	//pageContext.setAttribute("randomJSON", json.toString());
+
+	
+	
+//    var $newPanel = $template.clone();
+  //  $newPanel.find(".collapse").removeClass("in"); 
+    //$newPanel.find(".accordion-toggle").attr("href", "#" + (++hash))
+    //.text("test"); 
+   // .text(${fn:escapeXml(randomTitle)}); 
+    
+    //$newPanel.find(".panel-body").text(${fn:escapeXml(randomJSON)});
+      //$newPanel.find(".panel-body").attr("href", "#" + (++hash)).text("testbody")
+
+    
+    //$newPanel.find(".panel-collapse").attr("id", hash);
+    //$("#accordion").append($newPanel.fadeIn());
+//});
+
 
 $(document).on('click', '.glyphicon-remove-circle', function () {
     $(this).parents('.panel').get(0).remove();
