@@ -59,6 +59,7 @@
   <li><a href="inventoryPage.jsp">My Inventory</a></li>
   <li><a class="active" href="grocerylistPage.jsp">My Grocery Lists</a></li>
   <li><a href="recipesPage.jsp">My Recipes</a></li>
+  <li><a href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
  
@@ -79,10 +80,10 @@
         	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
 				 <%
 				 	JSONArray outer1 = cook.getGroceryList("1");
-				 	JSONArray inner1 = outer1.getJSONArray(0);
+				 	//JSONArray inner1 = outer1.getJSONArray(0);
 				 	
-				 	for (int i = 1; i < inner1.length(); i++) {
-				 	   String item = inner1.getString(i);
+				 	for (int i = 1; i < outer1.length(); i++) {
+				 	   String item = outer1.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
@@ -111,19 +112,7 @@
         <div id="collapseTwo" class="panel-collapse collapse">
         	<ul id="myList2" class="list">
         	
-        	  <!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
-				 <%
-				 	JSONArray outer2 = cook.getGroceryList("2");
-				 	JSONArray inner2 = outer2.getJSONArray(0);
-				 	
-				 	for (int i = 1; i < inner2.length(); i++) {
-				 	   String item = inner2.getString(i);
-				 	   pageContext.setAttribute("item",item); 
-				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
-		                <% 		 	    
-				 	}
-				%>
+
         	
         	<form action="/grocerylist" method="get">
         	    <input type="hidden" id="listID" name="listID" value="2">
@@ -147,19 +136,7 @@
         <div id="collapseThree" class="panel-collapse collapse ">
         	<ul id="myList3" class="list">
         	
-        	  <!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
-				 <%
-				 	JSONArray outer3 = cook.getGroceryList("3");
-				 	JSONArray inner3 = outer3.getJSONArray(0);
-				 	
-				 	for (int i = 1; i < inner3.length(); i++) {
-				 	   String item = inner3.getString(i);
-				 	   pageContext.setAttribute("item",item); 
-				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
-		                <% 		 	    
-				 	}
-				%>
+  
         	
         	<form action="/grocerylist" method="get">
         		<input type="hidden" id="listID" name="listID" value="3">
@@ -182,19 +159,7 @@
         <div id="collapseFour" class="panel-collapse collapse ">
         	<ul id="myList4" class="list">
         	
-        	  <!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
-				 <%
-				 	JSONArray outer4 = cook.getGroceryList("4");
-				 	JSONArray inner4 = outer4.getJSONArray(0);
-				 	
-				 	for (int i = 1; i < inner4.length(); i++) {
-				 	   String item = inner4.getString(i);
-				 	   pageContext.setAttribute("item",item); 
-				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
-		                <% 		 	    
-				 	}
-				%>
+
         	
         	<form action="/grocerylist" method="get">
         		<input type="hidden" id="listID" name="listID" value="4">
@@ -217,19 +182,7 @@
         <div id="collapseFive" class="panel-collapse collapse ">
         	<ul id="myList5" class="list">
         	
-        	 <!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
-				 <%
-				 	JSONArray outer5 = cook.getGroceryList("5");
-				 	JSONArray inner5 = outer5.getJSONArray(0);
-				 	
-				 	for (int i = 1; i < inner5.length(); i++) {
-				 	   String item = inner2.getString(i);
-				 	   pageContext.setAttribute("item",item); 
-				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
-		                <% 		 	    
-				 	}
-				%>
+
         	
         	<form action="/grocerylist" method="get">
         		<input type="hidden" id="listID" name="listID" value="5">
