@@ -184,7 +184,7 @@
         	
         	  <!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
 				 <%
-				 	JSONArray outer4 = cook.getGroceryList("2");
+				 	JSONArray outer4 = cook.getGroceryList("4");
 				 	JSONArray inner4 = outer4.getJSONArray(0);
 				 	
 				 	for (int i = 1; i < inner4.length(); i++) {
@@ -219,11 +219,11 @@
         	
         	 <!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
 				 <%
-				 	JSONArray outer5 = cook.getGroceryList("2");
+				 	JSONArray outer5 = cook.getGroceryList("5");
 				 	JSONArray inner5 = outer5.getJSONArray(0);
 				 	
 				 	for (int i = 1; i < inner5.length(); i++) {
-				 	   String item = inner5.getString(i);
+				 	   String item = inner2.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
