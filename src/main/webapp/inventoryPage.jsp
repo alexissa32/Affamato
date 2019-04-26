@@ -46,7 +46,6 @@
     User user = userService.getCurrentUser();
     if (user != null) {
         pageContext.setAttribute("user", user);
-        pageContext.setAttribute("title", "test");
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -67,9 +66,6 @@
   <li><a class="active" href="inventoryPage.jsp">My Inventory</a></li>
   <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
   <li><a href="recipesPage.jsp">My Recipes</a></li>
-  <li><a class="active" href="searchPage.jsp">Search Recipes</a></li>
-
-<li><a href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
 
@@ -96,8 +92,6 @@
   
   	function add() {
   		
-  		var stringAmount = ${fn:escapeXml(test)};
-  		
   		var table = document.getElementById("inventory_table");
   		var row = table.insertRow(-1);
   		
@@ -107,12 +101,12 @@
   		var cell3 = row.insertCell(2);
   		var cell4 = row.insertCell(3);
   		var exitButton = document.getElementById("exitbutton").cloneNode(true);
-  		z
+  		
   		var ingredient = document.getElementById("IngredientInput").value;
   		var quantity = document.getElementById("QuantityInput").value;
   		var unit = document.getElementById('dropdowntext').textContent;
   		var expiration = document.getElementById("ExpirationInput").value;
-  		cell1.innerHTML = quantity + stringAmount;
+  		cell1.innerHTML = quantity;
   		cell2.innerHTML = quantity + " " + unit;
   		cell3.innerHTML = expiration;
   		cell4.appendChild(exitButton);
@@ -161,12 +155,6 @@ window.onclick = function(event) {
     	document.getElementById('dropdowntext').innerHTML = unit;
     }
 </script>
-
-<%
-    } else {
-    	response.sendRedirect("/landingPage.jsp");
-    }
-%>
 
 
 
@@ -224,3 +212,11 @@ window.onclick = function(event) {
   </div>
 </div>
 </html>
+
+
+
+<%
+    } else {
+    	response.sendRedirect("/landingPage.jsp");
+    }
+%>
