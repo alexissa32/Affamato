@@ -55,26 +55,26 @@ public class Cook
     }
     
     //pass an ingredient JSONstring and the index of the grocery list
-    public void addToGroceryList(String ID, int index) 
+    public void addToGroceryList(String ID, String Ingredient) 
     {
+    	int index = Integer.valueOf(ID) -1;
     	if(this.GroceryLists.equals("")) {
     		newGroceryList("Grocery List 1");
     	}
     	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	while(gLists.length() <= index) {
-    		Integer i = gLists.length();
+    	while(gLists.length() < index) {
+    		Integer i = gLists.length() + 1;
     		newGroceryList("Grocery List " + i.toString());
     		gLists = new JSONArray(this.GroceryLists);
     	}
-
     	JSONArray gList = gLists.getJSONArray(index);
-    	JSONObject ingredient = new JSONObject(ID);
-    	gList.put(ingredient); //does this update gLists?
+    	//JSONObject ingredient = new JSONObject(Ingredient);
+    	gList.put(Ingredient); //does this update gLists?
     	this.GroceryLists = gLists.toString();
     }
     
     public void addToGroceryList(String data) {
-    	addToGroceryList(data, 0);
+    	//addToGroceryList(data, 0);
     	/*
     	if(this.GroceryLists.equals("")) {
     		newGroceryList("Grocery List 1");
@@ -152,8 +152,13 @@ public class Cook
     	this.GroceryList = updated; */
     }
     
-    public void removeFromGroceryList(String data) {
-    	removeFromGroceryList(data, 0);
+    public void removeFromGroceryList(String Ingredient, String ID) {
+    	/*int index = Integer.parseInt(ID) -1;
+    	JSONArray gLists = new JSONArray(this.GroceryLists);
+    	for(int )
+    	gLists.getJSONArray(index).remove(index)
+    	update.remove(index)
+    	*/
     }
     
     public void removeFromGroceryList(String data, int index) {
@@ -316,8 +321,8 @@ public class Cook
     	return groceryLists;
     }
     
-    public JSONArray getGroceryList(int pos) {
-    	
+    public JSONArray getGroceryList(String ID) {
+    	int pos = Integer.parseInt(ID) - 1;
     	JSONArray groceryLists;
     	if(this.GroceryLists.equals("")) groceryLists = new JSONArray();
     	else groceryLists = new JSONArray(this.GroceryLists);
