@@ -80,7 +80,7 @@
 				 	Cook cook = Cook.getCook(user);
 				 	JSONArray list = cook.getGroceryList("1");
 				 	
-				 	for (int i = 0; i < list.length(); i++) {
+				 	for (int i = 1; i < list.length(); i++) {
 				 	    //String item = list.getJSONObject(i).toString();
 				 	    String item = list.getString(i);
 				 	    %>
