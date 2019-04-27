@@ -88,7 +88,7 @@
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="1">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
-			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>
 		                 <br />	
@@ -119,7 +119,7 @@
         	
         	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
 				 <%
-				 	JSONArray list2 = cook.getGroceryList("2");				 	
+				 	JSONArray list2 = cook.getGroceryList("2");	 			 	
 				 	for (int i = 1; i < list2.length(); i++) {
 				 	   String item = list2.getString(i);
 				 	   pageContext.setAttribute("item",item); 
@@ -128,7 +128,7 @@
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="2">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
-			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>
 		                 <br />		
@@ -169,7 +169,7 @@
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="3">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
-			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>
 		                 <br />		
@@ -209,7 +209,7 @@
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="4">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
-			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>
 		                 <br />	
@@ -250,7 +250,7 @@
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="5">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
-			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>
 		                 <br />	
