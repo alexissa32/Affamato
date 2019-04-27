@@ -164,7 +164,8 @@ public class Cook
     			gLists.getJSONArray(index).remove(i);
     			break;
     		}
-    	}    	
+    	}
+    	this.GroceryLists = gLists.toString();
     }
     
     public void removeFromGroceryList(String Ingredient, Integer index) {
@@ -173,8 +174,10 @@ public class Cook
     	for(int i = 0; i < gLists.getJSONArray(index).length(); i++) {
     		if(gLists.getJSONArray(index).getString(i).equals(Ingredient)) {
     			gLists.getJSONArray(index).remove(i);
+    			break;
     		}
-    	}    	
+    	}
+    	this.GroceryLists = gLists.toString();
     }
     
     /*public void removeFromGroceryList(String data, int index) {
