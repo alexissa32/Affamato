@@ -66,7 +66,7 @@ public class Cook
     		newGroceryList("Grocery List 1");
     	}
     	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	while(gLists.length() < index) {
+    	while(gLists.length() < index + 1) {
     		Integer i = gLists.length() + 1;
     		newGroceryList("Grocery List " + i.toString());
     		gLists = new JSONArray(this.GroceryLists);
