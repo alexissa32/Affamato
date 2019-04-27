@@ -84,7 +84,13 @@
 				 	   String item = list1.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                 <p><b>${fn:escapeXml(item)}</b></p>
+		                 <form>
+			                 <input type="hidden" id="listID" name="listID" value="3">
+			                 <input type="hidden" id="ar" name="ar" value="remove">
+			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
+		                 </form>	
 		                <% 		 	    
 				 	}
 				%>
@@ -117,7 +123,13 @@
 				 	   String item = list2.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                 <p><b>${fn:escapeXml(item)}</b></p>	
+		                 <form>
+			                 <input type="hidden" id="listID" name="listID" value="3">
+			                 <input type="hidden" id="ar" name="ar" value="remove">
+			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
+		                 </form>
 		                <% 		 	    
 				 	}
 				%>
@@ -151,12 +163,12 @@
 				 	   String item = list3.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>
+		                 <p><b>${fn:escapeXml(item)}</b></p>
 		                 <form>
 			                 <input type="hidden" id="listID" name="listID" value="3">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
-			                 <input type="hidden" name="ingredient" value=item>
-			                 <button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
 		                 </form>	
 		                <% 		 	    
 				 	}
@@ -190,7 +202,13 @@
 				 	   String item = list4.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                 <p><b>${fn:escapeXml(item)}</b></p>
+		                 <form>
+			                 <input type="hidden" id="listID" name="listID" value="3">
+			                 <input type="hidden" id="ar" name="ar" value="remove">
+			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
+		                 </form>	
 		                <% 		 	    
 				 	}
 				%>
@@ -224,7 +242,13 @@
 				 	   String item = list5.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                 <p><b>${fn:escapeXml(item)}</b></p>
+		                 <form>
+			                 <input type="hidden" id="listID" name="listID" value="3">
+			                 <input type="hidden" id="ar" name="ar" value="remove">
+			                 <input type="hidden" name="ingredient" value="<%=item%>">
+			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
+		                 </form>	
 		                <% 		 	    
 				 	}
 				%>
