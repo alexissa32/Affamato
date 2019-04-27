@@ -15,7 +15,7 @@
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
@@ -90,7 +90,8 @@
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
-		                 </form>	
+		                 </form>
+		                 <br />	
 		                <% 		 	    
 				 	}
 				%>
@@ -129,7 +130,8 @@
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
-		                 </form>	
+		                 </form>
+		                 <br />		
 		                <% 	 	    
 				 	}
 				%>
@@ -169,7 +171,8 @@
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
-		                 </form>	
+		                 </form>
+		                 <br />		
 		                <% 	 	    
 				 	}
 				%>
@@ -208,7 +211,8 @@
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
-		                 </form>	
+		                 </form>
+		                 <br />	
 		                <% 		 	    
 				 	}
 				%>
@@ -248,7 +252,8 @@
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
-		                 </form>	
+		                 </form>
+		                 <br />	
 		                <% 		 	    
 				 	}
 				%>
