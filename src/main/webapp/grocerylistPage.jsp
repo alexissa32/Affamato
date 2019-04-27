@@ -85,7 +85,7 @@
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
-		                 <form style="display:inline">
+		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="1">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
@@ -125,7 +125,7 @@
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
-		                 <form style="display:inline">
+		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="2">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
@@ -166,7 +166,7 @@
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
-		                 <form style="display:inline">
+		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="3">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
@@ -206,7 +206,7 @@
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
-		                 <form style="display:inline">
+		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="4">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
@@ -247,7 +247,7 @@
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
-		                 <form style="display:inline">
+		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="5">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
