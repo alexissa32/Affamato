@@ -66,7 +66,6 @@
   <li><a class="active" href="inventoryPage.jsp">My Inventory</a></li>
   <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
   <li><a href="recipesPage.jsp">My Recipes</a></li>
-  <li><a class="active" href="searchPage.jsp">Search Recipes</a></li>
   <li><a href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
