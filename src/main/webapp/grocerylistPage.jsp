@@ -84,12 +84,12 @@
 				 	   String item = list1.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p><b>${fn:escapeXml(item)}</b></p>
-		                 <form>
-			                 <input type="hidden" id="listID" name="listID" value="3">
+		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <form style="display:inline">
+			                 <input type="hidden" id="listID" name="listID" value="1">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
-			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>	
 		                <% 		 	    
 				 	}
@@ -123,14 +123,14 @@
 				 	   String item = list2.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p><b>${fn:escapeXml(item)}</b></p>	
-		                 <form>
-			                 <input type="hidden" id="listID" name="listID" value="3">
+		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <form style="display:inline">
+			                 <input type="hidden" id="listID" name="listID" value="2">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
-			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
-		                 </form>
-		                <% 		 	    
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+		                 </form>	
+		                <% 	 	    
 				 	}
 				%>
         	
@@ -163,14 +163,14 @@
 				 	   String item = list3.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p><b>${fn:escapeXml(item)}</b></p>
-		                 <form>
+		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <form style="display:inline">
 			                 <input type="hidden" id="listID" name="listID" value="3">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
-			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>	
-		                <% 		 	    
+		                <% 	 	    
 				 	}
 				%>
         	
@@ -202,12 +202,12 @@
 				 	   String item = list4.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p><b>${fn:escapeXml(item)}</b></p>
-		                 <form>
-			                 <input type="hidden" id="listID" name="listID" value="3">
+		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <form style="display:inline">
+			                 <input type="hidden" id="listID" name="listID" value="4">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
-			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>	
 		                <% 		 	    
 				 	}
@@ -242,12 +242,12 @@
 				 	   String item = list5.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p><b>${fn:escapeXml(item)}</b></p>
-		                 <form>
-			                 <input type="hidden" id="listID" name="listID" value="3">
+		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <form style="display:inline">
+			                 <input type="hidden" id="listID" name="listID" value="5">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" name="ingredient" value="<%=item%>">
-			                 <span><button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button></span>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>	
 		                <% 		 	    
 				 	}
