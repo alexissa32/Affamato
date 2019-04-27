@@ -141,11 +141,13 @@ public class Recipe implements Comparable<Recipe>
 					}
 				}
 				else {
+	    			JSONObject json = new JSONObject(r.jsonString);
+	    			JSONArray extIngredients = json.getJSONArray("extendedIngredients");
 					returner.put(new JSONObject().put("title", r.title)
 							.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 							.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 							.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
-							.put("prepMinutes", r.prepMinutes).put("id", r.id).put("instructions", r.instructions));
+							.put("prepMinutes", r.prepMinutes).put("id", r.id).put("instructions", r.instructions).put("ingredients",extIngredients));
 				}
 				
 			}
@@ -153,14 +155,16 @@ public class Recipe implements Comparable<Recipe>
     	if(param.isUsingStuff()) {
     		Map<Recipe, Float> recipeValue = param.sortAndReturn();
     		for(Recipe r : recipeValue.keySet()) {
+    			JSONObject json = new JSONObject(r.jsonString);
+    			JSONArray extIngredients = json.getJSONArray("extendedIngredients");
     			returner.put(new JSONObject().put("title", r.title)
 						.put("vegetarian", r.vegetarian).put("glutenFree", r.glutenFree)
 						.put("dairyFree", r.dairyFree).put("ketogenic", r.ketogenic)
 						.put("vegan", r.vegan).put("cookMinutes", r.cookMinutes)
-						.put("prepMinutes", r.prepMinutes).put("id", r.id).put("instructions", r.instructions));
-
+						.put("prepMinutes", r.prepMinutes).put("id", r.id).put("instructions", r.instructions).put("ingredientArray", extIngredients));
     		}
     	}
     	return returner;
     }
+    
 } 
