@@ -162,7 +162,7 @@ public class Cook
     	for(int i = 0; i < gLists.getJSONArray(index).length(); i++) {
     		if(gLists.getJSONArray(index).getString(i).equals(Ingredient)) {
     			gLists.getJSONArray(index).remove(i);
-    			break;
+    			
     		}
     	}
     	this.GroceryLists = gLists.toString();
@@ -172,10 +172,10 @@ public class Cook
     	//int index = Integer.parseInt(ID) -1;
     	JSONArray gLists = new JSONArray(this.GroceryLists);
     	JSONArray newList = gLists.getJSONArray(index);
-    	for(int i = 0; i < gLists.getJSONArray(index).length(); i++) {
-    		if(gLists.getJSONArray(index).getString(i).equals(Ingredient)) {
+    	for(int i = 0; i < newList.length(); i++) {
+    		if(newList.getString(i).equals(Ingredient)) {
     			newList.remove(i);
-    			break;
+    			
     		}
     	}
     	gLists.put(index, newList);

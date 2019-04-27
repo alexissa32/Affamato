@@ -34,9 +34,7 @@ public class CookTesting{
 	public void removeGroceryListTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
-		c.newGroceryList("null");
 		c.addToGroceryList(ingredientString1, 0);
-		c.newGroceryList("null2");
 		c.addToGroceryList(ingredientString2, 1);
 		c.removeGroceryList(0);
 		JSONArray list = c.getGroceryList(Integer.toString(0)); //Changed just to compile
@@ -48,15 +46,13 @@ public class CookTesting{
 	public void removeFromGroceryListTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
-		c.newGroceryList("null");
-		c.addToGroceryList(ingredientString1, 0);
-		c.newGroceryList("null2");
-		c.addToGroceryList(ingredientString2, 1);
-		c.addToGroceryList(ingredientString1, 1);
-		c.removeFromGroceryList(0, 1);
-		JSONArray list = c.getGroceryList(Integer.toString(0)); //Changed just to compile
-		JSONObject o = list.getJSONObject(0);
-		assertEquals(o.getString("name"), "butter");
+		c.addToGroceryList("butter", 0);
+		c.addToGroceryList("cheese", 1);
+		c.addToGroceryList("butter", 1);
+		c.removeFromGroceryList("cheese", 1);
+		JSONArray list = c.getGroceryList(Integer.toString(2)); //Changed just to compile
+		String s = list.getString(0);
+		assertEquals(s, "butter");
 	}
 	
 	@Test
