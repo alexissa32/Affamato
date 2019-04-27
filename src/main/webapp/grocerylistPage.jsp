@@ -79,11 +79,9 @@
         	
         	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
 				 <%
-				 	JSONArray outer1 = cook.getGroceryList("1");
-				 	//JSONArray inner1 = outer1.getJSONArray(0);
-				 	
-				 	for (int i = 1; i < outer1.length(); i++) {
-				 	   String item = outer1.getString(i);
+				 	JSONArray list1 = cook.getGroceryList("1");
+				 	for (int i = 1; i < list1.length(); i++) {
+				 	   String item = list1.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
 		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
@@ -112,7 +110,17 @@
         <div id="collapseTwo" class="panel-collapse collapse">
         	<ul id="myList2" class="list">
         	
-
+        	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
+				 <%
+				 	JSONArray list2 = cook.getGroceryList("2");				 	
+				 	for (int i = 1; i < list2.length(); i++) {
+				 	   String item = list2.getString(i);
+				 	   pageContext.setAttribute("item",item); 
+				 	    %>
+		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                <% 		 	    
+				 	}
+				%>
         	
         	<form action="/grocerylist" method="get">
         	    <input type="hidden" id="listID" name="listID" value="2">
@@ -136,7 +144,23 @@
         <div id="collapseThree" class="panel-collapse collapse ">
         	<ul id="myList3" class="list">
         	
-  
+          	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
+				 <%
+				 	JSONArray list3 = cook.getGroceryList("3");				 	
+				 	for (int i = 1; i < list3.length(); i++) {
+				 	   String item = list3.getString(i);
+				 	   pageContext.setAttribute("item",item); 
+				 	    %>
+		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>
+		                 <form>
+			                 <input type="hidden" id="listID" name="listID" value="3">
+			                 <input type="hidden" id="ar" name="ar" value="remove">
+			                 <input type="hidden" name="ingredient" value=item>
+			                 <button type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+		                 </form>	
+		                <% 		 	    
+				 	}
+				%>
         	
         	<form action="/grocerylist" method="get">
         		<input type="hidden" id="listID" name="listID" value="3">
@@ -159,7 +183,17 @@
         <div id="collapseFour" class="panel-collapse collapse ">
         	<ul id="myList4" class="list">
         	
-
+          	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
+				 <%
+				 	JSONArray list4 = cook.getGroceryList("4");				 	
+				 	for (int i = 1; i < list4.length(); i++) {
+				 	   String item = list4.getString(i);
+				 	   pageContext.setAttribute("item",item); 
+				 	    %>
+		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                <% 		 	    
+				 	}
+				%>
         	
         	<form action="/grocerylist" method="get">
         		<input type="hidden" id="listID" name="listID" value="4">
@@ -182,7 +216,18 @@
         <div id="collapseFive" class="panel-collapse collapse ">
         	<ul id="myList5" class="list">
         	
-
+          	<!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
+				 <%
+				 	JSONArray list5 = cook.getGroceryList("5");
+				 	
+				 	for (int i = 1; i < list5.length(); i++) {
+				 	   String item = list5.getString(i);
+				 	   pageContext.setAttribute("item",item); 
+				 	    %>
+		                 <p style = "font-family:verdana;"><b>${fn:escapeXml(item)}</b></p>	
+		                <% 		 	    
+				 	}
+				%>
         	
         	<form action="/grocerylist" method="get">
         		<input type="hidden" id="listID" name="listID" value="5">
