@@ -173,7 +173,7 @@ public class Cook
     	JSONArray gLists = new JSONArray(this.GroceryLists);
     	JSONArray newList = gLists.getJSONArray(index);
     	for(int i = 0; i < newList.length(); i++) {
-    		if(newList.getString(i).equals(Ingredient)) {
+    		if(newList.get(i).equals(Ingredient)) {
     			newList.remove(i);
     			
     		}
