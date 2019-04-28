@@ -81,14 +81,14 @@
 				 <%
 				 	JSONArray list1 = cook.getGroceryList("1");
 				 	for (int i = 1; i < list1.length(); i++) {
-				 	   String item = list1.getString(i);
-				 	   pageContext.setAttribute("item",item); 
+				 	   String listItem = list1.getString(i);
+				 	   pageContext.setAttribute("item",listItem); 
 				 	    %>
 		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="1">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
-			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
+			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=listItem%>">
 			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>
 		                 <br />	
