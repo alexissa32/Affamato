@@ -50,7 +50,12 @@
 	    <form action="/search" method="get">
 	      <input type="text" placeholder="Search for Recipes..." name="search">
 	      <input type="hidden" name = "type" value = "recipe">
+	      <script>
+	      	setTimeout(function(){window.location.reload();}, 2000);
+	      </script>
+	      <!-- 
 	      <input type="hidden" name="redirect" value="/searchPage.jsp">
+	      -->
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
         
 	        <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
