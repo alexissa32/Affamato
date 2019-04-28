@@ -37,7 +37,7 @@ public class CookTesting{
 		c.addToGroceryList(ingredientString1, 0);
 		c.addToGroceryList(ingredientString2, 1);
 		c.removeGroceryList(0);
-		JSONArray list = c.getGroceryList(Integer.toString(0)); //Changed just to compile
+		JSONArray list = c.getGroceryList(Integer.toString(2)); //Changed just to compile
 		JSONObject o = (JSONObject) list.get(0);
 		assertEquals(o.get("name"), "colbycheese");
 	}
@@ -49,6 +49,7 @@ public class CookTesting{
 		c.addToGroceryList("butter", 0);
 		c.addToGroceryList("cheese", 1);
 		c.addToGroceryList("butter", 1);
+		c.addToGroceryList("tomato", 1);
 		c.removeFromGroceryList("cheese", 1);
 		JSONArray list = c.getGroceryList(Integer.toString(2)); //Changed just to compile
 		String s = list.getString(0);

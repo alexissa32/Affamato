@@ -33,7 +33,7 @@ public class Cook
     public Cook(User user, String CookHolder) 
     {
         this.user = user;
-        this.CookHolder = Key.create(Cook.class, CookHolder);
+        //this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = "";
         this.Pantry = "";
         JSONArray glist = new JSONArray();
@@ -111,7 +111,8 @@ public class Cook
     
     //makes empty grocery list
     public void newGroceryList(String name) {
-    	JSONArray newList= new JSONArray().put(new JSONObject().put("name", name));
+    	JSONArray newList= new JSONArray();
+    	//newList.put(name);
     	if(this.GroceryLists.equals("")) {
     		JSONArray Lists = new JSONArray();
     		Lists.put(newList);
@@ -171,14 +172,19 @@ public class Cook
     public void removeFromGroceryList(String Ingredient, Integer index) {
     	//int index = Integer.parseInt(ID) -1;
     	JSONArray gLists = new JSONArray(this.GroceryLists);	//this gets initial json array
-    	JSONArray newList = gLists.getJSONArray(index);			//this gets relevant json array inside the initial
-    	for(int i = 1; i < newList.length(); i++) {				//this navigates relevant json array to find item to remove
+    	JSONArray newList = gLists.getJSONArray(index);
+    	JSONArray replace = new JSONArray();
+    	//this gets relevant json array inside the initial
+    	for(int i = 0; i < newList.length(); i++) {				//this navigates relevant json array to find item to remove
     		String ingredient = newList.getString(i);
     		if(ingredient.equals(Ingredient)) {
-    			newList.remove(i);		
+    			//newList.remove(i);		
+    		}
+    		else {
+    			replace.put(ingredient);
     		}
     	}
-    	gLists.put(index, newList);
+    	gLists.put(index, replace);
     	this.GroceryLists = gLists.toString();
     }
     
