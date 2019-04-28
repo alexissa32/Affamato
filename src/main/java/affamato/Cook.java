@@ -173,7 +173,8 @@ public class Cook
     	JSONArray gLists = new JSONArray(this.GroceryLists);	//this gets initial json array
     	JSONArray newList = gLists.getJSONArray(index);			//this gets relevant json array inside the initial
     	for(int i = 1; i < newList.length(); i++) {				//this navigates relevant json array to find item to remove
-    		if(newList.getString(i).equals(Ingredient)) {
+    		String ingredient = newList.getString(i);
+    		if(ingredient.equals(Ingredient)) {
     			newList.remove(i);		
     		}
     	}
@@ -457,4 +458,3 @@ public class Cook
     	return false;
     }
 }
-
