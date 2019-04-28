@@ -39,7 +39,8 @@ public class Cook
         JSONArray glist = new JSONArray();
         for(int i = 1; i < 6; i++) {
         	JSONArray putter = new JSONArray();
-        	putter.put("Grocery List " + String.valueOf(i));
+        	String s = "Grocery List " + Integer.toString(i);
+        	putter.put(s);
         	glist.put(putter);
         }
         this.GroceryLists = glist.toString();
