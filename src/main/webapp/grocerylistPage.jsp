@@ -95,12 +95,7 @@
 		                <% 		 	    
 				 	}
 				%>
-         	<form action="/grocerylist" method="get">
-        		<input type="hidden" id="listID" name="listID" value="1">
-        		<input type="hidden" id="ar" name="ar" value="remove">
-        		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="submit"  class="btn btn-danger">Remove Ingredient -</button> <!-- removed btn-add-ingredient from class -->
-        	</form>       	
+				      	
         	<form action="/grocerylist" method="get">
         		<input type="hidden" id="listID" name="listID" value="1">
         		<input type="hidden" id="ar" name="ar" value="add">
@@ -215,7 +210,7 @@
 			                 <input type="hidden" id="listID" name="listID" value="4">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
-			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right"></button>
 		                 </form>
 		                 <br />	
 		                <% 		 	    
@@ -256,7 +251,7 @@
 			                 <input type="hidden" id="listID" name="listID" value="5">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
-			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right"></button>
 		                 </form>
 		                 <br />	
 		                <% 		 	    
