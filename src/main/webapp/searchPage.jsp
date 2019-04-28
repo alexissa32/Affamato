@@ -50,12 +50,7 @@
 	    <form action="/search" method="get">
 	      <input type="text" placeholder="Search for Recipes..." name="search">
 	      <input type="hidden" name = "type" value = "recipe">
-	      <script>
-	      	setTimeout(function(){window.location.reload();}, 2000);
-	      </script>
-	      <!-- 
 	      <input type="hidden" name="redirect" value="/searchPage.jsp">
-	      -->
 	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
         
 	        <div style="float:right; color:white; padding-top:10px; padding-left:5px; padding-right:5px" id="list1" class="dropdown-check-list" tabindex="100">
@@ -148,7 +143,12 @@
 		
 		<div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-
+		<form style="display:inline" action="/grocerylist" method="get">
+			 <input type="hidden" id="listID" name="listID" value="1">
+			 <input type="hidden" id="ar" name="ar" value="add">
+			 <input type="hidden" class="recipe" name="recipe" value="">
+			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+		                 </form>
              <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
@@ -229,6 +229,10 @@ var hash = 2;
     //$("#accordion").append($newPanel.fadeIn());
 //});
 
+function delayedReload() {
+  	setTimeout(function(){window.location.reload();}, 3000);
+  	return true;
+}
 
 $(document).on('click', '.glyphicon-remove-circle', function () {
     $(this).parents('.panel').get(0).remove();
