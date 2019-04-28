@@ -170,12 +170,11 @@ public class Cook
     
     public void removeFromGroceryList(String Ingredient, Integer index) {
     	//int index = Integer.parseInt(ID) -1;
-    	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	JSONArray newList = gLists.getJSONArray(index);
-    	for(int i = 0; i < newList.length(); i++) {
+    	JSONArray gLists = new JSONArray(this.GroceryLists);	//this gets initial json array
+    	JSONArray newList = gLists.getJSONArray(index);			//this gets relevant json array inside the initial
+    	for(int i = 1; i < newList.length(); i++) {				//this navigates relevant json array to find item to remove
     		if(newList.get(i).equals(Ingredient)) {
-    			newList.remove(i);
-    			
+    			newList.remove(i);		
     		}
     	}
     	gLists.put(index, newList);
