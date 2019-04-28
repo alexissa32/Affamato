@@ -37,8 +37,10 @@ public class Cook
         this.RecipeList = "";
         this.Pantry = "";
         JSONArray glist = new JSONArray();
-        for(int i = 0; i < 5; i++) {
-        	glist.put(new JSONArray());
+        for(int i = 1; i < 6; i++) {
+        	JSONArray putter = new JSONArray();
+        	putter.put("Grocery List " + String.valueOf(i));
+        	glist.put(putter);
         }
         this.GroceryLists = glist.toString();
         this.GrocerySearchResults = "";
