@@ -89,7 +89,7 @@
 			                 <input type="hidden" id="listID" name="listID" value="1">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=listItem%>">
-			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right"></button>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right"></button> 
 		                 </form>
 		                 <br />	
 		                <% 		 	    
@@ -134,7 +134,7 @@
 			                 <input type="hidden" id="listID" name="listID" value="2">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
-			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right"></button> 
 		                 </form>
 		                 <br />		
 		                <% 	 	    
@@ -175,7 +175,7 @@
 			                 <input type="hidden" id="listID" name="listID" value="3">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
 			                 <input type="hidden" class="ingredient" name="ingredient" value="<%=item%>">
-			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right"></button>
 		                 </form>
 		                 <br />		
 		                <% 	 	    
