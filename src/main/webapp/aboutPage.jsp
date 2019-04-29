@@ -210,7 +210,7 @@ Link to the GitHub repo
 		  </div>
     </div>
     <div class="col-sm-4"> 
-      <img src="images/samir.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <img src="images/samir.png" class="img-responsive margin" style="width:100%" alt="Image">
 	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
 			<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
 		    <strong>Responsibilities:</strong> Front End <br />

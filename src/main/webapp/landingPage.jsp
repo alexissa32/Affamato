@@ -135,6 +135,8 @@
     </div>
   </div>
   </br>
+  <p style="font-family:Lobster;font-size:15pt;color:white">For more information, visit <a style="font-family:Lobster;font-size:15pt;color:lightgray" href="https://www.usda.gov/oce/foodwaste/faqs.htm">The U.S. Department of Agriculture Website</a></p>
+  </br>
 </div>
 
 <footer class="container-fluid bg-4 text-center" style="background-color:darkgray">
