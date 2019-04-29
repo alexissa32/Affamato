@@ -33,13 +33,27 @@ public class FavoriteServlet extends HttpServlet{
 	     
 	     if(addOrRemove != null) {
 		     if(addOrRemove.equals("add")) {
-			     cook.addToRecipeList(req.getParameter("recipe"));
+		    	 //Make sure not already in it
+		    	 JSONArray meep = cook.getRecipeList();
+		    	 boolean okayToAdd = true;
+			     for(int index = 0; index < meep.length(); index++)
+			     {
+			    	if(meep.getString(index).equals(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", "")))
+			    	{
+			    		okayToAdd = false;
+			    		break;
+			    	}
+			     } //Good to go, so add
+		    	 if(okayToAdd)
+		    	 {
+		    		 cook.addToRecipeList(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", ""));
+		    	 }
 		     }
 		     else if(addOrRemove.equals("remove")) {
 		    	JSONArray meep = cook.getRecipeList();
 		    	for(int index = 0; index < meep.length(); index++)
 		    	{
-		    		if(meep.get(index).toString().equals(req.getParameter("recipe")))
+		    		if(meep.getString(index).equals(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", "")))
 		    		{
 		    			cook.removeFromRecipeList(index);
 		    			break;
@@ -47,9 +61,15 @@ public class FavoriteServlet extends HttpServlet{
 		    	}
 		     }
 	     }
-	     cook.updateCook();
-    	
-        resp.sendRedirect("/searchPage.jsp");
+	    cook.updateCook();
+    	if(addOrRemove.equals("add"))
+    	{
+    		resp.sendRedirect("/searchPage.jsp");
+    	}
+    	else
+    	{
+    		resp.sendRedirect("/recipesPage.jsp");
+    	}
     }
     
 //USAGE???   

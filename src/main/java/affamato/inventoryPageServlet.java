@@ -28,12 +28,15 @@ public class inventoryPageServlet extends HttpServlet{
         String addOrRemove = req.getParameter("ar");
         if(addOrRemove != null) {
         	if(addOrRemove.equals("add")) {
-		        String ing = req.getParameter("ing");
-		        cook.addToPantry(ing);
+        		String ing = req.getParameter("IngredientInput");
+        		String exp = req.getParameter("ExpirationInput");
+        		String q = req.getParameter("QuantityInput");
+		        String ingFull = new JSONObject().put("ingredient", ing).put("expiration", exp).put("quantity", q).toString();
+		        cook.addToPantry(ingFull);
         	}
         	else if(addOrRemove.equals("remove")) {
-        		int pos = Integer.parseInt(req.getParameter("pos"));
-        		cook.removeFromPantry(pos);
+        		String ing = req.getParameter("ing");
+        		cook.removeFromPantry(ing);
         	}
         }
         cook.updateCook();
