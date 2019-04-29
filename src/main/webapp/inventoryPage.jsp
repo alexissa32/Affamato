@@ -105,7 +105,7 @@
   $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < ${fn:escapeXml(pantrySize)}; i++) {
+	  	for(i = 0; i < ${fn:escapeXml(pantrySize)} + 1; i++) {
 	  		var row = table.insertRow(-1);
 	  		var cell1 = row.insertCell(0);
 	  		var cell2 = row.insertCell(1);
@@ -122,8 +122,8 @@
 	  		//cell3.innerHTML = expiration;
 	  		//cell4.appendChild(exitButton);
 	  		var pantry = ${fn:escapeXml(pantry)};
-	  		//var parse = JSON.parse(pantry);
-	  		cell1.innerHTML = pantry[0].ingredient;
+	  		var parse = JSON.parse(pantry);
+	  		cell1.innerHTML = pantry;
 	  		cell4.appendChild(exitButton)
 	  		
 	  		//document.getElementById("IngredientInput").value = "";
