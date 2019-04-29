@@ -51,6 +51,7 @@
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
         JSONArray pantry = cook.getPantry();
+        pageContext.setAttribute("pantrySize", pantry.length());
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -98,7 +99,7 @@
   $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < ${fn:escapeXml(listLength)}; i++) {
+	  	for(i = 0; i < ${fn:escapeXml(listLength)} + 1; i++) {
 	  		var row = table.insertRow(-1);
 	  		
 	  		var cell1 = row.insertCell(0);
