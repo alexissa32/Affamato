@@ -114,13 +114,15 @@
 	pageContext.setAttribute("num", Integer.toString(0));
 	pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
 	pageContext.setAttribute("link",cook.getDiscoverResults().getJSONObject(0).getString("url"));
+	
+	JSONObject recipe = cook.getDiscoverResults().getJSONObject(0);
 	%>
 	<div class="panel panel-default">
-    <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-	<form style="display:inline" action="/favorite" method="get">
+    <div class="panel-heading"> <!--<span class="glyphicon glyphicon-remove-circle pull-right "></span>-->
+	<form style="display:inline" action="/favorite" method="post">
 		<input type="hidden" id="listID" name="listID" value="1">
 		<input type="hidden" id="ar" name="ar" value="add">
-		<input type="hidden" class="recipe" name="recipe" value="">
+		<input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
 		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 	</form>
          <h4 class="panel-title">
@@ -153,15 +155,17 @@
 		pageContext.setAttribute("num", i.toString());
 		pageContext.setAttribute("ingredients", ja.getJSONObject(i).getJSONArray("ingredients").toString());
 		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
+		
+		JSONObject recipe = ja.getJSONObject(i);
 		%>
 		
 		
 		<div class="panel panel-default">
-        <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
+        <div class="panel-heading"> <!--<span class="glyphicon glyphicon-remove-circle pull-right "></span>-->
 		<form style="display:inline" action="/favorite" method="post">
 			 <input type="hidden" id="listID" name="listID" value="1">
 			 <input type="hidden" id="ar" name="ar" value="add">
-			 <input type="hidden" class="recipe" name="recipe" value="">
+			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
 			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>
              <h4 class="panel-title">
