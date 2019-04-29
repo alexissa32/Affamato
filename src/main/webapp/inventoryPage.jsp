@@ -57,7 +57,7 @@
         cook.addToPantry(test);
         JSONArray pantry = cook.getPantry();
         pageContext.setAttribute("pantrySize", pantry.length());
-        pageContext.setAttribute("pantry", pantry);
+        pageContext.setAttribute("pantry", pantry.toString());
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
