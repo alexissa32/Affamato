@@ -46,7 +46,6 @@
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
-    int num = 4;
     if (user != null) {
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
@@ -123,8 +122,9 @@
 	  		//cell3.innerHTML = expiration;
 	  		//cell4.appendChild(exitButton);
 	  		var pantry = ${fn:escapeXml(pantry)};
-	  		var x = JSON.parse(pantry);
-	  		cell1.innerHTML = x[0].ingredient;
+	  		var get = pantry[0];
+	  		var x = JSON.parse(get);
+	  		cell1.innerHTML = x.ingredient;
 	  		cell4.appendChild(exitButton)
 	  		
 	  		//document.getElementById("IngredientInput").value = "";
