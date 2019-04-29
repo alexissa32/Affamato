@@ -9,6 +9,9 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="affamato.Cook" %>
+<%@ page import="org.json.JSONArray" %>
+<%@ page import="org.json.JSONObject" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
@@ -28,8 +31,6 @@
 
 </head>
 
-  <link type="text/css" rel="stylesheet" href="inv.css" />
-
 <%//credit to robschmuecker for code related to making the x button delete a row
 //http://jsfiddle.net/robschmuecker/m5TMF/163/
 %>
@@ -46,9 +47,10 @@
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     int num = 4;
-	pageContext.setAttribute("item", num); 
     if (user != null) {
         pageContext.setAttribute("user", user);
+        Cook cook = Cook.getCook(user);
+        JSONArray pantry = cook.getPantry();
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -96,7 +98,7 @@
   $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < ${fn:escapeXml(item)}; i++) {
+	  	for(i = 0; i < ${fn:escapeXml(listLength)}; i++) {
 	  		var row = table.insertRow(-1);
 	  		
 	  		var cell1 = row.insertCell(0);
