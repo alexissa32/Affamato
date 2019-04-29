@@ -165,8 +165,8 @@
 		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
 		
 		String title = ja.getJSONObject(i).getString("title");
-		String prepMins = ja.getJSONObject(i).getInt("prepMinutes");
-		String cookMins = ja.getJSONObject(i).getInt("cookMinutes");
+		int prepMins = ja.getJSONObject(i).getInt("prepMinutes");
+		int cookMins = ja.getJSONObject(i).getInt("cookMinutes");
 		String instructions = ja.getJSONObject(i).getString("instructions");
 		String ingredients = ja.getJSONObject(i).getJSONArray("ingredients").toString();
 		String link = ja.getJSONObject(i).getString("url");
