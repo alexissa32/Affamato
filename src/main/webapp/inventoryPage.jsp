@@ -9,10 +9,10 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-<%@ page import="affamato.Cook" %>
+<%-- <%@ page import="affamato.Cook" %>
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>  --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,16 +48,16 @@
     User user = userService.getCurrentUser();
     if (user != null) {
         pageContext.setAttribute("user", user);
-        Cook cook = Cook.getCook(user);
+        //Cook cook = Cook.getCook(user);
         
-        JSONObject test = new JSONObject()
-                .put("ingredient", "McChicken")
-                .put("quantity", "2")
-                .put("expiration", "10/11/12");
-        cook.addToPantry(test);
-        JSONArray pantry = cook.getPantry();
-        pageContext.setAttribute("pantrySize", pantry.length());
-        pageContext.setAttribute("pantry", pantry.toString());
+        //JSONObject test = new JSONObject()
+          //      .put("ingredient", "McChicken")
+            //    .put("quantity", "2")
+              //  .put("expiration", "10/11/12");
+        //cook.addToPantry(test);
+        //JSONArray pantry = cook.getPantry();
+        //pageContext.setAttribute("pantrySize", pantry.length());
+        //pageContext.setAttribute("pantry", pantry.toString());
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -102,10 +102,11 @@
     </tbody>
   </table>
   <script type="text/javascript">
-  $(document).ready(function(){
+  //$(document).ready(function(){
+	  function add() {
 	  
 		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < ${fn:escapeXml(pantrySize)} + 1; i++) {
+	  	//for(i = 0; i < pantry size use escape xml; i++) {
 	  		var row = table.insertRow(-1);
 	  		var cell1 = row.insertCell(0);
 	  		var cell2 = row.insertCell(1);
@@ -113,28 +114,29 @@
 	  		var cell4 = row.insertCell(3);
 	  		var exitButton = document.getElementById("exitbutton").cloneNode(true);
 	  		
-	  		//var ingredient = document.getElementById("IngredientInput").value;
-	  		//var quantity = document.getElementById("QuantityInput").value;
-	  		//var unit = document.getElementById('dropdowntext').textContent;
-	  		//var expiration = document.getElementById("ExpirationInput").value;
-	  		//cell1.innerHTML = quantity;
-	  		//cell2.innerHTML = quantity + " " + unit;
-	  		//cell3.innerHTML = expiration;
-	  		//cell4.appendChild(exitButton);
-	  		cell1.innerHTML = "please help";
-	  		var pantry = ${fn:escapeXml(pantry)};
-	  		var parse = JSON.parse(pantry);
-	  		cell2.innerHTML = pantry;
-	  		cell4.appendChild(exitButton)
+	  		var ingredient = document.getElementById("IngredientInput").value;
+	  		var quantity = document.getElementById("QuantityInput").value;
+	  		var unit = document.getElementById('dropdowntext').textContent;
+	  		var expiration = document.getElementById("ExpirationInput").value;
+	  		cell1.innerHTML = quantity;
+	  		cell2.innerHTML = quantity + " " + unit;
+	  		cell3.innerHTML = expiration;
+	  		cell4.appendChild(exitButton);
+	  		//cell1.innerHTML = "please help";
+	  		//var pantry = pantry size use escape xml;
+	  		//var parse = JSON.parse(pantry);
+	  		//cell2.innerHTML = pantry;
+	  		//cell4.appendChild(exitButton)
 	  		
-	  		//document.getElementById("IngredientInput").value = "";
-	  		//document.getElementById("QuantityInput").value = "";
-	  		//document.getElementById('dropdowntext').textContent = "units";
-	  		//document.getElementById("ExpirationInput").value = "";
+	  		document.getElementById("IngredientInput").value = "";
+	  		document.getElementById("QuantityInput").value = "";
+	  		document.getElementById('dropdowntext').textContent = "units";
+	  		document.getElementById("ExpirationInput").value = "";
 
 	  		//var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
-	  	}
-  })
+	  	//}
+  }
+	  //) for line 105
   </script>
 </div>
 
