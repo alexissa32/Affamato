@@ -9,10 +9,10 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-<%-- <%@ page import="affamato.Cook" %>
+<%@ page import="affamato.Cook" %>
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>  --%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,8 +41,6 @@
   <link type="text/css" rel="stylesheet" href="about.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-  
 
 <body id="dashboardbody">
 <%
@@ -50,35 +48,41 @@
     User user = userService.getCurrentUser();
     if (user != null) {
         pageContext.setAttribute("user", user);
-        //Cook cook = Cook.getCook(user);
+        Cook cook = Cook.getCook(user);
         
-        //JSONObject test = new JSONObject()
-          //      .put("ingredient", "McChicken")
-            //    .put("quantity", "2")
-              //  .put("expiration", "10/11/12");
-        //cook.addToPantry(test);
+        JSONObject test = new JSONObject()
+                .put("ingredient", "McChicken")
+                .put("quantity", "2")
+                .put("expiration", "10/11/12");
+        cook.addToPantry(test);
         //JSONArray pantry = cook.getPantry();
         //pageContext.setAttribute("pantrySize", pantry.length());
-        //pageContext.setAttribute("pantry", pantry.toString());]
+        //pageContext.setAttribute("pantry", pantry.toString());
 %>
 <div class="topnav">
-  <a style="font-family:Lobster;font-size:15pt" class="active" href="dashboardPage.jsp">My Dashboard</a>
-  <a style="font-family:Lobster;font-size:15pt" href="landingPage.jsp">Home</a>
-  <a style="font-family:Lobster;font-size:15pt" href="aboutPage.jsp">About</a>
-  <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
+  <a class="active" href="dashboardPage.jsp">My Dashboard</a>
+  <a href="landingPage.jsp">Home</a>
+  <a href="aboutPage.jsp">About</a>
+  <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
+    <div class="search-container">
+	    <form action="/inventory" method="post">
+	      <input type="text" placeholder="Search..." name="search">
+	      <button style="width: 36px; height: 36px" type="submit"><i class="fa fa-search"></i></button>
+	    </form>
+  	</div>
 </div>
 <div class="vertnav">
 <br>
 <l>
-  <li><a style="font-family:Lobster;font-size:15pt" href="dashboardPage.jsp">Welcome</a></li>
-  <li><a style="font-family:Lobster;font-size:15pt" class="active" href="inventoryPage.jsp">My Inventory</a></li>
-  <li><a style="font-family:Lobster;font-size:15pt" href="grocerylistPage.jsp">My Grocery Lists</a></li>
-  <li><a style="font-family:Lobster;font-size:15pt" href="recipesPage.jsp">My Recipes</a></li>
-  <li><a style="font-family:Lobster;font-size:15pt" href="searchPage.jsp">Search Recipes</a></li>
+  <li><a href="dashboardPage.jsp">Welcome</a></li>
+  <li><a class="active" href="inventoryPage.jsp">My Inventory</a></li>
+  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
+  <li><a href="recipesPage.jsp">My Recipes</a></li>
+  <li><a href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
 
-<div class="container" style="font-family:Lobster;font-size:15pt;padding-left: 250px; width: 1165px; float: left">
+<div class="container" style="padding-left: 250px; width: 1165px; float: left">
   <h2 style="text-align:left;float:left;">Inventory</h2>
   
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#id01" style="margin-bottom: 10px; margin-top: 20px; text-align:right;float:right;" 
@@ -88,45 +92,13 @@
   <table id ="inventory_table" class="table table-hover" style="background-color: #eff2f7; width: 900px">
     <thead>
       <tr>
-        <th style="font-family:Lobster;width: 330px">Ingredient</th>
-        <th style="font-family:Lobster">Quantity</th>
-        <th style="font-family:Lobster;width: 250px">Expiration Date</th>
+        <th style="width: 330px">Ingredient</th>
+        <th>Quantity</th>
+        <th style="width: 250px">Expiration Date</th>
         <th><p hidden=true><i class="fa fa-times-circle" id="exitbutton" aria-hidden="true"></i></p></th>
       </tr>
     </thead>
     <tbody>
-     <%
-				 	JSONArray list1 = cook.getPantry();
-				 	for (int i = 1; i < list1.length(); i++) {
-				 	   JSONObject js = list1.getJSONObject(i);
-				 	   String ing = js.getString("ingredient");
-				 	   String quantity = js.getString("quantity");
-				 	   String exp = js.getString("expiration");
-				 	   pageContext.setAttribute("ing",ing); 
-				 	   pageContext.setAttribute("exp", exp);
-				 	   pageContext.setAttribute("quantity", quantity);
-				 	    %>
-		                 <tr>
-		                 <td>
-		                 <b>${fn:escapeXml(ing)}</b>
-		                 </td>
-		                 <td>
-		                 ${fn:escapeXml(quantity)}
-		                 </td>
-		                 <td>
-		                 ${fn:escapeXml(exp)}
-		                 </td>
-		                 <td>
-		                 <form style="display:inline" action="/inventory" method="get">
-			                 <input type="hidden" id="ar" name="ar" value="remove">
-			                 <input type="hidden" class="ingredient" name="ing" value="<%=js%>">
-			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right"></button> 
-		                 </form>
-		                 </td>
-		                 </tr>
-		                <% 		 	    
-				 	}
-				%>
     </tbody>
   </table>
   <script type="text/javascript">
@@ -194,12 +166,12 @@ window.onclick = function(event) {
 <!-- Modal -->
 <div class="modal fade" id="id01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-  <form action = "/inventory" method = "get">
     <div class="modal-content">
       <div class="modal-body">
+        <form>
        		<div class="form-group">
         		<label for="IngredientInput">Ingredient</label>
-    			<input class="form-control" id="IngredientInput" name = "IngredientInput" placeholder="Enter ingredient">
+    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">
 			    
     		<!--  <input class="form-control" id="IngredientInput" placeholder="Enter ingredient"> -->	
     		</div>
@@ -207,7 +179,7 @@ window.onclick = function(event) {
     	
        		<div class="form-group">
         		<div><label for="QuantityInput">Quantity</label></div>
-    			<input class="form-control" id="QuantityInput" name = "QuantityInput" placeholder="Enter quantity and units"  style="width: 495px; float:left; display: inline">
+    			<input class="form-control" id="QuantityInput" placeholder="Enter quantity and units"  style="width: 495px; float:left; display: inline">
     		                                      
 			  <div class="dropdown" style="display: inline; float:right">
 			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="width: 70px">
@@ -229,18 +201,17 @@ window.onclick = function(event) {
     		
        		<div class="form-group" style="padding-top: 35px">
         		<label for="ExpirationInput">Expiration Date</label>
-    			<input class="form-control" id="ExpirationInput" name = "ExpirationInput" placeholder="MM/DD/YYYY">
+    			<input class="form-control" id="ExpirationInput" placeholder="MM/DD/YYYY">
     		</div>
     		    		
+        </form>
         <div>
         
         </div>
       </div>
     </div>
-    <input type="hidden" id = "ar" name = "ar" value = "add">
     <button type="button" id="boi" class="btn btn-danger" data-dismiss="modal" 
-    style="margin-left: 548px; margin-top: 10px" type="submit">Add</button>
-      </form>
+    style="margin-left: 548px; margin-top: 10px" onClick="add()">Add</button>
   </div>
 </div>
 
