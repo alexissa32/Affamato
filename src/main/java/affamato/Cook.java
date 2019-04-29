@@ -133,15 +133,15 @@ public class Cook
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
     //removes the grocery list from the specified index
-    public void removeGroceryList(int index) 
-    {
-    	if(this.GroceryLists.equals("")) {}
-    	else {
-    	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	if(gLists.length()>index) {
-    	gLists.remove(index);	//UNCAUGHT EXCEPTION FOR INDEX OUT OF BOUNDS
-    	this.GroceryLists = gLists.toString();
-    	}}
+    //public void removeGroceryList(int index) 
+    //{
+    //	if(this.GroceryLists.equals("")) {}
+    //	else {
+    //	JSONArray gLists = new JSONArray(this.GroceryLists);
+    //	if(gLists.length()>index) {
+    //	gLists.remove(index);	//UNCAUGHT EXCEPTION FOR INDEX OUT OF BOUNDS
+    //	this.GroceryLists = gLists.toString();
+    //	}}
     	/**
     	JSONArray updated = new JSONArray();
     	try
@@ -159,19 +159,19 @@ public class Cook
     		e.printStackTrace();
     	}
     	this.GroceryList = updated; */
-    }
+    //}
     
-    public void removeFromGroceryList(String Ingredient, String ID) {
-    	int index = Integer.parseInt(ID) -1;
-    	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	for(int i = 0; i < gLists.getJSONArray(index).length(); i++) {
-    		if(gLists.getJSONArray(index).getString(i).equals(Ingredient)) {
-    			gLists.getJSONArray(index).remove(i);
-    			
-    		}
-    	}
-    	this.GroceryLists = gLists.toString();
-    }
+    //public void removeFromGroceryList(String Ingredient, String ID) {
+    //	int index = Integer.parseInt(ID) -1;
+    //	JSONArray gLists = new JSONArray(this.GroceryLists);
+    //	for(int i = 0; i < gLists.getJSONArray(index).length(); i++) {
+    //		if(gLists.getJSONArray(index).getString(i).equals(Ingredient)) {
+    //			gLists.getJSONArray(index).remove(i);
+    //			
+    //		}
+    //	}
+    //	this.GroceryLists = gLists.toString();
+    //}
     
     public void removeFromGroceryList(String Ingredient, Integer index) {
     	//int index = Integer.parseInt(ID) -1;
@@ -209,19 +209,19 @@ public class Cook
     }*/
     
     //removes the ingredient at position pos in the grocery list with index "index"
-    public void removeFromGroceryList(int pos, int index) {
-    	if(this.GroceryLists.equals("")) {
-    		
-    	}
-    	else {
-    	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	if(gLists.length() > index) {
-    	JSONArray gList = gLists.getJSONArray(index);
-    	if(gList.length() > pos) {
-    	gList.remove(pos);//UNCAUGHT EXCEPTIONS FOR INDEX OUT OF BOUNDS
-    	this.GroceryLists = gLists.toString();
-    	}}}
-    }
+    //public void removeFromGroceryList(int pos, int index) {
+    //	if(this.GroceryLists.equals("")) {
+    //		
+    //	}
+    //	else {
+    //	JSONArray gLists = new JSONArray(this.GroceryLists);
+    //	if(gLists.length() > index) {
+    //	JSONArray gList = gLists.getJSONArray(index);
+    //	if(gList.length() > pos) {
+    //	gList.remove(pos);//UNCAUGHT EXCEPTIONS FOR INDEX OUT OF BOUNDS
+    //	this.GroceryLists = gLists.toString();
+    //	}}}
+    //}
     
     //pass a json string
     public void addToPantry(String ID) 
