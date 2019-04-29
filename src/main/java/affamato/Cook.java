@@ -34,9 +34,12 @@ public class Cook
     {
         this.user = user;
         //this.CookHolder = Key.create(Cook.class, CookHolder);
-        this.RecipeList = "";
+        JSONArray rList = new JSONArray();
+        this.RecipeList = rList.toString();
+        
         JSONArray pList = new JSONArray();
         this.Pantry = pList.toString();
+        
         JSONArray glist = new JSONArray();
         for(int i = 1; i < 6; i++) {
         	JSONArray putter = new JSONArray();
@@ -45,6 +48,7 @@ public class Cook
         	glist.put(putter);
         }
         this.GroceryLists = glist.toString();
+        
         this.DiscoverResults = "";
         //this.PantrySearchResults = (new JSONArray()).toString();
         this.RecipeSearchResults = "";
@@ -285,8 +289,9 @@ public class Cook
     	JSONArray edit = new JSONArray(this.RecipeList);
     	editor = edit;
     	}
-    	JSONObject recipe = new JSONObject(RecipeString);
-    	editor.put(recipe);
+    	//JSONObject recipe = new JSONObject(RecipeString);
+    	//editor.put(recipe);
+    	editor.put(RecipeString); //Looks like an object that is the whole recipe
     	this.RecipeList = editor.toString();
     	//this.saveCook();
     }
