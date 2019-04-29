@@ -35,7 +35,7 @@
 }
 
 #pane2{
-	font-family: TimesNewRoman;
+	font-family: Lobster;
 	color: white;
 	text-align: left;
 	border-radius: 25px;
@@ -43,7 +43,7 @@
     width: 650px;
     height: 150px; 
     text-shadow: 1px 1px black;
-
+	font-size:15pt;
 }
 
 #pane2 img{

@@ -113,6 +113,7 @@
 	pageContext.setAttribute("instructions", cook.getDiscoverResults().getJSONObject(0).getString("instructions"));
 	pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
 	pageContext.setAttribute("link", cook.getDiscoverResults().getJSONObject(0).getString("url"));
+	
 	int prepMins = cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes");
 	int cookMins = cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes");
 	String instructions = cook.getDiscoverResults().getJSONObject(0).getString("instructions");
