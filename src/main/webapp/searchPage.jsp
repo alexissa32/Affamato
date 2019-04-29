@@ -32,6 +32,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> 
   <link type="text/css" rel="stylesheet" href="about.css" />
 
 <body id="dashboardbody">
@@ -134,11 +135,11 @@
 
    </div>     
        <div id="collapseThree" class="panel-collapse collapse ">
-           <p>Link to Source Page: ${fn:escapeXml(link)}</p>
-           <p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
-           <p>Prep Time: ${fn:escapeXml(prepMins)}</p>
-           <p>Instructions: ${fn:escapeXml(instructions)}</p>
-           <p>Ingredients: ${fn:escapeXml(ingredients)}</p>
+           <p style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</p>
+           <p style="font-family:Rajdhani">Cooking Time: ${fn:escapeXml(cookMins)}</p>
+           <p style="font-family:Rajdhani">Prep Time: ${fn:escapeXml(prepMins)}</p>
+           <p style="font-family:Rajdhani">Instructions: ${fn:escapeXml(instructions)}</p>
+           <p style="font-family:Rajdhani">Ingredients: ${fn:escapeXml(ingredients)}</p>
        </div>
   </div>
 
@@ -178,11 +179,11 @@
         </div>
         
         	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
-            	<p>Link to Source Page: ${fn:escapeXml(link)}</p>
-            	<p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
-            	<p>Prep Time: ${fn:escapeXml(prepMins)}</p>
-            	<p>Instructions: ${fn:escapeXml(instructions)}</p>
-            	<p>Ingredients: ${fn:escapeXml(ingredients)}</p>
+            	<p style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</p>
+            	<p style="font-family:Rajdhani">Cooking Time: ${fn:escapeXml(cookMins)}</p>
+            	<p style="font-family:Rajdhani">Prep Time: ${fn:escapeXml(prepMins)}</p>
+            	<p style="font-family:Rajdhani">Instructions: ${fn:escapeXml(instructions)}</p>
+            	<p style="font-family:Rajdhani">Ingredients: ${fn:escapeXml(ingredients)}</p>
         	</div>
     </div>
 		
