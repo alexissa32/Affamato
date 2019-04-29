@@ -103,9 +103,8 @@
 </l>
 </div>
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
-    
+<!-- DISCOVER  -->   
     <%
-
     if (cook.getGrocerySearchResults().length() > 0) {
 	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
 	pageContext.setAttribute("title", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
@@ -114,10 +113,10 @@
 	pageContext.setAttribute("instructions", cook.getGrocerySearchResults().getJSONObject(0).getString("instructions"));
 	pageContext.setAttribute("ingredients", cook.getGrocerySearchResults().getJSONObject(0).getJSONArray("ingredients").toString());
 	pageContext.setAttribute("link", cook.getGrocerySearchResults().getJSONObject(0).getString("url"));
-	String prepMins = cook.getGrocerySearchResults().getJSONObject(0).getString("prepMinutes");
-	String cookMins = cook.getGrocerySearchResults().getJSONObject(0).getString("cookMinutes");
+	int prepMins = cook.getGrocerySearchResults().getJSONObject(0).getInt("prepMinutes");
+	int cookMins = cook.getGrocerySearchResults().getJSONObject(0).getInt("cookMinutes");
 	String instructions = cook.getGrocerySearchResults().getJSONObject(0).getString("instructions");
-	String ingredients = cook.getGrocerySearchResults().getJSONObject(0).getString("ingredients").toString();
+	String ingredients = cook.getGrocerySearchResults().getJSONObject(0).getJSONArray("ingredients").toString();
 	String link = cook.getGrocerySearchResults().getJSONObject(0).getString("url");
 	%>
 	<div class="panel panel-default template">
@@ -149,7 +148,7 @@
 </div>
 <%
     }
-
+//THIS IS THE REST OF THE PANELS
     JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();

@@ -102,12 +102,14 @@
 
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
-        <div class="panel-body">You should add this to your list!</div>
-        <p>${fn:escapeXml(prepMins)} </p>
-        <p>${fn:escapeXml(cookMins)} </p>
-        <p>${fn:escapeXml(instructions)} </p>
-        <p>${fn:escapeXml(ingredients)} </p>
-        <p>${fn:escapeXml(link)} </p>
+        <div class="panel-body">
+        You should add this to your list!
+        <h3>Cooking Time: ${fn:escapeXml(cookMins)}</h3>
+        <h3>Prep Time: ${fn:escapeXml(prepMins)}</h3>
+        <h3>Instructions: ${fn:escapeXml(instructions)}</h3>
+        <h3>Ingredients: ${fn:escapeXml(ingredients)}</h3>
+        <h3>Link: ${fn:escapeXml(link)}</h3>
+        </div>
     </div>
 </div>
 <%
