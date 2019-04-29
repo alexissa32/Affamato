@@ -103,59 +103,32 @@
 </l>
 </div>
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
-<!-- DISCOVER  -->   
+    
     <%
-    if (cook.getDiscoverResults().length() > 0) {
-	pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
-	pageContext.setAttribute("title", cook.getDiscoverResults().getJSONObject(0).getString("title"));
-	pageContext.setAttribute("prepMins", cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes") + "");
-	pageContext.setAttribute("cookMins", cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes") + "");
-	pageContext.setAttribute("instructions", cook.getDiscoverResults().getJSONObject(0).getString("instructions"));
-	pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
-	pageContext.setAttribute("link", cook.getDiscoverResults().getJSONObject(0).getString("url"));
-	
-	int prepMins = cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes");
-	int cookMins = cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes");
-	String instructions = cook.getDiscoverResults().getJSONObject(0).getString("instructions");
-	String ingredients = cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString();
-	String link = cook.getDiscoverResults().getJSONObject(0).getString("url");
+    if (cook.getGrocerySearchResults().length() > 0) {
+	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
 	%>
 	<div class="panel panel-default template">
     <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 
-  <h4 class="panel-title">
-    <a style="display:inline" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+         <h4 class="panel-title">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
       Discover!:${fn:escapeXml(discoverTitle)}  
     </a>
   </h4>
-  <form style="display:inline" action="/favorite" method="post">
-  		<input type="hidden" name="prepMins" value="<%=prepMins%>">
-	    <input type="hidden" name="cookMins" value="<%=cookMins%>">
-	    <input type="hidden" name="instructions" value="<%=instructions%>">
-	    <input type="hidden" name="ingredients" value="<%=ingredients%>">
-	    <input type="hidden" name="link" value="<%=link%>">
-		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" >Add to My Recipes</button>
-  </form>
 
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
         <div class="panel-body">You should add this to your list!</div>
-            <p>Link to Source Page: ${fn:escapeXml(link)}</p>
-           	<p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
-           	<p>Prep Time: ${fn:escapeXml(prepMins)}</p>
-           	<p>Instructions: ${fn:escapeXml(instructions)}</p>
-           	<p>Ingredients: ${fn:escapeXml(ingredients)}</p>
     </div>
 </div>
 <%
     }
-//THIS IS THE REST OF THE PANELS
     JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
 	for(Integer i = 0; i < ja.length(); i++){
 		recipes.add(ja.getJSONObject(i).getString("title"));
-
 		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
 		pageContext.setAttribute("prepMins", ja.getJSONObject(i).getInt("prepMinutes") + "");
 		pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
@@ -163,33 +136,22 @@
 		pageContext.setAttribute("num", i.toString());
 		pageContext.setAttribute("ingredients", ja.getJSONObject(i).getJSONArray("ingredients").toString());
 		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
-		
-		String title = ja.getJSONObject(i).getString("title");
-		int prepMins = ja.getJSONObject(i).getInt("prepMinutes"); 
-		int cookMins = ja.getJSONObject(i).getInt("cookMinutes"); 
-		String instructions = ja.getJSONObject(i).getString("instructions");
-		String ingredients = ja.getJSONObject(i).getJSONArray("ingredients").toString();
-		String link = ja.getJSONObject(i).getString("url");
 		%>
 		
 		
 		<div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-		
-		
-      <h4 style="display:inline" class="panel-title">
+		<form style="display:inline" action="/grocerylist" method="get">
+			 <input type="hidden" id="listID" name="listID" value="1">
+			 <input type="hidden" id="ar" name="ar" value="add">
+			 <input type="hidden" class="recipe" name="recipe" value="">
+			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+		                 </form>
+             <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>
       </h4>
-      	  <form style="display:inline" action="/favorite" method="post">
-	  		<input type="hidden" name="prepMins" value="<%=prepMins%>">
-		    <input type="hidden" name="cookMins" value="<%=cookMins%>">
-		    <input type="hidden" name="instructions" value="<%=instructions%>">
-		    <input type="hidden" name="ingredients" value="<%=ingredients%>">
-		    <input type="hidden" name="link" value="<%=link%>">
-			<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" >Add to My Recipes</button>
-	  </form>
 
         </div>
         
@@ -205,7 +167,6 @@
 		
 		<%
 		//pageContext.setAttribute("name" + i.toString(), ja.getJSONObject(i).getString("title"));
-
 	}
 	pageContext.setAttribute("recipeList", recipes);
 	pageContext.setAttribute("size", ja.length());
@@ -213,13 +174,11 @@
     <!-- 
     <div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-
              <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
           Recipe #1
         </a>
       </h4>
-
         </div>
         <div id="collapseOne" class="panel-collapse collapse ">
             <div class="panel-body"> Get JSON</div>
@@ -238,19 +197,14 @@
 
 
 <script>
-
 var $template = $(".template");
-
-
 var hash = 2;
-
 //$(".btn-add-panel").on("click", function () {
 //	
 	//JSONObject json = Recipe.randomRecipe();
 	//String title = json.getString("title");
 	//pageContext.setAttribute("randomTitle", title);
 	//pageContext.setAttribute("randomJSON", json.toString());
-
 	
 	
 //    var $newPanel = $template.clone();
@@ -261,17 +215,14 @@ var hash = 2;
     
     //$newPanel.find(".panel-body").text(${fn:escapeXml(randomJSON)});
       //$newPanel.find(".panel-body").attr("href", "#" + (++hash)).text("testbody")
-
     
     //$newPanel.find(".panel-collapse").attr("id", hash);
     //$("#accordion").append($newPanel.fadeIn());
 //});
-
 function delayedReload() {
   	setTimeout(function(){window.location.reload();}, 3000);
   	return true;
 }
-
 $(document).on('click', '.glyphicon-remove-circle', function () {
     $(this).parents('.panel').get(0).remove();
 });
