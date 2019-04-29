@@ -105,8 +105,8 @@
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
     
     <%
-    if (cook.getGrocerySearchResults().length() > 0) {
-	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
+    if (cook.getDiscoverResults().length() > 0) {
+	pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
 	%>
 	<div class="panel panel-default template">
     <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
