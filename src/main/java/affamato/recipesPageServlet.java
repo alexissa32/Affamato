@@ -30,7 +30,7 @@ public class recipesPageServlet extends HttpServlet{
         User user = userService.getCurrentUser();
         Cook cook = Cook.getCook(user);
         JSONObject r = Recipe.randomRecipe();
-        cook.setGrocerySearchResults(new JSONArray().put(r));
+        cook.setDiscoverResults(new JSONArray().put(r));
         cook.updateCook();
         resp.sendRedirect("/searchPage.jsp");
 	}

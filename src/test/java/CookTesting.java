@@ -145,7 +145,7 @@ public class CookTesting{
 		c.addToRecipeList(recipeString1);
 	}
 	
-	@Test
+	/**@Test
 	public void PantrySearchResultsTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
@@ -157,17 +157,17 @@ public class CookTesting{
 		JSONObject o = (JSONObject) results.get(0);
 		JSONObject obj = list.getJSONObject(0);
 		assertEquals(o.get("title"), o.get("title"));	
-	}
+	} */
 	
 	@Test
-	public void GrocerySearchResultsTest() {
+	public void DiscoverResultsTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
 		JSONArray list = new JSONArray();
 		list.put(new JSONObject(recipeString1));
 		list.put(new JSONObject(recipeString2));
-		c.setGrocerySearchResults(list);
-		JSONArray results = c.getGrocerySearchResults();
+		c.setDiscoverResults(list);
+		JSONArray results = c.getDiscoverResults();
 		JSONObject o = (JSONObject) results.get(0);
 		JSONObject obj = list.getJSONObject(0);
 		assertEquals(o.get("title"), o.get("title"));	

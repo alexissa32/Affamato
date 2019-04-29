@@ -25,8 +25,8 @@ public class Cook
     @Index String Pantry;
     @Index String GroceryLists;
     @Index String RecipeList;
-    @Index String PantrySearchResults;
-    @Index String GrocerySearchResults;
+    //@Index String PantrySearchResults;
+    @Index String DiscoverResults;
     @Index String RecipeSearchResults;
     
     private Cook() {}
@@ -45,8 +45,8 @@ public class Cook
         	glist.put(putter);
         }
         this.GroceryLists = glist.toString();
-        this.GrocerySearchResults = "";
-        this.PantrySearchResults = (new JSONArray()).toString();
+        this.DiscoverResults = "";
+        //this.PantrySearchResults = (new JSONArray()).toString();
         this.RecipeSearchResults = "";
     }
     
@@ -361,15 +361,15 @@ public class Cook
     	
     }
     
-    public JSONArray getPantrySearchResults() {
-    	if(this.PantrySearchResults.equals("")) return new JSONArray();
-    	JSONArray results = new JSONArray(this.PantrySearchResults);
-    	return results;
-    }
+    //public JSONArray getPantrySearchResults() {
+    //	if(this.PantrySearchResults.equals("")) return new JSONArray();
+    //	JSONArray results = new JSONArray(this.PantrySearchResults);
+    //	return results;
+    //}
 
-    public JSONArray getGrocerySearchResults() {
-    	if(this.GrocerySearchResults.equals("")) return new JSONArray();
-    	JSONArray results = new JSONArray(this.GrocerySearchResults);
+    public JSONArray getDiscoverResults() {
+    	if(this.DiscoverResults.equals("")) return new JSONArray();
+    	JSONArray results = new JSONArray(this.DiscoverResults);
     	return results;
     }
 
@@ -383,17 +383,17 @@ public class Cook
     public void clearAllSearchResults() {
     	JSONArray empty = new JSONArray();
     	this.RecipeSearchResults = empty.toString();
-    	this.GrocerySearchResults = empty.toString();
-    	this.PantrySearchResults = empty.toString();
+    	this.DiscoverResults = empty.toString();
+    	//this.PantrySearchResults = empty.toString();
     }
     
-    public void setPantrySearchResults(JSONArray results) {
-    	this.PantrySearchResults = results.toString();
+    //public void setPantrySearchResults(JSONArray results) {
+    //	this.PantrySearchResults = results.toString();
     	//this.saveCook();
-    }
+    //}
 
-    public void setGrocerySearchResults(JSONArray results) {
-    	this.GrocerySearchResults = results.toString();
+    public void setDiscoverResults(JSONArray results) {
+    	this.DiscoverResults = results.toString();
     	//this.saveCook();
     }
 

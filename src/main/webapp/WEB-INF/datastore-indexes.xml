@@ -25,8 +25,7 @@
         <property name="Pantry" direction="desc" />
         <property name="GroceryList" direction="desc" />
         <property name="RecipeList" direction="desc" />
-        <property name="PantrySearchResults" direction="desc" />
-        <property name="GrocerySearchResults" direction="desc" />
+        <property name="DiscoverResults" direction="desc" />
         <property name="RecipeSearchResults" direction="desc" />
     </datastore-index>
 </datastore-indexes>

@@ -177,11 +177,11 @@ public class SearchServlet extends HttpServlet
 				ja = Recipe.searchRecipe(parameter, param, cook);
 				cook.setRecipeSearchResults(ja);
 			}
-			else {
-				ja = Ingredient.searchIngredient(parameter);
-				cook.setPantrySearchResults(ja);
+			//else {
+			//	ja = Ingredient.searchIngredient(parameter);
+			//	cook.setPantrySearchResults(ja);
 				//resp.sendRedirect(redirectPage);
-			}
+			//}
 			ObjectifyService.ofy().save().entity(cook).now();
 			resp.sendRedirect(redirect);
 			/*
