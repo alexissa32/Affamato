@@ -127,7 +127,7 @@
 		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 	</form>
          <h4 class="panel-title">
-    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+    <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
       Discover!:${fn:escapeXml(discoverTitle)}  
     </a>
   </h4>
@@ -170,7 +170,7 @@
 			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		                 </form>
              <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
+        <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>
       </h4>
