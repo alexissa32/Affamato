@@ -9,7 +9,6 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,28 +37,7 @@
 <h1>Optimize Your Savings</h1>
 </div>
 <%
-    } 
-    else 
-    {
-    	Cookie cookie = null;
-    	Cookie[] cookies = null;
-        
-    	// Get an array of Cookies associated with the this domain
-    	cookies = request.getCookies();
-    	if( cookies != null ) {            
-            for (int i = 0; i < cookies.length; i++) {
-               if(cookies[i].getName().equals("user")){
-            	   if(cookies[i].getValue().equals(user.toString())){
-            	   		cookie = cookies[i];
-            	   }
-               }
-            }
-        }	   	
-        if(cookie == null){
-        	//response.setHeader("CookHolderName", "${fn:escapeXml(CookHolderName)}");
-        	//response.setHeader("CookFlag" , "Cook");
-        	response.sendRedirect("/cook?CookFlag=Cook");
-        }       
+    } else {
 %>
 <div class="topnav">
   <a class="active">Welcome to Affamato</a>
