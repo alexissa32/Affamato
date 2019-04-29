@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="about.css" />
 
 <body id="dashboardbody">
@@ -42,10 +43,10 @@
         Cook cook = Cook.getCook(user);
 %>
 <div class="topnav">
-  <a class="active" href="dashboardPage.jsp">My Dashboard</a>
-  <a href="landingPage.jsp">Home</a>
-  <a href="aboutPage.jsp">About</a>
-  <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
+  <a style="font-family:Lobster;font-size:15pt" class="active" href="dashboardPage.jsp">My Dashboard</a>
+  <a style="font-family:Lobster;font-size:15pt" href="landingPage.jsp">Home</a>
+  <a style="font-family:Lobster;font-size:15pt" href="aboutPage.jsp">About</a>
+  <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
 
     <script type="text/javascript">
         
@@ -72,11 +73,11 @@
 <div class="vertnav">
 <br>
 <l>
-  <li><a href="dashboardPage.jsp">Welcome</a></li>
-  <li><a href="inventoryPage.jsp">My Inventory</a></li>
-  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
-  <li><a class="active" href="recipesPage.jsp">My Recipes</a></li>
-  <li><a href="searchPage.jsp">Search Recipes</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" href="dashboardPage.jsp">Welcome</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" href="inventoryPage.jsp">My Inventory</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" href="grocerylistPage.jsp">My Grocery Lists</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" class="active" href="recipesPage.jsp">My Recipes</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
