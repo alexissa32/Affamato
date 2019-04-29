@@ -122,17 +122,15 @@
   <h3 style="font-family:Lobster;font-size:25pt;color:white" class="margin">Did You Know?</h3><br>
   <div class="row">
     <div class="col-sm-4">
-      <p style="font-family:Lobster;font-size:15pt;color:white">In the United States, food waste is estimated at between 30-40 percent 
-       of the food supply, </p>
+      <p style="font-family:Lobster;font-size:15pt;color:white">In the United States, food waste is estimated at between 30-40 percent of the food supply.  </p>
       <img src="images/foodwaste.jpg" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
     <div class="col-sm-4"> 
-      <p style="font-family:Lobster;font-size:15pt;color:white">This estimate, based on estimates from USDA’s Economic Research Service of 31 percent food loss at the retail and consumer levels, 
-		corresponded to approximately 133 billion pounds and $161 billion worth of food in 2010.</p>
+      <p style="font-family:Lobster;font-size:15pt;color:white">In 2010, food loss at the retail and consumer levels corresponded to approximately 133 billion pounds and $161 billion worth of food.</p>
       <img src="images/groceries.jpg" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
     <div class="col-sm-4"> 
-      <p style="font-family:Lobster;font-size:15pt;color:white">At Affamato, our goal is to help you help the world.</p>
+      <p style="font-family:Lobster;font-size:15pt;color:white">At Affamato, we don’t just want to offer you a way to save money. We want to help you help the world.</p>
       <img src="images/apple.jpg" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
   </div>
