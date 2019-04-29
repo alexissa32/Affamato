@@ -102,23 +102,29 @@
   <li><a class="active" href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
+
+<!-- 
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
+-->
     
     <%
-    if (cook.getDiscoverResults().length() > 0) {
-	pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
-	pageContext.setAttribute("title", cook.getDiscoverResults().getJSONObject(0).getString("title"));
-	pageContext.setAttribute("prepMins", cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes") + "");
-	pageContext.setAttribute("cookMins", cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes") + "");
-	pageContext.setAttribute("instructions", cook.getDiscoverResults().getJSONObject(0).getString("instructions"));
-	pageContext.setAttribute("num", Integer.toString(0));
-	pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
-	pageContext.setAttribute("link",cook.getDiscoverResults().getJSONObject(0).getString("url"));
-	
-	String recipe = cook.getDiscoverResults().getJSONObject(0).toString().replaceAll("\"", "|");
+    
+    //if (cook.getDiscoverResults().length() > 0) {
+	//pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
+	//pageContext.setAttribute("title", cook.getDiscoverResults().getJSONObject(0).getString("title"));
+	//pageContext.setAttribute("prepMins", cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes") + "");
+	//pageContext.setAttribute("cookMins", cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes") + "");
+	//pageContext.setAttribute("instructions", cook.getDiscoverResults().getJSONObject(0).getString("instructions"));
+	//pageContext.setAttribute("num", Integer.toString(0));
+	//pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
+	//pageContext.setAttribute("link",cook.getDiscoverResults().getJSONObject(0).getString("url"));
+	//
+	//String recipe = cook.getDiscoverResults().getJSONObject(0).toString().replaceAll("\"", "|");
 	%>
+	
+	<!-- 
 	<div class="panel panel-default">
-    <div class="panel-heading"> <!--<span class="glyphicon glyphicon-remove-circle pull-right "></span>-->
+    <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 	<form style="display:inline" action="/favorite" method="post">
 		<input type="hidden" id="listID" name="listID" value="1">
 		<input type="hidden" id="ar" name="ar" value="add">
@@ -131,7 +137,8 @@
     </a>
   </h4>
 
-   </div>     
+   </div>  
+     
        <div id="collapseThree" class="panel-collapse collapse ">
            <p>Link to Source Page: ${fn:escapeXml(link)}</p>
            <p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
@@ -140,9 +147,10 @@
            <p>Ingredients: ${fn:escapeXml(ingredients)}</p>
        </div>
   </div>
+  -->
 
 <%
-    }
+    //}
     JSONArray ja = cook.getRecipeSearchResults();
 	int size = ja.length();
 	List<String> recipes = new ArrayList<String>();
@@ -205,16 +213,19 @@
         </div>
     </div>
     
-     -->
+    
      
      
     
 </div>
+-->
 <br />
+
+<!-- 
 <form action="/recipes" method="get">
 <button style="float:right" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
 </form>
-
+-->
 
 <script>
 var $template = $(".template");
