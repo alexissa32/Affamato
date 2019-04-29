@@ -50,8 +50,15 @@
     if (user != null) {
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
+        
+        JSONObject test = new JSONObject()
+                .put("ingredient", "McChicken")
+                .put("quantity", "2")
+                .put("expiration", "10/11/12");
+        cook.addToPantry(test);
         JSONArray pantry = cook.getPantry();
         pageContext.setAttribute("pantrySize", pantry.length());
+        pageContext.setAttribute("pantry", pantry);
 %>
 <div class="topnav">
   <a class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -99,9 +106,8 @@
   $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < ${fn:escapeXml(listLength)} + 1; i++) {
+	  	for(i = 0; i < ${fn:escapeXml(listLength)}; i++) {
 	  		var row = table.insertRow(-1);
-	  		
 	  		var cell1 = row.insertCell(0);
 	  		var cell2 = row.insertCell(1);
 	  		var cell3 = row.insertCell(2);
@@ -116,13 +122,15 @@
 	  		//cell2.innerHTML = quantity + " " + unit;
 	  		//cell3.innerHTML = expiration;
 	  		//cell4.appendChild(exitButton);
-	  		cell1.innerHTML = "test";
+	  		var pantry = ${fn:escapeXml(pantry)};
+	  		var x = JSON.parse(pantry);
+	  		cell1.innerHTML = x[0].ingredient;
 	  		cell4.appendChild(exitButton)
 	  		
-	  		document.getElementById("IngredientInput").value = "";
-	  		document.getElementById("QuantityInput").value = "";
-	  		document.getElementById('dropdowntext').textContent = "units";
-	  		document.getElementById("ExpirationInput").value = "";
+	  		//document.getElementById("IngredientInput").value = "";
+	  		//document.getElementById("QuantityInput").value = "";
+	  		//document.getElementById('dropdowntext').textContent = "units";
+	  		//document.getElementById("ExpirationInput").value = "";
 
 	  		//var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
 	  	}
