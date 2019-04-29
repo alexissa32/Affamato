@@ -29,7 +29,6 @@
     	var rooshiIssues = 0;
     	
         const userAction = async () => {
-
             await fetch('https://api.github.com/repos/alexissa32/Affamato/stats/contributors')
                 .then(function(response) {
                     return response.json();
@@ -242,14 +241,22 @@ Link to the GitHub repo
 <p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://github.com/alexissa32/Affamato">Github</a></p>
 </div>
 
-<div id="pane2" style="height:200px;">
+<div id="pane2" style="height:425px;">
 <h3>Tools:</h3>
-<p style="font-family:Rajdhani;color:white;font-size:12pt">In this phase, we obtained a URL for Affamato from Namecheap and set up team 
-communication on Slack, which has been integrated with the Affamato Github repository. 
-Phase One user stories have all been added to our issue board. Our user interface has been 
-developed with DHTML, CSS, reactjs and bootstrap. Our database is set up as a Google Cloud Platform 
-Datastore. We have implemented scraping with Python scripts from Spoonacular and Yummly APIs. 
-So far we have scraped over 900 ingredients and 600 recipes.</p>
+<p style="font-family:Rajdhani;color:white;font-size:12pt">In this phase we continued developing with DHTML in the frontend and 
+Java in the backend, which used the Google objectify library and Datastore to store data. In the frontend we decided to not use 
+ReactJS as the frontend was already built to a decent degree with JSPs. We implemented a new objectify object, the Cook class. 
+This was also connected to the frontend using additional Java Servlets. We used a cronjob to pull all of the JSONs we scraped to 
+our database, and organized them using the Ingredient and Recipe Java files, which essentially defined our object structures in 
+addition to being used for initial searches. In terms of testing we used JUnit for unit testing of the cook class, which is the 
+only class that is interacted with in depth. For front end/UI testing we used Selenium. We also used the logging features of the 
+App Engine to find more errors. 
+We refrained from using many tools and frameworks that we initially thought would be useful. We didn’t use Java Spring as it is not 
+necessary for a relatively small scale application. We used our own simple search function instead of using Elasticsearch. 
+We used the Google NoSQL datastore based from scraped JSONs instead of using an SQL database and querying. We didn’t use Mocha 
+for testing as there was no pure JavaScript code to test. Lastly, we didn’t use Postman for API testing, as all of our data is 
+stored in our datastore and our application doesn’t make any API calls.
+</p>
 </div>
 <br>
 
