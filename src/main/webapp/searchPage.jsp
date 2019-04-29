@@ -163,25 +163,33 @@
 		pageContext.setAttribute("num", i.toString());
 		pageContext.setAttribute("ingredients", ja.getJSONObject(i).getJSONArray("ingredients").toString());
 		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
-
+		
+		String title = ja.getJSONObject(i).getString("title");
+		String prepMins = ja.getJSONObject(i).getInt("prepMinutes");
+		String cookMins = ja.getJSONObject(i).getInt("cookMinutes");
+		String instructions = ja.getJSONObject(i).getString("instructions");
+		String ingredients = ja.getJSONObject(i).getJSONArray("ingredients").toString();
+		String link = ja.getJSONObject(i).getString("url");
 		%>
 		
 		
 		<div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-        
-		<form style="display:inline" action="/favorite" method="post">
-			 <input type="hidden" id="ar" name="ar" value="add">
-			 <input type="hidden" class="recipe" name="recipe" value="">
-			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" ></button>
-		</form>
 		
 		
-      <h4 class="panel-title">
+      <h4 style="display:inline" class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>
       </h4>
+      	  <form style="display:inline" action="/favorite" method="post">
+	  		<input type="hidden" name="prepMins" value="<%=prepMins%>">
+		    <input type="hidden" name="cookMins" value="<%=cookMins%>">
+		    <input type="hidden" name="instructions" value="<%=instructions%>">
+		    <input type="hidden" name="ingredients" value="<%=ingredients%>">
+		    <input type="hidden" name="link" value="<%=link%>">
+			<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" >Add to My Recipes</button>
+	  </form>
 
         </div>
         
