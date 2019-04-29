@@ -85,7 +85,7 @@
 				 	   String listItem = list1.getString(i);
 				 	   pageContext.setAttribute("item",listItem); 
 				 	    %>
-		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="1">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -125,7 +125,7 @@
 				 	   String item = list2.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="2">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -166,7 +166,7 @@
 				 	   String item = list3.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="3">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -206,7 +206,7 @@
 				 	   String item = list4.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="4">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -247,7 +247,7 @@
 				 	   String item = list5.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style="display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="5">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
