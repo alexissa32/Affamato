@@ -289,9 +289,9 @@ public class Cook
     	JSONArray edit = new JSONArray(this.RecipeList);
     	editor = edit;
     	}
-    	//JSONObject recipe = new JSONObject(RecipeString);
-    	//editor.put(recipe);
-    	editor.put(RecipeString); //Looks like an object that is the whole recipe
+    	JSONObject recipe = new JSONObject(RecipeString);
+    	editor.put(recipe);
+    	//editor.put(RecipeString); //Looks like an object that is the whole recipe
     	this.RecipeList = editor.toString();
     	//this.saveCook();
     }
