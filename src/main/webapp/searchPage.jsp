@@ -32,6 +32,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> 
   <link type="text/css" rel="stylesheet" href="about.css" />
 
 <body id="dashboardbody">
@@ -124,21 +125,21 @@
 		<input type="hidden" id="listID" name="listID" value="1">
 		<input type="hidden" id="ar" name="ar" value="add">
 		<input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+		<button style="display:inline;float:right" type="submit">Add to My Recipes</button>
 	</form>
          <h4 class="panel-title">
-    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+    <a style="display:inline;font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
       Discover!:${fn:escapeXml(discoverTitle)}  
     </a>
   </h4>
 
    </div>     
        <div id="collapseThree" class="panel-collapse collapse ">
-           <p>Link to Source Page: ${fn:escapeXml(link)}</p>
-           <p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
-           <p>Prep Time: ${fn:escapeXml(prepMins)}</p>
-           <p>Instructions: ${fn:escapeXml(instructions)}</p>
-           <p>Ingredients: ${fn:escapeXml(ingredients)}</p>
+           <p style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</p>
+           <p style="font-family:Rajdhani">Cooking Time: ${fn:escapeXml(cookMins)}</p>
+           <p style="font-family:Rajdhani">Prep Time: ${fn:escapeXml(prepMins)}</p>
+           <p style="font-family:Rajdhani">Instructions: ${fn:escapeXml(instructions)}</p>
+           <p style="font-family:Rajdhani">Ingredients: ${fn:escapeXml(ingredients)}</p>
        </div>
   </div>
 
@@ -167,10 +168,10 @@
 			 <input type="hidden" id="listID" name="listID" value="1">
 			 <input type="hidden" id="ar" name="ar" value="add">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
-		                 </form>
-             <h4 class="panel-title">
-        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
+			 <button style="display:inline;float:right" type="submit">Add to My Recipes</button>
+	    </form>
+      <h4 class="panel-title">
+        <a style="display:inline;font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>
       </h4>
@@ -178,11 +179,11 @@
         </div>
         
         	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
-            	<p>Link to Source Page: ${fn:escapeXml(link)}</p>
-            	<p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
-            	<p>Prep Time: ${fn:escapeXml(prepMins)}</p>
-            	<p>Instructions: ${fn:escapeXml(instructions)}</p>
-            	<p>Ingredients: ${fn:escapeXml(ingredients)}</p>
+            	<p style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</p>
+            	<p style="font-family:Rajdhani">Cooking Time: ${fn:escapeXml(cookMins)}</p>
+            	<p style="font-family:Rajdhani">Prep Time: ${fn:escapeXml(prepMins)}</p>
+            	<p style="font-family:Rajdhani">Instructions: ${fn:escapeXml(instructions)}</p>
+            	<p style="font-family:Rajdhani">Ingredients: ${fn:escapeXml(ingredients)}</p>
         	</div>
     </div>
 		
@@ -213,7 +214,7 @@
 </div>
 <br />
 <form action="/recipes" method="get">
-<button style="float:right" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
+<button style="font-family:Lobster;float:right" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
 </form>
 
 

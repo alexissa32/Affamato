@@ -33,7 +33,21 @@ public class FavoriteServlet extends HttpServlet{
 	     
 	     if(addOrRemove != null) {
 		     if(addOrRemove.equals("add")) {
-			     cook.addToRecipeList(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", ""));
+		    	 //Make sure not already in it
+		    	 JSONArray meep = cook.getRecipeList();
+		    	 boolean okayToAdd = true;
+			     for(int index = 0; index < meep.length(); index++)
+			     {
+			    	if(meep.getString(index).equals(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", "")))
+			    	{
+			    		okayToAdd = false;
+			    		break;
+			    	}
+			     } //Good to go, so add
+		    	 if(okayToAdd)
+		    	 {
+		    		 cook.addToRecipeList(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", ""));
+		    	 }
 		     }
 		     else if(addOrRemove.equals("remove")) {
 		    	JSONArray meep = cook.getRecipeList();
