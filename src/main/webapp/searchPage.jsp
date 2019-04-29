@@ -137,6 +137,8 @@
 		pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
 		pageContext.setAttribute("instructions", ja.getJSONObject(i).getString("instructions"));
 		pageContext.setAttribute("num", i.toString());
+		pageContext.setAttribute("ingredients", ja.getJSONObject(i).getJSONArray("ingredients").toString());
+		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
 
 		%>
 		
@@ -158,10 +160,12 @@
         </div>
         
         	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
-            	<div class="panel-body" >You should add this to your list!!</div>
+            	<div class="panel-body" >You should add this to your list!</div>
+            	<p>Link to Source Page: ${fn:escapeXml(link)}</p>
             	<p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
             	<p>Prep Time: ${fn:escapeXml(prepMins)}</p>
             	<p>Instructions: ${fn:escapeXml(instructions)}</p>
+            	<p>Ingredients: ${fn:escapeXml(ingredients)}</p>
         	</div>
     </div>
 		

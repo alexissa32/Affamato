@@ -32,7 +32,7 @@ public class recipesPageServlet extends HttpServlet{
         JSONObject r = Recipe.randomRecipe();
         cook.setGrocerySearchResults(new JSONArray().put(r));
         cook.updateCook();
-        resp.sendRedirect("/recipesPage.jsp");
+        resp.sendRedirect("/searchPage.jsp");
 	}
 	
 	@Override
@@ -56,7 +56,7 @@ public class recipesPageServlet extends HttpServlet{
     	cook.updateCook();
     	
     	
-    	resp.sendRedirect("/recipesPage.jsp");
+    	resp.sendRedirect("/searchPage.jsp");
 	
         
     }
