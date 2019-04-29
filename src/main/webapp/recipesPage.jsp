@@ -83,13 +83,13 @@
     
     <%
 
-    if (cook.getGrocerySearchResults().length() > 0) {
-	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
-	pageContext.setAttribute("prepMins", cook.getGrocerySearchResults().getJSONObject(0).getInt("prepMinutes") + "");
-	pageContext.setAttribute("cookMins", cook.getGrocerySearchResults().getJSONObject(0).getInt("cookMinutes") + "");
-	pageContext.setAttribute("instructions", cook.getGrocerySearchResults().getJSONObject(0).getString("instructions"));
-	pageContext.setAttribute("ingredients", cook.getGrocerySearchResults().getJSONObject(0).getJSONArray("ingredients").toString());
-	pageContext.setAttribute("link", cook.getGrocerySearchResults().getJSONObject(0).getString("url"));
+    if (cook.getDiscoverResults().length() > 0) {
+	pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
+	pageContext.setAttribute("prepMins", cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes") + "");
+	pageContext.setAttribute("cookMins", cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes") + "");
+	pageContext.setAttribute("instructions", cook.getDiscoverResults().getJSONObject(0).getString("instructions"));
+	pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
+	pageContext.setAttribute("link", cook.getDiscoverResults().getJSONObject(0).getString("url"));
 	%>
 	<div class="panel panel-default template">
     <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>

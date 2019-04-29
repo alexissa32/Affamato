@@ -105,19 +105,19 @@
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
 <!-- DISCOVER  -->   
     <%
-    if (cook.getGrocerySearchResults().length() > 0) {
-	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
-	pageContext.setAttribute("title", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
-	pageContext.setAttribute("prepMins", cook.getGrocerySearchResults().getJSONObject(0).getInt("prepMinutes") + "");
-	pageContext.setAttribute("cookMins", cook.getGrocerySearchResults().getJSONObject(0).getInt("cookMinutes") + "");
-	pageContext.setAttribute("instructions", cook.getGrocerySearchResults().getJSONObject(0).getString("instructions"));
-	pageContext.setAttribute("ingredients", cook.getGrocerySearchResults().getJSONObject(0).getJSONArray("ingredients").toString());
-	pageContext.setAttribute("link", cook.getGrocerySearchResults().getJSONObject(0).getString("url"));
-	int prepMins = cook.getGrocerySearchResults().getJSONObject(0).getInt("prepMinutes");
-	int cookMins = cook.getGrocerySearchResults().getJSONObject(0).getInt("cookMinutes");
-	String instructions = cook.getGrocerySearchResults().getJSONObject(0).getString("instructions");
-	String ingredients = cook.getGrocerySearchResults().getJSONObject(0).getJSONArray("ingredients").toString();
-	String link = cook.getGrocerySearchResults().getJSONObject(0).getString("url");
+    if (cook.getDiscoverResults().length() > 0) {
+	pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
+	pageContext.setAttribute("title", cook.getDiscoverResults().getJSONObject(0).getString("title"));
+	pageContext.setAttribute("prepMins", cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes") + "");
+	pageContext.setAttribute("cookMins", cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes") + "");
+	pageContext.setAttribute("instructions", cook.getDiscoverResults().getJSONObject(0).getString("instructions"));
+	pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
+	pageContext.setAttribute("link", cook.getDiscoverResults().getJSONObject(0).getString("url"));
+	int prepMins = cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes");
+	int cookMins = cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes");
+	String instructions = cook.getDiscoverResults().getJSONObject(0).getString("instructions");
+	String ingredients = cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString();
+	String link = cook.getDiscoverResults().getJSONObject(0).getString("url");
 	%>
 	<div class="panel panel-default template">
     <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>

@@ -11,8 +11,8 @@ public class FavoriteServlet extends HttpServlet{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	     String ingredient = req.getParameter("ingredient");	     
 	     String title = req.getParameter("discoverTitle");
-	     int prepMinutes = req.getParameter("prepMinutes");
-	     int cookMinutes = req.getParameter("cookMinutes");
+	     int prepMinutes = Integer.parseInt(req.getParameter("prepMinutes"));
+	     int cookMinutes = Integer.parseInt(req.getParameter("cookMinutes"));
 	     String instructions = req.getParameter("instructions");	     			
     	
         resp.sendRedirect("/recipesPage.jsp");
@@ -22,8 +22,8 @@ public class FavoriteServlet extends HttpServlet{
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	     String ingredient = req.getParameter("ingredient");	     
 	     String title = req.getParameter("discoverTitle");
-	     int prepMinutes = req.getParameter("prepMinutes");
-	     int cookMinutes = req.getParameter("cookMinutes");
+	     int prepMinutes = Integer.parseInt(req.getParameter("prepMinutes"));
+	     int cookMinutes = Integer.parseInt(req.getParameter("cookMinutes"));
 	     String instructions = req.getParameter("instructions");	    	
     	
         resp.sendRedirect("/recipesPage.jsp");
