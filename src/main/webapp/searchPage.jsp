@@ -125,10 +125,10 @@
 		<input type="hidden" id="listID" name="listID" value="1">
 		<input type="hidden" id="ar" name="ar" value="add">
 		<input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-		<button style="display:inline" type="submit">Add to My Recipes</button>
+		<button style="display:inline;float:right" type="submit">Add to My Recipes</button>
 	</form>
          <h4 class="panel-title">
-    <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+    <a style="display:inline;font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
       Discover!:${fn:escapeXml(discoverTitle)}  
     </a>
   </h4>
@@ -168,10 +168,10 @@
 			 <input type="hidden" id="listID" name="listID" value="1">
 			 <input type="hidden" id="ar" name="ar" value="add">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-			 <button style="display:inline" type="submit">Add to My Recipes</button>
-		                 </form>
-             <h4 class="panel-title">
-        <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
+			 <button style="display:inline;float:right" type="submit">Add to My Recipes</button>
+	    </form>
+      <h4 class="panel-title">
+        <a style="display:inline;font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>
       </h4>
@@ -214,7 +214,7 @@
 </div>
 <br />
 <form action="/recipes" method="get">
-<button style="float:right" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
+<button style="font-family:Lobster;float:right" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
 </form>
 
 
