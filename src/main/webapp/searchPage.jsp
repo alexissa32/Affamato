@@ -115,7 +115,7 @@
 	pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
 	pageContext.setAttribute("link",cook.getDiscoverResults().getJSONObject(0).getString("url"));
 	
-	String recipe = cook.getDiscoverResults().getJSONObject(0).toString().replace('\"', '|');
+	String recipe = cook.getDiscoverResults().getJSONObject(0).toString().replaceAll("\"", "|");
 	%>
 	<div class="panel panel-default">
     <div class="panel-heading"> <!--<span class="glyphicon glyphicon-remove-circle pull-right "></span>-->
@@ -156,7 +156,7 @@
 		pageContext.setAttribute("ingredients", ja.getJSONObject(i).getJSONArray("ingredients").toString());
 		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
 		
-		String recipe = ja.getJSONObject(i).toString().replace('\"', '|');
+		String recipe = ja.getJSONObject(i).toString().replaceAll("\"", "|");
 		%>
 		
 		
