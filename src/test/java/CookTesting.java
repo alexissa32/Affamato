@@ -23,23 +23,33 @@ public class CookTesting{
 	public void addGroceryListTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
-		c.newGroceryList("null");
-		c.addToGroceryList(ingredientString1, 0);
-		JSONArray list = c.getGroceryList(Integer.toString(0)); //Changed just to compile
-		JSONObject o = (JSONObject) list.get(0);
-		assertEquals(o.get("name"), "butter");
+		c.addToGroceryList("butter", 0);
+		JSONArray list = c.getGroceryList(Integer.toString(1)); //Changed just to compile
+		String s = list.getString(1);
+		assertEquals(s, "butter");
 	}
+	@Test
+	public void emptyListTestName() {
+		User me = new User("me@gmail.com", "pizza.com");
+		Cook c = new Cook(me, "Cookholder");
+		c.addToGroceryList("butter", 0);
+		JSONArray list = c.getGroceryList(Integer.toString(5)); //Changed just to compile
+		String s = list.getString(0);
+		assertEquals(s, "Grocery List 5");
+	}
+	
+	
 	
 	@Test
 	public void removeGroceryListTest() {
 		User me = new User("me@gmail.com", "pizza.com");
 		Cook c = new Cook(me, "Cookholder");
-		c.addToGroceryList(ingredientString1, 0);
-		c.addToGroceryList(ingredientString2, 1);
+		c.addToGroceryList("butter", 0);
+		c.addToGroceryList("cheese", 1);
 		c.removeGroceryList(0);
-		JSONArray list = c.getGroceryList(Integer.toString(2)); //Changed just to compile
-		JSONObject o = (JSONObject) list.get(0);
-		assertEquals(o.get("name"), "colbycheese");
+		JSONArray list = c.getGroceryList(Integer.toString(1)); //Changed just to compile
+		String s = list.getString(1);
+		assertEquals(s, "cheese");
 	}
 	
 	@Test
@@ -52,8 +62,23 @@ public class CookTesting{
 		c.addToGroceryList("tomato", 1);
 		c.removeFromGroceryList("cheese", 1);
 		JSONArray list = c.getGroceryList(Integer.toString(2)); //Changed just to compile
-		String s = list.getString(0);
+		String s = list.getString(1);
 		assertEquals(s, "butter");
+	}
+	
+	@Test
+	public void removeFromGroceryListTestMultiples() {
+		User me = new User("me@gmail.com", "pizza.com");
+		Cook c = new Cook(me, "Cookholder");
+		c.addToGroceryList("butter", 0);
+		c.addToGroceryList("cheese", 1);
+		c.addToGroceryList("cheese", 1);
+		c.addToGroceryList("cheese", 1);
+		c.addToGroceryList("cheese", 1);
+		c.removeFromGroceryList("cheese", 1);
+		JSONArray list = c.getGroceryList(Integer.toString(2)); //Changed just to compile
+		String s = list.getString(1);
+		assertEquals(s, "cheese");
 	}
 	
 	@Test
