@@ -152,14 +152,14 @@ Link to the GitHub repo
 <div class="container-fluid bg-3 text-center">    
  <h3 style="font-family:Lobster; color: white; text-shadow: 3px 3px black;font-size:30pt">Team Falcon</h3>
   <div class="row">
-    <div class="col-sm-4">
-      <img src="images/alex.jpg" class="img-responsive margin" style="width:100%" alt="Image">
-	      <div style="font-family: Rajdhani; color:white;font-size:12pt">
-		    <p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
-		    <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support, testing <br />
-		    <strong>Bio:</strong> Alex enjoys complaining about the White House administration and spamming the group Slack at 3am.<br />
-			<strong id="alexIssues"></strong><br />
-			<strong id="alexCommits"></strong><br />
+      <div class="col-sm-4">
+      <img src="images/justin.png" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+			<p><strong>Major:</strong> ECE Major focusing on Software Engineering, Design and Energy Systems and Renewable Energy<br />
+		    <strong>Responsibilities:</strong> Scraping APIs to Database, testing <br />
+		    <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.<br />
+			<strong id="justinIssues"></strong><br />
+		    <strong id="justinCommits"></strong><br />
 		    <strong>Unit Tests:</strong> 11</p>
 		  </div>
     </div>
@@ -188,25 +188,14 @@ Link to the GitHub repo
   </div>
     <div class="row">
     <div class="col-sm-4">
-      <img src="images/justin.png" class="img-responsive margin" style="width:100%" alt="Image">
-	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
-			<p><strong>Major:</strong> ECE Major focusing on Software Engineering, Design and Energy Systems and Renewable Energy<br />
-		    <strong>Responsibilities:</strong> Scraping APIs to Database, testing <br />
-		    <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.<br />
-			<strong id="justinIssues"></strong><br />
-		    <strong id="justinCommits"></strong><br />
+      <img src="images/alex.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family: Rajdhani; color:white;font-size:12pt">
+		    <p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
+		    <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support, testing <br />
+		    <strong>Bio:</strong> Alex enjoys complaining about the White House administration and spamming the group Slack at 3am.<br />
+			<strong id="alexIssues"></strong><br />
+			<strong id="alexCommits"></strong><br />
 		    <strong>Unit Tests:</strong> 11</p>
-		  </div>
-    </div>
-    <div class="col-sm-4"> 
-      <img src="images/rooshi.jpg" class="img-responsive margin" style="width:100%" alt="Image">
-	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
-			<p><strong>Major:</strong> Business and ECE Major focusing on Software Engineering <br />
-		    <strong>Responsibilities:</strong> Java Spring Backend <br />
-		    <strong>Bio:</strong> Rooshi is a black belt in Android Studio.<br />
-			<strong id="rooshiIssues"></strong><br />
-			<strong id="rooshiCommits"></strong><br />
-		    <strong>Unit Tests:</strong> 0</p>
 		  </div>
     </div>
     <div class="col-sm-4"> 
@@ -217,6 +206,17 @@ Link to the GitHub repo
 		    <strong>Bio:</strong> Samir likes to party responsibly.<br />
 			<strong id="samirIssues"></strong><br />
 			<strong id="samirCommits"></strong><br />
+		    <strong>Unit Tests:</strong> 0</p>
+		  </div>
+    </div>
+    <div class="col-sm-4"> 
+      <img src="images/rooshi.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+			<p><strong>Major:</strong> Business and ECE Major focusing on Software Engineering <br />
+		    <strong>Responsibilities:</strong> Java Spring Backend <br />
+		    <strong>Bio:</strong> Rooshi is a black belt in Android Studio.<br />
+			<strong id="rooshiIssues"></strong><br />
+			<strong id="rooshiCommits"></strong><br />
 		    <strong>Unit Tests:</strong> 0</p>
 		  </div>
     </div>
@@ -251,7 +251,10 @@ developed with DHTML, CSS, reactjs and bootstrap. Our database is set up as a Go
 Datastore. We have implemented scraping with Python scripts from Spoonacular and Yummly APIs. 
 So far we have scraped over 900 ingredients and 600 recipes.</p>
 </div>
+<br>
 
-<div id="status"></div>
+<footer class="container-fluid bg-4 text-center" style="background-color:darkgray">
+  <p><a style="font-family:Lobster;font-size:20pt;color:white" href="aboutPage.jsp">Brought to you by Falcon Group</a></p> 
+</footer>
 </body>
 </html>
