@@ -107,21 +107,38 @@
     <%
     if (cook.getDiscoverResults().length() > 0) {
 	pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
+	pageContext.setAttribute("title", cook.getDiscoverResults().getJSONObject(0).getString("title"));
+	pageContext.setAttribute("prepMins", cook.getDiscoverResults().getJSONObject(0).getInt("prepMinutes") + "");
+	pageContext.setAttribute("cookMins", cook.getDiscoverResults().getJSONObject(0).getInt("cookMinutes") + "");
+	pageContext.setAttribute("instructions", cook.getDiscoverResults().getJSONObject(0).getString("instructions"));
+	pageContext.setAttribute("num", Integer.toString(0));
+	pageContext.setAttribute("ingredients", cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients").toString());
+	pageContext.setAttribute("link",cook.getDiscoverResults().getJSONObject(0).getString("url"));
 	%>
-	<div class="panel panel-default template">
+	<div class="panel panel-default">
     <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-
+	<form style="display:inline" action="/favorite" method="get">
+		<input type="hidden" id="listID" name="listID" value="1">
+		<input type="hidden" id="ar" name="ar" value="add">
+		<input type="hidden" class="recipe" name="recipe" value="">
+		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+	</form>
          <h4 class="panel-title">
     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
       Discover!:${fn:escapeXml(discoverTitle)}  
     </a>
   </h4>
 
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse">
-        <div class="panel-body">You should add this to your list!</div>
-    </div>
-</div>
+   </div>     
+       <div id="collapseThree" class="panel-collapse collapse ">
+           <p>Link to Source Page: ${fn:escapeXml(link)}</p>
+           <p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
+           <p>Prep Time: ${fn:escapeXml(prepMins)}</p>
+           <p>Instructions: ${fn:escapeXml(instructions)}</p>
+           <p>Ingredients: ${fn:escapeXml(ingredients)}</p>
+       </div>
+  </div>
+
 <%
     }
     JSONArray ja = cook.getRecipeSearchResults();
@@ -141,7 +158,7 @@
 		
 		<div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-		<form style="display:inline" action="/grocerylist" method="get">
+		<form style="display:inline" action="/favorite" method="post">
 			 <input type="hidden" id="listID" name="listID" value="1">
 			 <input type="hidden" id="ar" name="ar" value="add">
 			 <input type="hidden" class="recipe" name="recipe" value="">
@@ -156,7 +173,6 @@
         </div>
         
         	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
-            	<div class="panel-body" >You should add this to your list!</div>
             	<p>Link to Source Page: ${fn:escapeXml(link)}</p>
             	<p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
             	<p>Prep Time: ${fn:escapeXml(prepMins)}</p>
