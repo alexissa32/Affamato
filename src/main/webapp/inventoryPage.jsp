@@ -122,9 +122,7 @@
 	  		//cell3.innerHTML = expiration;
 	  		//cell4.appendChild(exitButton);
 	  		var pantry = ${fn:escapeXml(pantry)};
-	  		var get = pantry[0];
-	  		var x = JSON.parse(get);
-	  		cell1.innerHTML = x.ingredient;
+	  		cell1.innerHTML = pantry[0].ingredient;
 	  		cell4.appendChild(exitButton)
 	  		
 	  		//document.getElementById("IngredientInput").value = "";
