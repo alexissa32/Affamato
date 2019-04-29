@@ -35,7 +35,8 @@ public class Cook
         this.user = user;
         //this.CookHolder = Key.create(Cook.class, CookHolder);
         this.RecipeList = "";
-        this.Pantry = "";
+        JSONArray pList = new JSONArray();
+        this.Pantry = pList.toString();
         JSONArray glist = new JSONArray();
         for(int i = 1; i < 6; i++) {
         	JSONArray putter = new JSONArray();
@@ -177,10 +178,12 @@ public class Cook
     	JSONArray gLists = new JSONArray(this.GroceryLists);	//this gets initial json array
     	JSONArray newList = gLists.getJSONArray(index);
     	JSONArray replace = new JSONArray();
+    	boolean noneremoved = true;
     	//this gets relevant json array inside the initial
     	for(int i = 0; i < newList.length(); i++) {				//this navigates relevant json array to find item to remove
     		String ingredient = newList.getString(i);
-    		if(ingredient.equals(Ingredient)) {
+    		if(ingredient.equals(Ingredient)&&noneremoved) {
+    			noneremoved = false;
     			//newList.remove(i);		
     		}
     		else {
@@ -238,15 +241,7 @@ public class Cook
     }
     
     public void addToPantry(JSONObject ingredient) {
-    	JSONArray editor;
-    	if(this.Pantry.equals("")) {
-    		JSONArray edit = new JSONArray();
-    		editor = edit;
-    	}
-    	else {
-    	JSONArray edit = new JSONArray(this.Pantry);
-    	editor = edit;
-    	}
+    	JSONArray editor  = new JSONArray(this.Pantry);
     	editor.put(ingredient);
     	this.Pantry = editor.toString();
     }
@@ -254,13 +249,11 @@ public class Cook
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {
-    	if(this.Pantry.equals("")) {}
-    	else {
     		JSONArray pantry = new JSONArray(this.Pantry);
     		if(pantry.length() > pos) {
     		pantry.remove(pos);	//UNCAUGHT EXCEPTION IF POS IS OUT OF BOUNDS
     		this.Pantry = pantry.toString();
-    	}}
+    	}
     	/**
     	JSONArray updated = new JSONArray();
     	try

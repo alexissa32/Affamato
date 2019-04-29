@@ -1,12 +1,10 @@
 @charset "UTF-8";
-#landingbody1{
+#landingbody{
 	background-image: url("images/background8.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 1200px;
-    width: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
-
 #aboutbody{
     background-image: url("images/background2.jpg");
     background-repeat: no-repeat;
