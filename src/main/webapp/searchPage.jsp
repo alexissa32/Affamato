@@ -125,7 +125,7 @@
 		<input type="hidden" id="listID" name="listID" value="1">
 		<input type="hidden" id="ar" name="ar" value="add">
 		<input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+		<button style="display:inline" type="submit">Add to My Recipes</button>
 	</form>
          <h4 class="panel-title">
     <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -168,7 +168,7 @@
 			 <input type="hidden" id="listID" name="listID" value="1">
 			 <input type="hidden" id="ar" name="ar" value="add">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+			 <button style="display:inline" type="submit">Add to My Recipes</button>
 		                 </form>
              <h4 class="panel-title">
         <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
