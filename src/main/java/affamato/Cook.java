@@ -250,6 +250,18 @@ public class Cook
     	this.Pantry = editor.toString();
     }
     
+    public void removeFromPantry(String x) {
+    	JSONArray pantry = new JSONArray(this.Pantry);
+    	JSONObject js = new JSONObject(x);
+    	for(int i = 0; i < pantry.length(); i++) {
+    		JSONObject ing = pantry.getJSONObject(i);
+    		if(ing.equals(js)) {
+    			pantry.remove(i);
+    			break;
+    		}
+    	}
+    	this.Pantry = pantry.toString();
+    }
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(int pos) 
     {

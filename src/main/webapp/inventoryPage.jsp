@@ -52,11 +52,13 @@
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
         
+        /*
         JSONObject test = new JSONObject()
                 .put("ingredient", "McChicken")
                 .put("quantity", "2")
                 .put("expiration", "10/11/12");
         cook.addToPantry(test);
+        */
         JSONArray pantry = cook.getPantry();
         pageContext.setAttribute("pantrySize", pantry.length());
         pageContext.setAttribute("pantry", pantry.toString());
@@ -95,43 +97,41 @@
       </tr>
     </thead>
     <tbody>
+     <%
+				 	JSONArray list1 = cook.getPantry();
+				 	for (int i = 1; i < list1.length(); i++) {
+				 	   JSONObject js = list1.getJSONObject(i);
+				 	   String ing = js.getString("ingredient");
+				 	   String quantity = js.getString("quantity");
+				 	   String exp = js.getString("expiration");
+				 	   pageContext.setAttribute("ing",ing); 
+				 	   pageContext.setAttribute("exp", exp);
+				 	   pageContext.setAttribute("quantity", quantity);
+				 	    %>
+		                 <tr>
+		                 <td>
+		                 <b>${fn:escapeXml(ing)}</b>
+		                 </td>
+		                 <td>
+		                 ${fn:escapeXml(quantity)}
+		                 </td>
+		                 <td>
+		                 ${fn:escapeXml(exp)}
+		                 </td>
+		                 <td>
+		                 <form style="display:inline" action="/inventory" method="get">
+			                 <input type="hidden" id="ar" name="ar" value="remove">
+			                 <input type="hidden" class="ingredient" name="ing" value="<%=js%>">
+			                 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right"></button> 
+		                 </form>
+		                 </td>
+		                 </tr>
+		                <% 		 	    
+				 	}
+				%>
     </tbody>
   </table>
-  <script type="text/javascript">
-  $(document).ready(function(){
-	  
-		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < ${fn:escapeXml(pantrySize)} + 1; i++) {
-	  		var row = table.insertRow(-1);
-	  		var cell1 = row.insertCell(0);
-	  		var cell2 = row.insertCell(1);
-	  		var cell3 = row.insertCell(2);
-	  		var cell4 = row.insertCell(3);
-	  		var exitButton = document.getElementById("exitbutton").cloneNode(true);
-	  		
-	  		//var ingredient = document.getElementById("IngredientInput").value;
-	  		//var quantity = document.getElementById("QuantityInput").value;
-	  		//var unit = document.getElementById('dropdowntext').textContent;
-	  		//var expiration = document.getElementById("ExpirationInput").value;
-	  		//cell1.innerHTML = quantity;
-	  		//cell2.innerHTML = quantity + " " + unit;
-	  		//cell3.innerHTML = expiration;
-	  		//cell4.appendChild(exitButton);
-	  		cell1.innerHTML = "please help";
-	  		var pantry = ${fn:escapeXml(pantry)};
-	  		var parse = JSON.parse(pantry);
-	  		cell2.innerHTML = pantry;
-	  		cell4.appendChild(exitButton)
-	  		
-	  		//document.getElementById("IngredientInput").value = "";
-	  		//document.getElementById("QuantityInput").value = "";
-	  		//document.getElementById('dropdowntext').textContent = "units";
-	  		//document.getElementById("ExpirationInput").value = "";
-
-	  		//var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
-	  	}
-  })
-  </script>
+ 
 </div>
 
 <script>	// remove button
@@ -160,12 +160,12 @@ window.onclick = function(event) {
 <!-- Modal -->
 <div class="modal fade" id="id01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
+  <form action = "/inventory" method = "get">
     <div class="modal-content">
       <div class="modal-body">
-        <form>
        		<div class="form-group">
         		<label for="IngredientInput">Ingredient</label>
-    			<input class="form-control" id="IngredientInput" placeholder="Enter ingredient">
+    			<input class="form-control" id="IngredientInput" name = "IngredientInput" placeholder="Enter ingredient">
 			    
     		<!--  <input class="form-control" id="IngredientInput" placeholder="Enter ingredient"> -->	
     		</div>
@@ -173,7 +173,7 @@ window.onclick = function(event) {
     	
        		<div class="form-group">
         		<div><label for="QuantityInput">Quantity</label></div>
-    			<input class="form-control" id="QuantityInput" placeholder="Enter quantity and units"  style="width: 495px; float:left; display: inline">
+    			<input class="form-control" id="QuantityInput" name = "QuantityInput" placeholder="Enter quantity and units"  style="width: 495px; float:left; display: inline">
     		                                      
 			  <div class="dropdown" style="display: inline; float:right">
 			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="width: 70px">
@@ -195,17 +195,18 @@ window.onclick = function(event) {
     		
        		<div class="form-group" style="padding-top: 35px">
         		<label for="ExpirationInput">Expiration Date</label>
-    			<input class="form-control" id="ExpirationInput" placeholder="MM/DD/YYYY">
+    			<input class="form-control" id="ExpirationInput" name = "ExpirationInput" placeholder="MM/DD/YYYY">
     		</div>
     		    		
-        </form>
         <div>
         
         </div>
       </div>
     </div>
+    <input type="hidden" id = "ar" name = "ar" value = "add">
     <button type="button" id="boi" class="btn btn-danger" data-dismiss="modal" 
-    style="margin-left: 548px; margin-top: 10px" onClick="add()">Add</button>
+    style="margin-left: 548px; margin-top: 10px" type="submit">Add</button>
+      </form>
   </div>
 </div>
 
