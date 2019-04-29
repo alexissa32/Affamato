@@ -112,11 +112,16 @@
 	<div class="panel panel-default template">
     <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 
-         <h4 class="panel-title">
+  <h4 class="panel-title">
     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
       Discover!:${fn:escapeXml(discoverTitle)}  
     </a>
   </h4>
+  <form style="display:inline" action="/favorite" method="post">
+  		<input type="hidden" id="ar" name="ar" value="add">
+	    <input type="hidden" class="recipe" name="recipe" value="">
+		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" ></button>
+  </form>
 
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
@@ -145,13 +150,15 @@
 		
 		<div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-		<form style="display:inline" action="/grocerylist" method="get">
-			 <input type="hidden" id="listID" name="listID" value="1">
+        
+		<form style="display:inline" action="/favorite" method="post">
 			 <input type="hidden" id="ar" name="ar" value="add">
 			 <input type="hidden" class="recipe" name="recipe" value="">
-			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
-		                 </form>
-             <h4 class="panel-title">
+			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" ></button>
+		</form>
+		
+		
+      <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>

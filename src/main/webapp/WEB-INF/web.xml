@@ -101,6 +101,15 @@
 	<servlet-name>SearchServlet</servlet-name>
 	<url-pattern>/search</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>FavoriteServlet</servlet-name>
+	<servlet-class>affamato.FavoriteServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>FavoriteServlet</servlet-name>
+	<url-pattern>/favorite</url-pattern>
+</servlet-mapping>
 	
 <!--<servlet-mapping>
     <servlet-name>default</servlet-name>
