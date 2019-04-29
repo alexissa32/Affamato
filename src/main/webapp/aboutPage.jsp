@@ -108,6 +108,8 @@ Link to the GitHub repo
 </head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="about.css" />
 <body id="aboutbody" background="white">
 <%
@@ -116,25 +118,25 @@ Link to the GitHub repo
     if (user == null) {
 %>
 <div class="topnav">
-  <a class="active" href="aboutPage.jsp">About</a>
-  <a href="landingPage.jsp">Home</a>
-  <a style="float:right" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
+  <a style="font-family:Lobster;font-size:15pt" class="active" href="aboutPage.jsp">About</a>
+  <a style="font-family:Lobster;font-size:15pt" href="landingPage.jsp">Home</a>
+  <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
 </div>
 <%
     } else {
 %>
 <div class="topnav">
-  <a class="active" href="aboutPage.jsp">About</a>
-  <a href="landingPage.jsp">Home</a>
-  <a href="dashboardPage.jsp">My Dashboard</a>
-  <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
+  <a style="font-family:Lobster;font-size:15pt;" class="active" href="aboutPage.jsp">About</a>
+  <a style="font-family:Lobster;font-size:15pt" href="landingPage.jsp">Home</a>
+  <a style="font-family:Lobster;font-size:15pt" href="dashboardPage.jsp">My Dashboard</a>
+  <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
 </div>
 <%
 	}
 %>
 <br>
-<h1 style="font-family:TimesNewRoman; color: white; text-shadow: 3px 4px black;">About Affamato:</h1>
-<div id="pane2" 	style="height:150px;">
+<h1 style="font-family:Lobster; color: white; text-shadow: 3px 3px black;font-size:30pt">About Affamato:</h1>
+<div id="pane2" style="font-family: Rajdhani; color: white;height:200px;font-size:15pt">
 <p>Affamato is a pantry/fridge assistant web application that helps users do a multitude of food related tasks.
     It allows users to create grocery lists, track what items are in their pantry, track perishability of items,
     and recommend recipes based on what's in the pantry, different cuisine types, and different health choices.
@@ -145,96 +147,104 @@ Link to the GitHub repo
 </div> 
 <br>
 <br>
-<h1 style="font-family:TimesNewRoman; color: white; text-shadow: 3px 4px black;">Team Falcon Members:</h1>
-<div id="pane2" style="height:400px;">
-<h3>Cameron Clark:</h3>
-<img class="two" src="images/cameron.jpg"  width = "210" height = "275" hspace = "20px" lt=""/>
-<p><strong>Major:</strong> ECE Major focusing on Software Engineering and Computer Architecture<br />
-    <strong>Responsibilities:</strong> Phase 2 Lead, Scraping APIs to Database <br />
-    <strong>Bio:</strong> Cameron enjoys taking selfies at the EER.<br />
-	<strong id="cameronIssues"></strong><br />
-	<strong id="cameronCommits"></strong><br />
-    <strong>Unit Tests:</strong> 0</p>
-</div>
 
-<div id="pane2" style="height:250px;">
-<h3>Justin Henry:</h3>
-<img class="two" src="images/justin.png"  hspace = "20px" lt=""/>
-<p><strong>Major:</strong> ECE Major focusing on Software Engineering, Design and Energy Systems and Renewable Energy<br />
-    <strong>Responsibilities:</strong> Scraping APIs to Database, testing <br />
-    <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.<br />
-	<strong id="justinIssues"></strong><br />
-    <strong id="justinCommits"></strong><br />
-    <strong>Unit Tests:</strong> 11</p>
-</div>
-
-<div id="pane2" style="height:350px;">
-<h3>Alex Issa:</h3>
-<img class="two" src="images/alex.jpg"  width = "275" height = "250" hspace = "20px" lt=""/>
-<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
-    <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support, testing <br />
-    <strong>Bio:</strong> Alex enjoys complaining about the White House administration and spamming the group Slack at 3am.<br />
-	<strong id="alexIssues"></strong><br />
-	<strong id="alexCommits"></strong><br />
-    <strong>Unit Tests:</strong> 11</p>
-</div>    
-
-<div id="pane2" style="height:300px;">
-<h3>Julia Rebello:</h3>
-<img class="two" src="images/julia.jpg" hspace = "20px" alt=""/>
-<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
-    <strong>Responsibilities:</strong> Front End and General Support <br />
-    <strong>Bio:</strong> Born in Rio de Janeiro, Julia loves beaches and warm weather.<br />
-	<strong id="juliaIssues"></strong><br />
-	<strong id="juliaCommits"></strong><br />
-    <strong>Unit Tests:</strong> 0</p>
-</div> 
-
-<div id="pane2" style="height:265px;">
-<h3>Samir Riad:</h3>
-<img class="two" src="images/samir.jpg"  hspace = "20px" alt=""/>
-<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
-    <strong>Responsibilities:</strong> Front End <br />
-    <strong>Bio:</strong> Samir likes to party responsibly.<br />
-	<strong id="samirIssues"></strong><br />
-	<strong id="samirCommits"></strong><br />
-    <strong>Unit Tests:</strong> 0</p>
-</div>
-
-<div id="pane2" style="height:350px;">
-<h3>Rooshi Patidar:</h3>
-<img class="two" src="images/rooshi.jpg"  width = "275" height = "250" hspace = "20px" alt=""/>
-<p><strong>Major:</strong> Business and ECE Major focusing on Software Engineering <br />
-    <strong>Responsibilities:</strong> Java Spring Backend <br />
-    <strong>Bio:</strong> Rooshi is a black belt in Android Studio.<br />
-	<strong id="rooshiIssues"></strong><br />
-	<strong id="rooshiCommits"></strong><br />
-    <strong>Unit Tests:</strong> 0</p>
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center">    
+ <h3 style="font-family:Lobster; color: white; text-shadow: 3px 3px black;font-size:30pt">Team Falcon</h3>
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="images/alex.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family: Rajdhani; color:white;font-size:12pt">
+		    <p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
+		    <strong>Responsibilities:</strong> Phase 1 Lead, Database and Backend Support, testing <br />
+		    <strong>Bio:</strong> Alex enjoys complaining about the White House administration and spamming the group Slack at 3am.<br />
+			<strong id="alexIssues"></strong><br />
+			<strong id="alexCommits"></strong><br />
+		    <strong>Unit Tests:</strong> 11</p>
+		  </div>
+    </div>
+    <div class="col-sm-4"> 
+	   <img src="images/cameron.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+	        <p><strong>Major:</strong> ECE Major focusing on Software Engineering and Computer Architecture<br />
+		    <strong>Responsibilities:</strong> Phase 2 Lead, Scraping APIs to Database <br />
+		    <strong>Bio:</strong> Cameron enjoys taking selfies at the EER.<br />
+			<strong id="cameronIssues"></strong><br />
+			<strong id="cameronCommits"></strong><br />
+		    <strong>Unit Tests:</strong> 0</p>
+		  </div>
+    </div>
+    <div class="col-sm-4"> 
+      <img src="images/julia.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+			   <p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
+			    <strong>Responsibilities:</strong> Phase 3 Lead, Front End and General Support <br />
+			    <strong>Bio:</strong> Born in Rio de Janeiro, Julia loves beaches and warm weather.<br />
+				<strong id="juliaIssues"></strong><br />
+				<strong id="juliaCommits"></strong><br />
+			    <strong>Unit Tests:</strong> 0</p>
+		  </div>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-sm-4">
+      <img src="images/justin.png" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+			<p><strong>Major:</strong> ECE Major focusing on Software Engineering, Design and Energy Systems and Renewable Energy<br />
+		    <strong>Responsibilities:</strong> Scraping APIs to Database, testing <br />
+		    <strong>Bio:</strong> Originally from Kansas, Justin enjoys playing basketball and bad puns.<br />
+			<strong id="justinIssues"></strong><br />
+		    <strong id="justinCommits"></strong><br />
+		    <strong>Unit Tests:</strong> 11</p>
+		  </div>
+    </div>
+    <div class="col-sm-4"> 
+      <img src="images/rooshi.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+			<p><strong>Major:</strong> Business and ECE Major focusing on Software Engineering <br />
+		    <strong>Responsibilities:</strong> Java Spring Backend <br />
+		    <strong>Bio:</strong> Rooshi is a black belt in Android Studio.<br />
+			<strong id="rooshiIssues"></strong><br />
+			<strong id="rooshiCommits"></strong><br />
+		    <strong>Unit Tests:</strong> 0</p>
+		  </div>
+    </div>
+    <div class="col-sm-4"> 
+      <img src="images/samir.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+			<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
+		    <strong>Responsibilities:</strong> Front End <br />
+		    <strong>Bio:</strong> Samir likes to party responsibly.<br />
+			<strong id="samirIssues"></strong><br />
+			<strong id="samirCommits"></strong><br />
+		    <strong>Unit Tests:</strong> 0</p>
+		  </div>
+    </div>
+  </div>
 </div>
 
 <div id="pane2" style="height:180px;">
 <h3>Repository Statistics:</h3>
-
-<h4 align="left" id="numCommits"></h4>
-<h4 align="left" id="numIssues"></h4>
-<h4 align="left">Total Number of Unit Tests: 22</h4>
+<h4 style="font-family:Rajdhani;color:white;font-size:12pt" align="left" id="numCommits"></h4>
+<h4 style="font-family:Rajdhani;color:white;font-size:12pt" align="left" id="numIssues"></h4>
+<h4 style="font-family:Rajdhani;color:white;font-size:12pt" align="left">Total Number of Unit Tests: 22</h4>
 </div>
 
 <div id="pane2" style="height:175px;">
 <h3>Data:</h3>
-<p><a href="https://developer.yummly.com">Yummly API</a></p>
-<p><a href="https://spoonacular.com/food-api">Spoonacular API</a></p>
-<p>Yummly and Spoonacular were scraped using Python scripts written by Team Falcon</p>
+<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://developer.yummly.com">Yummly API</a></p>
+<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://spoonacular.com/food-api">Spoonacular API</a></p>
+<p style="font-family:Rajdhani;color:white;font-size:12pt" >Yummly and Spoonacular were scraped using Python scripts written by Team Falcon</p>
 </div>
 
 <div id="pane2" style="height:120px;">
 <h3>Github Repository:</h3>
-<p><a href="https://github.com/alexissa32/Affamato">Github</a></p>
+<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://github.com/alexissa32/Affamato">Github</a></p>
 </div>
 
 <div id="pane2" style="height:200px;">
 <h3>Tools:</h3>
-<p>In this phase, we obtained a URL for Affamato from Namecheap and set up team 
+<p style="font-family:Rajdhani;color:white;font-size:12pt">In this phase, we obtained a URL for Affamato from Namecheap and set up team 
 communication on Slack, which has been integrated with the Affamato Github repository. 
 Phase One user stories have all been added to our issue board. Our user interface has been 
 developed with DHTML, CSS, reactjs and bootstrap. Our database is set up as a Google Cloud Platform 
