@@ -108,24 +108,43 @@
 
     if (cook.getGrocerySearchResults().length() > 0) {
 	pageContext.setAttribute("discoverTitle", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
+	pageContext.setAttribute("title", cook.getGrocerySearchResults().getJSONObject(0).getString("title"));
+	pageContext.setAttribute("prepMins", cook.getGrocerySearchResults().getJSONObject(0).getInt("prepMinutes") + "");
+	pageContext.setAttribute("cookMins", cook.getGrocerySearchResults().getJSONObject(0).getInt("cookMinutes") + "");
+	pageContext.setAttribute("instructions", cook.getGrocerySearchResults().getJSONObject(0).getString("instructions"));
+	pageContext.setAttribute("ingredients", cook.getGrocerySearchResults().getJSONObject(0).getJSONArray("ingredients").toString());
+	pageContext.setAttribute("link", cook.getGrocerySearchResults().getJSONObject(0).getString("url"));
+	String prepMins = cook.getGrocerySearchResults().getJSONObject(0).getString("prepMinutes");
+	String cookMins = cook.getGrocerySearchResults().getJSONObject(0).getString("cookMinutes");
+	String instructions = cook.getGrocerySearchResults().getJSONObject(0).getString("instructions");
+	String ingredients = cook.getGrocerySearchResults().getJSONObject(0).getString("ingredients").toString();
+	String link = cook.getGrocerySearchResults().getJSONObject(0).getString("url");
 	%>
 	<div class="panel panel-default template">
     <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
 
   <h4 class="panel-title">
-    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+    <a style="display:inline" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
       Discover!:${fn:escapeXml(discoverTitle)}  
     </a>
   </h4>
   <form style="display:inline" action="/favorite" method="post">
-  		<input type="hidden" id="ar" name="ar" value="add">
-	    <input type="hidden" class="recipe" name="recipe" value="">
-		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" ></button>
+  		<input type="hidden" name="prepMins" value="<%=prepMins%>">
+	    <input type="hidden" name="cookMins" value="<%=cookMins%>">
+	    <input type="hidden" name="instructions" value="<%=instructions%>">
+	    <input type="hidden" name="ingredients" value="<%=ingredients%>">
+	    <input type="hidden" name="link" value="<%=link%>">
+		<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" >Add to My Recipes</button>
   </form>
 
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
         <div class="panel-body">You should add this to your list!</div>
+            <p>Link to Source Page: ${fn:escapeXml(link)}</p>
+           	<p>Cooking Time: ${fn:escapeXml(cookMins)}</p>
+           	<p>Prep Time: ${fn:escapeXml(prepMins)}</p>
+           	<p>Instructions: ${fn:escapeXml(instructions)}</p>
+           	<p>Ingredients: ${fn:escapeXml(ingredients)}</p>
     </div>
 </div>
 <%
@@ -144,25 +163,33 @@
 		pageContext.setAttribute("num", i.toString());
 		pageContext.setAttribute("ingredients", ja.getJSONObject(i).getJSONArray("ingredients").toString());
 		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
-
+		
+		String title = ja.getJSONObject(i).getString("title");
+		int prepMins = ja.getJSONObject(i).getInt("prepMinutes");
+		int cookMins = ja.getJSONObject(i).getInt("cookMinutes");
+		String instructions = ja.getJSONObject(i).getString("instructions");
+		String ingredients = ja.getJSONObject(i).getJSONArray("ingredients").toString();
+		String link = ja.getJSONObject(i).getString("url");
 		%>
 		
 		
 		<div class="panel panel-default">
         <div class="panel-heading"> <span class="glyphicon glyphicon-remove-circle pull-right "></span>
-        
-		<form style="display:inline" action="/favorite" method="post">
-			 <input type="hidden" id="ar" name="ar" value="add">
-			 <input type="hidden" class="recipe" name="recipe" value="">
-			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" ></button>
-		</form>
 		
 		
-      <h4 class="panel-title">
+      <h4 style="display:inline" class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>
       </h4>
+      	  <form style="display:inline" action="/favorite" method="post">
+	  		<input type="hidden" name="prepMins" value="<%=prepMins%>">
+		    <input type="hidden" name="cookMins" value="<%=cookMins%>">
+		    <input type="hidden" name="instructions" value="<%=instructions%>">
+		    <input type="hidden" name="ingredients" value="<%=ingredients%>">
+		    <input type="hidden" name="link" value="<%=link%>">
+			<button style="display:inline" type="submit" class="fa fa-times-circle pull-right" >Add to My Recipes</button>
+	  </form>
 
         </div>
         
