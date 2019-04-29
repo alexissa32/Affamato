@@ -99,6 +99,7 @@
   <li><a href="inventoryPage.jsp">My Inventory</a></li>
   <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
   <li><a class="active" href="recipesPage.jsp">My Recipes</a></li>
+  <li><a href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
