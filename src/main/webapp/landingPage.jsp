@@ -15,46 +15,179 @@
 <meta charset="UTF-8">
 <title> Welcome to Affamato</title>
 </head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link type="text/css" rel="stylesheet" href="about.css" />
+  
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <body>
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     if (user == null) {
 %>
+<div id="landingbody1">
 <div class="topnav">
-  <a class="active">Welcome to Affamato</a>
-  <a href="aboutPage.jsp">About</a>
-  <a style="float:right" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
+  <a style="font-family:Lobster;font-size:15pt" class="active">Welcome to Affamato</a>
+  <a style="font-family:Lobster;font-size:15pt" href="aboutPage.jsp">About</a>
+  <a style="font-family:Lobster;font-size:15pt; float:right" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
 </div>
 <br>
-<br>
-<div id="pane" 	style="height:300px; width:500px; float: right; padding-top: 100px; padding-bottom: 80px; padding-right: 60px">
-<h1>Manage Your Pantry</h1>
-<h1>Discover New Recipes</h1>
-<h1>Optimize Your Savings</h1>
+<div class="container" style="right:50px;top:100px;position:absolute;width:100px;min-width:50%;height:300px">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="images/veggies.jpg"  style="width:100%;">
+        <div class="carousel-caption">
+          <h3 style="font-family:Lobster;font-size:30pt">Manage Your Pantry</h3>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="images/cooking.jpg"  style="width:100%;">
+        <div class="carousel-caption">
+          <h3 style="font-family:Lobster;font-size:30pt">Discover New Recipes</h3>       
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="images/laptop.jpg"  style="width:100%;">
+        <div class="carousel-caption">
+          <h3 style="font-family:Lobster;font-size:30pt">Optimize Your Savings</h3>  
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
+
+<div class="container-fluid bg-3 text-center" style="background-color:darkred">    
+  <h3 style="font-family:Lobster;font-size:25pt;color:white" class="margin">Did You Know?</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p style="font-family:Lobster;font-size:15pt;color:white">In the United States, food waste is estimated at between 30-40 percent of the food supply.</p>
+      <img src="images/foodwaste.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4"> 
+      <p style="font-family:Lobster;font-size:15pt;color:white">This estimate, based on estimates from USDA’s Economic Research Service of 31 percent food loss at the retail and consumer levels, 
+corresponded to approximately 133 billion pounds and $161 billion worth of food in 2010.</p>
+      <img src="images/groceries.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4"> 
+      <p style="font-family:Lobster;font-size:15pt;color:white">At Affamato, our goal is to help you help the world.</p>
+      <img src="images/apple.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+  </div>
+  </br>
+</div>
+</div>
+
 <%
     } else {
 %>
+<div id="landingbody1">
 <div class="topnav">
-  <a class="active">Welcome to Affamato</a>
-  <a href="aboutPage.jsp">About</a>
-  <a href="dashboardPage.jsp">My Dashboard</a>
-  <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
+  <a style="font-family:Lobster;font-size:15pt" class="active">Welcome to Affamato</a>
+  <a style="font-family:Lobster;font-size:15pt" href="aboutPage.jsp">About</a>
+  <a style="font-family:Lobster;font-size:15pt" href="dashboardPage.jsp">My Dashboard</a>
+  <a style="font-family:Lobster;font-size:15pt; float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
 </div>
 <br>
-<br>
-<div id="pane" 	style="height:300px; width:500px; float: right; padding-top: 100px; padding-bottom: 80px; padding-right: 60px">
-<h1>Manage Your Pantry</h1>
-<h1>Discover New Recipes</h1>
-<h1>Optimize Your Savings</h1>
+<div class="container" style="right:50px;top:100px;position:absolute;width:100px;min-width:50%;height:300px">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="images/veggies.jpg"  style="width:100%;">
+        <div class="carousel-caption">
+          <h3 style="font-family:Lobster;font-size:30pt">Manage Your Pantry</h3>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="images/cooking.jpg"  style="width:100%;">
+        <div class="carousel-caption">
+          <h3 style="font-family:Lobster;font-size:30pt">Discover New Recipes</h3>       
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="images/laptop.jpg"  style="width:100%;">
+        <div class="carousel-caption">
+          <h3 style="font-family:Lobster;font-size:30pt">Optimize Your Savings</h3>  
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid bg-3 text-center" style="background-color:darkred">    
+  <h3 style="font-family:Lobster;font-size:25pt;color:white" class="margin">Did You Know?</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p style="font-family:Lobster;font-size:15pt;color:white">In the United States, food waste is estimated at between 30-40 percent of the food supply.</p>
+      <img src="images/foodwaste.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4"> 
+      <p style="font-family:Lobster;font-size:15pt;color:white">This estimate, based on estimates from USDA’s Economic Research Service of 31 percent food loss at the retail and consumer levels, 
+corresponded to approximately 133 billion pounds and $161 billion worth of food in 2010.</p>
+      <img src="images/groceries.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4"> 
+      <p style="font-family:Lobster;font-size:15pt;color:white">At Affamato, our goal is to help you help the world.</p>
+      <img src="images/apple.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+  </div>
+  </br>
+</div>
 </div>
 
 <%
     } 
 %>
+<footer class="container-fluid bg-4 text-center" style="background-color:darkgray">
+  <p><a style="font-family:Lobster;font-size:20pt;color:white" href="aboutPage.jsp">Brought to you by Falcon Group</a></p> 
+</footer>
 </body>
 </html>

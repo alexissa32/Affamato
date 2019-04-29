@@ -1,9 +1,10 @@
 @charset "UTF-8";
-body{
+#landingbody1{
 	background-image: url("images/background8.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
+    height: 1200px;
+    width: 100%;
 }
 
 #aboutbody{
@@ -63,7 +64,7 @@ body{
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;  
+  font-size: 17px;
 }
 
 .topnav a:hover {
