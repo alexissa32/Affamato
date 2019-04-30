@@ -42,6 +42,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  
 <body id="dashboardbody">
 <%
     UserService userService = UserServiceFactory.getUserService();
@@ -50,20 +52,23 @@
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
         
-        JSONObject test = new JSONObject()
-                .put("ingredient", "McChicken")
-                .put("quantity", "2")
-                .put("expiration", "10/11/12");
-        cook.addToPantry(test);
+        int test = 4;
+        pageContext.setAttribute("test",test);
+        
+        //JSONObject test = new JSONObject()
+          //      .put("ingredient", "McChicken")
+            //    .put("quantity", "2")
+              //  .put("expiration", "10/11/12");
+        //cook.addToPantry(test);
         //JSONArray pantry = cook.getPantry();
         //pageContext.setAttribute("pantrySize", pantry.length());
         //pageContext.setAttribute("pantry", pantry.toString());
 %>
 <div class="topnav">
-  <a class="active" href="dashboardPage.jsp">My Dashboard</a>
-  <a href="landingPage.jsp">Home</a>
-  <a href="aboutPage.jsp">About</a>
-  <a style="float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
+  <a style="font-family:Lobster;font-size:15pt" class="active" href="dashboardPage.jsp">My Dashboard</a>
+  <a style="font-family:Lobster;font-size:15pt" href="landingPage.jsp">Home</a>
+  <a style="font-family:Lobster;font-size:15pt" href="aboutPage.jsp">About</a>
+  <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
     <div class="search-container">
 	    <form action="/inventory" method="post">
 	      <input type="text" placeholder="Search..." name="search">
@@ -74,15 +79,15 @@
 <div class="vertnav">
 <br>
 <l>
-  <li><a href="dashboardPage.jsp">Welcome</a></li>
-  <li><a class="active" href="inventoryPage.jsp">My Inventory</a></li>
-  <li><a href="grocerylistPage.jsp">My Grocery Lists</a></li>
-  <li><a href="recipesPage.jsp">My Recipes</a></li>
-  <li><a href="searchPage.jsp">Search Recipes</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" href="dashboardPage.jsp">Welcome</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" class="active" href="inventoryPage.jsp">My Inventory</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" href="grocerylistPage.jsp">My Grocery Lists</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" href="recipesPage.jsp">My Recipes</a></li>
+  <li><a style="font-family:Lobster;font-size:15pt" href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
 
-<div class="container" style="padding-left: 250px; width: 1165px; float: left">
+<div class="container" style="font-family:Lobster;font-size:15pt;padding-left: 250px; width: 1165px; float: left">
   <h2 style="text-align:left;float:left;">Inventory</h2>
   
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#id01" style="margin-bottom: 10px; margin-top: 20px; text-align:right;float:right;" 
@@ -92,9 +97,9 @@
   <table id ="inventory_table" class="table table-hover" style="background-color: #eff2f7; width: 900px">
     <thead>
       <tr>
-        <th style="width: 330px">Ingredient</th>
-        <th>Quantity</th>
-        <th style="width: 250px">Expiration Date</th>
+        <th style="font-family:Lobster;width: 330px">Ingredient</th>
+        <th style="font-family:Lobster">Quantity</th>
+        <th style="font-family:Lobster;width: 250px">Expiration Date</th>
         <th><p hidden=true><i class="fa fa-times-circle" id="exitbutton" aria-hidden="true"></i></p></th>
       </tr>
     </thead>
@@ -102,11 +107,14 @@
     </tbody>
   </table>
   <script type="text/javascript">
-  //$(document).ready(function(){
-	  function add() {
+  $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
-	  	//for(i = 0; i < pantry size use escape xml; i++) {
+	  	for(i = 0; i < 
+	  	//${fn:escapeXml(pantrySize)} + 1
+	  	${fn:escapeXml(test)}
+	  	;
+	  	i++) {
 	  		var row = table.insertRow(-1);
 	  		var cell1 = row.insertCell(0);
 	  		var cell2 = row.insertCell(1);
@@ -114,29 +122,29 @@
 	  		var cell4 = row.insertCell(3);
 	  		var exitButton = document.getElementById("exitbutton").cloneNode(true);
 	  		
-	  		var ingredient = document.getElementById("IngredientInput").value;
-	  		var quantity = document.getElementById("QuantityInput").value;
-	  		var unit = document.getElementById('dropdowntext').textContent;
-	  		var expiration = document.getElementById("ExpirationInput").value;
-	  		cell1.innerHTML = quantity;
-	  		cell2.innerHTML = quantity + " " + unit;
-	  		cell3.innerHTML = expiration;
-	  		cell4.appendChild(exitButton);
-	  		//cell1.innerHTML = "please help";
-	  		//var pantry = pantry size use escape xml;
+	  		//var ingredient = document.getElementById("IngredientInput").value;
+	  		//var quantity = document.getElementById("QuantityInput").value;
+	  		//var unit = document.getElementById('dropdowntext').textContent;
+	  		//var expiration = document.getElementById("ExpirationInput").value;
+	  		//cell1.innerHTML = quantity;
+	  		//cell2.innerHTML = quantity + " " + unit;
+	  		//cell3.innerHTML = expiration;
+	  		//cell4.appendChild(exitButton);
+	  		cell1.innerHTML = "please help";
+	  		cell2.innerHTML = ${fn:escapeXML(test)};
+	  		//var pantry = ${fn:escapeXml(pantry)};
 	  		//var parse = JSON.parse(pantry);
 	  		//cell2.innerHTML = pantry;
-	  		//cell4.appendChild(exitButton)
+	  		cell4.appendChild(exitButton)
 	  		
-	  		document.getElementById("IngredientInput").value = "";
-	  		document.getElementById("QuantityInput").value = "";
-	  		document.getElementById('dropdowntext').textContent = "units";
-	  		document.getElementById("ExpirationInput").value = "";
+	  		//document.getElementById("IngredientInput").value = "";
+	  		//document.getElementById("QuantityInput").value = "";
+	  		//document.getElementById('dropdowntext').textContent = "units";
+	  		//document.getElementById("ExpirationInput").value = "";
 
 	  		//var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
-	  	//}
-  }
-	  //) for line 105
+	  	}
+  })
   </script>
 </div>
 
