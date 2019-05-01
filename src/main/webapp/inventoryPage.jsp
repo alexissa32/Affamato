@@ -51,9 +51,10 @@
     if (user != null) {
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
-        
-    int num = 4;
-	pageContext.setAttribute("item", num); 
+        int pls = 5;
+        String test = cook.testt();
+        pageContext.setAttribute("pls", pls);
+        pageContext.setAttribute("test", test);
         
         //JSONObject test = new JSONObject()
           //      .put("ingredient", "McChicken")
@@ -98,7 +99,7 @@
     <thead>
       <tr>
         <th style="font-family:Lobster;width: 330px">Ingredient</th>
-        <th style="font-family:Lobster">Quantity</th>
+        <th style="font-family:Lobster">${fn:escapeXml(test)}</th>
         <th style="font-family:Lobster;width: 250px">Expiration Date</th>
         <th><p hidden=true><i class="fa fa-times-circle" id="exitbutton" aria-hidden="true"></i></p></th>
       </tr>
@@ -110,7 +111,7 @@
   $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < ${fn:escapeXml(item)}; i++) {
+	  	for(i = 0; i < ${fn:escapeXml(pls)}; i++) {
 	  		var row = table.insertRow(-1);
 	  		var cell1 = row.insertCell(0);
 	  		var cell2 = row.insertCell(1);
@@ -127,6 +128,7 @@
 	  		//cell3.innerHTML = expiration;
 	  		//cell4.appendChild(exitButton);
 	  		cell1.innerHTML = "please help";
+	  		cell2.innerHTML = ${fn:escapeXml(test)};
 	  		//var pantry = ${fn:escapeXml(pantry)};
 	  		//var parse = JSON.parse(pantry);
 	  		//cell2.innerHTML = pantry;
