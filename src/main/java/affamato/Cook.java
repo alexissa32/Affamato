@@ -53,6 +53,11 @@ public class Cook
     {
         return user; //return this instead? and write a getUser()?
     }
+
+        public String testt() {
+        return "oh god please work";
+    }
+ 
     
     public void updateCook() {
         this.saveCook();
