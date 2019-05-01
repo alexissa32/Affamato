@@ -48,12 +48,11 @@
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
+    int num = 4;
+	pageContext.setAttribute("item", num); 
     if (user != null) {
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
-        
-        int test = 4;
-        pageContext.setAttribute("test",test);
         
         //JSONObject test = new JSONObject()
           //      .put("ingredient", "McChicken")
@@ -110,12 +109,9 @@
   $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < 
-	  	//${fn:escapeXml(pantrySize)} + 1
-	  	${fn:escapeXml(test)}
-	  	;
-	  	i++) {
+	  	for(i = 0; i < ${fn:escapeXml(item)}; i++) {
 	  		var row = table.insertRow(-1);
+	  		
 	  		var cell1 = row.insertCell(0);
 	  		var cell2 = row.insertCell(1);
 	  		var cell3 = row.insertCell(2);
@@ -130,17 +126,13 @@
 	  		//cell2.innerHTML = quantity + " " + unit;
 	  		//cell3.innerHTML = expiration;
 	  		//cell4.appendChild(exitButton);
-	  		cell1.innerHTML = "please help";
-	  		cell2.innerHTML = ${fn:escapeXML(test)};
-	  		//var pantry = ${fn:escapeXml(pantry)};
-	  		//var parse = JSON.parse(pantry);
-	  		//cell2.innerHTML = pantry;
+	  		cell1.innerHTML = "test";
 	  		cell4.appendChild(exitButton)
 	  		
-	  		//document.getElementById("IngredientInput").value = "";
-	  		//document.getElementById("QuantityInput").value = "";
-	  		//document.getElementById('dropdowntext').textContent = "units";
-	  		//document.getElementById("ExpirationInput").value = "";
+	  		document.getElementById("IngredientInput").value = "";
+	  		document.getElementById("QuantityInput").value = "";
+	  		document.getElementById('dropdowntext').textContent = "units";
+	  		document.getElementById("ExpirationInput").value = "";
 
 	  		//var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
 	  	}
