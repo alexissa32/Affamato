@@ -50,7 +50,6 @@ public class Cook
         this.GroceryLists = glist.toString();
         
         this.DiscoverResults = "";
-        //this.PantrySearchResults = (new JSONArray()).toString();
         this.RecipeSearchResults = "";
     }
     
@@ -73,7 +72,6 @@ public class Cook
     //pass an ingredient JSONstring and the index of the grocery list
     public void addToGroceryList(String Ingredient, Integer index) 
     {
-    	//int index = Integer.valueOf(ID) -1;
     	if(this.GroceryLists.equals("")) {
     		newGroceryList("Grocery List 1");
     	}
@@ -84,24 +82,11 @@ public class Cook
     		gLists = new JSONArray(this.GroceryLists);
     	}
     	JSONArray gList = gLists.getJSONArray(index);
-    	//JSONObject ingredient = new JSONObject(Ingredient);
     	gList.put(Ingredient); //does this update gLists?
     	this.GroceryLists = gLists.toString();
     }
     
-    public void addToGroceryList(String data) {
-    	//addToGroceryList(data, 0);
-    	/*
-    	if(this.GroceryLists.equals("")) {
-    		newGroceryList("Grocery List 1");
-    	}
-    	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	JSONArray gList = gLists.getJSONArray(0);
-    	JSONObject ingredient = new JSONObject(data);
-    	gList.put(ingredient); 
-    	this.GroceryLists = gLists.toString();
- 		*/
-    }
+
     
     public void addToGroceryList(JSONArray ingredient, int index) 
     {
@@ -124,7 +109,6 @@ public class Cook
     //makes empty grocery list
     public void newGroceryList(String name) {
     	JSONArray newList= new JSONArray();
-    	//newList.put(name);
     	if(this.GroceryLists.equals("")) {
     		JSONArray Lists = new JSONArray();
     		Lists.put(newList);
@@ -139,50 +123,7 @@ public class Cook
     	
     }
     
-    //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromRecipeList()
-    //removes the grocery list from the specified index
-    //public void removeGroceryList(int index) 
-    //{
-    //	if(this.GroceryLists.equals("")) {}
-    //	else {
-    //	JSONArray gLists = new JSONArray(this.GroceryLists);
-    //	if(gLists.length()>index) {
-    //	gLists.remove(index);	//UNCAUGHT EXCEPTION FOR INDEX OUT OF BOUNDS
-    //	this.GroceryLists = gLists.toString();
-    //	}}
-    	/**
-    	JSONArray updated = new JSONArray();
-    	try
-    	{
-    		for(int x = 0; x < this.GroceryList.length(); x++)
-    		{
-    			if(x != pos)
-    			{
-    				updated.put(this.GroceryList.get(x));
-    			}
-    		}
-    	}
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    	}
-    	this.GroceryList = updated; */
-    //}
-    
-    //public void removeFromGroceryList(String Ingredient, String ID) {
-    //	int index = Integer.parseInt(ID) -1;
-    //	JSONArray gLists = new JSONArray(this.GroceryLists);
-    //	for(int i = 0; i < gLists.getJSONArray(index).length(); i++) {
-    //		if(gLists.getJSONArray(index).getString(i).equals(Ingredient)) {
-    //			gLists.getJSONArray(index).remove(i);
-    //			
-    //		}
-    //	}
-    //	this.GroceryLists = gLists.toString();
-    //}
-    
     public void removeFromGroceryList(String Ingredient, Integer index) {
-    	//int index = Integer.parseInt(ID) -1;
     	JSONArray gLists = new JSONArray(this.GroceryLists);	//this gets initial json array
     	JSONArray newList = gLists.getJSONArray(index);
     	JSONArray replace = new JSONArray();
@@ -202,34 +143,7 @@ public class Cook
     	this.GroceryLists = gLists.toString();
     }
     
-    /*public void removeFromGroceryList(String data, int index) {
-    	if(this.GroceryLists.equals("")) {}
-    	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	JSONArray gList = gLists.getJSONArray(index);
-    	for(int i = 1 ; i < gList.length() ; i++) {
-    		Object o = gList.get(i);
-    		if(data.equals(o)) {
-    			gList.remove(i);
-    			break;
-    		}
-    	}
-    	this.GroceryLists = gLists.toString();
-    }*/
-    
-    //removes the ingredient at position pos in the grocery list with index "index"
-    //public void removeFromGroceryList(int pos, int index) {
-    //	if(this.GroceryLists.equals("")) {
-    //		
-    //	}
-    //	else {
-    //	JSONArray gLists = new JSONArray(this.GroceryLists);
-    //	if(gLists.length() > index) {
-    //	JSONArray gList = gLists.getJSONArray(index);
-    //	if(gList.length() > pos) {
-    //	gList.remove(pos);//UNCAUGHT EXCEPTIONS FOR INDEX OUT OF BOUNDS
-    //	this.GroceryLists = gLists.toString();
-    //	}}}
-    //}
+   
     
     //pass a json string
     public void addToPantry(String ID) 
@@ -274,23 +188,6 @@ public class Cook
     		pantry.remove(pos);	//UNCAUGHT EXCEPTION IF POS IS OUT OF BOUNDS
     		this.Pantry = pantry.toString();
     	}
-    	/**
-    	JSONArray updated = new JSONArray();
-    	try
-    	{
-    		for(int x = 0; x < this.Pantry.length(); x++)
-    		{
-    			if(x != pos)
-    			{
-    				updated.put(this.Pantry.get(x));
-    			}
-    		}
-    	}
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    	}
-    	this.Pantry = updated; */
     }
     
     //pass a recipe json string
@@ -305,11 +202,8 @@ public class Cook
     	JSONArray edit = new JSONArray(this.RecipeList);
     	editor = edit;
     	}
-    	//JSONObject recipe = new JSONObject(RecipeString);
-    	//editor.put(recipe);
     	editor.put(RecipeString); //Looks like an object that is the whole recipe
     	this.RecipeList = editor.toString();
-    	//this.saveCook();
     }
 
     
@@ -323,23 +217,6 @@ public class Cook
     	recipes.remove(pos);
     	this.RecipeList = recipes.toString();
     	}}
-    	/**
-    	JSONArray updated = new JSONArray();
-    	try
-    	{
-    		for(int x = 0; x < this.RecipeList.length(); x++)
-    		{
-    			if(x != pos)
-    			{
-    				updated.put(this.RecipeList.get(x));
-    			}
-    		}
-    	}
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    	}
-    	this.RecipeList = updated; */
     }
     
     public boolean hasRecipe(String recipe) {
@@ -392,12 +269,6 @@ public class Cook
     	}
     	
     }
-    
-    //public JSONArray getPantrySearchResults() {
-    //	if(this.PantrySearchResults.equals("")) return new JSONArray();
-    //	JSONArray results = new JSONArray(this.PantrySearchResults);
-    //	return results;
-    //}
 
     public JSONArray getDiscoverResults() {
     	if(this.DiscoverResults.equals("")) return new JSONArray();
@@ -418,12 +289,6 @@ public class Cook
     	this.DiscoverResults = empty.toString();
     	//this.PantrySearchResults = empty.toString();
     }
-    
-    //public void setPantrySearchResults(JSONArray results) {
-    //	this.PantrySearchResults = results.toString();
-    	//this.saveCook();
-    //}
-
     public void setDiscoverResults(JSONArray results) {
     	this.DiscoverResults = results.toString();
     	//this.saveCook();
