@@ -107,6 +107,7 @@
     </tbody>
   </table>
   <script type="text/javascript">
+<<<<<<< HEAD
   $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
@@ -141,6 +142,49 @@
 	  		//var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
 	  	}
   })
+=======
+  
+  	function add() {
+  		
+  		var table = document.getElementById("inventory_table");
+  		var row = table.insertRow(-1);
+  		
+  		// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+  		var cell1 = row.insertCell(0);
+  		var cell2 = row.insertCell(1);
+  		var cell3 = row.insertCell(2);
+  		var cell4 = row.insertCell(3);
+  		var exitButton = document.getElementById("exitbutton").cloneNode(true);
+  		
+  		var ingredient = document.getElementById("IngredientInput").value;
+  		var quantity = document.getElementById("QuantityInput").value;
+  		var unit = document.getElementById('dropdowntext').textContent;
+  		var expiration = document.getElementById("ExpirationInput").value;
+  		cell1.innerHTML = quantity;
+  		cell2.innerHTML = quantity + " " + unit;
+  		cell3.innerHTML = expiration;
+  		cell4.appendChild(exitButton);
+  		
+  		document.getElementById("IngredientInput").value = "";
+  		document.getElementById("QuantityInput").value = "";
+  		document.getElementById('dropdowntext').textContent = "units";
+  		document.getElementById("ExpirationInput").value = "";
+
+  		var json = {"ingredient": "bleh", "quantity": quantity, "unit": unit, "expiration": expiration};
+  		
+  		//var cookClass = Java.type("main.java.affamato.Cook.getCook()");
+  		alert("hello");  	    
+  		//var cook = cookClass.getCook();
+
+ 		//var row2 = table.insertRow(-1);
+  		//var cell1 = row.insertCell(0);
+  		//var cell2 = row.insertCell(1);
+  		//var cell3 = row.insertCell(2);
+  		//var cell4 = row.insertCell(3);
+  		//var exitButton = document.getElementById("exitbutton").cloneNode(true);
+  		//cell1.innerHTML = json.ingredient;
+  	}
+>>>>>>> parent of eb8949a... Update inventoryPage.jsp
   </script>
 </div>
 
