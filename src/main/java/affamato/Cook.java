@@ -338,6 +338,17 @@ public class Cook
     	this.RecipeList = updated; */
     }
     
+    public boolean hasRecipe(String recipe) {
+    	JSONArray ja = new JSONArray(this.RecipeList);
+    	for(int i = 0 ; i < ja.length() ; i++) {
+    		String potMatch = ja.getJSONObject(i).toString();
+    		if(potMatch.equals(recipe)) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
     //UNTESTED METHOD correlated failures: getRecipeList(), getGroceryList()
     //returns null if DNE yet
     public JSONArray getPantry() 
