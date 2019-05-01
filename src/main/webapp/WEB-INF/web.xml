@@ -26,14 +26,14 @@
 	<url-pattern>/about</url-pattern>
 </servlet-mapping>
 
-<servlet>
+<!-- <servlet>
 	<servlet-name>dashboard</servlet-name>
 	<servlet-class>affamato.dashboardPageServlet</servlet-class>	
 </servlet>    
 <servlet-mapping>
 	<servlet-name>dashboard</servlet-name>
 	<url-pattern>/dashboard</url-pattern>
-</servlet-mapping>
+</servlet-mapping> -->
 
 <servlet>
 	<servlet-name>grocerylist</servlet-name>

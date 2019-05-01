@@ -134,8 +134,8 @@ public class CookTesting{
 		Cook c = new Cook(me, "Cookholder");
 		c.addToRecipeList(recipeString1);
 		JSONArray list = c.getRecipeList();
-		JSONObject o = list.getJSONObject(0);
-		assertEquals(o.get("title"), "Halibut With Spicy Squash And Tomatoes");
+		String s = list.getString(0);
+		assertEquals(s, recipeString1);
 	}
 	
 	@Test
