@@ -36,7 +36,9 @@ public class inventoryPageServlet extends HttpServlet{
         	}
         	else if(addOrRemove.equals("remove")) {
         		String ing = req.getParameter("ing");
-        		cook.removeFromPantry(ing);
+        		String exp = req.getParameter("exp");
+        		String q = req.getParameter("qty");
+        		cook.removeFromPantry(new JSONObject().put("ingredient", ing).put("expiration", exp).put("quantity", q).toString().toString());
         	}
         }
         cook.updateCook();
