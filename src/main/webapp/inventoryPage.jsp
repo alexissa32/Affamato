@@ -163,7 +163,7 @@ window.onclick = function(event) {
 <div class="modal fade" id="id01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
   
-  <form action="/inventory" method="get">
+  <form action="/inventory" method="post">
   
     <div class="modal-content">
       <div class="modal-body">
@@ -174,7 +174,7 @@ window.onclick = function(event) {
     		
     	
        		<div class="form-group">
-        		<label for="QuantityInput">Quantity</label>
+        		<div><label for="QuantityInput">Quantity</label></div>
     			<input class="form-control" id="QuantityInput" name = "QuantityInput" placeholder="Enter quantity and units"  style="width: 495px; float:left; display: inline">
     		                                      
 			  <div class="dropdown" style="display: inline; float:right">
