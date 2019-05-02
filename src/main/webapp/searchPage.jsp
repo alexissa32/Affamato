@@ -125,6 +125,7 @@
     if( !cook.hasRecipe(recipe.replace('|', '"').replaceAll("\\\\", ""))){
     %>
 	<form style="display:inline" action="/favorite" method="post">
+		<input type="hidden" id="sp" name="sp" value="search">
 		<input type="hidden" id="listID" name="listID" value="1">
 		<input type="hidden" id="ar" name="ar" value="add">
 		<input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
@@ -135,6 +136,7 @@
     else{
 	%>
 	<form style="display:inline" action="/favorite" method="post">
+			<input type="hidden" id="sp" name="sp" value="search">
 			 <input type="hidden" id="ar" name="ar" value="remove">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
 			 <button style="display:inline;float:right" type="submit">Remove From My Recipes</button>
@@ -185,6 +187,7 @@
         %>
 		<form style="display:inline" action="/favorite" method="post">
 			 <input type="hidden" id="listID" name="listID" value="1">
+			 <input type="hidden" id="sp" name="sp" value="search">
 			 <input type="hidden" id="ar" name="ar" value="add">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
 			 <button style="display:inline;float:right" class="glyphicon glyphicon-heart-empty pull-right" type="submit"></button>
@@ -194,6 +197,7 @@
 		else{
 		%>
 			<form style="display:inline" action="/favorite" method="post">
+			 <input type="hidden" id="sp" name="sp" value="search">
 			 <input type="hidden" id="ar" name="ar" value="remove">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
 			 <button style="display:inline;float:right" type="submit">Remove From My Recipes</button>

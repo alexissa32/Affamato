@@ -62,7 +62,8 @@ public class FavoriteServlet extends HttpServlet{
 		     }
 	     }
 	    cook.updateCook();
-    	if(addOrRemove.equals("add"))
+	    String sp = req.getParameter("sp");
+    	if(sp != null && sp.equals("search"))
     	{
     		resp.sendRedirect("/searchPage.jsp");
     	}
