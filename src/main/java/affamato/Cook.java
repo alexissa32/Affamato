@@ -223,7 +223,7 @@ public class Cook
     public boolean hasRecipe(String recipe) {
     	JSONArray ja = new JSONArray(this.RecipeList);
     	for(int i = 0 ; i < ja.length() ; i++) {
-    		String potMatch = ja.getJSONObject(i).toString();
+    		String potMatch = ja.getString(i);
     		if(potMatch.equals(recipe)) {
     			return true;
     		}
