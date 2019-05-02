@@ -139,7 +139,7 @@
 			<input type="hidden" id="sp" name="sp" value="search">
 			 <input type="hidden" id="ar" name="ar" value="remove">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-			 <button style="display:inline;float:right" type="submit">Remove From My Recipes</button>
+			 <button style="display:inline;float:right" class="glyphicon glyphicon-heart pull-right" type="submit"></button>
 	</form>
 	<%
     }
@@ -200,7 +200,7 @@
 			 <input type="hidden" id="sp" name="sp" value="search">
 			 <input type="hidden" id="ar" name="ar" value="remove">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-			 <button style="display:inline;float:right" type="submit">Remove From My Recipes</button>
+			 <button style="display:inline;float:right" class="glyphicon glyphicon-heart pull-right" type="submit"></button>
 			 </form>
 		<%
 		}
