@@ -89,24 +89,6 @@ public class Cook
     
 
     
-    public void addToGroceryList(JSONArray ingredient, int index) 
-    {
-    	if(this.GroceryLists.equals("")) {
-    		newGroceryList("Grocery List 1");
-    	}
-    	JSONArray gLists = new JSONArray(this.GroceryLists);
-    	while(gLists.length() <= index) {
-    		Integer i = gLists.length();
-    		newGroceryList("Grocery List " + i.toString());
-    		gLists = new JSONArray(this.GroceryLists);
-    	}
-
-    	JSONArray gList = gLists.getJSONArray(index);
-    	gList.put(ingredient); //does this update gLists?
-    	this.GroceryLists = gLists.toString();
-    	
-    }
-    
     //makes empty grocery list
     public void newGroceryList(String name) {
     	JSONArray newList= new JSONArray();
