@@ -173,7 +173,7 @@ public class Cook
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
     public void removeFromPantry(JSONObject j) 
     {
-    	JSONArray PantryJ = new JSONArray(Pantry);
+    	JSONArray PantryJ = new JSONArray(this.Pantry);
     	for(int index = 0; index < PantryJ.length(); index++)
     	{
     		JSONObject o = PantryJ.getJSONObject(index);
