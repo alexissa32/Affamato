@@ -117,7 +117,7 @@
 	  		var cell2 = row.insertCell(1);
 	  		var cell3 = row.insertCell(2);
 	  		var cell4 = row.insertCell(3);
-	  		var bleh = ${fn:escapeXml(test)};
+	  		var bleh = "${fn:escapeXml(test)}"";
 	  	
 	  		var exitButton = document.getElementById("exitbutton").cloneNode(true);
 	  		
@@ -130,7 +130,7 @@
 	  		//cell3.innerHTML = expiration;
 	  		//cell4.appendChild(exitButton);
 	  		cell1.innerHTML = "please help";
-	  		cell2.innerHTML = bleh.toString();
+	  		cell2.innerHTML = bleh;
 	  		//var pantry = ${fn:escapeXml(pantry)};
 	  		//var parse = JSON.parse(pantry);
 	  		//cell2.innerHTML = pantry;
