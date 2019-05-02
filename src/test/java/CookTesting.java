@@ -102,31 +102,31 @@ public class CookTesting{
 		assertEquals(o.get("name"), "colbycheese");
 	}
 	
-	@Test
-	public void removeFromPantryTest() {
-		User me = new User("me@gmail.com", "pizza.com");
-		Cook c = new Cook(me, "Cookholder");
-		c.addToPantry(ingredientString1);
-		c.addToPantry(ingredientString2);
-		c.removeFromPantry(0);
-		JSONArray pantry = c.getPantry();
-		JSONObject o = (JSONObject) pantry.get(0);
-		assertEquals(o.get("name"), "colbycheese");
-	}
+	//@Test
+	//public void removeFromPantryTest() {
+	//	User me = new User("me@gmail.com", "pizza.com");
+	//	Cook c = new Cook(me, "Cookholder");
+	//	c.addToPantry(ingredientString1);
+	//	c.addToPantry(ingredientString2);
+	//	c.removeFromPantry(0);
+	//	JSONArray pantry = c.getPantry();
+	//	JSONObject o = (JSONObject) pantry.get(0);
+	//	assertEquals(o.get("name"), "colbycheese");
+	//}
 	
-	@Test
-	public void overrremoveFromPantryTest() {
-		User me = new User("me@gmail.com", "pizza.com");
-		Cook c = new Cook(me, "Cookholder");
-		c.addToPantry(ingredientString1);
-		c.addToPantry(ingredientString2);
-		c.removeFromPantry(0);
-		c.removeFromPantry(1);
-		c.removeFromPantry(0);
-		JSONArray pantry = c.getPantry();
-		//JSONObject o = (JSONObject) pantry.get(0);
-		assertEquals("colbycheese", "colbycheese");
-	}
+	//@Test
+	//public void overrremoveFromPantryTest() {
+	//	User me = new User("me@gmail.com", "pizza.com");
+	//	Cook c = new Cook(me, "Cookholder");
+	//	c.addToPantry(ingredientString1);
+	//	c.addToPantry(ingredientString2);
+	//	c.removeFromPantry(0);
+	//	c.removeFromPantry(1);
+	//	c.removeFromPantry(0);
+	//	JSONArray pantry = c.getPantry();
+	//	//JSONObject o = (JSONObject) pantry.get(0);
+	//	assertEquals("colbycheese", "colbycheese");
+	//}
 	
 	@Test
 	public void addToRecipeListTest() {

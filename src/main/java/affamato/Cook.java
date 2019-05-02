@@ -163,14 +163,27 @@ public class Cook
     	}
     	this.Pantry = pantry.toString();
     }
+    
+    //Index version
+	//JSONArray pantry = new JSONArray(this.Pantry);
+	//if(pantry.length() > pos) {
+	//pantry.remove(pos);	//UNCAUGHT EXCEPTION IF POS IS OUT OF BOUNDS
+	//this.Pantry = pantry.toString();
+    
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
-    public void removeFromPantry(int pos) 
+    public void removeFromPantry(JSONObject j) 
     {
-    		JSONArray pantry = new JSONArray(this.Pantry);
-    		if(pantry.length() > pos) {
-    		pantry.remove(pos);	//UNCAUGHT EXCEPTION IF POS IS OUT OF BOUNDS
-    		this.Pantry = pantry.toString();
+    	JSONArray PantryJ = new JSONArray(Pantry);
+    	for(int index = 0; index < PantryJ.length(); index++)
+    	{
+    		JSONObject o = PantryJ.getJSONObject(index);
+    		if(j.toString().equals(o.toString()))
+    		{
+    			PantryJ.remove(index);
+    			break;
+    		}
     	}
+    	this.Pantry = PantryJ.toString();
     }
     
     //pass a recipe json string
