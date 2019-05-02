@@ -51,19 +51,15 @@
     if (user != null) {
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
-        int pls = 5;
-        String test = cook.testt();
-        pageContext.setAttribute("pls", pls);
-        pageContext.setAttribute("test", test);
         
-        //JSONObject test = new JSONObject()
-          //      .put("ingredient", "McChicken")
-            //    .put("quantity", "2")
-              //  .put("expiration", "10/11/12");
-        //cook.addToPantry(test);
-        //JSONArray pantry = cook.getPantry();
-        //pageContext.setAttribute("pantrySize", pantry.length());
-        //pageContext.setAttribute("pantry", pantry.toString());
+        JSONObject test = new JSONObject()
+                .put("ingredient", "McChicken")
+                .put("quantity", "2")
+                .put("expiration", "10/11/12");
+        cook.addToPantry(test);
+        JSONArray pantry = cook.getPantry();
+        pageContext.setAttribute("pantrySize", pantry.length());
+        pageContext.setAttribute("pantry", pantry);
 %>
 <div class="topnav">
   <a style="font-family:Lobster;font-size:15pt" class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -99,7 +95,7 @@
     <thead>
       <tr>
         <th style="font-family:Lobster;width: 330px">Ingredient</th>
-        <th style="font-family:Lobster">${fn:escapeXml(test)}</th>
+        <th style="font-family:Lobster">Quantity</th>
         <th style="font-family:Lobster;width: 250px">Expiration Date</th>
         <th><p hidden=true><i class="fa fa-times-circle" id="exitbutton" aria-hidden="true"></i></p></th>
       </tr>
@@ -111,13 +107,12 @@
   $(document).ready(function(){
 	  
 		var table = document.getElementById("inventory_table");
-	  	for(i = 0; i < ${fn:escapeXml(pls)}; i++) {
+	  	for(i = 0; i < ${fn:escapeXml(pantrySize)}; i++) {
 	  		var row = table.insertRow(-1);
 	  		var cell1 = row.insertCell(0);
 	  		var cell2 = row.insertCell(1);
 	  		var cell3 = row.insertCell(2);
 	  		var cell4 = row.insertCell(3);
-	  		var bleh = "${fn:escapeXml(test)}";
 	  	
 	  		var exitButton = document.getElementById("exitbutton").cloneNode(true);
 	  		
@@ -131,9 +126,9 @@
 	  		//cell4.appendChild(exitButton);
 	  		cell1.innerHTML = "please help";
 	  		cell2.innerHTML = bleh;
-	  		//var pantry = ${fn:escapeXml(pantry)};
-	  		//var parse = JSON.parse(pantry);
-	  		//cell2.innerHTML = pantry;
+	  		var pantry = ${fn:escapeXml(pantry)};
+	  		var parse = JSON.parse(pantry);
+	  		cell2.innerHTML = pantry[0].quantity;
 	  		cell4.appendChild(exitButton)
 	  		
 	  		//document.getElementById("IngredientInput").value = "";
