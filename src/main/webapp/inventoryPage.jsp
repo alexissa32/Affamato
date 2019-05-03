@@ -56,6 +56,8 @@
     	if(cookie.getName().equals("invalid")) {
     		invalidMessage = true;
     		cookie.setMaxAge(0);
+    		response.addCookie(cookie);
+    		break;
     	}
     }
     if (user != null) {
