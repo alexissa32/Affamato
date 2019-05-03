@@ -50,10 +50,13 @@
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
-    String header = response.getHeader("invalid");
     boolean invalidMessage = false;
-    if(header != null){
-    	invalidMessage = header.equals("invalidIngredient");
+    Cookie[] cookies = request.getCookies();
+    for(Cookie cookie : cookies){
+    	if(cookie.getName().equals("invalid")) {
+    		invalidMessage = true;
+    		cookie.setMaxAge(0);
+    	}
     }
     if (user != null) {
 	 	Cook cook = Cook.getCook(user);

@@ -8,6 +8,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import org.json.JSONArray; 
 import org.json.JSONObject;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +39,7 @@ public class inventoryPageServlet extends HttpServlet{
 			        cook.addToPantry(ingFull);	
 		        }
 		        else {
-		        	resp.addHeader("invalid", "invalidIngredient");
+		        	resp.addCookie(new Cookie("invalid", "invalidIngredient"));
 		        }
         	}
         	else if(addOrRemove.equals("remove")) {
