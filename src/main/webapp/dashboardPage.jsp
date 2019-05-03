@@ -10,8 +10,16 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <%@ page import="java.util.*" %>
-<%@ page import = "java.util.Date" %>
-<%@ page import = "java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.time.temporal.ChronoUnit" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="affamato.Cook" %>
+<%@ page import="affamato.validIngredient" %>
+<%@ page import="org.json.JSONArray" %>
+<%@ page import="org.json.JSONObject" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 //this date is sometimes the next day -- working on a fix. - Julia
 SimpleDateFormat sdf = new SimpleDateFormat("EEEEEEEEE, MMMMMMMMM dd yyyy");
@@ -113,6 +121,7 @@ String[] tips = new String[numTips];
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> 
   <link type="text/css" rel="stylesheet" href="about.css" />
   
 <body id="dashboardbody">
@@ -121,7 +130,8 @@ String[] tips = new String[numTips];
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     if (user != null) {
-        pageContext.setAttribute("user", user);
+    	Cook cook = Cook.getCook(user);
+        pageContext.setAttribute("user", user);     
 %>
 <div class="topnav">
   <a style="font-family:Lobster;font-size:15pt" class="active" href="dashboardPage.jsp">My Dashboard</a>
@@ -143,12 +153,44 @@ String[] tips = new String[numTips];
 <div class="container" style="width: 75%; float: right">
   <p style="font-family:Lobster;float: middle; font-size: 30px; padding-top: 25pt"><%=date%></p>
 	<div class="panel panel-danger">
-	  <div class="panel-heading">Expiration Alerts!</div>
-	  <div class="panel-body">List soon-to-be expiring ingredients and relevant dates here</div>
+	  <div style="font-family:Lobster" class="panel-heading">Expiration Alerts! These items will expire within 1 week.</div>
+	  <!--  <div class="panel-body">List soon-to-be expiring ingredients and relevant dates here</div> -->
+	      	<%
+			JSONArray inventory = cook.getPantry();
+			for (int i = 0; i < inventory.length(); i++) {
+				 JSONObject listItem = inventory.getJSONObject(i);
+				 String ingredient1 = listItem.getString("ingredient");
+				 String quantity1 = listItem.getString("quantity");
+				 String expiration1 = listItem.getString("expiration");
+				 String units1 = listItem.getString("units");
+				 pageContext.setAttribute("ingredient",ingredient1); 
+				 pageContext.setAttribute("quantity",quantity1);
+				 pageContext.setAttribute("expiration",expiration1);
+				 pageContext.setAttribute("units",units1); 
+				 if(validIngredient.date(expiration1)){
+					 Date curr = new Date();
+					 Date exp = new SimpleDateFormat("dd/MM/yyyy").parse(expiration1);
+					 long diff = curr.getTime() - exp.getTime();
+					 float days = (diff / (1000*60*60*24));
+   					 if(days < 7){
+			%>
+	 <!-- THIS IS WHERE I AM TRYING TO RENDER THE EXPIRING ITEMS BASED ON DATASTORE -->
+		    <p style="font-family:Lobster;font-size:15pt;display:inline"><b>${fn:escapeXml(ingredient)}</b></p>
+		    <p style="display:inline">-----</p>
+		    <p style="font-family:Lobster;font-size:15pt;display:inline"><b>${fn:escapeXml(quantity)}</b></p>
+		    <p style="display:inline">-----</p>
+            <p style="font-family:Lobster;font-size:15pt;display:inline"><b>${fn:escapeXml(units)}</b></p>   
+            <p style="display:inline">-----</p>  
+		    <p style="font-family:Lobster;font-size:15pt;display:inline"><b>${fn:escapeXml(expiration)}</b></p>
+		 <% 
+   					 }
+				 }
+		}
+		%> 
 	</div>
 	<div class="panel panel-info">
-	  <div class="panel-heading">Tip of the Day</div>
-	  <div class="panel-body"><%out.print("<p>" + tips[rando] + "</p>");%></div>
+	  <div style="font-family:Lobster" class="panel-heading">Tip of the Day</div>
+	  <div style="font-family:Rajdhani" class="panel-body"><%out.print("<p>" + tips[rando] + "</p>");%></div>
 
 	</div>
 </div>
