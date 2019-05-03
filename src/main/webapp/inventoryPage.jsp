@@ -128,13 +128,15 @@
     	<input name="ar" type="hidden" value="add">
   		<button type = "submit" class = "btn btn-danger" style="display:inline;font-family:Lobster">Add Ingredient +</button>  	  
     </form>  
-</div>
+
 
     
 <%
 		if(invalidMessage){
 			%>
-			<p style="font-family:Lobster;font-size:18pt;display:inline"><b>One or more of the fields entered were invalid</b>>
+			<p style="font-family:Lobster;font-size:18pt;display:inline"><b>One or more of the fields entered were invalid</b>
+			</p>
+</div>
 			<%
 	
 		}
