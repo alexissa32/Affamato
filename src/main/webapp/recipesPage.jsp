@@ -92,6 +92,7 @@
 		pageContext.setAttribute("prepMins", ja.getJSONObject(i).getInt("prepMinutes") + "");
 		pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
 		pageContext.setAttribute("instructions", ja.getJSONObject(i).getString("instructions"));
+		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
 		pageContext.setAttribute("num", i.toString());
 		//pageContext.setAttribute("body", ja.getString(i));
 		
@@ -117,7 +118,12 @@
       </h4>
         </div>
         	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
+        	<!-- 
             	<p style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</p>
+            -->
+            	<a href="${fn:escapeXml(link)}" style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</a>
+            	<br>
+            	<br>
             	<p style="font-family:Rajdhani">Cooking Time: ${fn:escapeXml(cookMins)}</p>
             	<p style="font-family:Rajdhani">Prep Time: ${fn:escapeXml(prepMins)}</p>
             	<p style="font-family:Rajdhani">Instructions: ${fn:escapeXml(instructions)}</p>
