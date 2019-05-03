@@ -29,6 +29,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> 
   <link type="text/css" rel="stylesheet" href="about.css" />
 
 <body id="dashboardbody">
@@ -85,7 +86,7 @@
 				 	   String listItem = list1.getString(i);
 				 	   pageContext.setAttribute("item",listItem); 
 				 	    %>
-		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="1">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -101,7 +102,7 @@
         		<input type="hidden" id="listID" name="listID" value="1">
         		<input type="hidden" id="ar" name="ar" value="add">
         		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        		<button style="font-family:Lobster;font-size:12pt" type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
         	</form>
 			</ul>
         </div>
@@ -125,7 +126,7 @@
 				 	   String item = list2.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="2">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -141,7 +142,7 @@
         	    <input type="hidden" id="listID" name="listID" value="2">
         	    <input type="hidden" id="ar" name="ar" value="add">
         		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        		<button style="font-family:Lobster;font-size:12pt" type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
         	</form>
 			</ul>
   				<!-- <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#myModalAdd">Add Ingredient +</button>  -->
@@ -166,7 +167,7 @@
 				 	   String item = list3.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="3">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -182,7 +183,7 @@
         		<input type="hidden" id="listID" name="listID" value="3">
         		<input type="hidden" id="ar" name="ar" value="add">
         		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        		<button style="font-family:Lobster;font-size:12pt" type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
         	</form>
 			</ul>
         </div>
@@ -206,7 +207,7 @@
 				 	   String item = list4.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="4">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -222,7 +223,7 @@
         		<input type="hidden" id="listID" name="listID" value="4">
          		<input type="hidden" id="ar" name="ar" value="add">       		
         		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        		<button style="font-family:Lobster;font-size:12pt" type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
         	</form>
 			</ul>
         </div>
@@ -247,7 +248,7 @@
 				 	   String item = list5.getString(i);
 				 	   pageContext.setAttribute("item",item); 
 				 	    %>
-		                 <p style="font-family:Lobster;display:inline"><b>${fn:escapeXml(item)}</b></p>
+		                 <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(item)}</b></p>
 		                 <form style="display:inline" action="/grocerylist" method="get">
 			                 <input type="hidden" id="listID" name="listID" value="5">
 			                 <input type="hidden" id="ar" name="ar" value="remove">
@@ -263,7 +264,7 @@
         		<input type="hidden" id="listID" name="listID" value="5">
         		<input type="hidden" id="ar" name="ar" value="add">        		
         		<input class="ingredient" name = "ingredient" type="text" placeholder="Enter Ingredient"> 
-        		<button type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
+        		<button style="font-family:Lobster;font-size:12pt" type="submit"  class="btn btn-danger">Add Ingredient +</button> <!-- removed btn-add-ingredient from class -->
         	</form>
 			</ul>
         </div>
