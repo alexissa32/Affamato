@@ -177,6 +177,7 @@
 		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
 		
 		String recipe = ja.getJSONObject(i).toString().replaceAll("\"", "|");
+		String recipeTitle = ja.getJSONObject(i).getString("title");
 		%>
 		
 		
@@ -189,7 +190,7 @@
 			 <input type="hidden" id="listID" name="listID" value="1">
 			 <input type="hidden" id="sp" name="sp" value="search">
 			 <input type="hidden" id="ar" name="ar" value="add">
-			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
+			 <input type="hidden" class="recipe" name="recipe" value="<%=recipeTitle%>">
 			 <button style="display:inline;float:right" class="glyphicon glyphicon-heart-empty pull-right" type="submit"></button>
 			 </form>
 		<%

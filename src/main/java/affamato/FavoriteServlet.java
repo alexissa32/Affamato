@@ -46,7 +46,21 @@ public class FavoriteServlet extends HttpServlet{
 			     } //Good to go, so add
 		    	 if(okayToAdd)
 		    	 {
-		    		 cook.addToRecipeList(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", ""));
+		    		 JSONArray searchRecipes = cook.getRecipeSearchResults();
+		    		 JSONArray discoverResultsArray = cook.getDiscoverResults();
+		    		 if (discoverResultsArray.toString().contains(req.getParameter("recipe"))) {
+		    			 
+			    		 cook.addToRecipeList(discoverResultsArray.getJSONObject(0).toString());
+		    			 
+		    		 } else {
+		    			 
+		    		 for (int index = 0; index < searchRecipes.length(); index++) {
+		    			 if (searchRecipes.getJSONObject(index).toString().contains(req.getParameter("recipe"))) {
+				    		 cook.addToRecipeList(searchRecipes.getJSONObject(index).toString());
+		    			 }
+		    		 }
+		    	}
+		    		 //cook.addToRecipeList(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", ""));
 		    	 }
 		     }
 		     else if(addOrRemove.equals("remove")) {
