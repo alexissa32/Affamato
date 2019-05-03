@@ -109,7 +109,7 @@
 			 <input type="hidden" id="listID" name="listID" value="1">
 			 <input type="hidden" id="ar" name="ar" value="remove">
 			 <input type="hidden" class="recipe" name="recipe" value="<%=recipeTitle%>">
-			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
+			 <button style="display:inline" type="submit" class="glyphicon glyphicon-heart pull-right" id="exitbutton"></button>
 		</form>
 
              <h4 class="panel-title">
