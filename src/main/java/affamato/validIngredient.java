@@ -41,7 +41,7 @@ public class validIngredient {
 	
 	public static boolean date(String date) {
 		try {
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 			df.setLenient(false);
 			df.parse(date);
 			return true;

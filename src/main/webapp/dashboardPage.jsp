@@ -19,6 +19,9 @@
 <%@ page import="affamato.validIngredient" %>
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
+<%@ page import="java.time.LocalDateTime" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.lang.*" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 //this date is sometimes the next day -- working on a fix. - Julia
@@ -168,22 +171,33 @@ String[] tips = new String[numTips];
 				 pageContext.setAttribute("expiration",expiration1);
 				 pageContext.setAttribute("units",units1); 
 				 if(validIngredient.date(expiration1)){
-					 Date curr = new Date();
-					 Date exp = new SimpleDateFormat("dd/MM/yyyy").parse(expiration1);
-					 long diff = curr.getTime() - exp.getTime();
-					 float days = (diff / (1000*60*60*24));
-   					 if(days < 7){
+					    LocalDateTime current = LocalDateTime.now();
+					    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+					    String today = current.format(formatter);
+					    try {
+					        Date expdate = new SimpleDateFormat("MM/dd/yyyy").parse(expiration1);
+					        Date toddate = new SimpleDateFormat("MM/dd/yyyy").parse(today);
+					        long one = expdate.getTime();
+					        long two = toddate.getTime();
+					    	long diff = Math.abs(one - two);
+					    	float days = (diff / (1000*60*60*24));
+					       	if(days <= 7){
 			%>
 	 <!-- THIS IS WHERE I AM TRYING TO RENDER THE EXPIRING ITEMS BASED ON DATASTORE -->
-		    <p style="font-family:Lobster;font-size:15pt;display:inline"><b>${fn:escapeXml(ingredient)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(ingredient)}</b></p>
 		    <p style="display:inline">-----</p>
-		    <p style="font-family:Lobster;font-size:15pt;display:inline"><b>${fn:escapeXml(quantity)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(quantity)}</b></p>
 		    <p style="display:inline">-----</p>
-            <p style="font-family:Lobster;font-size:15pt;display:inline"><b>${fn:escapeXml(units)}</b></p>   
+            <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(units)}</b></p>   
             <p style="display:inline">-----</p>  
-		    <p style="font-family:Lobster;font-size:15pt;display:inline"><b>${fn:escapeXml(expiration)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(expiration)}</b></p>
+			</br>
 		 <% 
-   					 }
+					        }
+
+					    } catch (Exception e) {
+					        e.printStackTrace();
+					    }
 				 }
 		}
 		%> 
