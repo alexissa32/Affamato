@@ -85,7 +85,7 @@
 </br>
 </br>
 <!--  style="float: right; padding: 10px; width: 600pt; height: 250pt" -->
-<div class="panel-group" id="accordion" style="width:50%;float:center">
+<div class="panel-group" id="accordion" style="position: absolute;left: 50%;transform: translate(-50%);width: 50%;">
     
 <%
     JSONArray ja = cook.getRecipeList();
