@@ -33,7 +33,9 @@ public class inventoryPageServlet extends HttpServlet{
         		String q = req.getParameter("QuantityInput");
         		String unit = req.getParameter("UnitsInput");
 		        String ingFull = new JSONObject().put("ingredient", ing).put("expiration", exp).put("quantity", q).put("units", unit).toString();
-		        cook.addToPantry(ingFull);
+		        if(validIngredient.validate(q, unit, ing, exp)) {
+			        cook.addToPantry(ingFull);	
+		        }
         	}
         	else if(addOrRemove.equals("remove")) {
         		String ing = req.getParameter("IngredientInput");
