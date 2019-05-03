@@ -65,7 +65,7 @@
 </div>
 </br>
 </br>
- 
+</br> 
 <!-- THIS IS WHERE THE ACCORDION BEGINs -->
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
 
