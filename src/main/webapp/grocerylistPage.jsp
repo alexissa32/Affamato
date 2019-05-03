@@ -70,7 +70,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"> <!--  <span class="glyphicon glyphicon-remove-circle pull-right "></span> -->
       <h4 class="panel-title">
-        <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <a style="font-family:Lobster;font-size:15pt" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
           Grocery List #1
         </a>
       </h4>
@@ -110,7 +110,7 @@
     <div class="panel panel-default template">
         <div class="panel-heading"> <!--  <span class="glyphicon glyphicon-remove-circle pull-right "></span> -->
              <h4 class="panel-title">
-        <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+        <a style="font-family:Lobster;font-size:15pt" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
           Grocery List #2 
         </a>
       </h4>
@@ -151,7 +151,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"> <!--  <span class="glyphicon glyphicon-remove-circle pull-right "></span> -->
       <h4 class="panel-title">
-        <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+        <a style="font-family:Lobster;font-size:15pt" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
           Grocery List #3
         </a>
       </h4>
@@ -191,7 +191,7 @@
         <div class="panel panel-default">
         <div class="panel-heading"> <!--  <span class="glyphicon glyphicon-remove-circle pull-right "></span> -->
       <h4 class="panel-title">
-        <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+        <a style="font-family:Lobster;font-size:15pt" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
           Grocery List #4
         </a>
       </h4>
@@ -231,7 +231,7 @@
         <div class="panel panel-default">
         <div class="panel-heading"> <!--  <span class="glyphicon glyphicon-remove-circle pull-right "></span> -->
       <h4 class="panel-title">
-        <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+        <a style="font-family:Lobster;font-size:15pt" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
           Grocery List #5
         </a>
       </h4>
