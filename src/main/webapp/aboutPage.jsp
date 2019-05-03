@@ -134,16 +134,19 @@ Link to the GitHub repo
 	}
 %>
 <br>
-<h1 style="font-family:Lobster; color: white; text-shadow: 3px 3px black;font-size:30pt">About Affamato:</h1>
-<div id="pane2" style="font-family: Rajdhani; color: white;height:200px;font-size:15pt">
-<p>Affamato is a pantry/fridge assistant web application that helps users do a multitude of food related tasks.
+<div id="pane2" style="font-family: Rajdhani; color: white;height:300px;width:100%;font-size:15pt">
+	<div style="width:60%;float:left">
+	<p style="font-family:Lobster; color: white; text-shadow: 3px 3px black;font-size:30pt">About Affamato:</p>
+	<p>Affamato is a pantry/fridge assistant web application that helps users do a multitude of food related tasks.
     It allows users to create grocery lists, track what items are in their pantry, track perishability of items,
     and recommend recipes based on what's in the pantry, different cuisine types, and different health choices.
     Our goal is to help users save money, reduce their food waste/go green, and broaden their palates.</p>
+    </div>
+    <div style="float:right;width:40%">
+      <img src="images/roundLogo.png" height="300px" width="410px" alt=""/>
+    </div> 
 </div>
-<div style="float: center">
-  <img src="images/roundLogo.png" height="300px" width="410px" alt=""/>
-</div> 
+ 
 <br>
 <br>
 
@@ -152,6 +155,7 @@ Link to the GitHub repo
  <h3 style="font-family:Lobster; color: white; text-shadow: 3px 3px black;font-size:30pt">Team Falcon</h3>
   <div class="row">
       <div class="col-sm-4">
+      <h3 style="font-family:Lobster;color:white">Justin Henry</h3>
       <img src="images/justin.png" class="img-responsive margin" style="width:100%" alt="Image">
 	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
 			<p><strong>Major:</strong> ECE Major focusing on Software Engineering, Design and Energy Systems and Renewable Energy<br />
@@ -163,6 +167,7 @@ Link to the GitHub repo
 		  </div>
     </div>
     <div class="col-sm-4"> 
+    <h3 style="font-family:Lobster;color:white">Cameron Clark</h3>
 	   <img src="images/cameron.jpg" class="img-responsive margin" style="width:100%" alt="Image">
 	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
 	        <p><strong>Major:</strong> ECE Major focusing on Software Engineering and Computer Architecture<br />
@@ -174,6 +179,7 @@ Link to the GitHub repo
 		  </div>
     </div>
     <div class="col-sm-4"> 
+    <h3 style="font-family:Lobster;color:white">Julia Rebello</h3>
       <img src="images/julia.jpg" class="img-responsive margin" style="width:100%" alt="Image">
 	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
 			   <p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
@@ -187,6 +193,7 @@ Link to the GitHub repo
   </div>
     <div class="row">
     <div class="col-sm-4">
+    <h3 style="font-family:Lobster;color:white">Alex Issa</h3>
       <img src="images/alex.jpg" class="img-responsive margin" style="width:100%" alt="Image">
 	      <div style="font-family: Rajdhani; color:white;font-size:12pt">
 		    <p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
@@ -198,6 +205,7 @@ Link to the GitHub repo
 		  </div>
     </div>
     <div class="col-sm-4"> 
+    <h3 style="font-family:Lobster;color:white">Samir Riad</h3>
       <img src="images/samir.png" class="img-responsive margin" style="width:100%" alt="Image">
 	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
 			<p><strong>Major:</strong> ECE Major focusing on Software Engineering <br />
@@ -209,6 +217,7 @@ Link to the GitHub repo
 		  </div>
     </div>
     <div class="col-sm-4"> 
+    <h3 style="font-family:Lobster;color:white">Rooshi Patidar</h3>
       <img src="images/rooshi.jpg" class="img-responsive margin" style="width:100%" alt="Image">
 	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
 			<p><strong>Major:</strong> Business and ECE Major focusing on Software Engineering <br />
@@ -220,28 +229,38 @@ Link to the GitHub repo
 		  </div>
     </div>
   </div>
+  </br>
+  </br>
+  </br>
+  <div class="row">
+    <div class="col-sm-4">
+        <h3 style="font-family:Lobster;color:white">Repository Statistics</h3>
+	      <div style="font-family: Rajdhani; color:white;font-size:12pt">
+			<h4 style="font-family:Rajdhani;color:white;font-size:12pt"  id="numCommits"></h4>
+			<h4 style="font-family:Rajdhani;color:white;font-size:12pt" id="numIssues"></h4>
+			<h4 style="font-family:Rajdhani;color:white;font-size:12pt">Total Number of Unit Tests: 22</h4>
+		  </div>
+    </div>
+    <div class="col-sm-4"> 
+    <h3 style="font-family:Lobster;color:white">Data</h3>
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+			<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://developer.yummly.com">Yummly API</a></p>
+			<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://spoonacular.com/food-api">Spoonacular API</a></p>
+			<p style="font-family:Rajdhani;color:white;font-size:12pt" >Yummly and Spoonacular were scraped using Python scripts written by Team Falcon</p>
+		  </div>
+    </div>
+    <div class="col-sm-4"> 
+    <h3 style="font-family:Lobster;color:white">Github Repository</h3>
+	      <div style="font-family:Rajdhani;color:white;font-size:12pt">
+			<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://github.com/alexissa32/Affamato">Github</a></p>
+		  </div>
+    </div>
+  </div>
 </div>
 
-<div id="pane2" style="height:180px;">
-<h3>Repository Statistics:</h3>
-<h4 style="font-family:Rajdhani;color:white;font-size:12pt" align="left" id="numCommits"></h4>
-<h4 style="font-family:Rajdhani;color:white;font-size:12pt" align="left" id="numIssues"></h4>
-<h4 style="font-family:Rajdhani;color:white;font-size:12pt" align="left">Total Number of Unit Tests: 22</h4>
-</div>
 
-<div id="pane2" style="height:175px;">
-<h3>Data:</h3>
-<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://developer.yummly.com">Yummly API</a></p>
-<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://spoonacular.com/food-api">Spoonacular API</a></p>
-<p style="font-family:Rajdhani;color:white;font-size:12pt" >Yummly and Spoonacular were scraped using Python scripts written by Team Falcon</p>
-</div>
 
-<div id="pane2" style="height:120px;">
-<h3>Github Repository:</h3>
-<p><a style="font-family:Rajdhani;color:white;font-size:12pt" href="https://github.com/alexissa32/Affamato">Github</a></p>
-</div>
-
-<div id="pane2" style="height:425px;">
+<div id="pane2" style="height:300px;width:100%">
 <h3>Tools:</h3>
 <p style="font-family:Rajdhani;color:white;font-size:12pt">In this phase we continued developing with DHTML in the frontend and 
 Java in the backend, which used the Google objectify library and Datastore to store data. In the frontend we decided to not use 
