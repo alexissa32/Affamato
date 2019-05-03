@@ -157,15 +157,15 @@ public class Cook
 		return pantry;
 	}
 	private JSONArray removeStringFromArray(String x, JSONArray pantry) {
-		for(int i = 0; i < pantry.length(); i++) {
-			String ing = pantry.getString(i);
-			if(ing.equals(x)) {
-				pantry.remove(i);
-				break;
-			}
+	for(int i = 0; i < pantry.length(); i++) {
+		String ing = pantry.getString(i);
+		if(ing.equals(x)) {
+			pantry.remove(i);
+			break;
 		}
-		return pantry;
 	}
+	return pantry;
+}
 
 	//Index version
 	//JSONArray pantry = new JSONArray(this.Pantry);
