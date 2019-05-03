@@ -113,7 +113,7 @@
 		</form>
 
              <h4 class="panel-title">
-        <a style="font-family:Lobster" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
+        <a style="font-family:Lobster;font-size:15pt" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${fn:escapeXml(num)}">
           ${fn:escapeXml(title)}
         </a>
       </h4>
@@ -125,10 +125,10 @@
             	<a href="${fn:escapeXml(link)}" style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</a>
             	<br>
             	<br>
-            	<p style="font-family:Rajdhani">Cooking Time: ${fn:escapeXml(cookMins)}</p>
-            	<p style="font-family:Rajdhani">Prep Time: ${fn:escapeXml(prepMins)}</p>
-            	<p style="font-family:Rajdhani">Instructions: ${fn:escapeXml(instructions)}</p>
-            	<p style="font-family:Rajdhani">Ingredients: ${fn:escapeXml(ingredients)}</p>
+            	<p style="font-family:Rajdhani;font-size:12pt">Cooking Time: ${fn:escapeXml(cookMins)}</p>
+            	<p style="font-family:Rajdhani;font-size:12pt">Prep Time: ${fn:escapeXml(prepMins)}</p>
+            	<p style="font-family:Rajdhani;font-size:12pt">Instructions: ${fn:escapeXml(instructions)}</p>
+            	<p style="font-family:Rajdhani;font-size:12pt">Ingredients: ${fn:escapeXml(ingredients)}</p>
         	</div>
     </div>
 		
