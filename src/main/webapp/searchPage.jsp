@@ -108,7 +108,8 @@
 </br>
 </br>
 </br>
-<div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
+<!--  style="float: right; padding: 10px; width: 600pt; height: 250pt" -->
+<div class="panel-group" id="accordion" style="width:50%;float:center">
     
     <%
     if (cook.getDiscoverResults().length() > 0) {

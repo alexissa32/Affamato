@@ -66,8 +66,8 @@
 </br>
 </br>
 </br> 
-<!-- THIS IS WHERE THE ACCORDION BEGINs -->
-<div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
+<!-- THIS IS WHERE THE ACCORDION BEGINs style="float: right; padding: 10px; width: 600pt; height: 250pt"-->
+<div class="panel-group" id="accordion" style="width:50%;float:center">
 
     <div class="panel panel-default">
         <div class="panel-heading"> <!--  <span class="glyphicon glyphicon-remove-circle pull-right "></span> -->

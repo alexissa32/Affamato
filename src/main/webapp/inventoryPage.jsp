@@ -74,8 +74,8 @@
 </br>
 </br>
 </br>
-<div class="container" style="width: 75%; float: right">
-  <h1 style="font-family:Lobster">Inventory</h1><br /><br />
+<div class="container" style="width:50%;float:center">
+  <h1 style="font-family:Lobster">Inventory</h1><br />
   <h2 style="font-family:Lobster;font-size:20pt">Ingredient-----Quantity-----Units-----Expiration</h2><br />	
     		<%
 			JSONArray inventory = cook.getPantry();

@@ -156,7 +156,7 @@ String[] tips = new String[numTips];
 </br>
 </br>
 </br>
-<div class="container" style="width: 75%;float:right">
+<div class="container" style="width: 50%;float:center">
   <p style="font-family:Lobster;float: middle;font-size: 30pt; padding-top: 25pt"><%=date%></p>
 	<div class="panel panel-danger">
 	  <div style="font-family:Lobster;font-size:15pt" class="panel-heading">Expiration Alerts!</div>
