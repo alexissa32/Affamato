@@ -71,8 +71,7 @@
     </script>
 
 </div>
-<div class="vertnav">
-<br>
+<div class="vertnav" style="top:55px">
 <l>
   <li><a style="font-family:Lobster;font-size:15pt" href="dashboardPage.jsp">Welcome</a></li>
   <li><a style="font-family:Lobster;font-size:15pt" href="inventoryPage.jsp">My Inventory</a></li>
@@ -81,6 +80,10 @@
   <li><a style="font-family:Lobster;font-size:15pt" href="searchPage.jsp">Search Recipes</a></li>
 </l>
 </div>
+
+</br>
+</br>
+</br>
 <div class="panel-group" id="accordion" style="float: right; padding: 10px; width: 600pt; height: 250pt">
     
 <%

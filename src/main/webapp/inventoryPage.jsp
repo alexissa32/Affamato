@@ -60,8 +60,8 @@
   <a style="font-family:Lobster;font-size:15pt" href="aboutPage.jsp">About</a>
   <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
 </div>
-<div class="vertnav">
-<br>
+
+<div class="vertnav" style="top:55px">
 <l>
   <li><a style="font-family:Lobster;font-size:15pt" href="dashboardPage.jsp">Welcome</a></li>
   <li><a style="font-family:Lobster;font-size:15pt" class="active" href="inventoryPage.jsp">My Inventory</a></li>
@@ -71,6 +71,9 @@
 </l>
 </div>
 
+</br>
+</br>
+</br>
 <div class="container" style="width: 75%; float: right">
   <h1 style="font-family:Lobster">Inventory</h1><br /><br />
   <h2 style="font-family:Lobster;font-size:20pt">Ingredient-----Quantity-----Units-----Expiration</h2><br />	

@@ -142,8 +142,8 @@ String[] tips = new String[numTips];
   <a style="font-family:Lobster;font-size:15pt" href="aboutPage.jsp">About</a>
   <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
 </div>
-<div class="vertnav">
-<br>
+
+<div class="vertnav" style="top:55px">
 <l>
   <li><a style="font-family:Lobster;font-size:15pt" class="active" href="dashboardPage.jsp">Welcome</a></li>
   <li><a style="font-family:Lobster;font-size:15pt" href="inventoryPage.jsp">My Inventory</a></li>
@@ -153,6 +153,9 @@ String[] tips = new String[numTips];
 </l>
 </div> 
 
+</br>
+</br>
+</br>
 <div class="container" style="width: 75%;float:right">
   <p style="font-family:Lobster;float: middle;font-size: 30pt; padding-top: 25pt"><%=date%></p>
 	<div class="panel panel-danger">

@@ -121,6 +121,7 @@ Link to the GitHub repo
   <a style="font-family:Lobster;font-size:15pt" href="landingPage.jsp">Home</a>
   <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log In</a>
 </div>
+</br>
 <%
     } else {
 %>
@@ -130,10 +131,11 @@ Link to the GitHub repo
   <a style="font-family:Lobster;font-size:15pt" href="dashboardPage.jsp">My Dashboard</a>
   <a style="font-family:Lobster;font-size:15pt;float:right" href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log Out</a>
 </div>
+</br>
 <%
 	}
 %>
-<br>
+</br>
 <div id="pane2" style="font-family: Rajdhani; color: white;height:300px;width:100%;font-size:15pt">
 	<div style="width:60%;float:left">
 	<p style="font-family:Lobster; color: white; text-shadow: 3px 3px black;font-size:30pt">About Affamato:</p>
