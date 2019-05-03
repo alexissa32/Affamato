@@ -153,11 +153,9 @@ public class Cook
     
     public void removeFromPantry(String x) {
     	JSONArray pantry = new JSONArray(this.Pantry);
-    	//JSONObject js = new JSONObject(x);
     	for(int i = 0; i < pantry.length(); i++) {
-    		//JSONObject ing = pantry.getJSONObject(i);
     		String ing = pantry.getJSONObject(i).toString();
-    		if(ing.equals(js)) {
+    		if(ing.equals(x)) {
     			pantry.remove(i);
     			break;
     		}
