@@ -137,12 +137,12 @@ public class validIngredientTest {
 	
 	@Test
 	public void testDate() {
-		assertFalse(validIngredient.date("04/21/1997"));
+		assertTrue(validIngredient.date("04/21/1997"));
 	}
 	
 	@Test
 	public void testDate2() {
-		assertTrue(validIngredient.date("13/07/2001"));
+		assertFalse(validIngredient.date("13/07/2001"));
 	}
 	
 	@Test
@@ -158,6 +158,11 @@ public class validIngredientTest {
 	@Test
 	public void testDate5() {
 		assertFalse(validIngredient.date(""));
+	}
+	
+	@Test
+	public void testDate6() {
+		assertTrue(validIngredient.date("2/2/2018"));
 	}
 
 }
