@@ -22,17 +22,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-.modal-dialog {
-    transform: translate(0, -50%);
-    top: 15%;
-    margin: 0 auto;
-}
-</style>
-
 </head>
-
-  <link type="text/css" rel="stylesheet" href="inv.css" />
 
 <%//credit to robschmuecker for code related to making the x button delete a row
 //http://jsfiddle.net/robschmuecker/m5TMF/163/

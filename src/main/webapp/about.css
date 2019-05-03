@@ -71,6 +71,7 @@
 .topnav a:hover {
   background-color: lightGray;
   color: black;
+  text-decoration: underline;
 }
 
 .topnav a.active {
@@ -131,6 +132,7 @@
 .vertnav a:hover:not(.active) {
   background-color: #555;
   color: white;
+  text-decoration: underline;
 }
 
 .dropdown-check-list {
