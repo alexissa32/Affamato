@@ -48,7 +48,7 @@ public class FavoriteServlet extends HttpServlet{
 		    	 {
 		    		 JSONArray searchRecipes = cook.getRecipeSearchResults();
 		    		 JSONArray discoverResultsArray = cook.getDiscoverResults();
-		    		 if (discoverResultsArray.toString().contains(req.getParameter("recipe"))) {
+		    		 if (discoverResultsArray.getJSONObject(0).toString().contains(req.getParameter("recipe"))) {
 		    			 
 			    		 cook.addToRecipeList(discoverResultsArray.getJSONObject(0).toString());
 		    			 

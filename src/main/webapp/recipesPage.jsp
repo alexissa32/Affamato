@@ -88,14 +88,15 @@
 	List<String> favRecipes = new ArrayList<String>();
 	for(Integer i = 0; i < ja.length(); i++){
 		favRecipes.add(ja.getString(i));
-		pageContext.setAttribute("title", ja.getString(i));
-		//pageContext.setAttribute("prepMins", ja.getJSONObject(i).getInt("prepMinutes") + "");
-		//pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
-		//pageContext.setAttribute("instructions", ja.getJSONObject(i).getString("instructions"));
+		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
+		pageContext.setAttribute("prepMins", ja.getJSONObject(i).getInt("prepMinutes") + "");
+		pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
+		pageContext.setAttribute("instructions", ja.getJSONObject(i).getString("instructions"));
 		pageContext.setAttribute("num", i.toString());
 		pageContext.setAttribute("body", ja.getString(i));
 		
 		String recipe = ja.getString(i).replaceAll("\"", "|");
+		String recipeTitle = ja.getJSONObject(i).getString("title");
 		%>
 		
 		
@@ -116,7 +117,11 @@
       </h4>
         </div>
         	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
-            	<h3>Body: ${fn:escapeXml(body)}</h3>
+            	<p style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</p>
+            	<p style="font-family:Rajdhani">Cooking Time: ${fn:escapeXml(cookMins)}</p>
+            	<p style="font-family:Rajdhani">Prep Time: ${fn:escapeXml(prepMins)}</p>
+            	<p style="font-family:Rajdhani">Instructions: ${fn:escapeXml(instructions)}</p>
+            	<p style="font-family:Rajdhani">Ingredients: ${fn:escapeXml(ingredients)}</p>
         	</div>
     </div>
 		
