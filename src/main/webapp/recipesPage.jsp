@@ -87,15 +87,15 @@
 	int size = ja.length();
 	List<String> favRecipes = new ArrayList<String>();
 	for(Integer i = 0; i < ja.length(); i++){
-		favRecipes.add(ja.getString(i));
+		//favRecipes.add(ja.getString(i));
 		pageContext.setAttribute("title", ja.getJSONObject(i).getString("title"));
 		pageContext.setAttribute("prepMins", ja.getJSONObject(i).getInt("prepMinutes") + "");
 		pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
 		pageContext.setAttribute("instructions", ja.getJSONObject(i).getString("instructions"));
 		pageContext.setAttribute("num", i.toString());
-		pageContext.setAttribute("body", ja.getString(i));
+		//pageContext.setAttribute("body", ja.getString(i));
 		
-		String recipe = ja.getString(i).replaceAll("\"", "|");
+		//String recipe = ja.getJSONObject(i);
 		String recipeTitle = ja.getJSONObject(i).getString("title");
 		%>
 		
@@ -106,7 +106,7 @@
 		<form style="display:inline" action="/favorite" method="post">
 			 <input type="hidden" id="listID" name="listID" value="1">
 			 <input type="hidden" id="ar" name="ar" value="remove">
-			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
+			 <input type="hidden" class="recipe" name="recipe" value="<%=recipeTitle%>">
 			 <button style="display:inline" type="submit" class="fa fa-times-circle pull-right" id="exitbutton"></button>
 		</form>
 

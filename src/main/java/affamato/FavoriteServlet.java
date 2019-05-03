@@ -67,7 +67,7 @@ public class FavoriteServlet extends HttpServlet{
 		    	JSONArray meep = cook.getRecipeList();
 		    	for(int index = 0; index < meep.length(); index++)
 		    	{
-		    		if(meep.getString(index).equals(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", "")))
+		    		if(meep.getJSONObject(index).toString().contains(req.getParameter("recipe")))
 		    		{
 		    			cook.removeFromRecipeList(index);
 		    			break;

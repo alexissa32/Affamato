@@ -212,7 +212,7 @@ public class Cook
     	JSONArray edit = new JSONArray(this.RecipeList);
     	editor = edit;
     	}
-    	editor.put(jsonObject.toString()); //Looks like an object that is the whole recipe
+    	editor.put(jsonObject); //Looks like an object that is the whole recipe
     	this.RecipeList = editor.toString();
     }
 
@@ -232,8 +232,8 @@ public class Cook
     public boolean hasRecipe(String recipeTitle) {
     	JSONArray ja = new JSONArray(this.RecipeList);
     	for(int i = 0 ; i < ja.length() ; i++) {
-    		JSONObject potMatch = ja.getJSONObject(i);
-    		if(potMatch.toString().contains(recipeTitle)) {
+    		//JSONObject potMatch = ja.getJSONObject(i);
+    		if(ja.toString().contains(recipeTitle)) {
     			return true;
     		}
     	}
