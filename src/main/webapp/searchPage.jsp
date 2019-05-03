@@ -108,9 +108,10 @@
 </br>
 </br>
 </br>
-<!--  style="float: right; padding: 10px; width: 600pt; height: 250pt" -->
 <div class="panel-group" id="accordion" style="position: absolute;left: 50%;transform: translate(-50%);width: 50%;">
-    
+<form action="/recipes" method="get">
+<button style="font-family:Lobster;position: absolute;left: 50%;transform: translate(-50%);width: 50%;" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
+</form>    
     <%
     if (cook.getDiscoverResults().length() > 0) {
 	pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
@@ -260,10 +261,6 @@
     
 </div>
 <br />
-<form action="/recipes" method="get">
-<button style="font-family:Lobster;float:right" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
-</form>
-
 
 <script>
 var $template = $(".template");
