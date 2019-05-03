@@ -36,6 +36,9 @@ public class inventoryPageServlet extends HttpServlet{
 		        if(validIngredient.validate(q, unit, ing, exp)) {
 			        cook.addToPantry(ingFull);	
 		        }
+		        else {
+		        	resp.addHeader("invalid", "invalidIngredient");
+		        }
         	}
         	else if(addOrRemove.equals("remove")) {
         		String ing = req.getParameter("IngredientInput");

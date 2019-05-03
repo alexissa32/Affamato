@@ -50,6 +50,11 @@
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
+    String header = response.getHeader("invalid");
+    boolean invalidMessage = false;
+    if(header != null){
+    	invalidMessage = header.equals("invalidIngredient");
+    }
     if (user != null) {
 	 	Cook cook = Cook.getCook(user);
         pageContext.setAttribute("user", user);
@@ -122,6 +127,12 @@
 
     
 <%
+		if(invalidMessage){
+			%>
+			<p style="font-family:Lobster;font-size:18pt;display:inline"><b>One or more of the fields entered were invalid</b>>
+			<%
+	
+		}
     } else {
     	response.sendRedirect("/landingPage.jsp");
     }
