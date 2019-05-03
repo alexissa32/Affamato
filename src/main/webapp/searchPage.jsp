@@ -118,31 +118,32 @@
 	pageContext.setAttribute("link",cook.getDiscoverResults().getJSONObject(0).getString("url"));
 	
 	String recipe = cook.getDiscoverResults().getJSONObject(0).toString().replaceAll("\"", "|");
+	String recipeTitle = cook.getDiscoverResults().getJSONObject(0).getString("title");
 	%>
 	<div class="panel panel-default">
     <div class="panel-heading"> <!--<span class="glyphicon glyphicon-remove-circle pull-right "></span>-->
     <%
-    if( !cook.hasRecipe(recipe.replace('|', '"').replaceAll("\\\\", ""))){
+    if( !cook.hasRecipe(recipeTitle)){
     %>
 	<form style="display:inline" action="/favorite" method="post">
-		<input type="hidden" id="sp" name="sp" value="search">
-		<input type="hidden" id="listID" name="listID" value="1">
-		<input type="hidden" id="ar" name="ar" value="add">
-		<input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-		<button style="display:inline;float:right" class="glyphicon glyphicon-heart-empty pull-right" type="submit"></button>
-	</form>
+		 <input type="hidden" id="listID" name="listID" value="1">
+		 <input type="hidden" id="sp" name="sp" value="search">
+		 <input type="hidden" id="ar" name="ar" value="add">
+		 <input type="hidden" class="recipe" name="recipe" value="<%=recipeTitle%>">
+		 <button style="display:inline;float:right" class="glyphicon glyphicon-heart-empty pull-right" type="submit"></button>
+		 </form>
 	<%
-    }
-    else{
+	}
+	else{
 	%>
-	<form style="display:inline" action="/favorite" method="post">
-			<input type="hidden" id="sp" name="sp" value="search">
-			 <input type="hidden" id="ar" name="ar" value="remove">
-			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
-			 <button style="display:inline;float:right" class="glyphicon glyphicon-heart pull-right" type="submit"></button>
-	</form>
+		<form style="display:inline" action="/favorite" method="post">
+		 <input type="hidden" id="sp" name="sp" value="search">
+		 <input type="hidden" id="ar" name="ar" value="remove">
+		 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
+		 <button style="display:inline;float:right" class="glyphicon glyphicon-heart pull-right" type="submit"></button>
+		 </form>
 	<%
-    }
+	}
 	%>
          <h4 class="panel-title">
     <a style="display:inline;font-family:Lobster;font-size:15pt" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -152,7 +153,9 @@
 
    </div>     
        <div id="collapseThree" class="panel-collapse collapse ">
-           <p style="font-family:Rajdhani;font-size:12pt">Link to Source Page: ${fn:escapeXml(link)}</p>
+           <a href="${fn:escapeXml(link)}" style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</a>
+           <br>
+           <br>
            <p style="font-family:Rajdhani;font-size:12pt">Cooking Time: ${fn:escapeXml(cookMins)}</p>
            <p style="font-family:Rajdhani;font-size:12pt">Prep Time: ${fn:escapeXml(prepMins)}</p>
            <p style="font-family:Rajdhani;font-size:12pt">Instructions: ${fn:escapeXml(instructions)}</p>
@@ -216,7 +219,9 @@
         </div>
         
         	<div id="collapse${fn:escapeXml(num)}" class="panel-collapse collapse ">
-            	<p style="font-family:Rajdhani;font-size:12pt">Link to Source Page: ${fn:escapeXml(link)}</p>
+            	<a href="${fn:escapeXml(link)}" style="font-family:Rajdhani">Link to Source Page: ${fn:escapeXml(link)}</a>
+                <br>
+                <br>
             	<p style="font-family:Rajdhani;font-size:12pt">Cooking Time: ${fn:escapeXml(cookMins)}</p>
             	<p style="font-family:Rajdhani;font-size:12pt">Prep Time: ${fn:escapeXml(prepMins)}</p>
             	<p style="font-family:Rajdhani;font-size:12pt">Instructions: ${fn:escapeXml(instructions)}</p>

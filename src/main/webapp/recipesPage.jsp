@@ -93,6 +93,7 @@
 		pageContext.setAttribute("prepMins", ja.getJSONObject(i).getInt("prepMinutes") + "");
 		pageContext.setAttribute("cookMins", ja.getJSONObject(i).getInt("cookMinutes") + "");
 		pageContext.setAttribute("instructions", ja.getJSONObject(i).getString("instructions"));
+		pageContext.setAttribute("ingredients", ja.getJSONObject(i).getJSONArray("ingredients").toString());
 		pageContext.setAttribute("link", ja.getJSONObject(i).getString("url"));
 		pageContext.setAttribute("num", i.toString());
 		//pageContext.setAttribute("body", ja.getString(i));
