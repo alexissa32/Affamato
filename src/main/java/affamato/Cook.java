@@ -200,6 +200,21 @@ public class Cook
     	editor.put(RecipeString); //Looks like an object that is the whole recipe
     	this.RecipeList = editor.toString();
     }
+    
+    public void addToRecipeList(JSONObject jsonObject) 
+    {
+    	JSONArray editor;
+    	if(this.RecipeList.equals("")) {
+    		JSONArray edit = new JSONArray();
+    		editor = edit;
+    	}
+    	else {
+    	JSONArray edit = new JSONArray(this.RecipeList);
+    	editor = edit;
+    	}
+    	editor.put(jsonObject.toString()); //Looks like an object that is the whole recipe
+    	this.RecipeList = editor.toString();
+    }
 
     
     //UNTESTED METHOD correlated failures: removeFromPantry(), removeFromGroceryList()
@@ -214,11 +229,11 @@ public class Cook
     	}}
     }
     
-    public boolean hasRecipe(String recipe) {
+    public boolean hasRecipe(String recipeTitle) {
     	JSONArray ja = new JSONArray(this.RecipeList);
     	for(int i = 0 ; i < ja.length() ; i++) {
-    		String potMatch = ja.getString(i);
-    		if(potMatch.equals(recipe)) {
+    		JSONObject potMatch = ja.getJSONObject(i);
+    		if(potMatch.toString().contains(recipeTitle)) {
     			return true;
     		}
     	}

@@ -184,7 +184,7 @@
 		<div class="panel panel-default">
         <div class="panel-heading"> <!--<span class="glyphicon glyphicon-remove-circle pull-right "></span>-->
         <%
-        if( !cook.hasRecipe(recipe.replace('|', '"').replaceAll("\\\\", ""))){
+        if( !cook.hasRecipe(recipeTitle)){
         %>
 		<form style="display:inline" action="/favorite" method="post">
 			 <input type="hidden" id="listID" name="listID" value="1">

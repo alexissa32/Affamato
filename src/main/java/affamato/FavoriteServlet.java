@@ -38,7 +38,7 @@ public class FavoriteServlet extends HttpServlet{
 		    	 boolean okayToAdd = true;
 			     for(int index = 0; index < meep.length(); index++)
 			     {
-			    	if(meep.getString(index).equals(req.getParameter("recipe").toString().replace('|', '"').replaceAll("\\\\", "")))
+			    	if(meep.getJSONObject(index).toString().contains(req.getParameter("recipe")))
 			    	{
 			    		okayToAdd = false;
 			    		break;
@@ -50,13 +50,13 @@ public class FavoriteServlet extends HttpServlet{
 		    		 JSONArray discoverResultsArray = cook.getDiscoverResults();
 		    		 if (discoverResultsArray.length() > 0 && discoverResultsArray.getJSONObject(0).toString().contains(req.getParameter("recipe"))) {
 		    			 
-			    		 cook.addToRecipeList(discoverResultsArray.getJSONObject(0).toString().replaceAll("\\\\", ""));
+			    		 cook.addToRecipeList(discoverResultsArray.getString(0));
 		    			 
 		    		 } else {
 		    			 
 		    		 for (int index = 0; index < searchRecipes.length(); index++) {
 		    			 if (searchRecipes.getJSONObject(index).toString().contains(req.getParameter("recipe"))) {
-				    		 cook.addToRecipeList(searchRecipes.getJSONObject(index).toString().replaceAll("\\\\", ""));
+				    		 cook.addToRecipeList(searchRecipes.getJSONObject(index));
 		    			 }
 		    		 }
 		    	}
