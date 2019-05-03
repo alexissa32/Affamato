@@ -127,7 +127,7 @@
 		<input style="display:inline" name="ExpirationInput" type="text"  placeholder="Expiration mm/dd/yyyy">   	
     	<input name="ar" type="hidden" value="add">
   		<button type = "submit" class = "btn btn-danger" style="display:inline;font-family:Lobster">Add Ingredient +</button>  	  
-    </form>  
+    </form>  </br>
 
 
     
