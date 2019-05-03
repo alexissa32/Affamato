@@ -52,8 +52,8 @@
         pageContext.setAttribute("user", user);
         Cook cook = Cook.getCook(user);
         
-        //JSONObject test = new JSONObject().put("ingredient", "McChicken").put("quantity", "2").put("expiration", "10/11/12");
-        //cook.addToPantry(test);
+        JSONObject test = new JSONObject().put("ingredient", "McChicken").put("quantity", "2").put("expiration", "10/11/12");
+        cook.addToPantry(test);
         JSONArray pantry = cook.getPantry();
         pageContext.setAttribute("pantrySize", pantry.length());
         pageContext.setAttribute("pantry", pantry);
