@@ -156,7 +156,7 @@ String[] tips = new String[numTips];
 <div class="container" style="width: 75%; float: right">
   <p style="font-family:Lobster;float: middle; font-size: 30px; padding-top: 25pt"><%=date%></p>
 	<div class="panel panel-danger">
-	  <div style="font-family:Lobster" class="panel-heading">Expiration Alerts! These items will expire within 1 week.</div>
+	  <div style="font-family:Lobster;font-size:20pt" class="panel-heading">Expiration Alerts!</div>
 	  <!--  <div class="panel-body">List soon-to-be expiring ingredients and relevant dates here</div> -->
 	      	<%
 			JSONArray inventory = cook.getPantry();
@@ -217,7 +217,7 @@ String[] tips = new String[numTips];
 		%> 
 	</div>
 	<div class="panel panel-info">
-	  <div style="font-family:Lobster" class="panel-heading">Tip of the Day</div>
+	  <div style="font-family:Lobster;font-size:20pt" class="panel-heading">Tip of the Day</div>
 	  <div style="font-family:Rajdhani" class="panel-body"><%out.print("<p>" + tips[rando] + "</p>");%></div>
 
 	</div>
