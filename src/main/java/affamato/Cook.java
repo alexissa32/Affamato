@@ -71,7 +71,7 @@ public class Cook
     }
     
     //pass an ingredient JSONstring and the index of the grocery list
-    public void addToGroceryList(String Ingredient, Integer index) 
+    public synchronized void addToGroceryList(String Ingredient, Integer index) 
     {
     	if(this.GroceryLists.equals("")) {
     		newGroceryList("Grocery List 1");
@@ -106,7 +106,7 @@ public class Cook
     	
     }
     
-    public void removeFromGroceryList(String Ingredient, Integer index) {
+    public synchronized void removeFromGroceryList(String Ingredient, Integer index) {
     	JSONArray gLists = new JSONArray(this.GroceryLists);	//this gets initial json array
     	JSONArray newList = gLists.getJSONArray(index);
     	JSONArray replace = new JSONArray();
@@ -129,7 +129,7 @@ public class Cook
    
     
     //pass a json string
-    public void addToPantry(String ID) 
+    public synchronized void addToPantry(String ID) 
     {
     	JSONArray editor;
     	if(this.Pantry.equals("")) {
@@ -145,13 +145,13 @@ public class Cook
     	this.Pantry = editor.toString();	
     }
     
-    public void addToPantry(JSONObject ingredient) {
+    public synchronized void addToPantry(JSONObject ingredient) {
     	JSONArray editor  = new JSONArray(this.Pantry);
     	editor.put(ingredient);
     	this.Pantry = editor.toString();
     }
     
-    public void removeFromPantry(String x) {
+    public synchronized void removeFromPantry(String x) {
     	JSONArray pantry = new JSONArray(this.Pantry);
     	for(int i = 0; i < pantry.length(); i++) {
     		String ing = pantry.getJSONObject(i).toString();
@@ -191,7 +191,7 @@ public class Cook
 	//this.Pantry = pantry.toString();
     
     //UNTESTED METHOD correlated failures: removeFromRecipeList(), removeFromGroceryList()
-    public void removeFromPantry(JSONObject j) 
+    public synchronized void removeFromPantry(JSONObject j) 
     {
     	JSONArray PantryJ = new JSONArray(this.Pantry);
     	for(int index = 0; index < PantryJ.length(); index++)
@@ -263,7 +263,7 @@ public class Cook
     
     //UNTESTED METHOD correlated failures: getRecipeList(), getGroceryList()
     //returns null if DNE yet
-    public JSONArray getPantry() 
+    public synchronized JSONArray getPantry() 
     {
     	if(this.Pantry.equals("")) return new JSONArray();
     	JSONArray pantry = new JSONArray(this.Pantry);
@@ -279,14 +279,14 @@ public class Cook
     }
     
     //UNTESTED METHOD correlated failures: getPantry(), getRecipeList()
-    public JSONArray getGroceryLists()
+    public synchronized JSONArray getGroceryLists()
     {
     	if(this.GroceryLists.equals("")) return new JSONArray();
     	JSONArray groceryLists = new JSONArray(this.GroceryLists);
     	return groceryLists;
     }
     
-    public JSONArray getGroceryList(String ID) {
+    public synchronized JSONArray getGroceryList(String ID) {
     	int pos = Integer.parseInt(ID) - 1;
     	JSONArray groceryLists;
     	if(this.GroceryLists.equals("")) {groceryLists = new JSONArray();
