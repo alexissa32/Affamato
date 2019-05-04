@@ -13,7 +13,6 @@
 <%@ page import="org.json.JSONObject" %>
 <%@ page import="affamato.*" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 

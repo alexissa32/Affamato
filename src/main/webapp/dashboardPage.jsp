@@ -160,6 +160,7 @@ String[] tips = new String[numTips];
   <p style="font-family:Lobster;float: middle;font-size: 30pt; padding-top: 25pt"><%=date%></p>
 	<div class="panel panel-danger">
 	  <div style="font-family:Lobster;font-size:15pt" class="panel-heading">Expiration Alerts!</div>
+	  	<div style="font-family:Rajdhani;font-size:12pt" class="panel-body">
 	      	<%
 			JSONArray inventory = cook.getPantry();
 			for (int i = 0; i < inventory.length(); i++) {
@@ -217,6 +218,7 @@ String[] tips = new String[numTips];
 				 }
 		}
 		%> 
+		</div>
 	</div>
 	<div class="panel panel-info">
 	  <div style="font-family:Lobster;font-size:15pt" class="panel-heading">Tip of the Day</div>
