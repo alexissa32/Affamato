@@ -75,7 +75,7 @@
 </br>
 </br>
 </br>
-<div class="container" style="width:60%;float:center">
+<div class="container" style="width:65%;float:center">
   <h1 style="font-family:Lobster">Inventory</h1><br />
   <h2 style="font-family:Lobster;font-size:20pt">Ingredient-----Quantity-----Units-----Expiration</h2><br />	
     		<%
