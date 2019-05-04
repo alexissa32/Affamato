@@ -50,7 +50,7 @@ public class FavoriteServlet extends HttpServlet{
 		    		 JSONArray discoverResultsArray = cook.getDiscoverResults();
 		    		 if (discoverResultsArray.length() > 0 && discoverResultsArray.getJSONObject(0).toString().contains(req.getParameter("recipe"))) {
 		    			 
-			    		 cook.addToRecipeList(discoverResultsArray.getString(0));
+			    		 cook.addToRecipeList(discoverResultsArray.getJSONObject(0));
 		    			 
 		    		 } else {
 		    			 

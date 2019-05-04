@@ -148,7 +148,7 @@
 		<form style="display:inline" action="/favorite" method="post">
 		 <input type="hidden" id="sp" name="sp" value="search">
 		 <input type="hidden" id="ar" name="ar" value="remove">
-		 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
+		 <input type="hidden" class="recipe" name="recipe" value="<%=recipeTitle%>">
 		 <button style="display:inline;float:right" class="glyphicon glyphicon-heart pull-right" type="submit"></button>
 		 </form>
 	<%
@@ -212,7 +212,7 @@
 			<form style="display:inline" action="/favorite" method="post">
 			 <input type="hidden" id="sp" name="sp" value="search">
 			 <input type="hidden" id="ar" name="ar" value="remove">
-			 <input type="hidden" class="recipe" name="recipe" value="<%=recipe%>">
+			 <input type="hidden" class="recipe" name="recipe" value="<%=recipeTitle%>">
 			 <button style="display:inline;float:right" class="glyphicon glyphicon-heart pull-right" type="submit"></button>
 			 </form>
 		<%

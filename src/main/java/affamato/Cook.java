@@ -207,20 +207,20 @@ public class Cook
     }
     
     //pass a recipe json string
-    public void addToRecipeList(String RecipeString) 
-    {
-    	JSONArray editor;
-    	if(this.RecipeList.equals("")) {
-    		JSONArray edit = new JSONArray();
-    		editor = edit;
-    	}
-    	else {
-    	JSONArray edit = new JSONArray(this.RecipeList);
-    	editor = edit;
-    	}
-    	editor.put(RecipeString); //Looks like an object that is the whole recipe
-    	this.RecipeList = editor.toString();
-    }
+    //public void addToRecipeList(String RecipeString) 
+    //{
+    //	JSONArray editor;
+    //	if(this.RecipeList.equals("")) {
+    //		JSONArray edit = new JSONArray();
+    //		editor = edit;
+    //	}
+    //	else {
+    //	JSONArray edit = new JSONArray(this.RecipeList);
+    //	editor = edit;
+    //	}
+    //	editor.put(RecipeString); //Looks like an object that is the whole recipe
+    //	this.RecipeList = editor.toString();
+    //}
     
     public void addToRecipeList(JSONObject jsonObject) 
     {

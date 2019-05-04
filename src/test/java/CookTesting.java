@@ -128,22 +128,22 @@ public class CookTesting{
 	//	assertEquals("colbycheese", "colbycheese");
 	//}
 	
-	@Test
-	public void addToRecipeListTest() {
-		User me = new User("me@gmail.com", "pizza.com");
-		Cook c = new Cook(me, "Cookholder");
-		c.addToRecipeList(recipeString1);
-		JSONArray list = c.getRecipeList();
-		String s = list.getString(0);
-		assertEquals(s, recipeString1);
-	}
+	//@Test
+	//public void addToRecipeListTest() {
+	//	User me = new User("me@gmail.com", "pizza.com");
+	//	Cook c = new Cook(me, "Cookholder");
+	//	c.addToRecipeList(recipeString1);
+	//	JSONArray list = c.getRecipeList();
+	//	String s = list.getString(0);
+	//	assertEquals(s, recipeString1);
+	//}
 	
-	@Test
-	public void removeFromRecipeListTest() {
-		User me = new User("me@gmail.com", "pizza.com");
-		Cook c = new Cook(me, "Cookholder");
-		c.addToRecipeList(recipeString1);
-	}
+	//@Test
+	//public void removeFromRecipeListTest() {
+	//	User me = new User("me@gmail.com", "pizza.com");
+	//	Cook c = new Cook(me, "Cookholder");
+	//	c.addToRecipeList(recipeString1);
+	//}
 	
 	/**@Test
 	public void PantrySearchResultsTest() {

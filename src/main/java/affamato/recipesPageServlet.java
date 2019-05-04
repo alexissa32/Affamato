@@ -46,7 +46,7 @@ public class recipesPageServlet extends HttpServlet{
     	if(addOrRemove != null) {
     		if(addOrRemove.equals("add")) {
     			String data = req.getParameter("data");
-    			cook.addToRecipeList(data);
+    			cook.addToRecipeList(new JSONObject(data));
     		}
     		else if(addOrRemove.equals("remove")) {
     			int pos = Integer.parseInt(req.getParameter("pos"));
