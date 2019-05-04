@@ -168,7 +168,19 @@
            <p style="font-family:Rajdhani;font-size:12pt">Cooking Time: ${fn:escapeXml(cookMins)}</p>
            <p style="font-family:Rajdhani;font-size:12pt">Prep Time: ${fn:escapeXml(prepMins)}</p>
            <p style="font-family:Rajdhani;font-size:12pt">Instructions: ${fn:escapeXml(instructions)}</p>
-           <p style="font-family:Rajdhani;font-size:12pt">Ingredients: ${fn:escapeXml(ingredients)}</p>
+           <p style="font-family:Rajdhani;font-size:12pt">Ingredients:</p> 	
+            <% 
+            //${fn:escapeXml(ingredients)}
+            JSONArray ing = cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients");
+            for(int in = 0; in < ing.length(); in++)
+            {
+            	String s = ing.getJSONObject(in).getString("originalName");
+            	pageContext.setAttribute("s", s);
+            	%>
+            	<p style="font-family:Rajdhani;font-size:12pt">-${fn:escapeXml(s)}</p>
+            	<%
+            }
+            %>
        </div>
   </div>
 
@@ -234,7 +246,20 @@
             	<p style="font-family:Rajdhani;font-size:12pt">Cooking Time: ${fn:escapeXml(cookMins)}</p>
             	<p style="font-family:Rajdhani;font-size:12pt">Prep Time: ${fn:escapeXml(prepMins)}</p>
             	<p style="font-family:Rajdhani;font-size:12pt">Instructions: ${fn:escapeXml(instructions)}</p>
-            	<p style="font-family:Rajdhani;font-size:12pt">Ingredients: ${fn:escapeXml(ingredients)}</p>
+            	<p style="font-family:Rajdhani;font-size:12pt">Ingredients:</p>
+            	
+            	<% 
+            	//${fn:escapeXml(ingredients)}
+            	JSONArray ing = ja.getJSONObject(i).getJSONArray("ingredients");
+            	for(int in = 0; in < ing.length(); in++)
+            	{
+            		String s = ing.getJSONObject(in).getString("originalName");
+            		pageContext.setAttribute("s", s);
+            		%>
+            		<p style="font-family:Rajdhani;font-size:12pt">-${fn:escapeXml(s)}</p>
+            		<%
+            	}
+            	%>
         	</div>
     </div>
 		
