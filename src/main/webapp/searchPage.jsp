@@ -112,7 +112,9 @@
 <form action="/recipes" method="get">
 <button style="font-family:Lobster;position: absolute;left: 50%;transform: translate(-50%);width: 100%;" class="btn btn-lg btn-primary btn-add-panel" type="submit"> <i class="glyphicon glyphicon-plus"></i> Discover!</button>
 </form>
-</br>  
+</br> 
+</br>
+</br> 
     <%
     if (cook.getDiscoverResults().length() > 0) {
 	pageContext.setAttribute("discoverTitle", cook.getDiscoverResults().getJSONObject(0).getString("title"));
@@ -154,7 +156,7 @@
 	%>
          <h4 class="panel-title">
     <a style="display:inline;font-family:Lobster;font-size:15pt" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-      Discover!:${fn:escapeXml(discoverTitle)}  
+      Discover!: ${fn:escapeXml(discoverTitle)}  
     </a>
   </h4>
 
