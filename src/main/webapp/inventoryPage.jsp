@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">  
 
 <body id="dashboardbody">
 <%
@@ -91,13 +92,13 @@
 				 pageContext.setAttribute("units",units1); 
 			%>
 	 <!-- THIS IS WHERE I AM TRYING TO RENDER THE LIST BASED ON DATASTORE -->
-		    <p style="font-family:Lobster;font-size:18pt;display:inline"><b>${fn:escapeXml(ingredient)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:18pt;display:inline">${fn:escapeXml(ingredient)}</p>
 		    <p style="display:inline">-----</p>
-		    <p style="font-family:Lobster;font-size:18pt;display:inline"><b>${fn:escapeXml(quantity)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:18pt;display:inline">${fn:escapeXml(quantity)}</p>
 		    <p style="display:inline">-----</p>
-            <p style="font-family:Lobster;font-size:18pt;display:inline"><b>${fn:escapeXml(units)}</b></p>   
+            <p style="font-family:Rajdhani;font-size:18pt;display:inline">${fn:escapeXml(units)}</p>   
             <p style="display:inline">-----</p>  
-		    <p style="font-family:Lobster;font-size:18pt;display:inline"><b>${fn:escapeXml(expiration)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:18pt;display:inline">${fn:escapeXml(expiration)}</p>
 		    
 		    
 	 <!-- THIS IS WHERE WE NEED TO ADD A REMOVE BUTTON FOR EACH ELEMENT -->	    
@@ -119,7 +120,7 @@
 		<input style="display:inline" name="UnitsInput" type="text"  placeholder="Enter Units">	 
 		<input style="display:inline" name="ExpirationInput" type="text"  placeholder="Expiration mm/dd/yyyy">   	
     	<input name="ar" type="hidden" value="add">
-  		<button type = "submit" class = "btn btn-danger" style="display:inline;font-family:Lobster">Add Ingredient +</button>  	  
+  		<button type = "submit" class = "btn btn-danger" style="display:inline;font-family:Lobster;font-size:15pt">Add Ingredient +</button>  	  
     </form>  </br> </br> </br>
 
 
@@ -127,7 +128,7 @@
 <%
 		if(invalidMessage){
 			%>
-			<p style="font-family:Lobster;font-size:18pt;display:inline"><b>One or more of the fields entered were invalid</b>
+			<p style="font-family:Lobster;font-size:18pt;display:inline;color:red"><b>One or more of the fields entered were invalid</b>
 			</p>
 </div>
 			<%

@@ -186,27 +186,27 @@ String[] tips = new String[numTips];
 					       	if((days <= 7)&&(days>=0)){
 			%>
 	 <!-- THIS IS WHERE I AM TRYING TO RENDER THE EXPIRING ITEMS BASED ON DATASTORE -->
-		    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(ingredient)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:12pt;display:inline">${fn:escapeXml(ingredient)}</p>
 		    <p style="font-family:Rajdhani;display:inline">-----</p>
-		    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(quantity)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:12pt;display:inline">${fn:escapeXml(quantity)}</p>
 		    <p style="font-family:Rajdhani;display:inline">-----</p>
-            <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(units)}</b></p>   
+            <p style="font-family:Rajdhani;font-size:12pt;display:inline">${fn:escapeXml(units)}</p>   
             <p style="font-family:Rajdhani;display:inline">-----</p>  
-		    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(expiration)}</b></p>
+		    <p style="font-family:Rajdhani;font-size:12pt;display:inline">${fn:escapeXml(expiration)}</p>
 			</br>
 		 <% 
 					        } else if (days < 0){
 								%>
 								 <!-- THIS IS WHERE I AM TRYING TO RENDER THE EXPIRING ITEMS BASED ON DATASTORE -->
-									    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(ingredient)}</b></p>
+									    <p style="font-family:Rajdhani;font-size:12pt;display:inline">${fn:escapeXml(ingredient)}</p>
 									    <p style="font-family:Rajdhani;display:inline">-----</p>
-									    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(quantity)}</b></p>
+									    <p style="font-family:Rajdhani;font-size:12pt;display:inline">${fn:escapeXml(quantity)}</p>
 									    <p style="font-family:Rajdhani;display:inline">-----</p>
-							            <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(units)}</b></p>   
+							            <p style="font-family:Rajdhani;font-size:12pt;display:inline">${fn:escapeXml(units)}</p>   
 							            <p style="font-family:Rajdhani;display:inline">-----</p>  
-									    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>${fn:escapeXml(expiration)}</b></p>
+									    <p style="font-family:Rajdhani;font-size:12pt;display:inline">${fn:escapeXml(expiration)}</p>
 										<p style="font-family:Rajdhani;display:inline">-----</p>  
-									    <p style="font-family:Rajdhani;font-size:12pt;display:inline"><b>EXPIRED!</b></p>
+									    <p style="font-family:Rajdhani;font-size:12pt;display:inline">EXPIRED!</p>
 										</br>
 								<% 		        	
 					        }
