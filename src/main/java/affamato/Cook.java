@@ -110,7 +110,18 @@ public class Cook
     	JSONArray gLists = new JSONArray(this.GroceryLists);	//this gets initial json array
     	JSONArray newList = gLists.getJSONArray(index);
     	JSONArray replace = new JSONArray();
-		replace = removeStringFromArray(Ingredient, newList);
+    	boolean noneremoved = true;
+    	//this gets relevant json array inside the initial
+    	for(int i = 0; i < newList.length(); i++) {				//this navigates relevant json array to find item to remove
+    		String ingredient = newList.getString(i);
+    		if(ingredient.equals(Ingredient)&&noneremoved) {
+    			noneremoved = false;
+    			//newList.remove(i);		
+    		}
+    		else {
+    			replace.put(ingredient);
+    		}
+    	}
     	gLists.put(index, replace);
     	this.GroceryLists = gLists.toString();
     }
@@ -142,7 +153,13 @@ public class Cook
     
     public void removeFromPantry(String x) {
     	JSONArray pantry = new JSONArray(this.Pantry);
-		pantry = removeJSONFromArray(x, pantry);
+    	for(int i = 0; i < pantry.length(); i++) {
+    		String ing = pantry.getJSONObject(i).toString();
+    		if(ing.equals(x)) {
+    			pantry.remove(i);
+    			break;
+    		}
+    	}
 		this.Pantry = pantry.toString();
     }
 
