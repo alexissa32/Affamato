@@ -344,8 +344,9 @@ public class Cook
         		return cook;
         	}
         }
-        log.info("cooks is null");
-        return null;
+        log.info("cooks was null");
+        Cook cook = new Cook(user, user.toString());
+        return cook;
         
         
     }
