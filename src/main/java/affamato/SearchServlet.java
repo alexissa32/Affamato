@@ -66,14 +66,16 @@ public class SearchServlet extends HttpServlet
     		resp.getWriter().println("search box passed null?");
     		return;
     	}
-		FilterParameters param = null;
+		FilterParameters filters = null;
+		SearchInterface search = null;
+		Cook cook = Cook.getCook(user);
 		if(type == null) {
 			log.info("invalid request. Set type parameter");
 			return;
 		}
 		if(type.equals("recipe")) {
 			log.info("recipe");
-			param = new FilterParameters( req.getParameter("veggie") == null ? false : true,
+			filters = new FilterParameters( req.getParameter("veggie") == null ? false : true,
 					req.getParameter("glutenf") == null ? false : true,
 					req.getParameter("dairyf") == null ? false : true,		
 					req.getParameter("keto") == null ? false : true,
@@ -82,6 +84,7 @@ public class SearchServlet extends HttpServlet
 					req.getParameter("useinv") == null ? false : true,
 					req.getParameter("useexp") == null ? false : true
 					);
+			search = new recipeSearch(parameter, filters, cook);
 			/*
 			param = new FilterParameters(Boolean.parseBoolean(req.getParameter("veggie")), 
 					Boolean.parseBoolean(req.getParameter("glutenf")), 
@@ -94,32 +97,19 @@ public class SearchServlet extends HttpServlet
 					);
 					*/
 			
-			if(param == null) {
+			if(filters == null) {
 				resp.getWriter().println("param not initialized properly");
 			}
 		}
 		else if(type.equals("ingredient")) {
 			log.info("ingredient");
 			//if any initialization for ingredient is required
+			search = new ingredientSearch(parameter);
 		}
 		else {
 			return;
 		}
-		Cook cook = Cook.getCook(user);
-		//Cookie[] cookies = req.getCookies();
-		//String userString = req.getParameter("user");
-		//for(int i = 0 ; i < cookies.length ; i++) {
-		//	if(cookies[i].getName().equals("user")) {
-		//		userString = cookies[i].getValue();
-		//		break;
-		//	}
-		//}
-		/*
-		Cook cook = null;
-		if(userString != null) {
-			cook = Cook.getCook(userString);
-		}
-		*/
+
 		if(cook == null) {
 			resp.setContentType("text/plain");
 			if(user == null) resp.getWriter().println("user is null");
@@ -172,11 +162,23 @@ public class SearchServlet extends HttpServlet
 			cook.setRecipeSearchResults(returnArray);
 			ObjectifyService.ofy().save().entity(cook).now();
 			*/
-			JSONArray ja = null;
+			
+			
+			
+			
 			if(type.equals("recipe")) {
-				ja = Recipe.searchRecipe(parameter, param, cook);
-				cook.setRecipeSearchResults(ja);
+				cook.setRecipeSearchResults(search.search());
 			}
+			else if(type.equals("ingredient")) {
+				//cook.setIngredientSearchResults(search.search());
+			}
+			
+			
+			
+			
+			
+			
+			
 			//else {
 			//	ja = Ingredient.searchIngredient(parameter);
 			//	cook.setPantrySearchResults(ja);
