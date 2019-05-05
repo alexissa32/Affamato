@@ -127,14 +127,33 @@ public class Recipe implements Comparable<Recipe>
     
     public static JSONArray searchRecipe(String search, FilterParameters param, Cook c) {
     	JSONArray returner = new JSONArray();
+    	
+    	//Handle search for nothing
+    	if(search.equals("") || search == null || search.isEmpty())
+    	{
+    		return returner;
+    	}
+    	
+    	String[] split = search.trim().split("\\s+");
+    	
     	List<Recipe> recipes = ObjectifyService.ofy().load().type(Recipe.class).list();
     	for (int i = 0; i < recipes.size(); i++) 
 		{
 			
 			Recipe r = recipes.get(i);
 			
+			boolean containsAll = true;
+			for(String s : split)
+			{
+				if(!r.title.toLowerCase().contains(s.toLowerCase()))
+				{
+					containsAll = false;
+					break;
+				}
+			}
 			
-			if (r.title.toLowerCase().contains(search.toLowerCase()) && param.valid(r)) {
+			
+			if (containsAll && param.valid(r)) {
 			
 				if(param.isUsingStuff()) {
 					if(param.useExpiring) {
