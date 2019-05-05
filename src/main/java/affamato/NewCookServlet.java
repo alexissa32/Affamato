@@ -43,16 +43,9 @@ public class NewCookServlet extends HttpServlet {
         try {
         if(CookFlag.equals("Cook")) 
         {
-        	if(cook == null)
-        	{
-        		resp.addCookie(new Cookie("createdNew", "new"));
-	        	Cook newCook = new Cook(user, CookHolderName);
-	        	ofy().save().entity(newCook).now();
-	        	cook = newCook;
-        	}
-        	else {
-        		resp.addCookie(new Cookie("iAlreadyExist", "existenceIsPain"));
-        	}
+        	
+        	resp.addCookie(new Cookie("iAlreadyExist", "existenceIsPain"));
+        	
         	Cookie cookieName = new Cookie("user", user.toString());
         	Cookie[] cookies = req.getCookies();
         	if(cookies != null) {

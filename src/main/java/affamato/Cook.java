@@ -30,7 +30,7 @@ public class Cook
     @Index String RecipeSearchResults;
     
     private Cook() {}
-    public Cook(User user, String CookHolder) 
+    private Cook(User user, String CookHolder) 
     {
         this.user = user;
         //this.CookHolder = Key.create(Cook.class, CookHolder);
@@ -49,8 +49,8 @@ public class Cook
         }
         this.GroceryLists = glist.toString();
         
-        this.DiscoverResults = "";
-        this.RecipeSearchResults = "";
+        this.DiscoverResults = new JSONArray().toString();
+        this.RecipeSearchResults = new JSONArray().toString();
     }
     
     public User getCook() 
