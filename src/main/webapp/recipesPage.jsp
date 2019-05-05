@@ -135,15 +135,16 @@
             	<p style="font-family:Rajdhani;font-size:12pt">Ingredients:</p> 	
             	<% 
             	//${fn:escapeXml(ingredients)}
-            	JSONArray ing = cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients");
-            	for(int in = 0; in < ing.length(); in++)
-            	{
-            		String s = ing.getJSONObject(in).getString("originalName");
-            		pageContext.setAttribute("s", s);
+            	
+            	//JSONArray ing = cook.getDiscoverResults().getJSONObject(0).getJSONArray("ingredients");
+            	//for(int in = 0; in < ing.length(); in++)
+            	//{
+            	//	String s = ing.getJSONObject(in).getString("originalName");
+            	//	pageContext.setAttribute("s", s);
             		%>
-            		<p style="font-family:Rajdhani;font-size:12pt">-${fn:escapeXml(s)}</p>
+            		<!-- <p style="font-family:Rajdhani;font-size:12pt">-${fn:escapeXml(s)}</p> -->
             		<%
-            	}
+            	//}
             	%>
         	</div>
     </div>
